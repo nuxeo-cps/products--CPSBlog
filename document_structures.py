@@ -161,7 +161,7 @@ blog_schema = {
         },
     'author_photo' : {
         'type': 'CPS Image Field',
-        'data': {'default_expr': 'string:',
+        'data': {'default_expr': 'nothing',
                  'is_searchabletext': 0,
                  },
         },
