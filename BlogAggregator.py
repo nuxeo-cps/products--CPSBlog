@@ -45,9 +45,18 @@ class BlogAggregator(CPSDocument):
         params = context.getDisplayParams(sort_by=sort_by,
                                           direction=direction)
 
-        brains = context.search(query=query,
-                                sort_by=params['sort_by'],
-                                direction=params['direction'])
+        if sort_by == 'date':
+            catalog = context.portal_catalog
+            query['sort_on'] = 'created'
+            if direction.startswith('desc'):
+                query['sort_order'] = 'reverse'
+            else:
+                query['sort_order'] = 'ascending'
+            brains = catalog.searchResults(**query)
+        else:
+            brains = context.search(query=query,
+                                    sort_by=params['sort_by'],
+                                    direction=params['direction'])
 
         return filter(None, [brain.getObject() for brain in brains])
 
