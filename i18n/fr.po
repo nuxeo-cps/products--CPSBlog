@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
-"POT-Creation-Date: 2004-12-22 14:25default\n"
-"PO-Revision-Date: 2004-12-22 14:32+0200\n"
+"POT-Creation-Date: 2004-12-23 12:23default\n"
+"PO-Revision-Date: 2004-12-23 12:32+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,11 +33,13 @@ msgstr ""
 #.   <a href="" attributes="href bentry_url">comments</a>
 #: from ../skins/cpsblog/blog_entry_view.pt ../skins/cpsblog/blog_view.pt
 #: ../skins/cpsblog/blogaggregator_view.pt
+#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "blog_entry_comments_label"
 msgstr "commentaires"
 
 #.   <input type="submit" class="standalone" value="button_add_comment" />
 #: from ../skins/cpsblog/blog_view.pt ../skins/cpsblog/blogaggregator_view.pt
+#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "button_add_comment"
 msgstr "Ajouter commentaire"
 
@@ -46,4 +48,49 @@ msgstr "Ajouter commentaire"
 #: from ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "label_blog_calendar_entries_list"
 msgstr ""
+
+msgid "blog_view_mode_label_edit"
+msgstr ""
+
+msgid "blog_entries_per_page_label_edit"
+msgstr ""
+
+msgid "author_photo_label_edit"
+msgstr ""
+
+msgid "blog_entry_categories_label_edit"
+msgstr "Catégories"
+
+msgid "psm_blog_entry_publish_done"
+msgstr ""
+
+msgid "psm_blog_entry_publish_not_possible"
+msgstr ""
+
+msgid "psm_blog_entry_unpublish_done"
+msgstr ""
+
+msgid "psm_blog_entry_unpublish_not_possible"
+msgstr ""
+
+msgid "portal_type_Blog_title"
+msgstr "Blog"
+
+msgid "portal_type_Blog_description"
+msgstr ""
+
+msgid "portal_type_BlogAggregator_title"
+msgstr "Blog Aggregator"
+
+msgid "portal_type_BlogAggregator_description"
+msgstr ""
+
+msgid "view_mode_Title_label"
+msgstr "Titre"
+
+msgid "view_mode_TitleDescription_label"
+msgstr "Titre et description"
+
+msgid "view_mode_Full_label"
+msgstr "Complet"
 

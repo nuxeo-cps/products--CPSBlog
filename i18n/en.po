@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2004-12-22 14:25default\n"
-"PO-Revision-Date: 2004-12-22 14:26+0200\n"
+"POT-Creation-Date: 2004-12-23 12:23default\n"
+"PO-Revision-Date: 2004-12-23 12:33+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,11 +33,13 @@ msgstr "Posted by ${item_creator} @ ${item_modification}."
 #.   <a href="" attributes="href bentry_url">comments</a>
 #: from ../skins/cpsblog/blog_entry_view.pt ../skins/cpsblog/blog_view.pt
 #: ../skins/cpsblog/blogaggregator_view.pt
+#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "blog_entry_comments_label"
 msgstr "comments"
 
 #.   <input type="submit" class="standalone" value="button_add_comment" />
 #: from ../skins/cpsblog/blog_view.pt ../skins/cpsblog/blogaggregator_view.pt
+#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "button_add_comment"
 msgstr "Add comment"
 
@@ -46,4 +48,53 @@ msgstr "Add comment"
 #: from ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "label_blog_calendar_entries_list"
 msgstr "Blog entries published on"
+
+msgid "blog_view_mode_label_edit"
+msgstr "Blog entry view mode"
+
+msgid "blog_entries_per_page_label_edit"
+msgstr "Display entries per page"
+
+msgid "author_photo_label_edit"
+msgstr "Author photo"
+
+msgid "blog_entry_categories_label_edit"
+msgstr "Categories"
+
+msgid "psm_blog_entry_publish_done"
+msgstr "Blog entry published"
+
+msgid "psm_blog_entry_publish_not_possible"
+msgstr "Blog entry was not published"
+
+msgid "psm_blog_entry_unpublish_done"
+msgstr "Blog entry unpublished"
+
+msgid "psm_blog_entry_unpublish_not_possible"
+msgstr "Blog entry was not unpublished"
+
+msgid "portal_type_Blog_title"
+msgstr "Blog"
+
+msgid "portal_type_Blog_description"
+msgstr ""
+"Blog  allows quickly post your thoughts, share your knowledge, interact with "
+"people, and much more."
+
+msgid "portal_type_BlogAggregator_title"
+msgstr "Blog Aggregator"
+
+msgid "portal_type_BlogAggregator_description"
+msgstr ""
+"Blog Aggregator shows entries from several blogs by using defined search "
+"parameters."
+
+msgid "view_mode_Title_label"
+msgstr "Title only"
+
+msgid "view_mode_TitleDescription_label"
+msgstr "Title and description"
+
+msgid "view_mode_Full_label"
+msgstr "Full"
 
