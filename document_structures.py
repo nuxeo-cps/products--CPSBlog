@@ -372,7 +372,7 @@ blogaggregator_schema = {
         },
     'sort_by': {
         'type': 'CPS String Field',
-        'data': {'default_expr': 'string:',
+        'data': {'default_expr': 'string:date_desc',
                  'is_searchabletext': 0,
                  },
         },
