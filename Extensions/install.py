@@ -41,15 +41,12 @@ from Products.CPSBlog.document_structures import \
 from Products.CPSInstaller.CPSInstaller import CPSInstaller
 from Products.CMFCore.CMFCorePermissions import \
      View, ModifyPortalContent, ManageProperties
-from Products.CPSCore.CPSWorkflow import \
-     TRANSITION_INITIAL_PUBLISHING, TRANSITION_INITIAL_CREATE, \
-     TRANSITION_ALLOWSUB_CREATE, TRANSITION_ALLOWSUB_PUBLISHING, \
-     TRANSITION_BEHAVIOR_PUBLISHING, TRANSITION_BEHAVIOR_FREEZE, \
-     TRANSITION_BEHAVIOR_DELETE, TRANSITION_BEHAVIOR_MERGE, \
-     TRANSITION_ALLOWSUB_CHECKOUT, TRANSITION_INITIAL_CHECKOUT, \
-     TRANSITION_BEHAVIOR_CHECKOUT, TRANSITION_ALLOW_CHECKIN, \
-     TRANSITION_BEHAVIOR_CHECKIN, TRANSITION_ALLOWSUB_DELETE, \
-     TRANSITION_ALLOWSUB_MOVE, TRANSITION_ALLOWSUB_COPY
+from Products.CPSWorkflow.CPSWorkflowTransitions import \
+     TRANSITION_INITIAL_CREATE, \
+     TRANSITION_ALLOWSUB_CREATE, \
+     TRANSITION_ALLOWSUB_COPY, \
+     TRANSITION_ALLOWSUB_MOVE, \
+     TRANSITION_ALLOWSUB_DELETE
 from Products.DCWorkflow.Transitions import TRIGGER_USER_ACTION, \
      TRIGGER_AUTOMATIC
 from Products.CPSBlog.permissions import BlogEntryCreate
@@ -207,8 +204,7 @@ blog_proxy.box_create(**kw)
             'create_content': {
                 'title': 'Create content',
                 'new_state_id': 'work',
-                'transition_behavior': (TRANSITION_ALLOWSUB_CREATE,
-                                        TRANSITION_ALLOWSUB_CHECKOUT),
+                'transition_behavior': (TRANSITION_ALLOWSUB_CREATE,),
                 'clone_allowed_transitions': None,
                 'trigger_type': TRIGGER_USER_ACTION,
                 'actbox_name': '',
@@ -267,8 +263,7 @@ blog_proxy.box_create(**kw)
             'create_content': {
                 'title': 'Create content',
                 'new_state_id': 'work',
-                'transition_behavior': (TRANSITION_ALLOWSUB_CREATE,
-                                        TRANSITION_ALLOWSUB_PUBLISHING),
+                'transition_behavior': (TRANSITION_ALLOWSUB_CREATE,),
                 'clone_allowed_transitions': None,
                 'trigger_type': TRIGGER_USER_ACTION,
                 'props': {'guard_permissions': 'Create Blog Entry',
