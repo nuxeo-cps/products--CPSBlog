@@ -95,6 +95,8 @@ class ClientInstaller(CPSInstaller):
 
         self.allowContentTypes(('Blog', 'BlogEntry'), ('Workspace', 'Section'))
 
+        self.setupBoxes()
+
         ########################################
         # WORKFLOW DEFINITION
         ########################################
@@ -207,6 +209,37 @@ class ClientInstaller(CPSInstaller):
             pass
         self.log("### End of CPSSubscriptions setup ###")
 
+    def setupBoxes(self):
+        from Products.CPSBlog.BlogCalendarBox import factory_type_information
+        blogcalendarbox_fti = factory_type_information[0]
+
+        types = (
+            {'id' : blogcalendarbox_fti['id'],
+             'meta_type' : blogcalendarbox_fti['meta_type'],
+             'title' : blogcalendarbox_fti['title'],
+             'description' : blogcalendarbox_fti['description']
+             },
+            )
+
+        ttool = self.portal.portal_types
+        ptypes = ttool.objectIds()
+
+        for boxtype in types:
+            boxid = boxtype['id']
+            if boxid in ptypes:
+                self.log('Deleted Box ' + boxid)
+                ttool.manage_delObjects(boxid)
+            self.log('Adding Box ' + boxid)
+            ttool.manage_addTypeInformation(
+                id=boxid,
+                add_meta_type='Factory-based Type Information',
+                typeinfo_name='CPSBlog: ' + boxid,
+                )
+            ttool.manage_changeProperties(
+                title=boxtype['title'],
+                description=boxtype['description'],
+                content_meta_type=boxtype['meta_type'],
+                )
 
 def install(self):
     """Installation function for use by a Zope External Method
