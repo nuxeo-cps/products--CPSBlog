@@ -60,12 +60,13 @@ Features of blogging tool
     Ex: http://xxx/blog/2004/12/15/christmas_today
     Or: http://xxx/blog/2004_12_15_christmas_today
     (2nd is inferior, though).
-3. Export blog content using RSS and ATOM XML 
+3. Export blog content using RSS and ATOM XML
     - Must be able to selectively export content using rules
 3. Nested categories
+3.  "< (previous title) | main | (next title) >" navigation on blog entry
 3. Category management: make easy to edit categories, to move posts en masse
     from one category to another
-3. Notifications: 
+3. Notifications:
     - readers can subscribe to a blog ans receive blog entries or just
       summaries in their mail, maybe as a daily or weekly digest
     - writer may be notified of comments on his/her postings
@@ -104,7 +105,7 @@ Features of blogging tool
     - ProjectManagerBlogEntry (...)
     - SalesBlogEntry (???)
     ...
-        
+
 
 Features of blog aggregation tool
 ---------------------------------
@@ -147,7 +148,7 @@ Dotclear
     http://www.dotclear.net/en/features.html
 
 More...
-    http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1 
+    http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1
     http://www.python.org/~jeremy/weblog/031104d.html
     http://climbtothestars.org/archives/2004/12/11/hosted-blog-platform-test-write-up/
 
