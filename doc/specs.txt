@@ -2,7 +2,8 @@ Specs notes for CPSBlog
 =======================
 
 Author: S. Fermigier
-Written: 26/12/2004
+First draft: 26/12/2004
+Current version: $Id$
 
 Goals
 -----
@@ -37,10 +38,6 @@ Features of blogging tool
     - One button or link "New blog entry" for users with a personal blog
     - Wysiwyg editor with just the right features
     - No extra menus or buttons
-1. URLs include date and words from the title
-    Ex: http://xxx/blog/2004/12/15/christmas_today
-    Or: http://xxx/blog/2004_12_15_christmas_today
-    (2nd is inferior, though).
 1. Blog entries can have one or more (flat) topics (or categories)
 1. Archives (by month, by topic), calendar, search
 1. Default presentation must be nice looking
@@ -58,14 +55,20 @@ Features of blogging tool
 2. Comments
 2. Templates - way to select design from a library (or create one's own)
 2. It's easy to add new categories from the posting form
-2. Notifications
-2. Management 
 
+3. URLs include date and words from the title
+    Ex: http://xxx/blog/2004/12/15/christmas_today
+    Or: http://xxx/blog/2004_12_15_christmas_today
+    (2nd is inferior, though).
 3. Export blog content using RSS and ATOM XML 
     - Must be able to selectively export content using rules
 3. Nested categories
 3. Category management: make easy to edit categories, to move posts en masse
     from one category to another
+3. Notifications: 
+    - readers can subscribe to a blog ans receive blog entries or just
+      summaries in their mail, maybe as a daily or weekly digest
+    - writer may be notified of comments on his/her postings
 
 4. Import blog content using ATOM XML
 4. Support of the TrackBack protocol (see :
@@ -73,7 +76,10 @@ Features of blogging tool
     http://www.movabletype.org/trackback/)
 4. Support for http://topicexchange.com/
 4. One can easily add images in the text flow
+4. Stats
 
+5. "Control panel" or "dashboard" that presents a synthetic view of important
+    information to the blog manager
 5. Post using email (w/ PGP signature ?)
 5. Post using ATOM API
 5. Smart rating (with meta-rating) - think Slashdot, Kuro5hin, advogato,
@@ -129,12 +135,16 @@ Syncato
         http://www.xmldatabases.org/WK/blog/262?t=item
 
 Pyblosxom
-    Python bloggin software
+    Python blogging software, filesystem based (no UI for posting)
     http://roughingit.subtlehints.net/pyblosxom/
 
 CoreBlog
     Zope-based blog tool
     http://coreblog.org/
+
+Dotclear
+    PHP-based, popular in France
+    http://www.dotclear.net/en/features.html
 
 More...
     http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1 
