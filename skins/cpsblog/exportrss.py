@@ -57,7 +57,7 @@ rss_item = """  <item rdf:about="%(item_id)s">
 rss_item_dc = """    <dc:%(dc_key)s>%(dc_value)s</dc:%(dc_key)s>\n"""
 
 # dublin core available from getContentInfo
-dc_keys = ('subject', 'date', 'creator',
+dc_keys = ('date', 'creator',
            'contributor', 'rights', 'language',
            'coverage', 'relation', 'source')
 
@@ -83,6 +83,10 @@ for item in items:
             dc_text += rss_item_dc % {'dc_key': key,
                                       'dc_value': escape(value)}
     doc = info['doc']
+
+    # getContentInfo doesn't handle Subject
+    for subj in doc.Subject():
+        dc_text += '    <dc:subject>%s</dc:subject>\n' % subj
 
     def strip_html(text):
         # stripping of html tags based on simple regexp
