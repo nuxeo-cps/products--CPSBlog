@@ -24,7 +24,7 @@
     <td colspan="4">
       <select  name="event_types:list" multiple="multiple" size="7">
         <tal:block repeat="ret python:[ti for ti in here.getSortedContentTypes(allowed=0)
-			   if ti.getId() == 'Blog' or ti.getId() == 'BlogEntry']">
+			   if ti.getId() == 'BlogEntry']">
           <option i18n:translate=""
              tal:define="type ret/id;name ret/title;"
               tal:attributes="value type;
