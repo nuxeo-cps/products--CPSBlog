@@ -1,7 +1,6 @@
 ##parameters=sort_on='created',sort_order='reverse'
-"""Returns list of sorted blog entries."""
-
 # $Id$
+"""Returns list of sorted blog entries."""
 
 catalog = context.portal_catalog
 
