@@ -21,18 +21,19 @@ import urllib
 import urlparse
 import re
 
-def post_trackback(title='', url='', excerpt='', blog_name=''):
+def post_trackback(trackback_url, title='', excerpt='', url='', blog_name=''):
     """Sends trackback to given url."""
     params = urllib.urlencode({'title' : title,
-                               'url' : url,
                                'excerpt' : excerpt,
+                               'url' : url,
                                'blog_name' : blog_name
                                })
 
     headers = {'Content-Type' : 'application/x-www-form-urlencoded',
                'Accept' : 'text/xml',
                }
-    location, path = urlparse.urlparse(url)[1:3]
+
+    location, path = urlparse.urlparse(trackback_url)[1:3]
 
     try:
         conn = httplib.HTTPConnection(location)
