@@ -58,6 +58,7 @@ class Blog(CPSDocumentMixin, CMFCatalogAware, CMFBTreeFolder,
 
 InitializeClass(Blog)
 
+# XXX: why is it called addBlogInstance and not addBlog ?
 def addBlogInstance(container, id, REQUEST=None, **kw):
     """Factory method"""
     ob = Blog(id, **kw)
