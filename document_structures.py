@@ -350,10 +350,11 @@ blogaggregator_status_vocabulary = {
 blogaggregator_modified_vocabulary = {
     'data': {
         'tuples':(
-            ('time_last_login', '', 'time_last_login'),
-            ('time_yesterday', '',  'time_yesterday'),
-            ('time_last_week', '', 'time_last_week'),
-            ('time_last_month', '', 'time_last_month'),
+            ('', 'Choose', 'label_choose'),
+            ('time_last_login', 'Last login', 'time_last_login'),
+            ('time_yesterday', 'Yesterday',  'time_yesterday'),
+            ('time_last_week', 'Last week', 'time_last_week'),
+            ('time_last_month', 'Last month', 'time_last_month'),
             ),
         },
     }
