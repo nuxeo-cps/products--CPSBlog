@@ -6,12 +6,15 @@ from cgi import escape
 import re
 
 DESCRIPTION_MAX_LENGTH = 200
+DISPLAY_LIMIT = 10
 
 items = []
 if context.portal_type == 'BlogAggregator':
     items = context.getContent().getSearchResults(context)
 elif context.portal_type == 'Blog':
     items = context.getSortedBlogEntries()
+
+items = items[:DISPLAY_LIMIT]
 
 # this is the hard coded rss 1.0
 rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -72,7 +75,7 @@ for item in items:
     info = context.getContentInfo(item, level=2)
     url = base_url + info.get('rpath')
     header_text += rss_item_li % {'item_id': url}
-    item_date = context.getDateStr(info.get('time'), fmt='iso8601')
+    item_date = context.getDateStr(item.effective(), fmt='iso8601')
     dc_text = ''
     for key in dc_keys:
         if key == 'date':
