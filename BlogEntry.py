@@ -26,6 +26,7 @@ from Trackback import Trackback, DispatchTrackback
 import random
 import re
 
+SUMMARY_MAX_LENGTH = 400
 factory_type_information = {}
 
 class BlogEntry(CPSDocument):
@@ -229,6 +230,31 @@ class BlogEntry(CPSDocument):
         """Return end time as a string"""
         return self.effective()
 
+    security.declareProtected(View, 'getEntrySummary')
+    def getEntrySummary(self):
+        """Returns summary text or from 'Description' field or as computed
+        text of length SUMMARY_MAX_LENGTH from 'content' field."""
+
+        def strip_html(text):
+            # stripping of html tags based on simple regexp
+            return re.sub("<[^>]+>", '', text)
+
+        def nbsp_to_space(text):
+            return re.sub('&nbsp;', ' ', text)
+
+        if len(self.Description()) > 0:
+            summary = strip_html(self.Description())
+        else:
+            summary = strip_html(self.content)
+            if len(summary) > SUMMARY_MAX_LENGTH:
+                summary = summary[:SUMMARY_MAX_LENGTH]
+                i = summary.rfind(' ')
+                if i > 0:
+                    summary = summary[:i]
+                summary += ' ...'
+
+        summary = nbsp_to_space(summary)
+        return summary
 
 InitializeClass(BlogEntry)
 
