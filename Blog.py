@@ -20,6 +20,10 @@ from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Products.CPSDocument.CPSDocument import CPSDocument
 from zLOG import LOG, DEBUG
+from BTrees.IOBTree import IOBTree
+from Products.CMFCore.CMFCorePermissions import \
+     View, ModifyPortalContent
+import random
 
 factory_type_information = {}
 
@@ -29,6 +33,57 @@ class Blog(CPSDocument):
     portal_type = meta_type = 'Blog'
 
     security = ClassSecurityInfo()
+
+    def __init__(self, id, **kw):
+        CPSDocument.__init__(self, id, **kw)
+        self.categories = IOBTree()
+
+    def _generateId(self):
+        id = int(random.random() * 100000)
+        while id in self.categories.keys():
+            id = int(random.random() * 100000)
+        return id
+
+    security.declareProtected(ModifyPortalContent, 'addCategory')
+    def addCategory(self, title='', description='', urls_to_ping=(),
+                    accept_pings=False):
+        """Adds category to blog, auto generates id of category """
+        catid = self._generateId()
+
+        category = {'id' : catid,
+                    'title' : title,
+                    'description' : description,
+                    'urls_to_ping' : urls_to_ping,
+                    'accept_pings' : accept_pings
+                    }
+        self.categories.insert(catid, category)
+        return catid
+
+    security.declareProtected(ModifyPortalContent, 'removeCategory')
+    def removeCategory(self, catid):
+        """Removes category."""
+        if self.categories.has_key(catid):
+            del self.categories[catid]
+
+    security.declareProtected(View, 'getCategory')
+    def getCategory(self, catid):
+        """Returns category by id."""
+        return self.categories.get(catid, None)
+
+    security.declareProtected(View, 'getSortedCategories')
+    def getSortedCategories(self):
+        """Returns categories sorted by title."""
+        t = [(v['title'].lower(), k) for k, v in self.categories.items()]
+        t.sort()
+        return [self.categories.get(v[1]) for v in t]
+
+    security.declareProtected(ModifyPortalContent, 'updateCategory')
+    def updateCategory(self, catid, catdef):
+        """Updates category by id."""
+        if self.categories.has_key(catid):
+            d = self.categories[catid].copy()
+            d.update(catdef)
+            self.categories[catid] = d
 
 InitializeClass(Blog)
 
