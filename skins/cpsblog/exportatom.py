@@ -44,7 +44,7 @@ atom_entry = r"""
     <summary xml:lang="%(entry_lang)s">
       %(summary)s
     </summary>
-    <content type="application/xhtml+xml" mode="xml" xml:lang="%(entry_lang)s">
+    <content type="application/xhtml+xml" mode="xml" xml:lang="%(entry_lang)s" xml:space="preserve">
       <div xmlns="http://www.w3.org/1999/xhtml">
         %(content)s
       </div>
