@@ -95,6 +95,8 @@ o Box / portlets with
   - All categories
   - Latest comments
   - Latest trackbacks
+o Restrict navigation to only selected languages (using a cookie to keep
+  settings)
 
 M5:
 
