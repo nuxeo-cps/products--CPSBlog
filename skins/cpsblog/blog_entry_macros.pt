@@ -12,8 +12,7 @@
 	<h4 class="blog"
 	    tal:define="be_datetime bentry/created"
 	    tal:condition="python: item.getId() in day_separators">
-	  <span tal:omit-tag="" i18n:translate="" tal:content="be_datetime/Month">Month</span>
-	  <span tal:omit-tag="" tal:content="python: be_datetime.strftime(' %d, %Y')" />
+	  <tal:block content="python:here.getDateStr(bentry.created(), 'short')" />
 	</h4>
       </tal:block>
       <h5 class="blog">
@@ -28,8 +27,8 @@
       <div tal:condition="python:doc.view_mode == 'full'"
 	   tal:content="structure bentry/content" class="row" />
       <tal:block define="categories python:item.getContent().Subject();
-			 dname python:here.portal_directories.members.getEntry(doc.Creator(), default=None);
-			 cname dname/fullname|doc/Creator;
+			 dname python:here.portal_directories.members.getEntry(bentry.Creator(), default=None);
+			 cname dname/fullname|bentry/Creator;
 			 info python:(here_url != utool.getPortalObject().absolute_url())
 			 and here.getContentInfo(proxy=item, level=2) or None;
 			 email dname/email|nothing;">
@@ -37,15 +36,14 @@
 
 	  <tal:block condition="not:isAnon" i18n:translate="">
 	    Posted by
-	    <a href="." title="Here" tal:omit-tag="not:email"
+	    <a href="." title="Blog"
 	       class="blog"
-	       tal:condition="not:isAnon"
-	       tal:attributes="href string:mailto:${email}?subject=[${doc/title}]; title email"
+	       tal:attributes="href python:item.getBlogProxy().absolute_url()"
 	       tal:content="cname" i18n:name="item_creator">Creator</a>
 
 	    @
 	    <tal:block
-		content="python:here.getDateStr(bentry.modification_date, 'medium')"
+		content="python:here.getDateStr(bentry.created(), 'medium')"
 		i18n:name="item_modification"/>
 	    <tal:block condition="info">
 	      <span i18n:translate="label_status">Label Status</span>
@@ -56,25 +54,27 @@
 
 	  <tal:block condition="isAnon" i18n:translate="">
 	    Posted by
-	    <span tal:condition="isAnon"
-		  i18n:name="item_creator"
-		  tal:content="cname">Creator(Author)</span>
+	    <a href="." title="Here"
+	       class="blog"
+	       tal:attributes="href python:item.getBlogProxy().absolute_url()"
+	       tal:content="cname" i18n:name="item_creator">Creator</a>
 	    @
 	    <tal:block
-		content="python:here.getDateStr(bentry.modification_date, 'medium')"
+		content="python:here.getDateStr(bentry.created(), 'medium')"
 		i18n:name="item_modification"/>
 	  </tal:block>
 
 	  <tal:block condition="categories">
 	    -
 	    <tal:block i18n:translate="blog_categories_byline_label">Categories:</tal:block>
-	    <tal:block repeat="item categories">
+	    <tal:block repeat="category categories">
 	      <a href=""
 		 class="blog"
-		 tal:attributes="href string:${here/absolute_url}/archive_view?category=${item}"
-		 tal:content="item">
+		 tal:define="blogproxy python:item.getBlogProxy()"
+		 tal:attributes="href string:${blogproxy/absolute_url}/archive_view?category=${category}"
+		 tal:content="category">
 		category name
-	      </a><span tal:replace="string:," tal:condition="not:repeat/item/end">comma</span>
+	      </a><span tal:replace="string:," tal:condition="not:repeat/category/end">comma</span>
 	    </tal:block>
 	  </tal:block>
 	  -&nbsp;
