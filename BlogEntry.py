@@ -22,8 +22,9 @@ from Products.CPSDocument.CPSDocument import CPSDocument
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from zLOG import LOG, DEBUG
 from BTrees.IOBTree import IOBTree
-from Trackback import Trackback
+from Trackback import Trackback, DispatchTrackback
 import random
+import re
 
 factory_type_information = {}
 
@@ -37,6 +38,7 @@ class BlogEntry(CPSDocument):
     def __init__(self, id, **kw):
         CPSDocument.__init__(self, id, **kw)
         self.trackbacks = IOBTree()
+        self.dispatch_trackbacks = IOBTree()
 
     def _generateId(self, data):
         id = int(random.random() * 100000)
@@ -86,6 +88,69 @@ class BlogEntry(CPSDocument):
     security.declareProtected(View, 'countTrackbacks')
     def countTrackbacks(self):
         return len(self.trackbacks)
+
+    security.declareProtected(ModifyPortalContent, 'addDispatchTrackback')
+    def addDispatchTrackback(self, trackback_url):
+        # we do not add trackback if it was added earlier
+        for k in self.dispatch_trackbacks.keys():
+            if self.dispatch_trackbacks[k].trackback_url == trackback_url:
+                return 0
+        tb_id = self._generateId(self.dispatch_trackbacks)
+        tb = DispatchTrackback(tb_id, trackback_url)
+        self.dispatch_trackbacks[tb_id] = tb
+        return tb_id
+
+    security.declareProtected(View, 'getDispatchTrackback')
+    def getDispatchTrackback(self, trackback_id, default=None):
+        return self.dispatch_trackbacks.get(trackback_id, default)
+
+    security.declareProtected(View, 'getSortedDispatchTrackbacks')
+    def getSortedDispatchTrackbacks(self):
+        """Returns dispatch trakbacks sorted on creation date in
+        reverse order."""
+        items = [(v.created, v) for k, v in self.dispatch_trackbacks.items()]
+        items.sort()
+        items.reverse()
+        return [t[1] for t in items]
+
+    security.declareProtected(ModifyPortalContent, 'sendTrackbacks')
+    def sendTrackbacks(self, context, **kw):
+        """Iterates over dispatching trackbacks and sends pings."""
+        DESCRIPTION_MAX_LENGTH = 200
+        result = []
+
+        blog_proxy = context.getBlogProxy()
+        blog_entry = context.getContent()
+
+        def strip_html(text):
+            # stripping of html tags based on simple regexp
+            return re.sub("<[^>]+>", '', text)
+
+        for k, trackback in self.dispatch_trackbacks.items():
+            if not trackback.sent:
+                excerpt = kw.get('excerpt')
+                if excerpt is None:
+                    if len(blog_entry.Description()) > 0:
+                        excerpt = strip_html(context.description)
+                    else:
+                        excerpt = strip_html(blog_entry.content)
+                        if len(excerpt) > DESCRIPTION_MAX_LENGTH:
+                            excerpt = excerpt[:DESCRIPTION_MAX_LENGTH]
+                            i = excerpt.rfind(' ')
+                            if i > 0:
+                                excerpt = excerpt[:i]
+                            excerpt += '...'
+
+                params = {'title' : kw.get('title') or context.Title(),
+                          'excerpt' : excerpt,
+                          'url' : context.absolute_url(),
+                          'blog_name' : blog_proxy.Title(),
+                          }
+                error_code, msg = trackback.send(**params)
+                result.append({'trackback_url' : trackback.trackback_url,
+                               'error' : error_code,
+                               'message' : msg})
+        return result
 
     security.declarePrivate('tbresult')
     def tbresult(self, context, **kw):
