@@ -220,7 +220,8 @@ blog_view_mode_vocabulary = {
     'data': {
         'tuples':(
             ('title', 'Title', 'view_mode_Title_label'),
-            ('description', 'Description', 'view_mode_Description_label'),
+            ('title_desc', 'Title and Description',
+             'view_mode_TitleDescription_label'),
             ('full', 'Full', 'view_mode_Full_label'),
             ),
         },
@@ -247,7 +248,7 @@ blog_layout = {
                      'fields': ('view_mode',),
                      'is_required': False,
                      'label': '',
-                     'label_edit': '',
+                     'label_edit': 'blog_view_mode_label_edit',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
