@@ -4,12 +4,7 @@
 blog entry with regard to current blog entry."""
 
 proxy = context.getBlogProxy()
-bentries = [v for v in proxy.contentValues(filter={'meta_type':'BlogEntry'})]
-
-items = [(bentry.created(), bentry) for bentry in bentries]
-items.sort()
-
-bentries[:] = [t[1] for t in items]
+bentries = proxy.getSortedBlogEntries(sort_order='ascending')
 
 blen = len(bentries)
 info = {}
