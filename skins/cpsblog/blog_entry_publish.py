@@ -1,6 +1,5 @@
 ##parameters=
-"""Publish BlogEntry
-"""
+"""Publish BlogEntry"""
 
 # $Id$
 
