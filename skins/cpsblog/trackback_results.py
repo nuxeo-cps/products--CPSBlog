@@ -22,6 +22,17 @@ if error:
                      'message' : message,
                      }
 
+if kw.get('list_trackbacks') is None:
+    # successfull POST ping
+    output = """<?xml version="1.0" encoding="ISO-8859-15"?>
+    <response>
+    <error>%(error)s</error>
+    </response>
+    """
+    setHeaderParameters()
+    return output % {'error' : error}
+
+# GET request to list all trackbacks
 output = """<?xml version="1.0" encoding="ISO-8859-15"?>
 <response>
 <error>%(error)s</error>
