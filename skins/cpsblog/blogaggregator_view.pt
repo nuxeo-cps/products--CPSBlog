@@ -1,4 +1,4 @@
-<html metal:use-macro="here/content_lib/macros/master">
+<html metal:use-macro="here/content_lib_master/macros/master">
   <metal:block fill-slot="header">
   </metal:block>
 
@@ -93,7 +93,7 @@
         python:here.portal_discussion.isCommentingAllowedFor(here);"
         tal:condition="comments_allowed">
         <metal:block
-          use-macro="here/forum_comment_lib/macros/view_comments_inline" />
+          use-macro="here/forum_comment_lib_view_comments_inline/macros/view_comments_inline" />
       </tal:block>
     </tal:block>
 
