@@ -1,6 +1,9 @@
 ##parameters=
 """Publish BlogEntry
 """
+
+# $Id$
+
 wftool = context.portal_workflow
 
 try:

@@ -1,6 +1,9 @@
 ##parameters=
 """Unpublish BlogEntry
 """
+
+# $Id$
+
 wftool = context.portal_workflow
 
 try:
