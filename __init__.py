@@ -30,6 +30,7 @@ from zLOG import LOG, INFO, DEBUG
 from AccessControl import ModuleSecurityInfo, allow_class
 import Products.CPSBlog.permissions
 import BlogAggregator
+import BlogAggregatorPortlet
 
 logKey = 'CPSBlog.__init__'
 
@@ -38,6 +39,7 @@ contentClasses = (
     BlogEntry,
     BlogCalendarBox,
     BlogAggregator.BlogAggregator,
+    BlogAggregatorPortlet.BlogAggregatorPortlet,
     )
 
 contentConstructors = (
@@ -45,10 +47,12 @@ contentConstructors = (
     addBlogEntry,
     addBlogCalendarBox,
     BlogAggregator.addBlogAggregator,
+    BlogAggregatorPortlet.addBlogAggregatorPortlet,
     )
 
 fti = (blog_fti, blogentry_fti, blogcalendarbox_fti[0],
-       BlogAggregator.factory_type_information)
+       BlogAggregator.factory_type_information,
+       BlogAggregatorPortlet.factory_type_information)
 
 registerDirectory('skins', globals())
 
