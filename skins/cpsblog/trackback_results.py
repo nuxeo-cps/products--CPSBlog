@@ -36,11 +36,7 @@ if kw.get('list_trackbacks') is None:
 output = """<?xml version="1.0" encoding="ISO-8859-15"?>
 <response>
 <error>%(error)s</error>
-%(trackbacks)s
-</response>
-"""
-
-trackbacks_template = """<rss version="0.91">
+<rss version="0.91">
 <channel>
 <title>%(blog_entry_title)s</title>
 <link>%(blog_entry_url)s</link>
@@ -48,6 +44,7 @@ trackbacks_template = """<rss version="0.91">
 %(trackbacks)s
 </channel>
 </rss>
+</response>
 """
 
 trackback_template = """<item>
@@ -66,14 +63,10 @@ for tb in context.getContent().getSortedTrackbacks():
              }
     trackbacks_items += trackback_template % tb_kw
 
-
-trackbacks = trackbacks_template % {'blog_entry_title' : context.Title(),
-                                    'blog_entry_url' : context.absolute_url(),
-                                    'trackbacks' : trackbacks_items,
-                                    }
-
 text = output % {'error' : error,
-                 'trackbacks' : trackbacks,
+                 'blog_entry_title' : context.Title(),
+                 'blog_entry_url' : context.absolute_url(),
+                 'trackbacks' : trackbacks_items,
                  }
 
 setHeaderParameters()
