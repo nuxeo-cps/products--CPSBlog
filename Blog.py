@@ -44,11 +44,15 @@ class Blog(CPSDocumentMixin, CMFCatalogAware, CMFBTreeFolder,
     security.declarePublic('start')
     def start(self):
         """Return start time as a string"""
+        # FIXME: what does "start time" mean in this context ?
         return self.created()
 
     security.declarePublic('end')
     def end(self):
         """Return end time as a string"""
+        # FIXME: what does "end time" mean in this context ?, what is
+        # it used for ?
+        # Why are start() and end() the same in the end ?
         return self.created()
 
 
@@ -59,6 +63,9 @@ def addBlogInstance(container, id, REQUEST=None, **kw):
     ob = Blog(id, **kw)
     container._setObject(id, ob)
 
+    # FIXME: if REQUEST != None, this will brake
+    # This is not covered by the tests by the way.
+    # Is it useful to be able to add object from the ZMI, BTW ?
     if REQUEST:
         ob = container._getOb(id)
         LOG(log_key, DEBUG, "object = %s" % ob)
