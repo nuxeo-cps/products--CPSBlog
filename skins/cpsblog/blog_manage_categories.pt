@@ -13,8 +13,8 @@
 	       tal:define="doc here/getBlogContent;
 			   context here/getBlogProxy">
 
-    <h2 i18n:translate="blog_categories_label">
-      Categories for blog "<span tal:omit-tag="" tal:content="doc/Title" />"
+    <h2 i18n:translate="">
+      Categories for blog "<span i18n:name="blogtitle" tal:replace="doc/Title" />"
     </h2>
     <p i18n:translate="blog_categories_description_label">
       Use categories to group your entries for easier reference.
@@ -22,7 +22,7 @@
     <form action="" method="post"
 	  tal:condition="python:len(doc.getSortedCategories()) > 0"
 	  tal:attributes="action string:${context/absolute_url}/blog_delete_categories">
-      <table class="listing">
+      <table class="listing" summary="Listing of all categories for blog">
 	<thead>
 	  <td i18n:translate="blog_categories_label" width="90%">Categories</td>
 	  <td i18n:translate="blog_categories_delete">Delete</td>
