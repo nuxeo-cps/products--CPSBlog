@@ -10,6 +10,10 @@
   </metal:block>
 
   <metal:block fill-slot="main">
+    <div metal:use-macro="here/document_actions/macros/document_actions">
+      Document actions (print, rss etc)
+    </div>
+
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
 
     <tal:block define="items here/getSortedBlogEntries;
@@ -22,17 +26,6 @@
 	    metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
 
     </tal:block>
-
-    <div class="rssExport">
-      <a tal:attributes="href string:exportrss"
-	 title="link_rss_export"
-	 i18n:attributes="title">
-	<img src="rss10.png" width="80" height="15" alt="RSS 1.0"
-	     tal:attributes="src string:${base_url}rss10.png"
-	     title="label_rss_export"
-	     i18n:attributes="title"/>
-      </a>
-    </div>
 
     <tal:block tal:condition="python:hasattr(here,'portal_discussion') and
       hasattr(here.portal_discussion, 'isCommentingAllowedFor')">
