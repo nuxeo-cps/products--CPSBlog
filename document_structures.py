@@ -100,8 +100,8 @@ blog_entry_type = {
     'layouts': ['common', 'blog_entry', 'blog_entry_flexible'],
     'flexible_layouts' : ['blog_entry_flexible:blog_entry_flexible'],
     'storage_methods': [],
-    'cps_workspace_wf': 'workspace_content_wf',
-    'cps_section_wf': 'section_content_wf',
+    'cps_workspace_wf': 'blog_entry_wf',
+    'cps_section_wf': 'blog_entry_wf',
     'use_content_status_history': 1,
     'actions': ({'id': 'view',
                  'name': 'action_view',
@@ -111,13 +111,13 @@ blog_entry_type = {
                 {'id': 'new_content',
                  'name': 'action_new_content',
                  'action': 'string:${object_url}/folder_factories',
-                 'condition': "python:object.getTypeInfo().cps_proxy_type != 'document'",
+                 'condition': '',
                  'permissions': (ModifyPortalContent,)
                  },
                 {'id': 'contents',
                  'name': 'action_folder_contents',
                  'action': 'string:${object_url}/folder_contents',
-                 'condition' : "python:object.getTypeInfo().cps_proxy_type != 'document'",
+                 'condition' : '',
                  'permissions': (ModifyPortalContent,)
                  },
                 {'id': 'edit',
@@ -135,7 +135,7 @@ blog_entry_type = {
                 {'id': 'localroles',
                  'name': 'action_local_roles',
                  'action': 'string:${object_url}/folder_localrole_form',
-                 'condition' : "python:object.getTypeInfo().cps_proxy_type != 'document'",
+                 'condition' : '',
                  'permissions': ('Change permissions',)
                  })
     }
