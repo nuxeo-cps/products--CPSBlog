@@ -52,6 +52,8 @@ from Products.CPSCore.CPSWorkflow import \
      TRANSITION_ALLOWSUB_MOVE, TRANSITION_ALLOWSUB_COPY
 from Products.DCWorkflow.Transitions import TRIGGER_USER_ACTION, \
      TRIGGER_AUTOMATIC
+from Products.CPSBlog.CPSBlogPermissions import BlogEntryCreate
+
 
 WebDavLockItem = 'WebDAV Lock items'
 WebDavUnlockItem = 'WebDAV Unlock items'
@@ -67,6 +69,20 @@ class ClientInstaller(CPSInstaller):
     def install(self):
         """Converting a CPS Default Site to a client site"""
         self.log("Starting %s installation" % self.product_name)
+
+        #################################################
+        # CPSBlog-specific roles and permissions
+        #################################################
+        self.log("Verifying CPSBlog permissions")
+        forum_perms = {
+             BlogEntryCreate: ('Manager', 'Owner', 'WorkspaceManager',
+                               'BlogPoster', 'SectionManager',
+                               'SectionReviewer',
+                               ),
+             }
+
+        self.verifyRoles(('BlogPoster',))
+        self.setupPortalPermissions(forum_perms)
 
         # The product skins have to be set up AFTER the cpsdefault_installer
         # is run, because the product skins override the cpsdefault skins.
@@ -101,8 +117,127 @@ class ClientInstaller(CPSInstaller):
         # WORKFLOW DEFINITION
         ########################################
 
-        # workflow for BlogEntry
-        wfdef = {'wfid': 'blog_entry_wf',
+        # Workspace workflow for Blog
+        wfdef = {'wfid': 'blog_workspace_wf',
+                 'permissions': (View, ModifyPortalContent,
+                                 WebDavLockItem, WebDavUnlockItem,)
+                 }
+
+        wfstates = {
+            'work': {
+                'title': 'Work',
+                'transitions':('create_content', 'cut_copy_paste'),
+                'permissions': {View: ('Manager', 'WorkspaceManager',
+                                       'WorkspaceMember', 'WorkspaceReader',
+                                       'BlogPoster'),
+                                ModifyPortalContent: ('Manager', 'Owner',
+                                                      'WorkspaceManager')},
+                },
+            }
+
+        wftransitions = {
+            'cut_copy_paste': {
+                'title': 'Cut/Copy/Paste',
+                'new_state_id': '',
+                'transition_behavior': (TRANSITION_ALLOWSUB_DELETE,
+                                        TRANSITION_ALLOWSUB_MOVE,
+                                        TRANSITION_ALLOWSUB_COPY),
+                'clone_allowed_transitions': None,
+                'trigger_type': TRIGGER_USER_ACTION,
+                'actbox_name': '',
+                'actbox_category': '',
+                'actbox_url': '',
+                'props': {'guard_permissions':'',
+                          'guard_roles':'Manager; WorkspaceManager; '
+                                        'WorkspaceMember',
+                          'guard_expr':''},
+                },
+            'create': {
+                'title': 'Initial creation',
+                'new_state_id': 'work',
+                'transition_behavior': (TRANSITION_INITIAL_CREATE,),
+                'clone_allowed_transitions': None,
+                'actbox_category': 'workflow',
+                'props': {'guard_permissions':'',
+                          'guard_roles':'Manager; WorkspaceManager; '
+                                        'WorkspaceMember',
+                          'guard_expr':''},
+                },
+            'create_content': {
+                'title': 'Create content',
+                'new_state_id': 'work',
+                'transition_behavior': (TRANSITION_ALLOWSUB_CREATE,
+                                        TRANSITION_ALLOWSUB_CHECKOUT),
+                'clone_allowed_transitions': None,
+                'trigger_type': TRIGGER_USER_ACTION,
+                'actbox_name': '',
+                'props': {'guard_permissions':'Create Blog Entry',
+                          'guard_roles':'',
+                          'guard_expr':''},
+                },
+            }
+        self.verifyWorkflow(wfdef, wfstates, wftransitions, {}, {})
+
+        # Section workflow for Blog
+        wfdef = {'wfid': 'blog_section_wf',
+                 'permissions': (View, ModifyPortalContent)}
+
+        wfstates = {
+            'work': {
+                'title': 'Work',
+                'transitions': ('create_content', 'cut_copy_paste'),
+                'permissions': {View: ('Manager', 'SectionManager',
+                                       'SectionReviewer', 'SectionReader',
+                                       'BlogPoster'),
+                                ModifyPortalContent: ('Manager', 'Owner',
+                                                      'SectionManager',
+                                                      'SectionReviewer')},
+                },
+            }
+
+        wftransitions = {
+            'cut_copy_paste': {
+                'title': 'Cut/Copy/Paste',
+                'new_state_id': '',
+                'transition_behavior': (TRANSITION_ALLOWSUB_DELETE,
+                                        TRANSITION_ALLOWSUB_MOVE,
+                                        TRANSITION_ALLOWSUB_COPY),
+                'clone_allowed_transitions': None,
+                'trigger_type': TRIGGER_USER_ACTION,
+                'actbox_name': '',
+                'actbox_category': '',
+                'actbox_url': '',
+                'props': {'guard_permissions': '',
+                          'guard_roles': 'Manager; SectionManager; '
+                                         'SectionReviewer; SectionReader',
+                          'guard_expr': ''},
+                },
+            'create': {
+                'title': 'Initial creation',
+                'new_state_id': 'work',
+                'transition_behavior': (TRANSITION_INITIAL_CREATE,),
+                'clone_allowed_transitions': None,
+                'actbox_category': 'workflow',
+                'props': {'guard_permissions': '',
+                          'guard_roles': 'Manager; SectionManager',
+                          'guard_expr': ''},
+                },
+            'create_content': {
+                'title': 'Create content',
+                'new_state_id': 'work',
+                'transition_behavior': (TRANSITION_ALLOWSUB_CREATE,
+                                        TRANSITION_ALLOWSUB_PUBLISHING),
+                'clone_allowed_transitions': None,
+                'trigger_type': TRIGGER_USER_ACTION,
+                'props': {'guard_permissions': 'Create Blog Entry',
+                          'guard_roles': '',
+                          'guard_expr': ''},
+                },
+            }
+        self.verifyWorkflow(wfdef, wfstates, wftransitions, {}, {})
+
+        # Workspace workflow for BlogEntry
+        wfdef = {'wfid': 'blog_entry_workspace_wf',
                  'permissions': (View, ModifyPortalContent,
                                  WebDavLockItem, WebDavUnlockItem,)
                  }
@@ -110,15 +245,16 @@ class ClientInstaller(CPSInstaller):
         wfstates = {
             'work': {'title': 'Work',
                      'transitions':('publish',),
-                     'permissions': {View: ('Manager', 'WorkspaceManager',
-                                            'WorkspaceMember',
-                                            'WorkspaceReader')}
+                     'permissions': {View: ('Manager', 'Owner',
+                                            'WorkspaceManager',
+                                            'BlogPoster')}
                      },
             'published': {'title': 'Published',
                           'transitions':('unpublish', ),
                           'permissions': {View: ('Manager', 'WorkspaceManager',
                                                  'WorkspaceMember',
-                                                 'WorkspaceReader')}
+                                                 'WorkspaceReader',
+                                                 'BlogPoster')}
                           },
             }
 
@@ -130,7 +266,8 @@ class ClientInstaller(CPSInstaller):
                 'clone_allowed_transitions': None,
                 'actbox_category': 'workflow',
                 'props': {'guard_permissions':'',
-                          'guard_roles':'Manager; WorkspaceManager; WorkspaceMember',
+                          'guard_roles':'Manager; WorkspaceManager; '
+                                        'WorkspaceMember;BlogPoster',
                           'guard_expr':''},
                 },
             'publish': {
@@ -143,7 +280,8 @@ class ClientInstaller(CPSInstaller):
                 'actbox_category': 'workflow',
                 'actbox_url': '%(content_url)s/blog_entry_publish',
                 'props': {'guard_permissions':'',
-                          'guard_roles':'Manager; WorkspaceManager; WorkspaceMember',
+                          'guard_roles':'Manager; WorkspaceManager; '
+                                        'WorkspaceMember;BlogPoster',
                           'guard_expr':''},
                 },
             'unpublish': {
@@ -157,7 +295,77 @@ class ClientInstaller(CPSInstaller):
                 'actbox_url': '%(content_url)s/blog_entry_unpublish',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; WorkspaceManager; '
-                          'WorkspaceMember',
+                                        'WorkspaceMember;BlogPoster',
+                          'guard_expr':''},
+                },
+            }
+        self.verifyWorkflow(wfdef, wfstates, wftransitions, {}, {})
+
+        # Section workflow for BlogEntry
+        wfdef = {'wfid': 'blog_entry_section_wf',
+                 'permissions': (View, ModifyPortalContent,
+                                 WebDavLockItem, WebDavUnlockItem,)
+                 }
+
+        wfstates = {
+            'work': {'title': 'Work',
+                     'transitions':('publish',),
+                     'permissions': {View: ('Manager', 'Owner',
+                                            'SectionManager',
+                                            'SectionReviewer',
+                                            'BlogPoster'),
+                                     ModifyPortalContent: ('Manager',
+                                                           'Owner',
+                                                           'SectionManager',
+                                                           'SectionReviewer')}
+                     },
+            'published': {'title': 'Published',
+                          'transitions':('unpublish', ),
+                          'permissions': {View: ('Manager', 'SectionManager',
+                                                 'SectionReviewer',
+                                                 'SectionReader',
+                                                 'BlogPoster')}
+                          },
+            }
+
+        wftransitions = {
+            'create': {
+                'title': 'Initial creation',
+                'new_state_id': 'work',
+                'transition_behavior': (TRANSITION_INITIAL_CREATE,),
+                'clone_allowed_transitions': None,
+                'actbox_category': 'workflow',
+                'props': {'guard_permissions':'',
+                          'guard_roles':'Manager; SectionManager; '
+                                        'SectionReviewer; BlogPoster',
+                          'guard_expr':''},
+                },
+            'publish': {
+                'title': 'Publish BlogEntry',
+                'new_state_id': 'published',
+                'transition_behavior': (),
+                'clone_allowed_transitions': None,
+                'trigger_type': TRIGGER_USER_ACTION,
+                'actbox_name': 'Publish',
+                'actbox_category': 'workflow',
+                'actbox_url': '%(content_url)s/blog_entry_publish',
+                'props': {'guard_permissions':'',
+                          'guard_roles':'Manager; SectionManager; '
+                                        'SectionReviewer; BlogPoster',
+                          'guard_expr':''},
+                },
+            'unpublish': {
+                'title': 'Unpublish BlogEntry',
+                'new_state_id': 'work',
+                'transition_behavior': (),
+                'clone_allowed_transitions': None,
+                'trigger_type': TRIGGER_USER_ACTION,
+                'actbox_name': 'Unpublish',
+                'actbox_category': 'workflow',
+                'actbox_url': '%(content_url)s/blog_entry_unpublish',
+                'props': {'guard_permissions':'',
+                          'guard_roles':'Manager; SectionManager; '
+                                        'SectionReviewer; BlogPoster',
                           'guard_expr':''},
                 },
             }
@@ -167,10 +375,10 @@ class ClientInstaller(CPSInstaller):
         ########################################
         #   WORKFLOW ASSOCIATIONS
         ########################################
-        ws_chains = { 'Blog': 'workspace_folderish_content_wf',
-                      'BlogEntry': 'blog_entry_wf'}
-        se_chains = { 'Blog': 'section_content_wf',
-                      'BlogEntry': 'blog_entry_wf'}
+        ws_chains = { 'Blog': 'blog_workspace_wf',
+                      'BlogEntry': 'blog_entry_workspace_wf'}
+        se_chains = { 'Blog': 'blog_section_wf',
+                      'BlogEntry': 'blog_entry_section_wf'}
 
         self.verifyLocalWorkflowChains(self.portal['workspaces'],
                                        ws_chains, destructive=1)
