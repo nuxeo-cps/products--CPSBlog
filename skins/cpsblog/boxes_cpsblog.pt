@@ -114,3 +114,28 @@
     </metal:block>
   </metal:block>
 </metal:block>
+
+
+<metal:block define-macro="basebox_blogarchive"
+	     tal:define="items here/getBlogArchiveDates">
+  <tal:block condition="items">
+    <metal:block use-macro="python:path(box['settings']['box_skin'])">
+      <metal:block fill-slot="box_title">
+	<metal:block define-slot="box_title">
+	  <tal:block i18n:translate=""
+		     content="box/box/title">box text title</tal:block>
+	</metal:block>
+      </metal:block>
+      <metal:block fill-slot="box_body">
+	<ul>
+	  <li tal:repeat="archive items">
+	    <a tal:attributes="href string:${here/absolute_url}/archive_view?start_date=${archive/start_date}&end_date=${archive/end_date}">
+	      <span tal:omit-tag="" i18n:translate="" tal:content="archive/month_name">month</span>
+	      <span tal:omit-tag="" tal:content="archive/year" />
+	    </a>
+	  </li>
+	</ul>
+      </metal:block>
+    </metal:block>
+  </tal:block>
+</metal:block>
