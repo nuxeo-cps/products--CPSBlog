@@ -6,7 +6,7 @@
                  document_actions actions/document_actions|nothing;
                  ob_actions actions/object|nothing;
                  blog_actions python:here.getCPSBlogActionById(ob_actions, 'new_content')"
-     tal:condition="blog_actions">
+     tal:condition="python:blog_actions or document_actions">
 
     <ul>
       <tal:actions repeat="daction document_actions">
