@@ -69,8 +69,6 @@ Features of blogging tool
     - readers can subscribe to a blog ans receive blog entries or just
       summaries in their mail, maybe as a daily or weekly digest
     - writer may be notified of comments on his/her postings
-3. Support a Blog API (via XML-RPC) like MetaWeblogAPI or BloggerAPI
-
 4. Import blog content using ATOM XML
 4. Support of the TrackBack protocol (see :
     http://www.movabletype.org/docs/mttrackback.html and
@@ -82,7 +80,8 @@ Features of blogging tool
 5. "Control panel" or "dashboard" that presents a synthetic view of important
     information to the blog manager
 5. Post using email (w/ PGP signature ?)
-5. Post using ATOM API
+5. Support one or more Blog API (via REST or XML-RPC) like MetaWeblogAPI,
+    BloggerAPI and ATOM API
 5. Smart rating (with meta-rating) - think Slashdot, Kuro5hin, advogato,
     lxer.com, linux-community.com
 5. Automatic categorisation of blogs: "Similar posts" using either linguistic
