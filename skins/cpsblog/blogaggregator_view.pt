@@ -1,0 +1,103 @@
+<html metal:use-macro="here/content_lib/macros/master">
+  <metal:block fill-slot="header">
+  </metal:block>
+
+  <metal:block fill-slot="css_slot">
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}document.css" />
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}forum.css" />
+  </metal:block>
+
+  <metal:block fill-slot="main">
+    <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
+
+    <tal:block define="items python:doc.getSearchResults(here);
+		       mq nocall:modules/ZTUtils/make_query;
+		       items_per_page here/entries_per_page;
+		       columns python:1;
+		       batches_all python:here.getBatchList(items, columns, items_per_page);
+		       batches python:batches_all[0];
+		       batch_info python:batches_all[1]">
+      <tal:block tal:condition="python: batch_info and batch_info['nb_pages'] > 1">
+	<div class="batchLayout">
+	  <span i18n:translate="">
+	    Objects: <tal:block replace="batch_info/start"
+	    i18n:name="batch_start" /> - <tal:block replace="batch_info/limit"
+	    i18n:name="batch_limit" /> of <tal:block replace="batch_info/length"
+	    i18n:name="batch_length" />
+	  </span>
+	</div>
+	<br />
+      </tal:block>
+      <tal:block tal:condition="batches">
+	<div tal:repeat="item python:batches[0]" class="group">
+	  <span tal:omit-tag=""
+		tal:define="bentry item/getContent; bentry_url item/absolute_url">
+	    <h3>
+	      <a href=""
+		 tal:attributes="href bentry_url"
+		 tal:content="bentry/title" />
+	    </h3>
+	    <div tal:condition="python:doc.view_mode == 'title_desc' or
+				doc.view_mode == 'full'"
+		 tal:content="bentry/description" class="row"/>
+	    <div tal:condition="python:doc.view_mode == 'full'"
+		 tal:content="structure bentry/body" class="row" />
+	    <div class="row">
+	      <a href=""
+		 tal:attributes="href bentry_url"
+		 i18n:translate="blog_entry_comments_label">comments</a>:
+	      <span
+		  tal:omit-tag=""
+		  tal:content="python:here.getNumberOfComments(item)" />
+	    </div>
+	    <form method="post"
+		  action=""
+		  tal:attributes="action string:${bentry_url}/post_comment">
+	      <input type="submit" value="button_add_comment"
+		     class="standalone" i18n:attributes="value"/>
+	    </form>
+	  </span>
+	</div>
+      </tal:block>
+      <tal:block condition="python:batch_info and batch_info['nb_pages'] > 1">
+	<br />
+	<div class="pageNavigationLayout">
+	  <span i18n:translate="label_page">Pages</span>:
+	  <a tal:define="previous batch_info/previous"
+	     tal:condition="python:previous is not None"
+	     tal:attributes="href python:'%s?%s'%(request['URL'],
+			     mq(request.form, b_start=previous))"
+	     i18n:translate="batch_previous">Previous</a>
+	  <tal:block repeat="page batch_info/pages">
+	    <a tal:condition="python:page != batch_info['start'] - 1"
+	       tal:attributes="href python:'%s?%s'%(request['URL'],
+			       mq(request.form, b_start=page))"
+	       tal:content="repeat/page/number">1</a>
+	    <span tal:condition="python:page == batch_info['start'] - 1"
+		  tal:content="string:[${repeat/page/number}]" />
+	  </tal:block>
+	  <a tal:define="next batch_info/next"
+	     tal:condition="python:next is not None"
+	     tal:attributes="href python:'%s?%s'%(request['URL'],
+			     mq(request.form, b_start=next))"
+	     i18n:translate="batch_next">Next</a>
+	</div>
+      </tal:block>
+    </tal:block>
+
+    <tal:block tal:condition="python:hasattr(here,'portal_discussion') and
+      hasattr(here.portal_discussion, 'isCommentingAllowedFor')">
+      <tal:block tal:define="comments_allowed
+        python:here.portal_discussion.isCommentingAllowedFor(here);"
+        tal:condition="comments_allowed">
+        <metal:block
+          use-macro="here/forum_comment_lib/macros/view_comments_inline" />
+      </tal:block>
+    </tal:block>
+
+  </metal:block>
+
+</html>
+
