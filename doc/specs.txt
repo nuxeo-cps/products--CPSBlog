@@ -1,0 +1,110 @@
+Specs notes for CPSBlog
+=======================
+
+Author: S. Fermigier
+Written: 26/12/2004
+
+Goals
+-----
+
+1. Blogging tool to be used for personal weblogs (me: fermigier.com, hopefully
+others), the Nuxeo intranet (for knowledge building and developers logging) and
+the Nuxeo public websites (linux-center, zopefr, pythonfr, openofficefr...).
+
+2. Must support syndication and aggregation, so that one doesn't need to
+post the same news on 3 or 5 different web sites. Publication on different
+sites will be supported by rules and/or workflow.
+
+4. Start simple, but expect to become powerful. Think "knowledge management":
+Should be thought as a tool for collective knowledge building, not only for
+news publishing.
+
+5. Use the CPS Platform framework as much as possible, but don't overdo it.
+
+Features of blogging tool
+-------------------------
+
+(Number is priority, smaller = higher priority, priorities may vary over time)
+
+1. Posting a new blog entry is very easy
+    - One button or link "New blog entry" for users with a personal blog
+    - Wysiwyg editor with just the right features
+    - No extra menus or buttons
+1. URLs include date and words from the title
+    Ex: http://xxx/blog/2004/12/15/christmas_today
+    Or: http://xxx/blog/2004_12_15_christmas_today
+    (2nd is inferior, though).
+1. Blog entries can have one or more topics (or categories)
+1. Archives (by month, by topic), calendar, search
+1. Default presentation must be nice looking
+2. Blog entries are multilingual (I can post in french or english if I want,
+    for instance)
+2. Blog entries can contain links, images, files
+2. Comments
+2. Templates
+2. It's easy to add new categories from the posting form
+2. Notifications
+3. Export blog content using RSS and ATOM XML 
+    - Must be able to selectively export content using rules
+4. Import blog content using ATOM XML
+5. Post using email (w/ PGP signature ?)
+5. Post using ATOM API
+5. Smart rating (with meta-rating)
+5. Automatic categorisation of blogs: "Similar posts" using either linguistic
+    analysis or collaborative filtering.
+6. Anti-spam on comments
+
+Features of blog aggreation tool
+--------------------------------
+
+TBDL
+
+Other blogging software or services
+-----------------------------------
+
+Blogger
+    http://www.blogger.com/
+    Basic and popular free blogging service
+
+Livejournal
+    http://www.livejournal.com/
+    Interesting because it's not just a personal blog service, more like a
+    community service (think "Yahoo Groups!").
+
+MoveableType / Typepad.com
+    The leading commercial solution, it seems
+    See feature matrix:
+        http://www.typepad.com/site/comparison.html
+    (No really free trial on typepad.com)
+
+Syncato
+    http://www.syncato.org/
+    Powerful ideas from the XML databases
+        http://www.xmldatabases.org/WK/blog/262?t=item
+
+Pyblosxom
+    Python bloggin software
+    http://roughingit.subtlehints.net/pyblosxom/
+
+CoreBlog
+    Zope-based blog tool
+    http://coreblog.org/
+
+More...
+    http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1 
+    http://www.python.org/~jeremy/weblog/031104d.html
+
+References
+----------
+
+weblogs: a history and perspective
+    http://www.rebeccablood.net/essays/weblog_history.html
+
+Atom:
+    http://www.ietf.org/html.charters/atompub-charter.html
+    http://atomenabled.org/
+
+RSS:
+    http://www.xml.com/pub/a/2002/12/18/dive-into-xml.html
+    http://www.xml.com/pub/a/2004/04/07/dive.html
+
