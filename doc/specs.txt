@@ -36,42 +36,42 @@ Features of blogging tool
 
 M1:
 
-o Posting a new blog entry is very easy
+x Posting a new blog entry is very easy
     - One button or link "New blog entry" for users with a personal blog
     - Wysiwyg editor with just the right features
     - No extra menus or buttons
-o Blog entries can have one or more (flat) topics (or categories)
-o Archives (by month, by topic), calendar, search
+x Blog entries can have one or more (flat) topics (or categories)
+x Archives (by month, by topic), calendar, search
 o Default presentation must be nice looking
-o Data model for blogs and blog entries must match ATOM specs
+x Data model for blogs and blog entries must match ATOM specs
     (atom:feed and atom:entry elements)
 o Blog entries can be flagged as public or private (other statuses may be
     possible il the future).
 
 M2:
 
-o Add a "Search this blog" box like in MT
+x Add a "Search this blog" box like in MT
 o Blog entries are multilingual (I can post in french or english if I want,
     for instance) - blog owner should be able to select list of languages
     he wants to post in (if there is only one one language then there is no
     widget to select) - but not need to think about translations
-o Blog entries can contain links, images, files
-o Comments
+x Blog entries can contain links, images, files
+x Comments
 o Templates - way to select design from a library (or create one's own)
 o It's easy to add new categories from the posting form
 
 M3:
 
-o URLs include date and words from the title
+x URLs include date and words from the title
     Ex: http://xxx/blog/2004/12/15/christmas_today
     Or: http://xxx/blog/2004_12_15_christmas_today
     (2nd is inferior, though).
-o Archive URLs
+x Archive URLs
     Ex: http://xxx/blog/archive/2004/12
-o Export blog content using RSS and ATOM XML
+ Export blog content using RSS and ATOM XML
     - Must be able to selectively export content using rules
 o Nested categories
-o  "< (previous title) | main | (next title) >" navigation on blog entry
+x  "< (previous title) | main | (next title) >" navigation on blog entry
 o Category management: make easy to edit categories, to move posts en masse
     from one category to another
 o Notifications:
