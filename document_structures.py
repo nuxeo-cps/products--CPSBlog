@@ -34,7 +34,7 @@ blog_type = {
     'cps_is_searchable': 1,
     # Choose between 'document', 'folder' or 'folderishdocument'
     # according to the need to store objects in your document or not.
-    'cps_proxy_type': 'folderishdocument',
+    'cps_proxy_type': 'btreefolderishdocument',
     'cps_display_as_document_in_listing': True,
     'schemas': ['metadata', 'common', 'blog'],
     'layouts': ['blog'],
