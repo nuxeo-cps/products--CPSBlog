@@ -29,7 +29,7 @@ class TestGlobalInstall(CPSBlogTestCase.CPSBlogTestCase):
         self.failUnless('Blog' in ttool.objectIds(),
                         'Blog type is not in portal_types')
         self.failUnless('BlogEntry' in ttool.objectIds(),
-                        'Blog type is not in portal_types')
+                        'BlogEntry type is not in portal_types')
 
 
 def test_suite():
