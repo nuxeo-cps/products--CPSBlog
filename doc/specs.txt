@@ -171,6 +171,10 @@ Dotclear
     PHP-based, popular in France
     http://www.dotclear.net/en/features.html
 
+SnipSnap
+    Mixes Blog and Wiki - a very interesting approach
+    http://snipsnap.org/space/start
+
 More...
     http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1
     http://www.python.org/~jeremy/weblog/031104d.html
