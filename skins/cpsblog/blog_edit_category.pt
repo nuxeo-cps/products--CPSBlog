@@ -18,6 +18,7 @@
       Category for blog "<span tal:omit-tag="" tal:content="doc/Title" />"
     </h2>
     <form action="" method="post"
+	  class="group"
 	  tal:attributes="action string:${context/absolute_url}/blog_update_category">
       <input type="hidden" name="category_id:int" value=""
 	     tal:attributes="value category/id">
