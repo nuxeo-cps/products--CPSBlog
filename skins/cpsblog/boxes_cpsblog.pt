@@ -60,7 +60,7 @@
                         tal:attributes="class python:here.getDaysClass(
                                         daynumber, month, year, day['event'])">
                       <a href=""
-                         tal:attributes="href python:here.getCalCPSDayViewParams(
+                         tal:attributes="href python:here.getBlogCalCPSDayViewParams(
                                                       context_url=context_url,
                                                       datestring=datestring,
                                                       location=location,
