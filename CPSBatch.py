@@ -197,7 +197,21 @@ class Batch(ZTUBatch):
         return make_query(form_dict, b_start=b_start)
 
     def getNavigationUrls(self, form_dict, nav_list=None):
-        """Returns list of pairs (page number, url) for navigation links."""
+        """Returns complete list of pairs (page number, url) for navigation
+        links. Serves as a helper method for urls methods.
+
+        >>> b = Batch(sequence=range(30), size=10, overlap=0)
+
+        Test with default parameter and check that it returns the same results
+        for every batch in chain.
+
+        >>> b.getNavigationUrls({})
+        [(1, 'b_start:int=0'), (2, 'b_start:int=10'), (3, 'b_start:int=20')]
+        >>> b.next.getNavigationUrls({})
+        [(1, 'b_start:int=0'), (2, 'b_start:int=10'), (3, 'b_start:int=20')]
+        >>> b.next.next.getNavigationUrls({})
+        [(1, 'b_start:int=0'), (2, 'b_start:int=10'), (3, 'b_start:int=20')]
+        """
         if nav_list is None:
             nav_list = self.nav_list
         return map(lambda x: (x, self.getPageUrl(form_dict, x)), nav_list)
