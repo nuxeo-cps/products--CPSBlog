@@ -10,4 +10,4 @@ brains = catalog.searchResults(meta_type='BlogEntry',
                                sort_order=sort_order,
                                path='/'.join(context.getPhysicalPath()))
 
-return [brain.getObject() for brain in brains]
+return filter(None, [brain.getObject() for brain in brains])
