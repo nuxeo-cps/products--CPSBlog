@@ -119,5 +119,16 @@ A.blog:hover {
   margin-left: 1em;
 }
 
+p.tracked {
+  color: #999999;
+  font-size: x-small;
+  border-top: 1px solid #999999;
+  text-align: left;
+  margin-bottom: 10px;
+  line-height: normal;
+  padding: 3px;
+}
+
+
 </dtml-with>
 
