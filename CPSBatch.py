@@ -229,7 +229,40 @@ def calculate_numpages(sequence_length, batch_size, overlap=0):
     return calculate_page_number(sequence_length, batch_size, overlap)
 
 def calculate_page_range(page_number, numpages, page_range):
-    """Calculates the page range for the navigation quick links."""
+    """Calculates the page range for the navigation quick links.
+    page_number is current page for which we want to get page range.
+
+    Check that page_range will always be odd number
+
+    >>> cpr = calculate_page_range
+    >>> page_range, pr_start, pr_end = cpr(page_number=1, numpages=5, page_range=8)
+    >>> page_range
+    7
+    >>> page_range, pr_start, pr_end = cpr(page_number=1, numpages=5, page_range=7)
+    >>> page_range
+    7
+
+    Test limit case where page_range greater then numpages
+
+    >>> page_range, pr_start, pr_end = cpr(page_number=1, numpages=5, page_range=7)
+    >>> pr_start
+    1
+    >>> pr_end
+    5
+    >>> page_range, pr_start, pr_end = cpr(page_number=4, numpages=5, page_range=7)
+    >>> pr_start
+    1
+    >>> pr_end
+    6
+
+    Normal case
+
+    >>> page_range, pr_start, pr_end = cpr(page_number=7, numpages=14, page_range=3)
+    >>> pr_start
+    6
+    >>> pr_end
+    9
+    """
     # page range is the number of pages linked to in the navigation,
     # always odd number.
     page_range = max(0 , page_range + page_range % 2 - 1)
