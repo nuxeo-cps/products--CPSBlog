@@ -621,7 +621,7 @@ blog_entry_layout = {
                 'is_required': 1,
                 'label_edit': 'cpsdoc_title_label_edit',
                 'display_width': 72,
-                'size_max': 200,
+                'size_max': 250,
             },
         },
         'Description': {
