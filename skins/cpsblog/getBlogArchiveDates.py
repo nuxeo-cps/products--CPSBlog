@@ -10,6 +10,7 @@ brains = catalog.searchResults(meta_type='BlogEntry',
                                sort_order='reverse',
                                path='/'.join(context.getPhysicalPath()))
 
+# { year : [list of months integers] }
 dyear = {}
 
 for brain in brains:
@@ -19,7 +20,8 @@ for brain in brains:
     if year in dyear:
         if month not in dyear[year]:
             dyear[year].append(month)
-    dyear[year] = [month]
+    else:
+        dyear[year] = [month]
 
 year_keys = dyear.keys()
 year_keys.sort()
@@ -32,8 +34,11 @@ for key in year_keys:
 from DateTime import DateTime
 
 return [{'start_date' : '%s/%s/1' % (year, month),
-         'end_date' : '%s/%s/31' % (year, month),
+         'end_date' : '%s/%s/%s' % (year, month,
+                                    context.getLastDayOfMonth(year, month)),
          'month_name' : DateTime('%s/%s/1' % (year, month)).Month(),
-         'year' : year}
+         'year' : year,
+         'month' : month,
+         'month_mm' : DateTime('%s/%s/1' % (year, month)).mm()}
         for year in year_keys
         for month in dyear[year]]
