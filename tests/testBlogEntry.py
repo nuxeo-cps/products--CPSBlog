@@ -8,6 +8,7 @@ import unittest
 import CPSBlogTestCase
 import xml.dom
 import xml.dom.minidom
+from DateTime import DateTime
 
 class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
 
@@ -142,7 +143,6 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(bentry.getTrackback(tb_id).blog_name, kw['blog_name'])
 
     def testGetSortedTrackbacks(self):
-        from DateTime import DateTime
         bentry = self.bentry
         dates = []
         kw = {'title' : 'title',
@@ -233,6 +233,50 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(tb.url, 'http://localhost')
         self.assertEqual(tb.blog_name, 'test blog')
 
+
+    def testAddDispatchTrackback(self):
+        bentry = self.bentry
+
+        self.assertEqual(len(bentry.dispatch_trackbacks), 0)
+
+        tb_id = bentry.addDispatchTrackback(trackback_url='http://localhost')
+        self.assertEqual(len(bentry.dispatch_trackbacks), 1)
+
+        self.assertEqual(bentry.dispatch_trackbacks[tb_id].trackback_url,
+                         'http://localhost')
+        self.assertEqual(bentry.dispatch_trackbacks[tb_id].sent, False)
+
+        # check that trackback with the same url is not added
+        tb_id = bentry.addDispatchTrackback(trackback_url='http://localhost')
+        self.assertEqual(len(bentry.dispatch_trackbacks), 1)
+
+    def testGetDispatchTrackback(self):
+        bentry = self.bentry
+        self.testAddDispatchTrackback()
+        tb_id = bentry.dispatch_trackbacks.keys()[0]
+
+
+        self.assertEqual(bentry.dispatch_trackbacks[tb_id].trackback_url,
+                         bentry.getDispatchTrackback(tb_id).trackback_url)
+        self.assertEqual(bentry.dispatch_trackbacks[tb_id].sent,
+                         bentry.getDispatchTrackback(tb_id).sent)
+
+        self.assertEqual(bentry.getDispatchTrackback(-1, None), None)
+        self.assertEqual(bentry.getDispatchTrackback(-1), None)
+
+    def testGetSortedDispatchTrackbacks(self):
+        bentry = self.bentry
+        dates = []
+        for i in range(10):
+            tb_id = bentry.addDispatchTrackback('http://localhost%d' % i)
+            date = DateTime() + 1
+            bentry.getDispatchTrackback(tb_id).created = date
+            dates.append(date)
+
+        dates.reverse()
+        self.assertEqual(
+            [tb.created for tb in bentry.getSortedDispatchTrackbacks()],
+            dates)
 
 def test_suite():
     return unittest.TestSuite((
