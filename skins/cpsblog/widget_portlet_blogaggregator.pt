@@ -1,5 +1,5 @@
 <tal:block define="context_obj nocall:options/context_obj;
-                   doc here;
+                   doc nocall:here;
 		   isAnon here/portal_membership/isAnonymousUser;
 		   here_url here/absolute_url;
 		   utool nocall:here/portal_url">
