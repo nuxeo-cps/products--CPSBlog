@@ -106,6 +106,7 @@
 	  <input class="context searchButton" type="submit" value="button_search"
 		 i18n:attributes="value" /><br />
 	  <input type="hidden"
+		 name="folder_prefix"
 		 value=""
 		 tal:attributes="value python: utool.getRelativeUrl(here)" />
 	</form>
