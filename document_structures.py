@@ -657,7 +657,7 @@ blogaggregator_layout = {
                      'fields': ('query_categories',),
                      'is_required': False,
                      'label': '',
-                     'label_edit': 'search_categories_label_edit',
+                     'label_edit': 'blog_entry_categories_label_edit',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
