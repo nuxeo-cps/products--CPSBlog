@@ -1,0 +1,13 @@
+<tal:block define="context_obj nocall:options/context_obj;
+		   items python:context_obj.getBlogContent().getSortedCategories()"
+	   condition="items">
+  <tal:block define="blog_proxy context_obj/getBlogProxy">
+    <ul class="cpsskinsMenu">
+      <li tal:repeat="category items">
+	<a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}">
+	  <span tal:replace="category/title" />
+	</a>
+      </li>
+    </ul>
+  </tal:block>
+</tal:block>
