@@ -33,5 +33,7 @@ if do_notify:
     context.portal_eventservice.notifyEvent('workflow_modify', context,
                                             {'comments': request.get('comments')
                                              })
+    # add and send trackbacks
+    doc.addDispatchTrackbacks(context=context)
 
 return res[0], psm
