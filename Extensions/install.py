@@ -53,7 +53,7 @@ from Products.CPSCore.CPSWorkflow import \
 from Products.DCWorkflow.Transitions import TRIGGER_USER_ACTION, \
      TRIGGER_AUTOMATIC
 from Products.CPSBlog.permissions import BlogEntryCreate
-
+from Products.PythonScripts.PythonScript import PythonScript
 
 WebDavLockItem = 'WebDAV Lock items'
 WebDavUnlockItem = 'WebDAV Unlock items'
@@ -118,6 +118,20 @@ class ClientInstaller(CPSInstaller):
         # WORKFLOW DEFINITION
         ########################################
 
+        wfscripts = {
+            'add_calendar_box': {
+            '_owner': None,
+            'script': """
+##parameters=state_change
+blog = state_change.object
+kw = {'type_name' : 'Blog Calendar Box',
+      'slot_name' : 'right',
+      'title' : blog.Title()}
+blog.box_create(**kw)
+            """
+            },
+            }
+
         # Workspace workflow for Blog
         wfdef = {'wfid': 'blog_workspace_wf',
                  'permissions': (View, ModifyPortalContent,
@@ -159,6 +173,7 @@ class ClientInstaller(CPSInstaller):
                 'transition_behavior': (TRANSITION_INITIAL_CREATE,),
                 'clone_allowed_transitions': None,
                 'actbox_category': 'workflow',
+                'after_script_name' : 'add_calendar_box',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; WorkspaceManager; '
                                         'WorkspaceMember',
@@ -177,7 +192,7 @@ class ClientInstaller(CPSInstaller):
                           'guard_expr':''},
                 },
             }
-        self.verifyWorkflow(wfdef, wfstates, wftransitions, {}, {})
+        self.verifyWorkflow(wfdef, wfstates, wftransitions, wfscripts, {})
 
         # Section workflow for Blog
         wfdef = {'wfid': 'blog_section_wf',
@@ -219,6 +234,7 @@ class ClientInstaller(CPSInstaller):
                 'transition_behavior': (TRANSITION_INITIAL_CREATE,),
                 'clone_allowed_transitions': None,
                 'actbox_category': 'workflow',
+                'after_script_name' : 'add_calendar_box',
                 'props': {'guard_permissions': '',
                           'guard_roles': 'Manager; SectionManager',
                           'guard_expr': ''},
@@ -235,7 +251,7 @@ class ClientInstaller(CPSInstaller):
                           'guard_expr': ''},
                 },
             }
-        self.verifyWorkflow(wfdef, wfstates, wftransitions, {}, {})
+        self.verifyWorkflow(wfdef, wfstates, wftransitions, wfscripts, {})
 
         # workflow for BlogEntry
         wfdef = {'wfid': 'blog_entry_wf',
@@ -311,7 +327,6 @@ class ClientInstaller(CPSInstaller):
                 },
             }
         self.verifyWorkflow(wfdef, wfstates, wftransitions, {}, {})
-
 
         ########################################
         #   WORKFLOW ASSOCIATIONS
