@@ -4,21 +4,11 @@
 for the given proxy. This gives us total number of comments posts to proxy.
 """
 
-def getDiscussionsFolder(proxy):
-    getParentNode = lambda node: getattr(getattr(node, 'aq_inner', None),
-                                         'aq_parent', None)
-    parent = getParentNode(proxy)
-    while parent:
-        if hasattr(parent, '.cps_discussions'):
-            return getattr(parent, '.cps_discussions')
-        parent = getParentNode(parent)
-    return None
+dtool = context.portal_discussion
 
-discussions_folder = getDiscussionsFolder(proxy)
-
-if discussions_folder is not None:
-    forum = getattr(discussions_folder, proxy.getId(), None)
-    if forum is not None:
-        return len(forum.objectIds())
+forum_url = dtool.getCommentForumURL(proxy.absolute_url(relative=1))
+if forum_url:
+    forum = context.restrictedTraverse(forum_url)
+    return len(forum.objectIds())
 
 return 0
