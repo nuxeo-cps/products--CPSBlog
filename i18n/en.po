@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2005-01-28 16:48default\n"
-"PO-Revision-Date: 2005-01-28 18:35+0200\n"
+"POT-Creation-Date: 2005-02-10 03:34default\n"
+"PO-Revision-Date: 2005-02-10 03:37+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -46,10 +46,25 @@ msgstr "Categories for blog \"${blogtitle}\""
 msgid "Category for blog \"${blogtitle}\""
 msgstr "Category for blog \"${blogtitle}\""
 
+#.   <td>Created</td>
+#: from ../skins/cpsblog/layout_blog_entry_edit.pt
+msgid "Created"
+msgstr "Created"
+
+#.   <td>Delete</td>
+#: from ../skins/cpsblog/layout_blog_entry_edit.pt
+msgid "Delete"
+msgstr "Delete"
+
 #.   <block>Main</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Main"
-msgstr ""
+msgstr "Main"
+
+#.   <h3>Manage Trackback Pings</h3>
+#: from ../skins/cpsblog/layout_blog_entry_edit.pt
+msgid "Manage Trackback Pings"
+msgstr "Manage Trackback Pings"
 
 #.   <block condition="isAnon">
 #.   	    Posted by
@@ -96,6 +111,19 @@ msgid ""
 "Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> "
 "<span>Label Status</span> <span content=\"info/review_state\" attributes="
 "\"class info/review_state\">Work</span> </block>"
+msgstr ""
+
+#.   <div>Trackback URL for this entry:</div>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "Trackback URL for this entry:"
+msgstr "Trackback URL for this entry:"
+
+#.   <p class="tracked">
+#.   	  Tracked on
+#.   	  ${tracked_date (tal replace="python: here.getDateStr(trackback.created, 'medium')")}
+#.   	</p>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "Tracked on ${tracked_date}"
 msgstr ""
 
 #.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
@@ -158,6 +186,11 @@ msgstr "Categories"
 msgid "blog_edit_category_description_label"
 msgstr "Use this page to edit the attributes of the category"
 
+#.   <block>from</block>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "from"
+msgstr ""
+
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
 #: ../skins/cpsblog/boxes_cpsblog.pt
@@ -214,7 +247,9 @@ msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog Aggregator Portlet"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
-msgstr "Blog Aggregator Portlet shows entries from several blogs by using defined search parameters."
+msgstr ""
+"Blog Aggregator Portlet shows entries from several blogs by using defined "
+"search parameters."
 
 msgid "view_mode_Title_label"
 msgstr "Title only"
@@ -227,6 +262,12 @@ msgstr "Full"
 
 msgid "blog_entry_content_label_edit"
 msgstr "Content"
+
+msgid "blog_entry_accept_pings_label_edit"
+msgstr "Accept trackback pings"
+
+msgid "blog_entry_dispatch_tb_urls_label_edit"
+msgstr "URLs to ping"
 
 msgid "description_blog_blogcalendarbox_default"
 msgstr "Blog calendar box."

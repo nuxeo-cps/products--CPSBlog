@@ -76,6 +76,12 @@ msgstr ""
 msgid "blog_entry_content_label_edit"
 msgstr ""
 
+msgid "blog_entry_accept_pings_label_edit"
+msgstr ""
+
+msgid "blog_entry_dispatch_tb_urls_label_edit"
+msgstr ""
+
 msgid "description_blog_blogcalendarbox_default"
 msgstr ""
 
