@@ -8,6 +8,14 @@
   <div tal:repeat="item batch">
     <span tal:omit-tag=""
 	  tal:define="bentry item/getContent; bentry_url item/absolute_url">
+      <tal:block condition="day_separators|nothing">
+	<h4 class="blog"
+	    tal:define="be_datetime bentry/created"
+	    tal:condition="python: item.getId() in day_separators">
+	  <span tal:omit-tag="" i18n:translate="" tal:content="be_datetime/Month">Month</span>
+	  <span tal:omit-tag="" tal:content="python: be_datetime.strftime(' %d, %Y')" />
+	</h4>
+      </tal:block>
       <h5 class="blog">
 	<a href=""
 	   class="blog"

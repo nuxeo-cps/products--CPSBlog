@@ -16,7 +16,9 @@
 
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
 
-    <tal:block define="items here/getSortedBlogEntries;
+    <tal:block define="result here/getSortedBlogEntries;
+		       items python: result[0];
+		       day_separators python: result[1];
 		       Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
 		       b_size here/entries_per_page;
                        b_start python:0;
@@ -40,4 +42,3 @@
   </metal:block>
 
 </html>
-
