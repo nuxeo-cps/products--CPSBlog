@@ -356,7 +356,7 @@ blog_view_mode_vocabulary = {
         },
     }
 
-blog_categories_vocabulary = {
+blog_glob_categories_vocabulary = {
     'data': {
 #        'tuples':((), ),
         },
@@ -397,10 +397,16 @@ blogaggregator_sort_by_vocabulary = {
         },
     }
 
+blog_categories_vocabulary = {
+    'type' : 'CPS Method Vocabulary',
+    'data': {'get_vocabulary_method' : 'getVocBlogCategories',
+             },
+    }
 
 def getDocumentVocabularies(portal=None):
     vocabularies = {}
     vocabularies['blog_view_mode'] = blog_view_mode_vocabulary
+    vocabularies['blog_glob_categories'] = blog_glob_categories_vocabulary
     vocabularies['blog_categories'] = blog_categories_vocabulary
     vocabularies['blogaggregator_status'] = blogaggregator_status_vocabulary
     vocabularies['blogaggregator_modified'] = blogaggregator_modified_vocabulary
