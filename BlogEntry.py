@@ -22,7 +22,7 @@ from Products.CPSDocument.CPSDocument import CPSDocument
 from Products.CMFCore.CMFCorePermissions import View
 
 
-factory_type_information = ()
+factory_type_information = {}
 
 class BlogEntry(CPSDocument):
     """BlogEntry that contain blog post"""

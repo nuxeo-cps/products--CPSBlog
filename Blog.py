@@ -23,7 +23,7 @@ from Products.BTreeFolder2.BTreeFolder2 import BTreeFolder2Base
 from Products.CMFCore.CMFCorePermissions import View
 
 
-factory_type_information = ()
+factory_type_information = {}
 
 class Blog(CPSDocument, BTreeFolder2Base):
     """Blog that can contain lots of blog entries."""
