@@ -17,6 +17,7 @@
 # $Id$
 
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
+from Products.CPSBlog.permissions import BlogEntryCreate
 
 blog_type = {
     'title': "portal_type_Blog_title",
@@ -49,9 +50,9 @@ blog_type = {
                  },
                 {'id': 'new_content',
                  'name': 'action_new_content',
-                 'action': 'string:${object_url}/folder_factories',
+                 'action': 'string:${object_url}/cpsdocument_create_form?type_name=BlogEntry',
                  'condition': "python:object.getTypeInfo().cps_proxy_type != 'document'",
-                 'permissions': (ModifyPortalContent,)
+                 'permissions': (ModifyPortalContent, BlogEntryCreate)
                  },
                 {'id': 'contents',
                  'name': 'action_folder_contents',
