@@ -376,6 +376,12 @@ blogaggregator_schema = {
                  'is_searchabletext': 0,
                  },
         },
+    'search_limit' : {
+        'type': 'CPS Int Field',
+        'data': {'default_expr': 'python:20',
+                 'is_searchabletext': 0,
+                 },
+        },
     }
 
 def getDocumentSchemas(portal=None):
@@ -1034,6 +1040,27 @@ blogaggregator_layout = {
                      'translated': True,
                 },
             },
+        'search_limit': {
+            'type': 'Int Widget',
+            'data': {'title': '',
+                     'fields': ('search_limit',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'blog_entries_search_limit_label_edit',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'width': 3,
+                     'widget_mode_expr': '',
+                     'translated': True,
+                },
+            },
         },
     'layout': {
         'style_prefix': 'layout_blogaggregator_',
@@ -1047,6 +1074,7 @@ blogaggregator_layout = {
             [{'widget_id': 'query_status'}],
             [{'widget_id': 'view_mode'}],
             [{'widget_id': 'entries_per_page'}],
+            [{'widget_id': 'search_limit'}],
             [{'widget_id': 'sort_by'}],
             ],
         },
