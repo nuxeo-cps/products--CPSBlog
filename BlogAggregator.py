@@ -57,9 +57,10 @@ class BlogAggregator(CPSDocument):
             brains = context.search(query=query,
                                     sort_by=params['sort_by'],
                                     direction=params['direction'])
+        if self.search_limit > 0:
+            brains = brains[:self.search_limit]
 
         return filter(None, [brain.getObject() for brain in brains])
-
 
     def _buildQuery(self):
         query = {}
