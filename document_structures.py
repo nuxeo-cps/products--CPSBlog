@@ -252,7 +252,7 @@ blog_entry_schema = {
     'content' : {
         'type': 'CPS String Field',
         'data': {'default_expr': 'string:',
-                 'is_searchabletext': 0,
+                 'is_searchabletext': 1,
                  },
         },
     'lang': {
