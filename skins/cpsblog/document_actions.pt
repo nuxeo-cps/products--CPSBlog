@@ -21,7 +21,7 @@
 		 height="16"
 		 width="16"
 		 tal:condition="icon"
-		 tal:attributes="src string:$base_url/$icon;
+		 tal:attributes="src string:${base_url}${icon};
 				 title title;
 				 alt title" />
 	  </a>
