@@ -167,7 +167,7 @@ class ClientInstaller(CPSInstaller):
         ########################################
         ws_chains = { 'Blog': 'workspace_folderish_content_wf',
                       'BlogEntry': 'blog_entry_wf'}
-        se_chains = { 'Blog': 'section_folder_wf',
+        se_chains = { 'Blog': 'section_content_wf',
                       'BlogEntry': 'blog_entry_wf'}
 
         self.verifyLocalWorkflowChains(self.portal['workspaces'],
