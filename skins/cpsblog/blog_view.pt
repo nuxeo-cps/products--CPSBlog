@@ -13,25 +13,17 @@
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
 
     <tal:block define="items here/getSortedBlogEntries;
-		       mq nocall:modules/ZTUtils/make_query;
-		       items_per_page here/entries_per_page;
-		       columns python:1;
-		       batches_all python:here.getBatchList(items, columns, items_per_page);
-		       batches python:batches_all[0];
-		       batch_info python:batches_all[1]">
-      <tal:block tal:condition="python: batch_info and batch_info['nb_pages'] > 1">
-	<div class="batchLayout">
-	  <span i18n:translate="">
-	    Objects: <tal:block replace="batch_info/start"
-	    i18n:name="batch_start" /> - <tal:block replace="batch_info/limit"
-	    i18n:name="batch_limit" /> of <tal:block replace="batch_info/length"
-	    i18n:name="batch_length" />
-	  </span>
-	</div>
-	<br />
-      </tal:block>
-      <tal:block tal:condition="batches">
-	<div tal:repeat="item python:batches[0]" class="group">
+		       Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+		       b_size here/entries_per_page;
+                       b_start python:0;
+                       b_start request/b_start | b_start">
+
+      <tal:block tal:condition="items"
+                 tal:define="batch python:Batch(items, b_size, int(b_start), orphan=1)">
+
+	<div metal:use-macro="here/batch_navinfo_macros/macros/navinfo" />
+
+	<div tal:repeat="item batch" class="group">
 	  <span tal:omit-tag=""
 		tal:define="bentry item/getContent; bentry_url item/absolute_url">
 	    <h3>
@@ -60,31 +52,11 @@
 	    </form>
 	  </span>
 	</div>
+
+	<div metal:use-macro="here/batch_nav_macros/macros/navigation" />
+
       </tal:block>
-      <tal:block condition="python:batch_info and batch_info['nb_pages'] > 1">
-	<br />
-	<div class="pageNavigationLayout">
-	  <span i18n:translate="label_page">Pages</span>:
-	  <a tal:define="previous batch_info/previous"
-	     tal:condition="python:previous is not None"
-	     tal:attributes="href python:'%s?%s'%(request['URL'],
-			     mq(request.form, b_start=previous))"
-	     i18n:translate="batch_previous">Previous</a>
-	  <tal:block repeat="page batch_info/pages">
-	    <a tal:condition="python:page != batch_info['start'] - 1"
-	       tal:attributes="href python:'%s?%s'%(request['URL'],
-			       mq(request.form, b_start=page))"
-	       tal:content="repeat/page/number">1</a>
-	    <span tal:condition="python:page == batch_info['start'] - 1"
-		  tal:content="string:[${repeat/page/number}]" />
-	  </tal:block>
-	  <a tal:define="next batch_info/next"
-	     tal:condition="python:next is not None"
-	     tal:attributes="href python:'%s?%s'%(request['URL'],
-			     mq(request.form, b_start=next))"
-	     i18n:translate="batch_next">Next</a>
-	</div>
-      </tal:block>
+
     </tal:block>
 
     <div class="rssExport">
