@@ -284,7 +284,7 @@ blog_entry_schema = {
     'accept_trackback_pings': {
         'type': 'CPS Int Field',
         'data': {
-            'default_expr': 'python:0',
+            'default_expr': 'python:1',
             'is_searchabletext': 0,
             'acl_read_permissions': '',
             'acl_read_roles': '',
