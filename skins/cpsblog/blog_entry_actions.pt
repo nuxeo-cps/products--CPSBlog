@@ -9,7 +9,7 @@
                  wf_actions actions/workflow|nothing;
                  blog_entry_actions python:here.getCPSBlogActionById(wf_actions, 'publish') +
                                            here.getCPSBlogActionById(wf_actions, 'unpublish')"
-     tal:condition="blog_entry_actions">
+     tal:condition="python:blog_entry_actions or document_actions">
 
     <ul>
       <tal:actions repeat="daction document_actions">
