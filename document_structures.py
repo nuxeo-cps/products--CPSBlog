@@ -706,7 +706,7 @@ blog_entry_layout = {
             },
         },
     'layout': {
-        'style_prefix': 'layout_default_',
+        'style_prefix': 'layout_blog_entry_',
         'ncols': 2,
         'rows': [
             [{'widget_id': 'LanguageSelector'}],
@@ -794,7 +794,7 @@ blog_entry_flexible_layout = {
         },
     'layout': {
         'flexible_widgets': ['link', 'attachedFile', 'photo'],
-        'style_prefix': 'layout_default_',
+        'style_prefix': 'layout_blog_entry_',
         'ncols': 1,
         'rows': [
             ],
