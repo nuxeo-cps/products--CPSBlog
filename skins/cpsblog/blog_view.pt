@@ -10,7 +10,7 @@
   </metal:block>
 
   <metal:block fill-slot="main">
-    <div metal:use-macro="here/document_actions/macros/document_actions">
+    <div metal:use-macro="here/blog_actions/macros/blog_actions">
       Document actions (print, rss etc)
     </div>
 
