@@ -154,7 +154,7 @@ blog_schema = {
                  'is_searchabletext': 0,
                  },
         },
-    'display_entries' : {
+    'entries_per_page' : {
         'type': 'CPS Int Field',
         'data': {'default_expr': 'python:10',
                  'is_searchabletext': 0,
@@ -271,10 +271,10 @@ blog_layout = {
                      'translated': True,
                 },
             },
-        'display_entries': {
+        'entries_per_page': {
             'type': 'Int Widget',
             'data': {'title': '',
-                     'fields': ('display_entries',),
+                     'fields': ('entries_per_page',),
                      'is_required': False,
                      'label': '',
                      'label_edit': '',
@@ -319,7 +319,7 @@ blog_layout = {
         'ncols': 1,
         'rows': [
             [{'widget_id': 'view_mode'}],
-            [{'widget_id': 'display_entries'}],
+            [{'widget_id': 'entries_per_page'}],
             [{'widget_id': 'author_photo'}],
             ],
         },
