@@ -119,7 +119,7 @@ class ClientInstaller(CPSInstaller):
         ########################################
 
         wfscripts = {
-            'add_calendar_box': {
+            'add_blog_boxes': {
             '_owner': None,
             'script': """
 ##parameters=state_change
@@ -130,6 +130,15 @@ kw = {'type_name' : 'Blog Calendar Box',
       'title' : blog_proxy.Title(),
       'events_in' : blog_rel_url,
       'event_types' : ('BlogEntry', )
+      }
+blog_proxy.box_create(**kw)
+
+# Search box
+kw = {'type_name' : 'Base Box',
+      'slot_name' : 'right',
+      'title' : 'Search',
+      'provider' : 'cpsblog',
+      'btype' : 'blogsearch',
       }
 blog_proxy.box_create(**kw)
             """
@@ -177,7 +186,7 @@ blog_proxy.box_create(**kw)
                 'transition_behavior': (TRANSITION_INITIAL_CREATE,),
                 'clone_allowed_transitions': None,
                 'actbox_category': 'workflow',
-                'after_script_name' : 'add_calendar_box',
+                'after_script_name' : 'add_blog_boxes',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; WorkspaceManager; '
                                         'WorkspaceMember',
@@ -238,7 +247,7 @@ blog_proxy.box_create(**kw)
                 'transition_behavior': (TRANSITION_INITIAL_CREATE,),
                 'clone_allowed_transitions': None,
                 'actbox_category': 'workflow',
-                'after_script_name' : 'add_calendar_box',
+                'after_script_name' : 'add_blog_boxes',
                 'props': {'guard_permissions': '',
                           'guard_roles': 'Manager; SectionManager',
                           'guard_expr': ''},
