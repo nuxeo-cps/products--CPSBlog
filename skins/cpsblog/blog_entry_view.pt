@@ -1,5 +1,9 @@
 <html metal:use-macro="here/content_lib_master/macros/master">
   <metal:block fill-slot="header">
+    <tal:block define="accept_trackback_pings doc/accept_trackback_pings|nothing"
+	       condition="accept_trackback_pings">
+      <tal:block content="structure context/getTrackbackDiscoveryRDF" />
+    </tal:block>
   </metal:block>
 
   <metal:block fill-slot="css_slot">
@@ -56,6 +60,30 @@
       </tal:block>
     </tal:block>
 
+
+    <tal:block define="accept_trackback_pings doc/accept_trackback_pings|nothing"
+	       condition="accept_trackback_pings|doc/countTrackbacks">
+      <hr/>
+      <a name="trackbacks"></a>
+      <h4 class="blog">Trackback Pings</h4>
+      <div class="row">
+	<div i18n:translate="">Trackback URL for this entry:</div>
+	<div class="field" tal:content="string:${here/absolute_url}/tbping">
+	</div>
+      </div>
+      <div tal:repeat="trackback doc/getSortedTrackbacks">
+	&raquo;
+	<a href="" tal:attributes="href trackback/url" tal:content="trackback/title"></a>
+	<tal:block i18n:translate="">from</tal:block>
+	<span tal:replace="trackback/blog_name" />
+	<div class="row" tal:content="trackback/excerpt" />
+	<p class="tracked" i18n:translate="">
+	  Tracked on
+	  <span i18n:name="tracked_date"
+		tal:replace="python: here.getDateStr(trackback.created, 'medium')" />
+	</p>
+      </div>
+    </tal:block>
   </metal:block>
 
   <metal:block fill-slot="sub">
