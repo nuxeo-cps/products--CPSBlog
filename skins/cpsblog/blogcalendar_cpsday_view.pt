@@ -2,34 +2,40 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master">
 
-<div metal:fill-slot="header">&nbsp;</div>
+  <div metal:fill-slot="header">&nbsp;</div>
+
+
+  <metal:block fill-slot="css_slot">
+    <link rel="Stylesheet" type="text/css" href=""
+	  tal:attributes="href string:${base_url}document.css" />
+    <link rel="Stylesheet" type="text/css" href=""
+	  tal:attributes="href string:${base_url}blog.css" />
+  </metal:block>
 
 <div metal:fill-slot="main">
 
- <div metal:define-macro="dayViewBox"
-      class="dayViewBox"
-      tal:define="DateTime python:modules['DateTime'].DateTime;
-                  this_day python:DateTime(request.get('date',
-		                           DateTime().aCommon()[:12]))">
+  <div metal:define-macro="dayViewBox"
+       class="dayViewBox"
+       tal:define="DateTime python:modules['DateTime'].DateTime;
+		   this_day python:DateTime(request.get('date',
+		                            DateTime().aCommon()[:12]))">
 
-  <tal:block tal:define="items python:here.getBlogEntriesForThisDay(this_day, request);
-                         format string:detail;
-                         no_form python:1;
-			 params python:here.getCustomDisplayParams();
-			 Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
-			 b_size params/items_per_page;
-			 b_start python:0;
-			 b_start request/b_start | b_start">
+    <div metal:use-macro="here/document_actions/macros/document_actions">
+      Document actions (print, rss etc)
+    </div>
 
-    <span tal:define="mq nocall:modules/ZTUtils/make_query"
-	  tal:condition="python:len(items)==1"
-          tal:content="python:request.response.redirect(items[0].absolute_url()+'?'+mq(request.form))" />
-    <tal:block tal:condition="python:len(items)!=1">
-      <h1><span tal:omit-tag=""
-            i18n:translate="label_blog_calendar_entries_list">
-            Blog entries published</span>
-          <span tal:omit-tag="" tal:content="python:here.getDateStr(this_day, 'short')" />
-      </h1>
+    <tal:block tal:content="structure rendered_main|
+			    python:here.getBlogContent().render(proxy=here.getBlogProxy())" />
+
+    <tal:block tal:define="items python:here.getBlogEntriesForThisDay(this_day, request);
+			   day_separators python: here.getBlogEntryDaySeparators(items);
+			   format string:detail;
+			   no_form python:1;
+			   params python:here.getCustomDisplayParams();
+			   Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+			   b_size params/items_per_page;
+			   b_start python:0;
+			   b_start request/b_start | b_start">
 
       <tal:block define="doc here/getBlogContent"
 		 condition="doc">
@@ -38,8 +44,6 @@
       </tal:block>
 
     </tal:block>
-
-  </tal:block>
 
  </div>
 </div>
