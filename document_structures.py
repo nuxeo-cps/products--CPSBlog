@@ -34,6 +34,7 @@ blog_type = {
     # Choose between 'document', 'folder' or 'folderishdocument'
     # according to the need to store objects in your document or not.
     'cps_proxy_type': 'folderishdocument',
+    'cps_display_as_document_in_listing': True,
     'schemas': ['metadata', 'common', 'blog'],
     'layouts': ['common', 'blog'],
     'flexible_layouts': [],
@@ -155,6 +156,12 @@ blog_schema = {
     'display_entries' : {
         'type': 'CPS Int Field',
         'data': {'default_expr': 'python:10',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'author_photo' : {
+        'type': 'CPS Image Field',
+        'data': {'default_expr': 'string:',
                  'is_searchabletext': 0,
                  },
         },
@@ -284,13 +291,35 @@ blog_layout = {
                      'translated': True,
                 },
             },
+        'author_photo': {
+            'type': 'Photo Widget',
+            'data': {'title': '',
+                     'fields': ('author_photo',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'author_photo_label_edit',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': (),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'width': 3,
+                     'widget_mode_expr': '',
+                     'translated': True,
+                },
+            },
         },
     'layout': {
         'style_prefix': 'layout_default_',
         'ncols': 1,
         'rows': [
-            [{'widget_id': 'view_mode'},],
-            [ {'widget_id': 'display_entries'},],
+            [{'widget_id': 'view_mode'}],
+            [{'widget_id': 'display_entries'}],
+            [{'widget_id': 'author_photo'}],
             ],
         },
     }
