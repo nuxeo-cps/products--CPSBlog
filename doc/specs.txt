@@ -21,10 +21,11 @@ management": Should be thought as a tool for collective knowledge building over
 time, not only for publishing news that get forgotten afterwards.
 
 5. Use the CPS Platform framework as much as possible, but don't overdo it.
-CPSBlog is not intended to be a standalone blog system, but a blogging tool
-available inside of CPS (NB: that may change in the future). So services (like
-CPSSkins) that are available in CPS must not be duplicated. But integration
-between services must be seamless.
+CPSBlog is not intended to be a standalone blog system (based on CPS platform)
+like Blogger or LiveJournal, but a blogging tool available inside of CPS
+alongside other CPS servcices (NB: that may change in the future). So services
+(like CPSSkins for template management) that are available in CPS must not be
+duplicated. But integration between services must be seamless.
 
 Features of blogging tool
 -------------------------
@@ -64,6 +65,17 @@ Features of blogging tool
     analysis or collaborative filtering.
 
 6. Anti-spam on comments
+6. "Object oriented" blog entries. Examples:
+    - MovieBlogEntry (for blogging about movies: will include link to relevant
+        information on IMDB and show a picture of the movie)
+    - BookBlogEntry (will include ISBN, show book cover and link Amazon or
+        other online bookshop/library)
+    - SoftwareBlogEntry (for blogging about a piece of software: will include
+        link to sourceforge, freshmeat, zope.org...)
+    - TravelBlogEntry (will include geolocation information for putting entries
+        on a map)
+    ...
+        
 
 Features of blog aggreation tool
 --------------------------------
