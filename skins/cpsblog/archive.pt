@@ -10,10 +10,10 @@
   </metal:block>
 
   <metal:block fill-slot="main"
-	       tal:define="doc here/getBlogContent;
-			   context here/getBlogProxy;
-			   is_year context/isBlogArchiveYear;
-			   is_month context/isBlogArchiveMonth">
+               tal:define="doc here/getBlogContent;
+                           context here/getBlogProxy;
+                           is_year context/isBlogArchiveYear;
+                           is_month context/isBlogArchiveMonth">
     <div metal:use-macro="here/document_actions/macros/document_actions">
       Document actions (print, rss etc)
     </div>
@@ -23,14 +23,14 @@
 
     <tal:block condition="is_year">
       <tal:block define="items python: context.getBlogArchiveYear();
-			 day_separators python: here.getBlogEntryDaySeparators(items);
-			 Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
-			 b_size doc/entries_per_page;
-			 b_start python:0;
-			 b_start request/b_start | b_start">
+                         day_separators python: here.getBlogEntryDaySeparators(items);
+                         Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+                         b_size doc/entries_per_page;
+                         b_start python:0;
+                         b_start request/b_start | b_start">
 
-	<span tal:omit-tag=""
-	      metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
+        <span tal:omit-tag=""
+              metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
 
       </tal:block>
     </tal:block>
@@ -38,14 +38,14 @@
 
     <tal:block condition="is_month">
       <tal:block define="items python: context.getBlogArchiveMonth();
-			 day_separators python: here.getBlogEntryDaySeparators(items);
-			 Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
-			 b_size doc/entries_per_page;
-			 b_start python:0;
-			 b_start request/b_start | b_start">
+                         day_separators python: here.getBlogEntryDaySeparators(items);
+                         Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+                         b_size doc/entries_per_page;
+                         b_start python:0;
+                         b_start request/b_start | b_start">
 
-	<span tal:omit-tag=""
-	      metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
+        <span tal:omit-tag=""
+              metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
 
       </tal:block>
     </tal:block>

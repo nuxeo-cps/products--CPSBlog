@@ -1,46 +1,46 @@
 <html metal:use-macro="here/content_lib_master/macros/master">
   <metal:block fill-slot="header">
     <tal:block define="accept_trackback_pings doc/accept_trackback_pings|nothing"
-	       condition="accept_trackback_pings">
+               condition="accept_trackback_pings">
       <tal:block content="structure context/getTrackbackDiscoveryRDF" />
     </tal:block>
   </metal:block>
 
   <metal:block fill-slot="css_slot">
     <link rel="Stylesheet" type="text/css" href=""
-	  tal:attributes="href string:${base_url}document.css" />
+          tal:attributes="href string:${base_url}document.css" />
     <link rel="Stylesheet" type="text/css" href=""
-	  tal:attributes="href string:${base_url}blog.css" />
+          tal:attributes="href string:${base_url}blog.css" />
   </metal:block>
 
   <metal:block fill-slot="main">
     <div class="navigationBar"
-	 tal:define="info python:here.getBlogEntryNavLinksInfo()"
-	 tal:condition="info">
+         tal:define="info python:here.getBlogEntryNavLinksInfo()"
+         tal:condition="info">
 
       <span tal:condition="info/prev_url">
-	<a href="" class="blog"
-	   tal:attributes="href info/prev_url">
-	  &laquo;
-	  <span tal:replace="info/prev_title" />
-	</a>
-	|
+        <a href="" class="blog"
+           tal:attributes="href info/prev_url">
+          &laquo;
+          <span tal:replace="info/prev_title" />
+        </a>
+        |
       </span>
 
       <span tal:condition="python: info['prev_url'] or info['next_url']">
-	<a href="" class="blog"
-	   tal:attributes="href python:here.getBlogProxy().absolute_url()">
-	  <tal:block i18n:translate="">Main</tal:block>
-	</a>
+        <a href="" class="blog"
+           tal:attributes="href python:here.getBlogProxy().absolute_url()">
+          <tal:block i18n:translate="">Main</tal:block>
+        </a>
       </span>
 
       <span tal:condition="info/next_url">
-	|
-	<a href="" class="blog"
-	   tal:attributes="href info/next_url">
-	  <span tal:replace="info/next_title" />
-	  &raquo;
-	</a>
+        |
+        <a href="" class="blog"
+           tal:attributes="href info/next_url">
+          <span tal:replace="info/next_title" />
+          &raquo;
+        </a>
       </span>
     </div>
 
@@ -55,7 +55,7 @@
       <tal:block tal:define="comments_allowed
         python:here.portal_discussion.isCommentingAllowedFor(here);"
         tal:condition="comments_allowed">
-	<span id="comments" />
+        <span id="comments" />
         <metal:block
           use-macro="here/forum_comment_lib_view_comments_inline/macros/view_comments_inline" />
       </tal:block>
@@ -63,26 +63,26 @@
 
 
     <tal:block define="accept_trackback_pings doc/accept_trackback_pings|nothing"
-	       condition="python: accept_trackback_pings or doc.countTrackbacks()">
+               condition="python: accept_trackback_pings or doc.countTrackbacks()">
       <hr/>
       <h4 class="blog" id="trackbacks">Trackback Pings</h4>
       <tal:block condition="accept_trackback_pings">
-	<div class="row">
-	  <div i18n:translate="">Trackback URL for this entry:</div>
-	  <div class="field" tal:content="string:${here/absolute_url}/tbping" />
-	</div>
+        <div class="row">
+          <div i18n:translate="">Trackback URL for this entry:</div>
+          <div class="field" tal:content="string:${here/absolute_url}/tbping" />
+        </div>
       </tal:block>
       <div tal:repeat="trackback doc/getSortedTrackbacks">
-	&raquo;
-	<a href="" tal:attributes="href trackback/url" tal:content="trackback/title"></a>
-	<tal:block i18n:translate="">from</tal:block>
-	<span tal:replace="trackback/blog_name" />
-	<div class="row" tal:content="trackback/excerpt" />
-	<p class="tracked" i18n:translate="">
-	  Tracked on
-	  <span i18n:name="tracked_date"
-		tal:replace="python: here.getDateStr(trackback.created, 'medium')" />
-	</p>
+        &raquo;
+        <a href="" tal:attributes="href trackback/url" tal:content="trackback/title"></a>
+        <tal:block i18n:translate="">from</tal:block>
+        <span tal:replace="trackback/blog_name" />
+        <div class="row" tal:content="trackback/excerpt" />
+        <p class="tracked" i18n:translate="">
+          Tracked on
+          <span i18n:name="tracked_date"
+                tal:replace="python: here.getDateStr(trackback.created, 'medium')" />
+        </p>
       </div>
     </tal:block>
   </metal:block>
@@ -90,70 +90,70 @@
   <metal:block fill-slot="sub">
     <div tal:condition="not:creation|nothing" id="byline">
       <small>
-	<tal:block
-	    tal:define="categories python:doc.Subject();
-			dname python:here.portal_directories.members.getEntry(doc.Creator(), default=None);
-			cname dname/fullname|doc/Creator;
-			info python:(here_url != utool.getPortalObject().absolute_url())
-			and here.getContentInfo(doc=doc, level=2) or None;
-			email dname/email|nothing;">
-	  <div class="posted">
+        <tal:block
+            tal:define="categories python:doc.Subject();
+                        dname python:here.portal_directories.members.getEntry(doc.Creator(), default=None);
+                        cname dname/fullname|doc/Creator;
+                        info python:(here_url != utool.getPortalObject().absolute_url())
+                        and here.getContentInfo(doc=doc, level=2) or None;
+                        email dname/email|nothing;">
+          <div class="posted">
 
-	    <tal:block condition="not:isAnon" i18n:translate="">
-	      Posted by
-	      <a href="." title="Blog"
-		 class="blog"
-		 tal:attributes="href python:here.getBlogProxy().absolute_url()"
-		 tal:content="cname" i18n:name="item_creator">Creator</a>
+            <tal:block condition="not:isAnon" i18n:translate="">
+              Posted by
+              <a href="." title="Blog"
+                 class="blog"
+                 tal:attributes="href python:here.getBlogProxy().absolute_url()"
+                 tal:content="cname" i18n:name="item_creator">Creator</a>
 
-	      @
-	      <tal:block
-		  content="python:here.getDateStr(doc.created(), 'medium')"
-		  i18n:name="item_modification"/>
-	      <tal:block condition="info">
-		<span i18n:translate="label_status">Label Status</span>
-		<span tal:content="info/review_state"
-		      tal:attributes="class info/review_state" i18n:translate="">Work</span>
-	      </tal:block>
-	    </tal:block>
+              @
+              <tal:block
+                  content="python:here.getDateStr(doc.created(), 'medium')"
+                  i18n:name="item_modification"/>
+              <tal:block condition="info">
+                <span i18n:translate="label_status">Label Status</span>
+                <span tal:content="info/review_state"
+                      tal:attributes="class info/review_state" i18n:translate="">Work</span>
+              </tal:block>
+            </tal:block>
 
-	    <tal:block condition="isAnon" i18n:translate="">
-	      Posted by
-	      <a href="." title="Blog"
-		 class="blog"
-		 tal:attributes="href python:here.getBlogProxy().absolute_url()"
-		 tal:content="cname" i18n:name="item_creator">Creator</a>
-	      @
-	      <tal:block
-		  content="python:here.getDateStr(doc.created(), 'medium')"
-		  i18n:name="item_modification"/>
-	    </tal:block>
+            <tal:block condition="isAnon" i18n:translate="">
+              Posted by
+              <a href="." title="Blog"
+                 class="blog"
+                 tal:attributes="href python:here.getBlogProxy().absolute_url()"
+                 tal:content="cname" i18n:name="item_creator">Creator</a>
+              @
+              <tal:block
+                  content="python:here.getDateStr(doc.created(), 'medium')"
+                  i18n:name="item_modification"/>
+            </tal:block>
 
-	    <tal:block condition="categories">
-	      -
-	      <tal:block i18n:translate="blog_categories_byline_label">Categories:</tal:block>
-	      <tal:block repeat="item categories">
-		<a href=""
-		   class="blog"
-		   tal:define="context python:test(here.aq_inner.aq_parent.portal_type=='Blog', here.aq_inner.aq_parent, here)"
-		   tal:attributes="href string:${context/absolute_url}/archive_view?category=${item}"
-		   tal:content="item">
-		  category name
-		  </a><span tal:replace="string:," tal:condition="not:repeat/item/end">comma</span>
-	      </tal:block>
-	    </tal:block>
-	    -&nbsp;
-	    <tal:block i18n:translate="">
-	      <span i18n:name="numofcomments"
-		    tal:replace="python:here.getNumberOfComments(here)">5</span>
-	      comments
-	    </tal:block>
-	    <tal:block condition="here/hasCommentAction">
-	      (<a href="" class="blog" tal:attributes="href string:${here/absolute_url}/post_comment" i18n:translate="">add</a>)
-	    </tal:block>
-	  </div>
+            <tal:block condition="categories">
+              -
+              <tal:block i18n:translate="blog_categories_byline_label">Categories:</tal:block>
+              <tal:block repeat="item categories">
+                <a href=""
+                   class="blog"
+                   tal:define="context python:test(here.aq_inner.aq_parent.portal_type=='Blog', here.aq_inner.aq_parent, here)"
+                   tal:attributes="href string:${context/absolute_url}/archive_view?category=${item}"
+                   tal:content="item">
+                  category name
+                  </a><span tal:replace="string:," tal:condition="not:repeat/item/end">comma</span>
+              </tal:block>
+            </tal:block>
+            -&nbsp;
+            <tal:block i18n:translate="">
+              <span i18n:name="numofcomments"
+                    tal:replace="python:here.getNumberOfComments(here)">5</span>
+              comments
+            </tal:block>
+            <tal:block condition="here/hasCommentAction">
+              (<a href="" class="blog" tal:attributes="href string:${here/absolute_url}/post_comment" i18n:translate="">add</a>)
+            </tal:block>
+          </div>
 
-	</tal:block>
+        </tal:block>
       </small>
     </div>
   </metal:block>

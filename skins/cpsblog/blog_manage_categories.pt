@@ -10,8 +10,8 @@
   </metal:block>
 
   <metal:block fill-slot="main"
-	       tal:define="doc here/getBlogContent;
-			   context here/getBlogProxy">
+               tal:define="doc here/getBlogContent;
+                           context here/getBlogProxy">
 
     <h2 i18n:translate="">
       Categories for blog "<span i18n:name="blogtitle" tal:replace="doc/Title" />"
@@ -20,57 +20,57 @@
       Use categories to group your entries for easier reference.
     </p>
     <form action="" method="post"
-	  tal:condition="python:len(doc.getSortedCategories()) > 0"
-	  tal:attributes="action string:${context/absolute_url}/blog_delete_categories">
+          tal:condition="python:len(doc.getSortedCategories()) > 0"
+          tal:attributes="action string:${context/absolute_url}/blog_delete_categories">
       <table class="listing" summary="Listing of all categories for blog">
-	<thead>
-	  <td i18n:translate="blog_categories_label" width="90%">Categories</td>
-	  <td i18n:translate="blog_categories_delete">Delete</td>
-	</thead>
-	<tr tal:repeat="category doc/getSortedCategories"
-	    tal:attributes="class python:test(path('repeat/category/odd'), 'odd', 'even')">
-	  <td>
-	    <a href=""
-	       tal:attributes="href string:${context/absolute_url}/blog_edit_category?id:int=${category/id}"
-	       tal:content="category/title"></a>
-	  </td>
-	  <td align="center">
-	    <input type="checkbox" name="categories:list:int"
-		   value=""
-		   tal:attributes="value category/id" />
-	  </td>
-	</tr>
+        <thead>
+          <td i18n:translate="blog_categories_label" width="90%">Categories</td>
+          <td i18n:translate="blog_categories_delete">Delete</td>
+        </thead>
+        <tr tal:repeat="category doc/getSortedCategories"
+            tal:attributes="class python:test(path('repeat/category/odd'), 'odd', 'even')">
+          <td>
+            <a href=""
+               tal:attributes="href string:${context/absolute_url}/blog_edit_category?id:int=${category/id}"
+               tal:content="category/title"></a>
+          </td>
+          <td align="center">
+            <input type="checkbox" name="categories:list:int"
+                   value=""
+                   tal:attributes="value category/id" />
+          </td>
+        </tr>
       </table>
       <div class="dright">
-	<input type="submit" value="button_delete"
-	       i18n:attributes="value"
-	       class="destructive"
-	       onclick="return window.confirm('Are you sure?')"/>
+        <input type="submit" value="button_delete"
+               i18n:attributes="value"
+               class="destructive"
+               onclick="return window.confirm('Are you sure?')"/>
       </div>
     </form>
 
     <h2 i18n:translate="blog_add_category_label">Add category</h2>
     <form action="" method="post" class="group"
-	  tal:attributes="action string:${context/absolute_url}/blog_add_category">
+          tal:attributes="action string:${context/absolute_url}/blog_add_category">
       <div class="row">
-	<div class="label" i18n:translate="cpsdoc_title_label_edit">
-	  Title
-	</div>
-	<div class="field">
-	  <input type="text" name="title" />
-	</div>
+        <div class="label" i18n:translate="cpsdoc_title_label_edit">
+          Title
+        </div>
+        <div class="field">
+          <input type="text" name="title" />
+        </div>
       </div>
       <div class="row">
-	<div class="label" i18n:translate="cpsdoc_description_label_edit">
-	  Description
-	</div>
-	<div class="field">
-	  <textarea name="description" rows="5" cols="40"></textarea>
-	</div>
+        <div class="label" i18n:translate="cpsdoc_description_label_edit">
+          Description
+        </div>
+        <div class="field">
+          <textarea name="description" rows="5" cols="40"></textarea>
+        </div>
       </div>
       <div class="dcolcenter">
-	<input class="standalone" type="submit" value="button_apply"
-	       i18n:attributes="value" />
+        <input class="standalone" type="submit" value="button_apply"
+               i18n:attributes="value" />
       </div>
 
     </form>

@@ -17,14 +17,14 @@
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
 
     <tal:block define="items python:doc.getSearchResults(here);
-		       day_separators python: here.getBlogEntryDaySeparators(items);
-		       Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
-		       b_size here/entries_per_page;
+                       day_separators python: here.getBlogEntryDaySeparators(items);
+                       Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+                       b_size here/entries_per_page;
                        b_start python:0;
                        b_start request/b_start | b_start">
 
       <span tal:omit-tag=""
-	    metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
+            metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
 
     </tal:block>
 

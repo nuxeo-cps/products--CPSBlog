@@ -10,9 +10,9 @@
   </metal:block>
 
   <metal:block fill-slot="main"
-	       tal:define="doc here/getBlogContent;
-			   context here/getBlogProxy;
-			   category python:doc.getCategory(request['id'])">
+               tal:define="doc here/getBlogContent;
+                           context here/getBlogProxy;
+                           category python:doc.getCategory(request['id'])">
 
     <h2 i18n:translate="">
       Category for blog "<span i18n:name="blogtitle" tal:replace="doc/Title" />"
@@ -21,33 +21,33 @@
       Use this page to edit the attributes of the category
     </p>
     <form action="" method="post"
-	  class="group"
-	  tal:attributes="action string:${context/absolute_url}/blog_update_category">
+          class="group"
+          tal:attributes="action string:${context/absolute_url}/blog_update_category">
       <input type="hidden" name="category_id:int" value=""
-	     tal:attributes="value category/id">
+             tal:attributes="value category/id">
       <div class="row">
-	<div class="label" i18n:translate="cpsdoc_title_label_edit">
-	  Title
-	</div>
-	<div class="field">
-	  <input type="text" name="title" tal:attributes="value category/title" />
-	</div>
+        <div class="label" i18n:translate="cpsdoc_title_label_edit">
+          Title
+        </div>
+        <div class="field">
+          <input type="text" name="title" tal:attributes="value category/title" />
+        </div>
       </div>
       <div class="row">
-	<div class="label" i18n:translate="cpsdoc_description_label_edit">
-	  Description
-	</div>
-	<div class="field">
-	  <textarea name="description" rows="5" cols="40"
-		 tal:content="category/description">
-	  </textarea>
-	</div>
+        <div class="label" i18n:translate="cpsdoc_description_label_edit">
+          Description
+        </div>
+        <div class="field">
+          <textarea name="description" rows="5" cols="40"
+                 tal:content="category/description">
+          </textarea>
+        </div>
       </div>
       <div class="dcolcenter">
-	<input class="standalone" type="submit" value="button_apply"
-	       i18n:attributes="value" />
-	<input class="standalone" type="button" value="button_back"
-	       i18n:attributes="value" onClick="history.back()"/>
+        <input class="standalone" type="submit" value="button_apply"
+               i18n:attributes="value" />
+        <input class="standalone" type="button" value="button_back"
+               i18n:attributes="value" onClick="history.back()"/>
       </div>
     </form>
   </metal:block>

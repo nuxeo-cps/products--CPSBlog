@@ -1,33 +1,33 @@
 <tal:block define="layout options/layout">
 
   <tal:block define="rows python: layout['rows'];
-		     global wtcells python: [here.getCellByWidgetId(rows, 'LanguageSelector'),
-		                             here.getCellByWidgetId(rows, 'Title'),
-					     here.getCellByWidgetId(rows, 'author_photo'),
-					     here.getCellByWidgetId(rows, 'Description')];
+                     global wtcells python: [here.getCellByWidgetId(rows, 'LanguageSelector'),
+                                             here.getCellByWidgetId(rows, 'Title'),
+                                             here.getCellByWidgetId(rows, 'author_photo'),
+                                             here.getCellByWidgetId(rows, 'Description')];
                      global wt_ids python: ['LanguageSelector', 'Title', 'author_photo', 'Description']" />
 
   <table width="100%" cellpadding="2" cellspacing="2" border="0" summary="layout">
 
     <tr>
       <td>
-	<span tal:repeat="cell wtcells" tal:omit-tag="">
-	  <tal:block define="widget cell/widget">
+        <span tal:repeat="cell wtcells" tal:omit-tag="">
+          <tal:block define="widget cell/widget">
 
-	    <div tal:define="dm options/datastructure/getDataModel;"
+            <div tal:define="dm options/datastructure/getDataModel;"
           tal:attributes="class cell/widget_css_class|nothing">
-	      <tal:block condition="widget/label">
-		<span class="dlabel" i18n:translate="" tal:condition="widget/is_i18n"
-		      tal:content="widget/label">label</span>
-		<span class="dlabel" tal:condition="not:widget/is_i18n"
-		      tal:content="widget/label">label</span>
-	      </tal:block>
+              <tal:block condition="widget/label">
+                <span class="dlabel" i18n:translate="" tal:condition="widget/is_i18n"
+                      tal:content="widget/label">label</span>
+                <span class="dlabel" tal:condition="not:widget/is_i18n"
+                      tal:content="widget/label">label</span>
+              </tal:block>
 
-	      <tal:block replace="structure cell/widget_rendered" />
+              <tal:block replace="structure cell/widget_rendered" />
 
-	    </div>
-	  </tal:block>
-	</span>
+            </div>
+          </tal:block>
+        </span>
       </td>
     </tr>
 

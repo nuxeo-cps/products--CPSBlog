@@ -13,7 +13,7 @@
                  search_term python:request.get('search_term', '');
                  searching search_param;
                  cpslr python:here.getBlogLocalRoles(mtool=mtool,
-		                                     base_url=base_url,
+                                                     base_url=base_url,
                                                      context_url=context_url);
                  found python:searching and here.folder_localrole_search(search_param, search_term);
                  portal utool/getPortalObject;

@@ -7,9 +7,9 @@
 
   <metal:block fill-slot="css_slot">
     <link rel="Stylesheet" type="text/css" href=""
-	  tal:attributes="href string:${base_url}document.css" />
+          tal:attributes="href string:${base_url}document.css" />
     <link rel="Stylesheet" type="text/css" href=""
-	  tal:attributes="href string:${base_url}blog.css" />
+          tal:attributes="href string:${base_url}blog.css" />
   </metal:block>
 
 <div metal:fill-slot="main">
@@ -17,30 +17,30 @@
   <div metal:define-macro="dayViewBox"
        class="dayViewBox"
        tal:define="DateTime python:modules['DateTime'].DateTime;
-		   this_day python:DateTime(request.get('date',
-		                            DateTime().aCommon()[:12]))">
+                   this_day python:DateTime(request.get('date',
+                                            DateTime().aCommon()[:12]))">
 
     <div metal:use-macro="here/document_actions/macros/document_actions">
       Document actions (print, rss etc)
     </div>
 
     <tal:block tal:content="structure rendered_main|
-			    python:here.getBlogContent().render(proxy=here.getBlogProxy())" />
+                            python:here.getBlogContent().render(proxy=here.getBlogProxy())" />
 
     <tal:block tal:define="items python:here.getBlogEntriesForThisDay(this_day, request);
-			   day_separators python: here.getBlogEntryDaySeparators(items);
-			   format string:detail;
-			   no_form python:1;
-			   params python:here.getCustomDisplayParams();
-			   Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
-			   b_size params/items_per_page;
-			   b_start python:0;
-			   b_start request/b_start | b_start">
+                           day_separators python: here.getBlogEntryDaySeparators(items);
+                           format string:detail;
+                           no_form python:1;
+                           params python:here.getCustomDisplayParams();
+                           Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+                           b_size params/items_per_page;
+                           b_start python:0;
+                           b_start request/b_start | b_start">
 
       <tal:block define="doc here/getBlogContent"
-		 condition="doc">
-	<span tal:omit-tag=""
-	      metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
+                 condition="doc">
+        <span tal:omit-tag=""
+              metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
       </tal:block>
 
     </tal:block>

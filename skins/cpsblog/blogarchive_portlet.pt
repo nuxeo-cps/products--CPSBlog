@@ -1,14 +1,14 @@
 <tal:block define="context_obj nocall:options/context_obj;
-		   blog_proxy context_obj/getBlogProxy;
-		   items blog_proxy/getBlogArchiveDates"
-	   condition="items">
+                   blog_proxy context_obj/getBlogProxy;
+                   items blog_proxy/getBlogArchiveDates"
+           condition="items">
   <ul class="cpsskinsMenu">
     <li tal:repeat="archive items">
       <a tal:attributes="href string:${blog_proxy/absolute_url}/archive/${archive/year}/${archive/month_mm}">
-	<span tal:omit-tag=""
-	      i18n:translate=""
-	      tal:content="archive/month_name">month</span>
-	<span tal:omit-tag="" tal:content="archive/year" />
+        <span tal:omit-tag=""
+              i18n:translate=""
+              tal:content="archive/month_name">month</span>
+        <span tal:omit-tag="" tal:content="archive/year" />
       </a>
     </li>
   </ul>

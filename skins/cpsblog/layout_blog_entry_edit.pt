@@ -140,38 +140,38 @@
 
 
 <tal:block define="tbcount here/countTrackbacks"
-	   condition="python: tbcount and last_layout">
+           condition="python: tbcount and last_layout">
   <div class="group">
     <form method="post" action=""
-	  tal:attributes="action string:${here/absolute_url}/blog_entry_remove_trackbacks">
+          tal:attributes="action string:${here/absolute_url}/blog_entry_remove_trackbacks">
       <h3 i18n:translate="">Manage Trackback Pings</h3>
       <table class="listing" summary="Listing of all blog entry's trackbacks">
-	<thead>
-	  <td i18n:translate="">Title</td>
-	  <td i18n:translate="">Created</td>
-	  <td i18n:translate="">Delete</td>
-	</thead>
-	<tr tal:repeat="trackback here/getSortedTrackbacks"
-	    tal:attributes="class python:test(path('repeat/trackback/odd'), 'odd', 'even')">
-	  <td>
-	    <a href="" tal:attributes="href trackback/url"
-	       tal:content="trackback/title"></a>
-	  </td>
-	  <td align="center"
-	      tal:content="python: here.getDateStr(trackback.created, 'medium')">
-	  </td>
-	  <td align="center" >
-	    <input type="checkbox"
-		   name="trackbacks_ids:list:int"
-		   tal:attributes="value trackback/id"
-		   />
-	  </td>
-	</tr>
+        <thead>
+          <td i18n:translate="">Title</td>
+          <td i18n:translate="">Created</td>
+          <td i18n:translate="">Delete</td>
+        </thead>
+        <tr tal:repeat="trackback here/getSortedTrackbacks"
+            tal:attributes="class python:test(path('repeat/trackback/odd'), 'odd', 'even')">
+          <td>
+            <a href="" tal:attributes="href trackback/url"
+               tal:content="trackback/title"></a>
+          </td>
+          <td align="center"
+              tal:content="python: here.getDateStr(trackback.created, 'medium')">
+          </td>
+          <td align="center" >
+            <input type="checkbox"
+                   name="trackbacks_ids:list:int"
+                   tal:attributes="value trackback/id"
+                   />
+          </td>
+        </tr>
       </table>
       <div class="dright">
-	<input type="submit" class="destructive"
-	       value="button_delete" i18n:attributes="value"
-	       onclick="return window.confirm('Are you sure?')" />
+        <input type="submit" class="destructive"
+               value="button_delete" i18n:attributes="value"
+               onclick="return window.confirm('Are you sure?')" />
       </div>
     </form>
   </div>

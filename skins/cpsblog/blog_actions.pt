@@ -1,49 +1,49 @@
 <div metal:define-macro="blog_actions"
      class="documentActions"
      tal:define="utool nocall:here/portal_url;
-		 base_url python:here.getBaseUrl(utool=utool);
-		 actions python: context.portal_actions.listFilteredActionsFor(here);
-		 document_actions actions/document_actions|nothing;
-		 ob_actions actions/object|nothing;
-		 blog_actions python:here.getCPSBlogActionById(ob_actions, 'new_content')"
+                 base_url python:here.getBaseUrl(utool=utool);
+                 actions python: context.portal_actions.listFilteredActionsFor(here);
+                 document_actions actions/document_actions|nothing;
+                 ob_actions actions/object|nothing;
+                 blog_actions python:here.getCPSBlogActionById(ob_actions, 'new_content')"
      tal:condition="blog_actions">
 
     <ul>
       <tal:actions repeat="daction document_actions">
-	<li>
-	  <a href=""
-	     tal:attributes="href daction/url"
-	     tal:define="title daction/name;
-			 icon python:here.getIconFor('cps', daction['id'])"
-	     tal:condition="icon">
+        <li>
+          <a href=""
+             tal:attributes="href daction/url"
+             tal:define="title daction/name;
+                         icon python:here.getIconFor('cps', daction['id'])"
+             tal:condition="icon">
 
-	    <img i18n:attributes="title" src="" alt="" title=""
-		 height="16"
-		 width="16"
-		 tal:condition="icon"
-		 tal:attributes="src string:${base_url}${icon};
-				 title title;
-				 alt title" />
-	  </a>
-	</li>
+            <img i18n:attributes="title" src="" alt="" title=""
+                 height="16"
+                 width="16"
+                 tal:condition="icon"
+                 tal:attributes="src string:${base_url}${icon};
+                                 title title;
+                                 alt title" />
+          </a>
+        </li>
       </tal:actions>
       <tal:actions repeat="baction blog_actions">
-	<li>
-	  <a href=""
-	     tal:attributes="href baction/url"
-	     tal:define="title baction/name;
-			 icon python:here.getIconFor('cpsblog', baction['id'])"
-	     tal:condition="icon">
+        <li>
+          <a href=""
+             tal:attributes="href baction/url"
+             tal:define="title baction/name;
+                         icon python:here.getIconFor('cpsblog', baction['id'])"
+             tal:condition="icon">
 
-	    <img i18n:attributes="title" src="" alt="" title=""
-		 height="16"
-		 width="16"
-		 tal:condition="icon"
-		 tal:attributes="src string:${base_url}${icon};
-				 title title;
-				 alt title" />
-	  </a>
-	</li>
+            <img i18n:attributes="title" src="" alt="" title=""
+                 height="16"
+                 width="16"
+                 tal:condition="icon"
+                 tal:attributes="src string:${base_url}${icon};
+                                 title title;
+                                 alt title" />
+          </a>
+        </li>
       </tal:actions>
     </ul>
 </div>

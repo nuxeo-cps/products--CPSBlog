@@ -96,21 +96,21 @@
     </metal:block>
     <metal:block fill-slot="box_body">
       <div tal:define="blog_proxy python: here.getBlogProxy()">
-	<form method="get" action="blog_search_form" name="searchBoxForm"
-	      onsubmit="return checkEmptySearch(this)"
-	      tal:attributes="action python:blog_proxy.absolute_url()+'/blog_search_form'"
-	      tal:define="sfpo_id string:box">
-	  <label for="searchGadget"
-		 i18n:translate="label_text_to_search">Text to search</label>
-	  <input id="searchGadget" type="text" name="SearchableText" size="20"
-		 value="" tal:attributes="value request/SearchableText|nothing" />
-	  <input class="context searchButton" type="submit" value="button_search"
-		 i18n:attributes="value" /><br />
-	  <input type="hidden"
-		 name="folder_prefix"
-		 value=""
-		 tal:attributes="value python: utool.getRelativeUrl(blog_proxy)" />
-	</form>
+        <form method="get" action="blog_search_form" name="searchBoxForm"
+              onsubmit="return checkEmptySearch(this)"
+              tal:attributes="action python:blog_proxy.absolute_url()+'/blog_search_form'"
+              tal:define="sfpo_id string:box">
+          <label for="searchGadget"
+                 i18n:translate="label_text_to_search">Text to search</label>
+          <input id="searchGadget" type="text" name="SearchableText" size="20"
+                 value="" tal:attributes="value request/SearchableText|nothing" />
+          <input class="context searchButton" type="submit" value="button_search"
+                 i18n:attributes="value" /><br />
+          <input type="hidden"
+                 name="folder_prefix"
+                 value=""
+                 tal:attributes="value python: utool.getRelativeUrl(blog_proxy)" />
+        </form>
       </div>
 
     </metal:block>
@@ -119,26 +119,26 @@
 
 
 <metal:block define-macro="basebox_blogarchive"
-	     tal:define="items python:here.getBlogProxy().getBlogArchiveDates()">
+             tal:define="items python:here.getBlogProxy().getBlogArchiveDates()">
   <tal:block condition="items">
     <metal:block use-macro="python:path(box['settings']['box_skin'])">
       <metal:block fill-slot="box_title">
-	<metal:block define-slot="box_title">
-	  <tal:block i18n:translate=""
-		     content="box/box/title">box text title</tal:block>
-	</metal:block>
+        <metal:block define-slot="box_title">
+          <tal:block i18n:translate=""
+                     content="box/box/title">box text title</tal:block>
+        </metal:block>
       </metal:block>
       <metal:block fill-slot="box_body" tal:define="blog_proxy here/getBlogProxy">
-	<ul>
-	  <li tal:repeat="archive items">
-	    <a tal:attributes="href string:${blog_proxy/absolute_url}/archive/${archive/year}/${archive/month_mm}">
-	      <span tal:omit-tag=""
-		    i18n:translate=""
-		    tal:content="archive/month_name">month</span>
-	      <span tal:omit-tag="" tal:content="archive/year" />
-	    </a>
-	  </li>
-	</ul>
+        <ul>
+          <li tal:repeat="archive items">
+            <a tal:attributes="href string:${blog_proxy/absolute_url}/archive/${archive/year}/${archive/month_mm}">
+              <span tal:omit-tag=""
+                    i18n:translate=""
+                    tal:content="archive/month_name">month</span>
+              <span tal:omit-tag="" tal:content="archive/year" />
+            </a>
+          </li>
+        </ul>
       </metal:block>
     </metal:block>
   </tal:block>
@@ -146,32 +146,32 @@
 
 
 <metal:block define-macro="basebox_blogcategories"
-	     tal:define="blog_proxy here/getBlogProxy;
-			 categories python:here.getCPSBlogCategories(blog_proxy)
-			 ">
+             tal:define="blog_proxy here/getBlogProxy;
+                         categories python:here.getCPSBlogCategories(blog_proxy)
+                         ">
   <tal:block condition="categories">
     <metal:block use-macro="python:path(box['settings']['box_skin'])">
       <metal:block fill-slot="box_title">
-	<metal:block define-slot="box_title">
-	  <tal:block i18n:translate=""
-		     content="box/box/title">box text title</tal:block>
-	</metal:block>
+        <metal:block define-slot="box_title">
+          <tal:block i18n:translate=""
+                     content="box/box/title">box text title</tal:block>
+        </metal:block>
       </metal:block>
       <metal:block fill-slot="box_body">
-	<ul>
-	  <li tal:repeat="category categories">
-	    <tal:block condition="not: category/global">
-	      <a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}&relative=1">
-		<span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
-	      </a>
-	    </tal:block>
-	    <tal:block condition="category/global">
-	      <a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}">
-		<span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
-	      </a>
-	    </tal:block>
-	  </li>
-	</ul>
+        <ul>
+          <li tal:repeat="category categories">
+            <tal:block condition="not: category/global">
+              <a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}&relative=1">
+                <span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
+              </a>
+            </tal:block>
+            <tal:block condition="category/global">
+              <a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}">
+                <span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
+              </a>
+            </tal:block>
+          </li>
+        </ul>
       </metal:block>
     </metal:block>
   </tal:block>

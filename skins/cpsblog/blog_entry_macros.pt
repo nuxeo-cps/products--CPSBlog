@@ -1,110 +1,110 @@
 <!-- $Id$ -->
 <tal:block metal:define-macro="blog_entry_listing"
-	   tal:condition="items"
-	   tal:define="batch python:Batch(items, b_size, int(b_start), orphan=1)">
+           tal:condition="items"
+           tal:define="batch python:Batch(items, b_size, int(b_start), orphan=1)">
 
   <div metal:use-macro="here/batch_navinfo_macros/macros/navinfo" />
 
   <div tal:repeat="item batch">
     <span tal:omit-tag=""
-	  tal:define="bentry item/getContent; bentry_url item/absolute_url">
+          tal:define="bentry item/getContent; bentry_url item/absolute_url">
       <tal:block condition="day_separators|nothing">
-	<h3 class="blog"
-	    tal:define="be_datetime bentry/created"
-	    tal:condition="python: item.getId() in day_separators">
-	  <tal:block content="python:here.getDateStr(bentry.created(), 'short')" />
-	</h3>
+        <h3 class="blog"
+            tal:define="be_datetime bentry/created"
+            tal:condition="python: item.getId() in day_separators">
+          <tal:block content="python:here.getDateStr(bentry.created(), 'short')" />
+        </h3>
       </tal:block>
       <h5 class="blog">
-	<a href=""
-	   class="blog"
-	   tal:attributes="href bentry_url"
-	   tal:content="bentry/title" />
+        <a href=""
+           class="blog"
+           tal:attributes="href bentry_url"
+           tal:content="bentry/title" />
       </h5>
       <div tal:condition="python:doc.view_mode == 'title_desc' or
-			  doc.view_mode == 'full'"
-	   tal:content="bentry/description" class="row"/>
+                          doc.view_mode == 'full'"
+           tal:content="bentry/description" class="row"/>
       <div tal:condition="python:doc.view_mode == 'full'"
-	   tal:content="structure bentry/content" class="row" />
+           tal:content="structure bentry/content" class="row" />
       <tal:block define="categories python:item.getContent().Subject();
-			 dname python:here.portal_directories.members.getEntry(bentry.Creator(), default=None);
-			 cname dname/fullname|bentry/Creator;
-			 info python:(here_url != utool.getPortalObject().absolute_url())
-			 and here.getContentInfo(proxy=item, level=2) or None;
-			 email dname/email|nothing;">
-	<div class="posted">
+                         dname python:here.portal_directories.members.getEntry(bentry.Creator(), default=None);
+                         cname dname/fullname|bentry/Creator;
+                         info python:(here_url != utool.getPortalObject().absolute_url())
+                         and here.getContentInfo(proxy=item, level=2) or None;
+                         email dname/email|nothing;">
+        <div class="posted">
 
-	  <tal:block condition="not:isAnon" i18n:translate="">
-	    Posted by
-	    <a href="." title="Blog"
-	       class="blog"
-	       tal:attributes="href python:item.getBlogProxy().absolute_url()"
-	       tal:content="cname" i18n:name="item_creator">Creator</a>
+          <tal:block condition="not:isAnon" i18n:translate="">
+            Posted by
+            <a href="." title="Blog"
+               class="blog"
+               tal:attributes="href python:item.getBlogProxy().absolute_url()"
+               tal:content="cname" i18n:name="item_creator">Creator</a>
 
-	    @
-	    <tal:block
-		content="python:here.getDateStr(bentry.created(), 'medium')"
-		i18n:name="item_modification"/>
-	    <tal:block condition="info">
-	      <span i18n:translate="label_status">Label Status</span>
-	      <span tal:content="info/review_state"
-		    tal:attributes="class info/review_state" i18n:translate="">Work</span>
-	    </tal:block>
-	  </tal:block>
+            @
+            <tal:block
+                content="python:here.getDateStr(bentry.created(), 'medium')"
+                i18n:name="item_modification"/>
+            <tal:block condition="info">
+              <span i18n:translate="label_status">Label Status</span>
+              <span tal:content="info/review_state"
+                    tal:attributes="class info/review_state" i18n:translate="">Work</span>
+            </tal:block>
+          </tal:block>
 
-	  <tal:block condition="isAnon" i18n:translate="">
-	    Posted by
-	    <a href="." title="Blog"
-	       class="blog"
-	       tal:attributes="href python:item.getBlogProxy().absolute_url()"
-	       tal:content="cname" i18n:name="item_creator">Creator</a>
-	    @
-	    <tal:block
-		content="python:here.getDateStr(bentry.created(), 'medium')"
-		i18n:name="item_modification"/>
-	  </tal:block>
+          <tal:block condition="isAnon" i18n:translate="">
+            Posted by
+            <a href="." title="Blog"
+               class="blog"
+               tal:attributes="href python:item.getBlogProxy().absolute_url()"
+               tal:content="cname" i18n:name="item_creator">Creator</a>
+            @
+            <tal:block
+                content="python:here.getDateStr(bentry.created(), 'medium')"
+                i18n:name="item_modification"/>
+          </tal:block>
 
-	  <tal:block condition="categories">
-	    -
-	    <tal:block i18n:translate="blog_categories_byline_label">Categories:</tal:block>
-	    <tal:block repeat="category categories">
-	      <a href=""
-		 class="blog"
-		 tal:define="blogproxy item/getBlogProxy"
-		 tal:attributes="href string:${blogproxy/absolute_url}/archive_view?category=${category}"
-		 tal:content="category">
-		category name
-	      </a><span tal:replace="string:," tal:condition="not:repeat/category/end">comma</span>
-	    </tal:block>
-	  </tal:block>
-	  -&nbsp;
-	  <tal:block define="numofcomments python:here.getNumberOfComments(item)">
-	    <tal:block condition="not: numofcomments" i18n:translate="">
-	      <span i18n:name="numofcomments"
-		    tal:replace="numofcomments">5</span>
-	      comments
-	    </tal:block>
-	    <tal:block condition="numofcomments">
-	      <a href="" class="blog"
-		 tal:attributes="href string:${bentry_url}#comments"
-		 i18n:translate="">
-		<span i18n:name="numofcomments"
-		      tal:replace="numofcomments">5</span>
-		comments
-	      </a>
-	    </tal:block>
-	  </tal:block>
-	  <tal:block condition="item/hasCommentAction">
-	    (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
-	  </tal:block>
-	  <tal:block define="accept_trackback_pings item/accept_trackback_pings|nothing"
-		     condition="accept_trackback_pings">
-	    |
-	    <a href="" class="blog"
-	       tal:attributes="href string:${bentry_url}#trackbacks"
+          <tal:block condition="categories">
+            -
+            <tal:block i18n:translate="blog_categories_byline_label">Categories:</tal:block>
+            <tal:block repeat="category categories">
+              <a href=""
+                 class="blog"
+                 tal:define="blogproxy item/getBlogProxy"
+                 tal:attributes="href string:${blogproxy/absolute_url}/archive_view?category=${category}"
+                 tal:content="category">
+                category name
+              </a><span tal:replace="string:," tal:condition="not:repeat/category/end">comma</span>
+            </tal:block>
+          </tal:block>
+          -&nbsp;
+          <tal:block define="numofcomments python:here.getNumberOfComments(item)">
+            <tal:block condition="not: numofcomments" i18n:translate="">
+              <span i18n:name="numofcomments"
+                    tal:replace="numofcomments">5</span>
+              comments
+            </tal:block>
+            <tal:block condition="numofcomments">
+              <a href="" class="blog"
+                 tal:attributes="href string:${bentry_url}#comments"
+                 i18n:translate="">
+                <span i18n:name="numofcomments"
+                      tal:replace="numofcomments">5</span>
+                comments
+              </a>
+            </tal:block>
+          </tal:block>
+          <tal:block condition="item/hasCommentAction">
+            (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
+          </tal:block>
+          <tal:block define="accept_trackback_pings item/accept_trackback_pings|nothing"
+                     condition="accept_trackback_pings">
+            |
+            <a href="" class="blog"
+               tal:attributes="href string:${bentry_url}#trackbacks"
                tal:content="string: Trackbacks (${item/countTrackbacks})">Trackbacks (0)</a>
-	  </tal:block>
-	</div>
+          </tal:block>
+        </div>
 
       </tal:block>
     </span>
