@@ -1,0 +1,62 @@
+/* CPSBlog CSS
+** $Id$
+*/
+
+/* DTML instructions to set caching headers.
+<dtml-let last_modified="_.DateTime()-14" expires="_.DateTime()+1" >
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Content-Type', 'text/css' )">
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Last-Modified', last_modified.toZone('GMT').rfc822() )">
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Cache-Control', 'max-age=36000, must-revalidate' )">
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Expires', expires.toZone('GMT').rfc822() )" >
+</dtml-let>
+
+<dtml-with stylesheet_properties>
+*/
+
+h4.blog {
+  width: 360px;
+  color:#93966A;
+  background: #fff;
+  border-bottom: 1px dotted #bbb;
+  margin:15px 15px 15px 15px;
+}
+
+h5.blog {
+  color: #5E5F58;
+  padding: 10px 15px 0px 15px;
+  background-color: #fff;
+}
+
+A.blog:link {
+  color: #366;
+  text-decoration: none;
+  border-bottom: dotted 1px #999;
+  background-color: transparent;
+}
+
+A.blog:visited {
+  color: #6b2e49;
+  border-bottom: dotted 1px #999;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+A.blog:active {
+  color: #f90;
+  background-color: transparent;
+}
+
+A.blog:hover {
+  color: #690;
+  border-bottom: dotted 1px #f90;
+  background-color: transparent;
+}
+
+.posted {
+  color:#888;
+  background-color: #fff;
+}
+
+/*
+</dtml-with>
+*/
