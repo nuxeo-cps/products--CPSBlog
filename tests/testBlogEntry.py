@@ -213,6 +213,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
 
         self.assertEqual(bentry.countTrackbacks(), 0)
 
+        bentry.accept_trackback_pings = 0
         request.set('REQUEST_METHOD', 'POST')
         request.set('PARENTS', [bentry])
         request.form['title'] = 'title'
