@@ -54,7 +54,7 @@ cps_roles = [x for x in cps_roles if x not in ('Owner',
                                                'Authenticated')]
 # Checking the context (Ws or section)
 if context.portal_type == "Blog":
-    cps_roles = [x for x in cps_roles if x in ('BlogPoster',)]
+    cps_roles = [x for x in cps_roles if x in ('BlogPoster', 'BlogManager')]
 else:
     cps_roles = cps_roles
 
