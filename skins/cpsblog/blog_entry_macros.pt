@@ -9,11 +9,11 @@
     <span tal:omit-tag=""
 	  tal:define="bentry item/getContent; bentry_url item/absolute_url">
       <tal:block condition="day_separators|nothing">
-	<h4 class="blog"
+	<h3 class="blog"
 	    tal:define="be_datetime bentry/created"
 	    tal:condition="python: item.getId() in day_separators">
 	  <tal:block content="python:here.getDateStr(bentry.created(), 'short')" />
-	</h4>
+	</h3>
       </tal:block>
       <h5 class="blog">
 	<a href=""
