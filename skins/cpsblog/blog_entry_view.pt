@@ -1,0 +1,60 @@
+<html metal:use-macro="here/content_lib/macros/master">
+  <metal:block fill-slot="header">
+  </metal:block>
+
+  <metal:block fill-slot="css_slot">
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}document.css" />
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}forum.css" />
+  </metal:block>
+
+  <metal:block fill-slot="main">
+    <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
+
+    <tal:block tal:condition="python:hasattr(here,'portal_discussion') and
+      hasattr(here.portal_discussion, 'isCommentingAllowedFor')">
+      <tal:block tal:define="comments_allowed
+        python:here.portal_discussion.isCommentingAllowedFor(here);"
+        tal:condition="comments_allowed">
+        <metal:block
+          use-macro="here/forum_comment_lib/macros/view_comments_inline" />
+      </tal:block>
+    </tal:block>
+
+  </metal:block>
+
+  <metal:block fill-slot="sub">
+    <div tal:condition="not:creation|nothing" id="byline">
+      <small>
+	<tal:block
+	    condition="not:isAnon"
+	    tal:define="dname python:here.portal_directories.members.getEntry(doc.Creator(), default=None);
+			cname dname/fullname|doc/Creator;
+			info python:(here_url != utool.getPortalObject().absolute_url())
+			and here.getContentInfo(doc=doc, level=2) or None;
+			email dname/email|nothing;">
+	  <span i18n:translate="">
+	    Posted by
+	    <a href="." title="Here" tal:omit-tag="not:email"
+	       tal:attributes="href string:mailto:${email}?subject=[${doc/title}]; title email"
+	       tal:content="cname" i18n:name="item_creator">Creator</a>
+	    @
+	    <tal:block
+		content="python:here.getDateStr(doc.modification_date, 'medium')"
+		i18n:name="item_modification"/>.
+	  </span>
+	  <span tal:content="python:here.getNumberOfComments(here)" />
+	  <span i18n:translate=""> comments</span>
+	</tal:block>
+	<tal:block condition="isAnon">
+	  <span i18n:translate="label_last_modified">Last modified:</span>
+	  <tal:block content="python:here.getDateStr(doc.modification_date, 'medium')"/>
+	  <span tal:content="python:here.getNumberOfComments(here)" />
+	  <span i18n:translate=""> comments</span>
+	</tal:block>
+      </small>
+    </div>
+  </metal:block>
+
+</html>
