@@ -1,0 +1,49 @@
+# translation of en.po to English
+# Gettext Message File for default.
+# Your Name <your@email>, Year
+# Ruslan Spivak <rspivak@nuxeo.com>, 2004.
+msgid ""
+msgstr ""
+"Project-Id-Version: en\n"
+"POT-Creation-Date: 2004-12-22 14:25default\n"
+"PO-Revision-Date: 2004-12-22 14:26+0200\n"
+"Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
+"Language-Team: English <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: LL\n"
+"Language-name: English\n"
+"Preferred-encodings: utf-8 latin1\n"
+"Domain: default\n"
+"X-Generator: KBabel 1.9\n"
+
+#.   <span>
+#.   	    Posted by
+#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
+#.   	    @
+#.   	    ${item_modification (tal content="python:here.getDateStr(doc.modification_date, 'medium')")}.
+#.   	  </span>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "Posted by ${item_creator} @ ${item_modification}."
+msgstr "Posted by ${item_creator} @ ${item_modification}."
+
+#.   <span> comments</span>
+#.   <a href="" attributes="href bentry_url">comments</a>
+#: from ../skins/cpsblog/blog_entry_view.pt ../skins/cpsblog/blog_view.pt
+#: ../skins/cpsblog/blogaggregator_view.pt
+msgid "blog_entry_comments_label"
+msgstr "comments"
+
+#.   <input type="submit" class="standalone" value="button_add_comment" />
+#: from ../skins/cpsblog/blog_view.pt ../skins/cpsblog/blogaggregator_view.pt
+msgid "button_add_comment"
+msgstr "Add comment"
+
+#.   <span omit-tag="">
+#.               Blog entries published</span>
+#: from ../skins/cpsblog/blogcalendar_cpsday_view.pt
+msgid "label_blog_calendar_entries_list"
+msgstr "Blog entries published on"
+
