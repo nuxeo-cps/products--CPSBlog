@@ -1,1 +1,37 @@
-<metal:block use-macro="here/layout_lib_default_view/macros/default_view" />
+<tal:block define="layout options/layout">
+
+  <tal:block define="rows python: layout['rows'];
+		     global wtcells python: [here.getCellByWidgetId(rows, 'LanguageSelector'),
+		                             here.getCellByWidgetId(rows, 'Title'),
+					     here.getCellByWidgetId(rows, 'author_photo'),
+					     here.getCellByWidgetId(rows, 'Description')];
+                     global wt_ids python: ['LanguageSelector', 'Title', 'author_photo', 'Description']" />
+
+  <table width="100%" cellpadding="2" cellspacing="2" border="0" summary="layout">
+
+    <tr>
+      <td>
+	<span tal:repeat="cell wtcells" tal:omit-tag="">
+	  <tal:block define="widget cell/widget">
+
+	    <div tal:define="dm options/datastructure/getDataModel;"
+		 tal:attributes="class cell/widget_css_class;
+				 id python:widget.widget_group_id or widget.getHtmlWidgetId()+'_widget';
+				 style python:cell['widget_css_class'] == 'hidden' and 'visibility: hidden;;' or 'visibility: visible;;';">
+	      <tal:block condition="widget/label">
+		<span class="dlabel" i18n:translate="" tal:condition="widget/is_i18n"
+		      tal:content="widget/label">label</span>
+		<span class="dlabel" tal:condition="not:widget/is_i18n"
+		      tal:content="widget/label">label</span>
+	      </tal:block>
+
+	      <tal:block replace="structure cell/widget_rendered" />
+
+	    </div>
+	  </tal:block>
+	</span>
+      </td>
+    </tr>
+
+  </table>
+</tal:block>
