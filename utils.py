@@ -46,7 +46,7 @@ def post_trackback(title='', url='', excerpt='', blog_name=''):
         msg = ''
         m = re.search(r'<error>(.*)</error>', data)
         if m:
-            error_code = m.group(1)
+            error_code = int(m.group(1))
         m = re.search(r'<message>(.*)</message>', data)
         if m:
             msg = m.group(1)
