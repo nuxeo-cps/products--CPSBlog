@@ -51,7 +51,7 @@ o Blog entries can be flagged as public or private (other statuses may be
 M2:
 
 x Add a "Search this blog" box like in MT
-o Blog entries are multilingual (I can post in french or english if I want,
+x Blog entries are multilingual (I can post in french or english if I want,
     for instance) - blog owner should be able to select list of languages
     he wants to post in (if there is only one one language then there is no
     widget to select) - but not need to think about translations
@@ -78,11 +78,12 @@ o Notifications:
     - readers can subscribe to a blog ans receive blog entries or just
       summaries in their mail, maybe as a daily or weekly digest
     - writer may be notified of comments on his/her postings
+x Firefox Live bookmark support for blogs and blog aggregators
 
 M4:
 
 o Import blog content using ATOM XML
-o Support of the TrackBack protocol (see :
+x Support of the TrackBack protocol (see :
     http://www.movabletype.org/docs/mttrackback.html and
     http://www.movabletype.org/trackback/)
 o Support for http://topicexchange.com/
