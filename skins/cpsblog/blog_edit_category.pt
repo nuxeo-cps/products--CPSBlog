@@ -1,0 +1,53 @@
+<html metal:use-macro="here/content_lib_master/macros/master">
+  <metal:block fill-slot="header">
+  </metal:block>
+
+  <metal:block fill-slot="css_slot">
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}document.css" />
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}blog.css" />
+  </metal:block>
+
+  <metal:block fill-slot="main"
+	       tal:define="doc here/getBlogContent;
+			   context here/getBlogProxy;
+			   category python:doc.getCategory(request['id'])">
+
+    <h2 i18n:translate="blog_edit_category_label">
+      Category for blog "<span tal:omit-tag="" tal:content="doc/Title" />"
+    </h2>
+    <form action="" method="post"
+	  tal:attributes="action string:${context/absolute_url}/blog_update_category">
+      <input type="hidden" name="category_id:int" value=""
+	     tal:attributes="value category/id">
+      <div class="row">
+	<div class="label" i18n:translate="cpsdoc_title_label_edit">
+	  Title
+	</div>
+	<div class="field">
+	  <input type="text" name="title" tal:attributes="value category/title" />
+	</div>
+      </div>
+      <div class="row">
+	<div class="label" i18n:translate="cpsdoc_description_label_edit">
+	  Description
+	</div>
+	<div class="field">
+	  <textarea name="description" rows="5" cols="40"
+		 tal:content="category/description">
+	  </textarea>
+	</div>
+      </div>
+      <div class="dcolcenter">
+	<input class="standalone" type="submit" value="button_apply"
+	       i18n:attributes="value" />
+	<input class="standalone" type="button" value="button_back"
+	       i18n:attributes="value" onClick="history.back()"/>
+      </div>
+    </form>
+  </metal:block>
+
+  <metal:block fill-slot="sub" />
+
+</html>
