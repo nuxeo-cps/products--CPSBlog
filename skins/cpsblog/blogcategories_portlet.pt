@@ -4,16 +4,9 @@
 	   condition="categories">
     <ul class="cpsskinsMenu">
       <li tal:repeat="category categories">
-	<tal:block condition="not: category/global">
-	  <a tal:attributes="href string:${proxy/absolute_url}/archive_view?category=${category/title}&relative=1">
-	    <span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
-	  </a>
-	</tal:block>
-	<tal:block condition="category/global">
-	  <a tal:attributes="href string:${proxy/absolute_url}/archive_view?category=${category/title}">
-	    <span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
-	  </a>
-	</tal:block>
+	<a tal:attributes="href string:${proxy/absolute_url}/archive_view?category=${category/title}&relative=1">
+	  <span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
+	</a>
       </li>
     </ul>
 </tal:block>
