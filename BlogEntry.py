@@ -31,7 +31,16 @@ class BlogEntry(CPSDocument):
 
     security = ClassSecurityInfo()
 
-    #security.declareProtected(View, '')
+    security.declarePublic('start')
+    def start(self):
+        """Return start time as a string"""
+        return self.created()
+
+    security.declarePublic('end')
+    def end(self):
+        """Return end time as a string"""
+        return self.created()
+
 
 InitializeClass(BlogEntry)
 
