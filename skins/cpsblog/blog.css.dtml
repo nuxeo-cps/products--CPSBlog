@@ -12,11 +12,10 @@ $Id$
 <dtml-with stylesheet_properties>
 
 h4.blog {
-  width: 360px;
   color:#93966A;
   background: #fff;
   border-bottom: 1px dotted #bbb;
-  margin:15px 15px 15px 15px;
+  margin:15px 15px 15px 0px;
 }
 
 h5.blog {
