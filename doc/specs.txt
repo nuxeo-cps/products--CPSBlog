@@ -44,13 +44,16 @@ Features of blogging tool
 1. Blog entries can have one or more topics (or categories)
 1. Archives (by month, by topic), calendar, search
 1. Default presentation must be nice looking
-1. Data model for blog entries must match ATOM specs
+1. Data model for blogs and blog entries must match ATOM specs
+    (atom:feed and atom:entry elements)
 
 2. Blog entries are multilingual (I can post in french or english if I want,
-    for instance)
+    for instance) - blog owner should be able to select list of languages
+    he wants to post in (if there is only one one language then there is no
+    widget to select)
 2. Blog entries can contain links, images, files
 2. Comments
-2. Templates
+2. Templates - way to select design from a library (or create one's own)
 2. It's easy to add new categories from the posting form
 2. Notifications
 
@@ -59,6 +62,7 @@ Features of blogging tool
 3. Support of the TrackBack protocol (see : http://www.movabletype.org/docs/mttrackback.html and http://www.movabletype.org/trackback/)
 
 4. Import blog content using ATOM XML
+4. Support for http://topicexchange.com/
 
 5. Post using email (w/ PGP signature ?)
 5. Post using ATOM API
@@ -76,11 +80,17 @@ Features of blogging tool
         link to sourceforge, freshmeat, zope.org...)
     - TravelBlogEntry (will include geolocation information for putting entries
         on a map)
+    - SysAdminBlogEntry (I've just upgraded such server and nothing works
+      anymore)
+    - DeveloperBlogEntry (I'm a software developer, I worked on such and such
+      project for so much time today)
+    - ProjectManagerBlogEntry (...)
+    - SalesBlogEntry (???)
     ...
         
 
-Features of blog aggreation tool
---------------------------------
+Features of blog aggregation tool
+---------------------------------
 
 TBDL
 
@@ -118,6 +128,7 @@ CoreBlog
 More...
     http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1 
     http://www.python.org/~jeremy/weblog/031104d.html
+    http://climbtothestars.org/archives/2004/12/11/hosted-blog-platform-test-write-up/
 
 References
 ----------
