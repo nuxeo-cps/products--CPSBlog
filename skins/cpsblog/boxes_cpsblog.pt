@@ -108,7 +108,7 @@
 	  <input type="hidden"
 		 name="folder_prefix"
 		 value=""
-		 tal:attributes="value python: utool.getRelativeUrl(here)" />
+		 tal:attributes="value python: utool.getRelativeUrl(here.getBlogProxy())" />
 	</form>
       </div>
 
