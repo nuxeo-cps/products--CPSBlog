@@ -4,12 +4,42 @@
 
   <metal:block fill-slot="css_slot">
     <link rel="Stylesheet" type="text/css" href=""
-      tal:attributes="href string:${base_url}document.css" />
+	  tal:attributes="href string:${base_url}/document.css" />
     <link rel="Stylesheet" type="text/css" href=""
-      tal:attributes="href string:${base_url}blog.css" />
+	  tal:attributes="href string:${base_url}/blog.css" />
   </metal:block>
 
   <metal:block fill-slot="main">
+    <div class="navigationBar"
+	 tal:define="info python:here.getBlogEntryNavLinksInfo()"
+	 tal:condition="info">
+
+      <span tal:condition="info/prev_url">
+	<a href="" class="blog"
+	   tal:attributes="href info/prev_url">
+	  &laquo;
+	  <span tal:replace="info/prev_title" />
+	</a>
+	|
+      </span>
+
+      <span tal:condition="python: info['prev_url'] or info['next_url']">
+	<a href="" class="blog"
+	   tal:attributes="href python:here.getBlogProxy().absolute_url()">
+	  <tal:block i18n:translate="">Main</tal:block>
+	</a>
+      </span>
+
+      <span tal:condition="info/next_url">
+	|
+	<a href="" class="blog"
+	   tal:attributes="href info/next_url">
+	  <span tal:replace="info/next_title" />
+	  &raquo;
+	</a>
+      </span>
+    </div>
+
     <div metal:use-macro="here/document_actions/macros/document_actions">
       Document actions (print, rss etc)
     </div>
