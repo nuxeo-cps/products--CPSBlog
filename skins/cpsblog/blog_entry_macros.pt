@@ -27,47 +27,62 @@
 	   tal:content="bentry/description" class="row"/>
       <div tal:condition="python:doc.view_mode == 'full'"
 	   tal:content="structure bentry/content" class="row" />
-      <tal:block define="catstr python:here.getCategoriesString(item);
+      <tal:block define="categories python:item.getContent().Subject();
 			 dname python:here.portal_directories.members.getEntry(doc.Creator(), default=None);
 			 cname dname/fullname|doc/Creator;
+			 info python:(here_url != utool.getPortalObject().absolute_url())
+			 and here.getContentInfo(proxy=item, level=2) or None;
 			 email dname/email|nothing;">
-	<div class="posted"
-	     tal:condition="catstr">
-	  <tal:block i18n:translate="">
-	    Posted to
-	    <span i18n:name="category" tal:content="structure catstr">category</span>
-	    by
-	    <a href="." title="Here" tal:omit-tag="not:email"
-	       class="blog"
-	       tal:attributes="href string:mailto:${email}?subject=[${doc/title}]; title email"
-	       tal:content="cname" i18n:name="item_creator">Creator</a>
-	    @
-	    <tal:block
-		content="python:here.getDateStr(bentry.modification_date, 'medium')"
-		i18n:name="item_modification"/>
-	  </tal:block>
-	  &nbsp;&nbsp;&nbsp;&nbsp;
-	  <span tal:content="python:here.getNumberOfComments(item)" />
-	  <span i18n:translate="blog_entry_comments_label"> comments</span>
-	  (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
-	</div>
+	<div class="posted">
 
-	<div class="posted"
-	     tal:condition="not: catstr">
-	  <tal:block i18n:translate="">
+	  <tal:block condition="not:isAnon" i18n:translate="">
 	    Posted by
 	    <a href="." title="Here" tal:omit-tag="not:email"
 	       class="blog"
+	       tal:condition="not:isAnon"
 	       tal:attributes="href string:mailto:${email}?subject=[${doc/title}]; title email"
 	       tal:content="cname" i18n:name="item_creator">Creator</a>
+
+	    @
+	    <tal:block
+		content="python:here.getDateStr(bentry.modification_date, 'medium')"
+		i18n:name="item_modification"/>
+	    <tal:block condition="info">
+	      <span i18n:translate="label_status">Label Status</span>
+	      <span tal:content="info/review_state"
+		    tal:attributes="class info/review_state" i18n:translate="">Work</span>
+	    </tal:block>
+	  </tal:block>
+
+	  <tal:block condition="isAnon" i18n:translate="">
+	    Posted by
+	    <span tal:condition="isAnon"
+		  i18n:name="item_creator"
+		  tal:content="cname">Creator(Author)</span>
 	    @
 	    <tal:block
 		content="python:here.getDateStr(bentry.modification_date, 'medium')"
 		i18n:name="item_modification"/>
 	  </tal:block>
-	   &nbsp;&nbsp;&nbsp;&nbsp;
-	  <span tal:content="python:here.getNumberOfComments(item)" />
-	  <span i18n:translate="blog_entry_comments_label"> comments</span>
+
+	  <tal:block condition="categories">
+	    -
+	    <tal:block i18n:translate="blog_categories_byline_label">Categories:</tal:block>
+	    <tal:block repeat="item categories">
+	      <a href=""
+		 class="blog"
+		 tal:attributes="href string:${here/absolute_url}/archive_view?category=${item}"
+		 tal:content="item">
+		category name
+	      </a><span tal:replace="string:," tal:condition="not:repeat/item/end">comma</span>
+	    </tal:block>
+	  </tal:block>
+	  -&nbsp;
+	  <tal:block i18n:translate="">
+	    <span i18n:name="numofcomments"
+		  tal:replace="python:here.getNumberOfComments(item)">5</span>
+	    comments
+	  </tal:block>
 	  (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
 	</div>
 
