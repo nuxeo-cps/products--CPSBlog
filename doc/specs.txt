@@ -181,3 +181,6 @@ RSS:
     http://www.xml.com/pub/a/2002/12/18/dive-into-xml.html
     http://www.xml.com/pub/a/2004/04/07/dive.html
 
+Trackback:
+    http://pingomatic.com/
+    http://overstated.net/05/02/22-weblog-ping-services
