@@ -52,7 +52,7 @@ from Products.CPSCore.CPSWorkflow import \
      TRANSITION_ALLOWSUB_MOVE, TRANSITION_ALLOWSUB_COPY
 from Products.DCWorkflow.Transitions import TRIGGER_USER_ACTION, \
      TRIGGER_AUTOMATIC
-from Products.CPSBlog.CPSBlogPermissions import BlogEntryCreate
+from Products.CPSBlog.permissions import BlogEntryCreate
 
 
 WebDavLockItem = 'WebDAV Lock items'
