@@ -495,9 +495,9 @@ blog_proxy.box_create(**kw)
                      category='document_actions')
 
         ai_actions = (
-            ('cps', 'print', 'print_icon.gif', 'Print'),
-            ('cps', 'mnotify', 'mail_icon.gif', 'Mail Notify'),
-            ('cps', 'rss', 'rss.gif', 'RSS'),
+            ('cps', 'print', 'print_icon.png', 'Print'),
+            ('cps', 'mnotify', 'mail_icon.png', 'Mail Notify'),
+            ('cps', 'rss', 'blogrss.png', 'RSS'),
             ('cps', 'atom', 'blogatom.png', 'ATOM'),
             )
 
