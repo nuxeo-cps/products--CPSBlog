@@ -114,6 +114,10 @@ for item in items:
     # XXX: Content should be XHTML
     content = doc.content
 
+    # replacing &nbsp; by space to make output pass validation
+    summary = nbsp_to_space(summary)
+    content = nbsp_to_space(content)
+
     body_text += atom_entry % {'entry_id' : entry_id,
                                'entry_title' : escape(entry_title),
                                'entry_link' : entry_link,
@@ -122,8 +126,8 @@ for item in items:
                                'entry_author' : entry_author,
                                'entry_lang' : entry_lang,
                                'entry_contributors' : entry_contributors,
-                               'summary' : nbsp_to_space(summary),
-                               'content' : nbsp_to_space(content)
+                               'summary' : summary,
+                               'content' : content
                                }
 
 info = context.getContentInfo(context, level=1)
