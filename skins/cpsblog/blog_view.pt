@@ -27,9 +27,11 @@
 	       tal:attributes="href bentry_url"
 	       tal:content="bentry/title" />
 	  </h3>
-	  <div tal:content="bentry/description" />
+	  <div tal:condition="python:doc.view_mode == 'title_desc'"
+	       tal:content="bentry/description" />
 	  <br/>
-	  <div tal:content="structure bentry/body">
+	  <div tal:condition="python:doc.view_mode == 'full'"
+	       tal:content="structure bentry/body">
 	  </div>
 	  <div>
 	    <a href=""
