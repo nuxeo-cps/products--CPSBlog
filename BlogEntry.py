@@ -100,6 +100,14 @@ class BlogEntry(CPSDocument):
         self.dispatch_trackbacks[tb_id] = tb
         return tb_id
 
+    security.declareProtected(ModifyPortalContent, 'addDispatchTrackbacks')
+    def addDispatchTrackbacks(self, context):
+        """Adds trackbacks and sends pings."""
+        # dispatch_trackback_urls is String List Field from schema definition
+        for tb_url in self.dispatch_trackback_urls:
+            self.addDispatchTrackback(tb_url)
+        return self.sendTrackbacks(context=context)
+
     security.declareProtected(View, 'getDispatchTrackback')
     def getDispatchTrackback(self, trackback_id, default=None):
         return self.dispatch_trackbacks.get(trackback_id, default)
@@ -114,7 +122,7 @@ class BlogEntry(CPSDocument):
         return [t[1] for t in items]
 
     security.declareProtected(ModifyPortalContent, 'sendTrackbacks')
-    def sendTrackbacks(self, context, **kw):
+    def sendTrackbacks(self, context):
         """Iterates over dispatching trackbacks and sends pings."""
         DESCRIPTION_MAX_LENGTH = 200
         result = []
@@ -128,20 +136,18 @@ class BlogEntry(CPSDocument):
 
         for k, trackback in self.dispatch_trackbacks.items():
             if not trackback.sent:
-                excerpt = kw.get('excerpt')
-                if excerpt is None:
-                    if len(blog_entry.Description()) > 0:
-                        excerpt = strip_html(context.description)
-                    else:
-                        excerpt = strip_html(blog_entry.content)
-                        if len(excerpt) > DESCRIPTION_MAX_LENGTH:
-                            excerpt = excerpt[:DESCRIPTION_MAX_LENGTH]
-                            i = excerpt.rfind(' ')
-                            if i > 0:
-                                excerpt = excerpt[:i]
-                            excerpt += '...'
+                if len(blog_entry.Description()) > 0:
+                    excerpt = strip_html(context.description)
+                else:
+                    excerpt = strip_html(blog_entry.content)
+                    if len(excerpt) > DESCRIPTION_MAX_LENGTH:
+                        excerpt = excerpt[:DESCRIPTION_MAX_LENGTH]
+                        i = excerpt.rfind(' ')
+                        if i > 0:
+                            excerpt = excerpt[:i]
+                        excerpt += '...'
 
-                params = {'title' : kw.get('title') or context.Title(),
+                params = {'title' : context.Title(),
                           'excerpt' : excerpt,
                           'url' : context.absolute_url(),
                           'blog_name' : blog_proxy.Title(),
