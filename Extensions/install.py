@@ -504,6 +504,8 @@ blog_proxy.box_create(**kw)
         for action in ai_actions:
             if ai.queryActionIcon(*action[:2]) is None:
                 ai.addActionIcon(*action)
+            else:
+                ai.updateActionIcon(*action)
 
 
 def install(self):
