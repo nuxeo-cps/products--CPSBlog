@@ -1,9 +1,8 @@
 ##parameters=proxy
+# $Id$
 """Retrieves number of ForumPost objects under .cps_discussions directory
 for the given proxy. This gives us total number of comments posts to proxy.
 """
-
-# $Id$
 
 def getDiscussionsFolder(proxy):
     getParentNode = lambda node: getattr(getattr(node, 'aq_inner', None),
