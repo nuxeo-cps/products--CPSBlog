@@ -499,6 +499,9 @@ blog_proxy.box_create(**kw)
             ('cps', 'mnotify', 'mail_icon.png', 'Mail Notify'),
             ('cps', 'rss', 'blogrss.png', 'RSS'),
             ('cps', 'atom', 'blogatom.png', 'ATOM'),
+            ('cpsblog', 'new_content', 'blog_entry_icon.png', 'New content'),
+            ('cpsblogentry', 'publish', 'blog_entry_publish_icon.png', 'Publish'),
+            ('cpsblogentry', 'unpublish', 'blog_entry_unpublish_icon.png', 'Unpublish'),
             )
 
         for action in ai_actions:
