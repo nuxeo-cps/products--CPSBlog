@@ -1,0 +1,19 @@
+<tal:block define="context_obj nocall:options/context_obj;
+                   doc here;
+		   isAnon here/portal_membership/isAnonymousUser;
+		   here_url here/absolute_url;
+		   utool nocall:here/portal_url">
+
+  <tal:block define="items python:here.getSearchResults(here);
+		     day_separators python: here.getBlogEntryDaySeparators(items);
+		     Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+		     b_size here/entries_per_page;
+		     b_start python:0;
+		     b_start request/b_start | b_start">
+
+    <span tal:omit-tag=""
+	  metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
+
+  </tal:block>
+
+</tal:block>
