@@ -74,7 +74,7 @@ dc_keys = ('subject', 'date', 'creator',
 
 base_url = context.portal_url()+'/'
 
-entry_contributors = body_text = ''
+body_text = ''
 for item in items:
     info = context.getContentInfo(item, level=1)
     doc = info['doc']
@@ -87,6 +87,7 @@ for item in items:
     entry_lang = info.get('language')
     entry_id = construct_id(entry_link, doc.created())
 
+    entry_contributors = ''
     for contributor in doc.Contributors():
         entry_contributors += entry_contributor % {'contributor' : contributor}
 
@@ -125,7 +126,10 @@ feed_link = base_url + info.get('rpath')
 feed_id = construct_id(feed_link, context.created())
 feed_modified = context.getDateStr(context.created(), fmt='iso8601_long')
 generator_url = 'http://nuxeo.com'
-generator_version = '.'.join([str(v) for v in context.cps_version[1:]])
+try:
+    generator_version = '.'.join([str(v) for v in context.cps_version[1:]])
+except AttributeError:
+    generator_version = 'unknown'
 
 text = atom_feed % {'feed_title' : feed_title,
                     'feed_tagline' : 'ATOM feed',
