@@ -66,6 +66,8 @@ o URLs include date and words from the title
     Ex: http://xxx/blog/2004/12/15/christmas_today
     Or: http://xxx/blog/2004_12_15_christmas_today
     (2nd is inferior, though).
+o Archive URLs
+    Ex: http://xxx/blog/archive/2004/12
 o Export blog content using RSS and ATOM XML
     - Must be able to selectively export content using rules
 o Nested categories
