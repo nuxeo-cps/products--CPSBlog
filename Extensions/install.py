@@ -150,6 +150,16 @@ kw = {'type_name' : 'Base Box',
       'box_skin': 'here/box_lib/macros/sbox'
       }
 blog_proxy.box_create(**kw)
+
+# Categories box
+kw = {'type_name' : 'Base Box',
+      'slot_name' : 'right',
+      'title' : 'Categories',
+      'provider' : 'cpsblog',
+      'btype' : 'blogcategories',
+      'box_skin': 'here/box_lib/macros/sbox'
+      }
+blog_proxy.box_create(**kw)
             """
             },
             }
