@@ -12,26 +12,25 @@
   <metal:block fill-slot="main"
 	       tal:define="doc here/getBlogContent;
 			   context here/getBlogProxy">
-    <div metal:use-macro="here/document_actions/macros/document_actions">
-      Document actions (print, rss etc)
-    </div>
 
-    <tal:block content="structure rendered_main|python:doc.render(proxy=context)" />
+    <h1 i18n:translate="">Blog entries posted in category <span i18n:name="category" tal:replace="request/category|nothing" />
+    </h1>
+    <tal:block
+	define="start_date request/start_date|nothing;
+		end_date request/end_date|nothing;
+		category request/category|nothing;
+		items python: context.getSortedBlogEntries(start_date=start_date,
+		                                           end_date=end_date,
+							   category=category,
+							   path=context.portal_url.getPortalPath());
+                day_separators python: here.getBlogEntryDaySeparators(items);
+		Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+		b_size doc/entries_per_page;
+		b_start python:0;
+		b_start request/b_start | b_start">
 
-    <tal:block define="start_date request/start_date|nothing;
-		       end_date request/end_date|nothing;
-		       category request/category|nothing;
-		       items python: context.getSortedBlogEntries(start_date=start_date,
-		                                                  end_date=end_date,
-								  category=category);
-		       day_separators python: here.getBlogEntryDaySeparators(items);
-		       Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
-		       b_size doc/entries_per_page;
-                       b_start python:0;
-                       b_start request/b_start | b_start">
-
-      <span tal:omit-tag=""
-	    metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
+      <metal:block
+	  use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
 
     </tal:block>
 
