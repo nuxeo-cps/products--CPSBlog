@@ -100,14 +100,24 @@ class ClientInstaller(CPSInstaller):
         self.log("custom types = %s" % str(custom_types))
         self.verifyFlexibleTypes(custom_types)
 
+        self.resetSkinCache()
+        # portlet types
+        self.verifyFlexibleTypes(self.portal.getBlogAggregatorPortletType())
+
         self.log("Installing custom schemas")
         custom_schemas = getDocumentSchemas(self.portal)
         self.log("custom schemas = %s" % str(custom_schemas))
         self.verifySchemas(custom_schemas)
 
+        # portlet schemas
+        self.verifySchemas(self.portal.getBlogAggregatorPortletSchema())
+
         self.log("Installing custom layouts")
         custom_layouts = getDocumentLayouts(self.portal)
         self.verifyLayouts(custom_layouts)
+
+        # portlet layout
+        self.verifyLayouts(self.portal.getBlogAggregatorPortletLayout())
 
         self.log("Installing custom vocabularies")
         vocabularies = getDocumentVocabularies(self.portal)
