@@ -146,8 +146,10 @@
 
 
 <metal:block define-macro="basebox_blogcategories"
-	     tal:define="items python:here.getBlogContent().getSortedCategories()">
-  <tal:block condition="items">
+	     tal:define="blog_proxy here/getBlogProxy;
+			 categories python:here.getCPSBlogCategories(blog_proxy)
+			 ">
+  <tal:block condition="categories">
     <metal:block use-macro="python:path(box['settings']['box_skin'])">
       <metal:block fill-slot="box_title">
 	<metal:block define-slot="box_title">
@@ -155,12 +157,19 @@
 		     content="box/box/title">box text title</tal:block>
 	</metal:block>
       </metal:block>
-      <metal:block fill-slot="box_body" tal:define="blog_proxy here/getBlogProxy">
+      <metal:block fill-slot="box_body">
 	<ul>
-	  <li tal:repeat="category items">
-	    <a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}">
-	      <span tal:replace="category/title" />
-	    </a>
+	  <li tal:repeat="category categories">
+	    <tal:block condition="not: category/global">
+	      <a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}&relative=1">
+		<span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
+	      </a>
+	    </tal:block>
+	    <tal:block condition="category/global">
+	      <a tal:attributes="href string:${blog_proxy/absolute_url}/archive_view?category=${category/title}">
+		<span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
+	      </a>
+	    </tal:block>
 	  </li>
 	</ul>
       </metal:block>
