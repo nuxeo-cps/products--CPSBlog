@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2005-01-27 13:31default\n"
+"POT-Creation-Date: 2005-01-28 16:48default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -159,7 +159,8 @@ msgid "blog_edit_category_description_label"
 msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
-#: from ../skins/cpsblog/boxes_cpsblog.pt
+#: from ../skins/cpsblog/blogarchive_portlet.pt
+#: ../skins/cpsblog/boxes_cpsblog.pt
 msgid "month"
 msgstr ""
 
@@ -196,10 +197,19 @@ msgstr ""
 msgid "portal_type_Blog_description"
 msgstr ""
 
+msgid "portal_type_BlogEntry_title"
+msgstr ""
+
 msgid "portal_type_BlogAggregator_title"
 msgstr ""
 
 msgid "portal_type_BlogAggregator_description"
+msgstr ""
+
+msgid "portal_type_BlogAggregatorPortlet_title"
+msgstr ""
+
+msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
 
 msgid "view_mode_Title_label"
@@ -275,4 +285,10 @@ msgid "Archives"
 msgstr ""
 
 msgid "Categories"
+msgstr ""
+
+msgid "label_date_asc"
+msgstr ""
+
+msgid "label_date_desc"
 msgstr ""

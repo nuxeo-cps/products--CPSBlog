@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2005-01-27 13:31default\n"
-"PO-Revision-Date: 2005-01-27 13:32+0200\n"
+"POT-Creation-Date: 2005-01-28 16:48default\n"
+"PO-Revision-Date: 2005-01-28 18:35+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -159,7 +159,8 @@ msgid "blog_edit_category_description_label"
 msgstr "Use this page to edit the attributes of the category"
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
-#: from ../skins/cpsblog/boxes_cpsblog.pt
+#: from ../skins/cpsblog/blogarchive_portlet.pt
+#: ../skins/cpsblog/boxes_cpsblog.pt
 msgid "month"
 msgstr ""
 
@@ -198,6 +199,9 @@ msgstr ""
 "Blog  allows quickly post your thoughts, share your knowledge, interact with "
 "people, and much more."
 
+msgid "portal_type_BlogEntry_title"
+msgstr "Blog Entry"
+
 msgid "portal_type_BlogAggregator_title"
 msgstr "Blog Aggregator"
 
@@ -205,6 +209,12 @@ msgid "portal_type_BlogAggregator_description"
 msgstr ""
 "Blog Aggregator shows entries from several blogs by using defined search "
 "parameters."
+
+msgid "portal_type_BlogAggregatorPortlet_title"
+msgstr "Blog Aggregator Portlet"
+
+msgid "portal_type_BlogAggregatorPortlet_description"
+msgstr "Blog Aggregator Portlet shows entries from several blogs by using defined search parameters."
 
 msgid "view_mode_Title_label"
 msgstr "Title only"
@@ -280,4 +290,10 @@ msgstr "Archives"
 
 msgid "Categories"
 msgstr "Categories"
+
+msgid "label_date_asc"
+msgstr "Creation date"
+
+msgid "label_date_desc"
+msgstr "Creation date desc."
 

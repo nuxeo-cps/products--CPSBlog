@@ -49,10 +49,19 @@ msgstr ""
 msgid "portal_type_Blog_description"
 msgstr ""
 
+msgid "portal_type_BlogEntry_title"
+msgstr ""
+
 msgid "portal_type_BlogAggregator_title"
 msgstr ""
 
 msgid "portal_type_BlogAggregator_description"
+msgstr ""
+
+msgid "portal_type_BlogAggregatorPortlet_title"
+msgstr ""
+
+msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
 
 msgid "view_mode_Title_label"
@@ -128,4 +137,10 @@ msgid "Archives"
 msgstr ""
 
 msgid "Categories"
+msgstr ""
+
+msgid "label_date_asc"
+msgstr ""
+
+msgid "label_date_desc"
 msgstr ""
