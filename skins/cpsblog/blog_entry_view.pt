@@ -135,7 +135,8 @@
 	      <tal:block repeat="item categories">
 		<a href=""
 		   class="blog"
-		   tal:attributes="href string:${here/absolute_url}/archive_view?category=${item}"
+		   tal:define="context python:test(here.aq_inner.aq_parent.portal_type=='Blog', here.aq_inner.aq_parent, here)"
+		   tal:attributes="href string:${context/absolute_url}/archive_view?category=${item}"
 		   tal:content="item">
 		  category name
 		  </a><span tal:replace="string:," tal:condition="not:repeat/item/end">comma</span>
