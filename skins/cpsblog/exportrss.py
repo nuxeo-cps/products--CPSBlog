@@ -89,7 +89,9 @@ for item in items:
     if hasattr(doc, 'summary'):
         summary = strip_html(doc.summary)
     else:
-        summary = strip_html(doc.content)[:200] + '...'
+        summary = strip_html(doc.content)
+        if len(summary) > 200:
+            summary = summary[:200] + '...'
 
     body_text += rss_item % {'item_id': url,
                              'item_title': escape(info.get('title', '')),
