@@ -354,6 +354,21 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
             }
         self.verifyWorkflow(wfdef, wfstates, wftransitions, wfscripts, {})
 
+
+        wfscripts = {
+            'set_entry_effective_date' : {
+            '_owner' : None,
+            'script' : """
+##parameters=state_change
+from DateTime import DateTime
+now = DateTime()
+blog_entry_proxy = state_change.object
+blog_entry_proxy.getEditableContent().setEffectiveDate(now)
+blog_entry_proxy.setEffectiveDate(now)
+blog_entry_proxy.reindexObject(idxs=['effective'])
+"""
+            },
+            }
         # workflow for BlogEntry
         wfdef = {'wfid': 'blog_entry_wf',
                  'permissions': (View, ModifyPortalContent,
@@ -407,6 +422,7 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'trigger_type': TRIGGER_USER_ACTION,
                 'actbox_name': 'action_publish',
                 'actbox_category': 'workflow',
+                'after_script_name' : 'set_entry_effective_date',
                 'actbox_url': '%(content_url)s/blog_entry_publish',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; SectionManager; '
@@ -432,7 +448,7 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                           'guard_expr':''},
                 },
             }
-        self.verifyWorkflow(wfdef, wfstates, wftransitions, {}, {})
+        self.verifyWorkflow(wfdef, wfstates, wftransitions, wfscripts, {})
 
         ########################################
         #   WORKFLOW ASSOCIATIONS
