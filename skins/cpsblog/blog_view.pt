@@ -4,9 +4,9 @@
 
   <metal:block fill-slot="css_slot">
     <link rel="Stylesheet" type="text/css" href=""
-      tal:attributes="href string:${base_url}document.css" />
+	  tal:attributes="href string:${base_url}document.css" />
     <link rel="Stylesheet" type="text/css" href=""
-      tal:attributes="href string:${base_url}blog.css" />
+	  tal:attributes="href string:${base_url}blog.css" />
   </metal:block>
 
   <metal:block fill-slot="main">
