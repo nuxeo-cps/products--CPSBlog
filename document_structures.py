@@ -112,13 +112,15 @@ blog_entry_type = {
                  'name': 'action_new_content',
                  'action': 'string:${object_url}/folder_factories',
                  'condition': '',
-                 'permissions': (ModifyPortalContent,)
+                 'permissions': (ModifyPortalContent,),
+                 'visible' : 0
                  },
                 {'id': 'contents',
                  'name': 'action_folder_contents',
                  'action': 'string:${object_url}/folder_contents',
                  'condition' : '',
-                 'permissions': (ModifyPortalContent,)
+                 'permissions': (ModifyPortalContent,),
+                 'visible' : 0
                  },
                 {'id': 'edit',
                  'name': 'action_edit',
@@ -130,13 +132,15 @@ blog_entry_type = {
                  'name': 'action_metadata',
                  'action': 'string:${object_url}/cpsdocument_metadata',
                  'condition' : 'not:portal/portal_membership/isAnonymousUser',
-                 'permissions': (View,)
+                 'permissions': (View,),
+                 'visible' : 0
                  },
                 {'id': 'localroles',
                  'name': 'action_local_roles',
                  'action': 'string:${object_url}/folder_localrole_form',
                  'condition' : '',
-                 'permissions': ('Change permissions',)
+                 'permissions': ('Change permissions',),
+                 'visible' : 0
                  })
     }
 
