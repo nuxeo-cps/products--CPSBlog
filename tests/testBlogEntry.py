@@ -9,6 +9,7 @@ import CPSBlogTestCase
 import xml.dom
 import xml.dom.minidom
 from DateTime import DateTime
+from Products.CPSBlog.BlogEntry import SUMMARY_MAX_LENGTH
 
 class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
 
@@ -282,6 +283,24 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(
             [tb.created for tb in bentry.getSortedDispatchTrackbacks()],
             dates)
+
+    def testGetEntrySummary(self):
+        bentry = self.bentry
+        text = "Summary test.  Second line."
+        html = "<p>Summary test.</p>&nbsp;&nbsp;Second line.<br/>"
+        bentry.content = html
+        self.assertEqual(text, bentry.getEntrySummary())
+
+        kw = {'Description' : 'Description Test'}
+        bentry.edit(**kw)
+        self.assertEqual(bentry.Description(), bentry.getEntrySummary())
+
+        kw = {'Description' : '',
+              'content' : 'T' * (SUMMARY_MAX_LENGTH + 10)}
+        bentry.edit(**kw)
+        res_str = 'T' * SUMMARY_MAX_LENGTH + ' ...'
+        self.assertEqual(res_str, bentry.getEntrySummary())
+
 
 def test_suite():
     return unittest.TestSuite((
