@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2005-01-19 13:53default\n"
-"PO-Revision-Date: 2005-01-19 13:56+0200\n"
+"POT-Creation-Date: 2005-01-20 02:24default\n"
+"PO-Revision-Date: 2005-01-20 02:24+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Preferred-encodings: utf-8 latin1\n"
 "Domain: default\n"
 "X-Generator: KBabel 1.9\n"
+
+#.   <block>
+#.   	    ${numofcomments (tal replace="python:here.getNumberOfComments(item)")}
+#.   	    comments
+#.   	  </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "${numofcomments} comments"
+msgstr "${numofcomments} comments"
 
 #.   <h2>
 #.         Categories for blog "${blogtitle (tal replace="doc/Title")}"
@@ -38,9 +46,16 @@ msgstr "Category for blog \"${blogtitle}\""
 msgid "Month"
 msgstr ""
 
-#.   <block>
+#.   <block condition="not:isAnon">
 #.   	    Posted by
-#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
+#.   	    ${item_creator (tal content="cname" omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" condition="not:isAnon")}
+#.
+#.   	    @
+#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
+#.   	  </block>
+#.   <block condition="isAnon">
+#.   	    Posted by
+#.   	    ${item_creator (tal content="cname" condition="isAnon")}
 #.   	    @
 #.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
 #.   	  </block>
@@ -57,18 +72,6 @@ msgstr "Posted by ${item_creator} @ ${item_modification}."
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Posted by ${item_creator} @ ${item_modification}."
 msgstr "Posted by ${item_creator} @ ${item_modification}."
-
-#.   <block>
-#.   	    Posted to
-#.   	    ${category (tal content="structure catstr")}
-#.   	    by
-#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
-#.   	    @
-#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
-#.   	  </block>
-#: from ../skins/cpsblog/blog_entry_macros.pt
-msgid "Posted to ${category} by ${item_creator} @ ${item_modification}"
-msgstr "Posted to ${category} by ${item_creator} @ ${item_modification}."
 
 #.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
 #: from ../skins/cpsblog/blog_entry_macros.pt
@@ -98,6 +101,11 @@ msgstr ""
 msgid "blog_add_category_label"
 msgstr "Add category"
 
+#.   <block>Categories:</block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "blog_categories_byline_label"
+msgstr "Categories:"
+
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_delete"
@@ -123,8 +131,7 @@ msgid "blog_edit_category_description_label"
 msgstr "Use this page to edit the attributes of the category"
 
 #.   <span> comments</span>
-#: from ../skins/cpsblog/blog_entry_macros.pt
-#: ../skins/cpsblog/blog_entry_view.pt
+#: from ../skins/cpsblog/blog_entry_view.pt
 msgid "blog_entry_comments_label"
 msgstr "comments"
 
@@ -203,6 +210,9 @@ msgstr "'Search this blog' form."
 msgid "description_blog_blogarchivebox_default"
 msgstr "Blog archives box."
 
+msgid "description_blog_blogcategoriesbox_default"
+msgstr "Blog categories box."
+
 msgid "blog_languages_label_edit"
 msgstr "Languages"
 
@@ -247,4 +257,7 @@ msgstr "Search"
 
 msgid "Archives"
 msgstr "Archives"
+
+msgid "Categories"
+msgstr "Categories"
 

@@ -76,6 +76,9 @@ msgstr ""
 msgid "description_blog_blogarchivebox_default"
 msgstr ""
 
+msgid "description_blog_blogcategoriesbox_default"
+msgstr ""
+
 msgid "blog_languages_label_edit"
 msgstr ""
 
@@ -119,4 +122,7 @@ msgid "Search"
 msgstr ""
 
 msgid "Archives"
+msgstr ""
+
+msgid "Categories"
 msgstr ""
