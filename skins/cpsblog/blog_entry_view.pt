@@ -6,10 +6,14 @@
     <link rel="Stylesheet" type="text/css" href=""
       tal:attributes="href string:${base_url}document.css" />
     <link rel="Stylesheet" type="text/css" href=""
-      tal:attributes="href string:${base_url}forum.css" />
+      tal:attributes="href string:${base_url}blog.css" />
   </metal:block>
 
   <metal:block fill-slot="main">
+    <div metal:use-macro="here/document_actions/macros/document_actions">
+      Document actions (print, rss etc)
+    </div>
+
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
 
     <tal:block tal:condition="python:hasattr(here,'portal_discussion') and
