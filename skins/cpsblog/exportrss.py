@@ -3,12 +3,13 @@
 """Creates an rss 1.0 feed for BlogAggregator and Blog portal types."""
 
 from cgi import escape
+import re
 
 items = []
 if context.portal_type == 'BlogAggregator':
     items = context.getContent().getSearchResults(context)
 elif context.portal_type == 'Blog':
-    items = context.getSortedBlogEntries()
+    items, day_separators = context.getSortedBlogEntries()
 
 # this is the hard coded rss 1.0
 rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -66,7 +67,7 @@ channel_description = "RSS 1.0 export from the folder '%s'." % \
 
 header_text = body_text = ''
 for item in items:
-    info = context.getContentInfo(item, level=1)
+    info = context.getContentInfo(item, level=2)
     url = base_url + info.get('rpath')
     header_text += rss_item_li % {'item_id': url}
     item_date = context.getDateStr(info.get('time'), fmt='iso8601')
@@ -79,10 +80,20 @@ for item in items:
         if value:
             dc_text += rss_item_dc % {'dc_key': key,
                                       'dc_value': escape(value)}
+    doc = info['doc']
+
+    def strip_html(text):
+        # stripping of html tags based on simple regexp
+        return re.sub("<[^>]+>", '', text)
+
+    if hasattr(doc, 'summary'):
+        summary = strip_html(doc.summary)
+    else:
+        summary = strip_html(doc.content)[:200] + '...'
+
     body_text += rss_item % {'item_id': url,
                              'item_title': escape(info.get('title', '')),
-                             'item_description': escape(info.get('description',
-                                                                 '')),
+                             'item_description': escape(summary),
                              'item_link': url,
                              'item_dc': dc_text,}
 
