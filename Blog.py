@@ -70,6 +70,14 @@ class Blog(CPSDocument):
         """Returns category by id."""
         return self.categories.get(catid, None)
 
+    security.declareProtected(View, 'getCategoryByTitle')
+    def getCategoryByTitle(self, title):
+        """Returns category by title."""
+        for catdef in self.getSortedCategories():
+            if catdef['title'] == title:
+                return catdef
+        return None
+
     security.declareProtected(View, 'getSortedCategories')
     def getSortedCategories(self):
         """Returns categories sorted by title."""
