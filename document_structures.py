@@ -495,7 +495,7 @@ blog_entry_layout = {
                      'help': '',
                      'is_i18n': True,
                      'readonly_layout_modes': (),
-                     'hidden_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
                      'hidden_readonly_layout_modes': (),
                      'hidden_empty': False,
                      'hidden_if_expr': '',
