@@ -37,6 +37,7 @@ atom_entry = r"""
     <link rel="alternate" type="text/html" href="%(entry_link)s" />
     <issued>%(entry_issued)s</issued>
     <modified>%(entry_modified)s</modified>
+    <created>%(entry_created)s</created>
     <author>
       <name>%(entry_author)s</name>
     </author>
@@ -82,9 +83,9 @@ for item in items:
     doc = info['doc']
     entry_title = info.get('title', '')
     entry_link = base_url + info.get('rpath')
-    # XXX: issued == doc.created()? or issued it's time when it was published?
     entry_issued = context.getDateStr(doc.effective(), fmt='iso8601_long')
     entry_modified = context.getDateStr(info.get('time'), fmt='iso8601_long')
+    entry_created = context.getDateStr(doc.created(), fmt='iso8601_long')
     entry_author = info.get('creator')
     entry_lang = info.get('language')
     entry_id = construct_id(entry_link, doc.effective())
@@ -123,6 +124,7 @@ for item in items:
                                'entry_link' : entry_link,
                                'entry_issued' : entry_issued,
                                'entry_modified' : entry_modified,
+                               'entry_created' : entry_created,
                                'entry_author' : entry_author,
                                'entry_lang' : entry_lang,
                                'entry_contributors' : entry_contributors,
