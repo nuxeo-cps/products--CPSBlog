@@ -105,7 +105,7 @@ for item in items:
                              'item_link': url,
                              'item_dc': dc_text,}
 
-text = rss_fmt % {'css_url': base_url + 'nuxeo_rss_css.css',
+text = rss_fmt % {'css_url': base_url + 'rss.css',
                   'rdf_ns': rdf_ns,
                   'channel_about': channel_url,
                   'channel_title': escape(context.title_or_id()),
