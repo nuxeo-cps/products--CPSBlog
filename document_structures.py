@@ -839,7 +839,7 @@ blogaggregator_layout = {
                      'hidden_if_expr': '',
                      'css_class': '',
                      'widget_mode_expr': '',
-                     'vocabulary': 'blog_categories',
+                     'vocabulary': 'blog_glob_categories',
                      'translated': True,
                 },
             },
