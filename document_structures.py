@@ -251,6 +251,12 @@ blog_entry_schema = {
                  'is_searchabletext': 0,
                  },
         },
+    'lang': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
     }
 
 blog_entry_flexible_schema = {
@@ -523,6 +529,27 @@ blog_entry_layout = {
                      'translated': True,
                 },
             },
+        'lang': {
+            'type': 'Select Widget',
+            'data': {'title': '',
+                     'fields': ('lang',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'blog_entry_lang_label_edit',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': 'language_voc',
+                     'translated': True,
+                },
+            },
         },
     'layout': {
         'style_prefix': 'layout_default_',
@@ -530,8 +557,9 @@ blog_entry_layout = {
         'rows': [
             [{'widget_id': 'LanguageSelector'}],
             [{'widget_id': 'Title'},],
-            [{'widget_id': 'content'}, ],
-            [{'widget_id': 'Subject'}, ],
+            [{'widget_id': 'content'},],
+            [{'widget_id': 'lang'},],
+            [{'widget_id': 'Subject'},],
             ],
         },
     }
