@@ -62,15 +62,16 @@
 
 
     <tal:block define="accept_trackback_pings doc/accept_trackback_pings|nothing"
-	       condition="accept_trackback_pings|doc/countTrackbacks">
+	       condition="python: accept_trackback_pings or doc.countTrackbacks()">
       <hr/>
       <a name="trackbacks"></a>
       <h4 class="blog">Trackback Pings</h4>
-      <div class="row">
-	<div i18n:translate="">Trackback URL for this entry:</div>
-	<div class="field" tal:content="string:${here/absolute_url}/tbping">
+      <tal:block condition="accept_trackback_pings">
+	<div class="row">
+	  <div i18n:translate="">Trackback URL for this entry:</div>
+	  <div class="field" tal:content="string:${here/absolute_url}/tbping" />
 	</div>
-      </div>
+      </tal:block>
       <div tal:repeat="trackback doc/getSortedTrackbacks">
 	&raquo;
 	<a href="" tal:attributes="href trackback/url" tal:content="trackback/title"></a>
