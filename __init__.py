@@ -27,6 +27,7 @@ from Products.CMFCore.utils import ContentInit
 from Products.CMFCore.DirectoryView import registerDirectory
 from Products.CMFCore.CMFCorePermissions import AddPortalContent
 from zLOG import LOG, INFO, DEBUG
+import Products.CPSBlog.permissions
 
 logKey = 'CPSBlog.__init__'
 
