@@ -17,9 +17,9 @@
 # $Id$
 """ Init """
 
-from Products.CPSBlog.Blog import Blog, addBlogInstance, \
+from Products.CPSBlog.Blog import Blog, addBlog, \
      factory_type_information as blog_fti
-from Products.CPSBlog.BlogEntry import BlogEntry, addBlogEntryInstance, \
+from Products.CPSBlog.BlogEntry import BlogEntry, addBlogEntry, \
      factory_type_information as blogentry_fti
 from Products.CPSBlog.BlogCalendarBox import BlogCalendarBox, \
      addBlogCalendarBox, factory_type_information as blogcalendarbox_fti
@@ -27,7 +27,7 @@ from Products.CMFCore.utils import ContentInit
 from Products.CMFCore.DirectoryView import registerDirectory
 from Products.CMFCore.CMFCorePermissions import AddPortalContent
 from zLOG import LOG, INFO, DEBUG
-from AccessControl import ModuleSecurityInfo
+from AccessControl import ModuleSecurityInfo, allow_class
 import Products.CPSBlog.permissions
 import BlogAggregator
 
@@ -41,8 +41,8 @@ contentClasses = (
     )
 
 contentConstructors = (
-    addBlogInstance,
-    addBlogEntryInstance,
+    addBlog,
+    addBlogEntry,
     addBlogCalendarBox,
     BlogAggregator.addBlogAggregator,
     )
@@ -54,6 +54,8 @@ registerDirectory('skins', globals())
 
 # allow to use Batch from page templates
 ModuleSecurityInfo('Products.CPSBlog.CPSBatch').declarePublic('Batch')
+from urlparse import urlparse
+allow_class(urlparse)
 
 def initialize(registrar):
     ContentInit('CPSBlog Types',
