@@ -198,9 +198,14 @@ class BlogEntry(CPSDocument):
         return self.tbresult(context, **res_kw)
 
     security.declarePublic('tbping')
-    def tbping(self, context, REQUEST=None):
-        """context parameter must be blog entry proxy"""
+    def tbping(self, REQUEST=None):
+        """Handles trackback ping.
+        This method is meant to be called only via web.
+        """
+
         if REQUEST is not None:
+            # REQUEST.PARENTS[0] is our blog entry proxy
+            context = REQUEST.PARENTS[0]
             reqmethod = REQUEST['REQUEST_METHOD'].lower()
 
             if reqmethod == 'get':
