@@ -40,8 +40,8 @@
       </span>
     </div>
 
-    <div metal:use-macro="here/document_actions/macros/document_actions">
-      Document actions (print, rss etc)
+    <div metal:use-macro="here/blog_entry_actions/macros/blog_entry_actions">
+      Document actions (print, etc)
     </div>
 
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
