@@ -66,6 +66,12 @@ blog_type = {
                  'condition' : '',
                  'permissions': (ModifyPortalContent,)
                  },
+                {'id': 'categories',
+                 'name': 'action_manage_blog_categories',
+                 'action': 'string:${object_url}/blog_manage_categories',
+                 'condition' : '',
+                 'permissions': (ModifyPortalContent,)
+                 },
                 {'id': 'metadata',
                  'name': 'action_metadata',
                  'action': 'string:${object_url}/cpsdocument_metadata',
