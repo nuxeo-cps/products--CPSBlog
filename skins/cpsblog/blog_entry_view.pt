@@ -45,13 +45,13 @@
 		i18n:name="item_modification"/>.
 	  </span>
 	  <span tal:content="python:here.getNumberOfComments(here)" />
-	  <span i18n:translate=""> comments</span>
+	  <span i18n:translate="blog_entry_comments_label"> comments</span>
 	</tal:block>
 	<tal:block condition="isAnon">
 	  <span i18n:translate="label_last_modified">Last modified:</span>
 	  <tal:block content="python:here.getDateStr(doc.modification_date, 'medium')"/>
 	  <span tal:content="python:here.getNumberOfComments(here)" />
-	  <span i18n:translate=""> comments</span>
+	  <span i18n:translate="blog_entry_comments_label"> comments</span>
 	</tal:block>
       </small>
     </div>
