@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2005-01-11 22:18default\n"
-"PO-Revision-Date: 2005-01-11 22:34+0200\n"
+"POT-Creation-Date: 2005-01-19 13:53default\n"
+"PO-Revision-Date: 2005-01-19 13:56+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,20 @@ msgstr ""
 "Preferred-encodings: utf-8 latin1\n"
 "Domain: default\n"
 "X-Generator: KBabel 1.9\n"
+
+#.   <h2>
+#.         Categories for blog "${blogtitle (tal replace="doc/Title")}"
+#.       </h2>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "Categories for blog \"${blogtitle}\""
+msgstr "Categories for blog \"${blogtitle}\""
+
+#.   <h2>
+#.         Category for blog "${blogtitle (tal replace="doc/Title")}"
+#.       </h2>
+#: from ../skins/cpsblog/blog_edit_category.pt
+msgid "Category for blog \"${blogtitle}\""
+msgstr "Category for blog \"${blogtitle}\""
 
 #.   <span omit-tag="" content="be_datetime/Month">Month</span>
 #: from ../skins/cpsblog/blog_entry_macros.pt
@@ -79,6 +93,35 @@ msgstr ""
 msgid "batch_previous_x_items"
 msgstr ""
 
+#.   <h2>Add category</h2>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_add_category_label"
+msgstr "Add category"
+
+#.   <td>Delete</td>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_delete"
+msgstr "Delete"
+
+#.   <p>
+#.         Use categories to group your entries for easier reference.
+#.       </p>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_description_label"
+msgstr "Use categories to group your entries for easier reference."
+
+#.   <td width="90%">Categories</td>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_label"
+msgstr "Categories"
+
+#.   <p>
+#.         Use this page to edit the attributes of the category
+#.       </p>
+#: from ../skins/cpsblog/blog_edit_category.pt
+msgid "blog_edit_category_description_label"
+msgstr "Use this page to edit the attributes of the category"
+
 #.   <span> comments</span>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
@@ -98,6 +141,9 @@ msgstr ""
 
 msgid "blog_view_mode_label_edit"
 msgstr "Blog entry view mode"
+
+msgid "action_manage_blog_categories"
+msgstr "Manage categories"
 
 msgid "blog_entries_per_page_label_edit"
 msgstr "Display entries per page"
@@ -195,4 +241,10 @@ msgstr "November"
 
 msgid "December"
 msgstr "December"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Archives"
+msgstr "Archives"
 

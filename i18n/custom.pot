@@ -19,6 +19,9 @@ msgstr ""
 msgid "blog_view_mode_label_edit"
 msgstr ""
 
+msgid "action_manage_blog_categories"
+msgstr ""
+
 msgid "blog_entries_per_page_label_edit"
 msgstr ""
 
@@ -110,4 +113,10 @@ msgid "November"
 msgstr ""
 
 msgid "December"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Archives"
 msgstr ""

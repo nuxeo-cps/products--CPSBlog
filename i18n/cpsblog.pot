@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2005-01-11 22:18default\n"
+"POT-Creation-Date: 2005-01-19 13:53default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -18,6 +18,20 @@ msgstr ""
 "Language-name: Language\n"
 "Preferred-encodings: utf-8 latin1\n"
 "Domain: default\n"
+
+#.   <h2>
+#.         Categories for blog "${blogtitle (tal replace="doc/Title")}"
+#.       </h2>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "Categories for blog \"${blogtitle}\""
+msgstr ""
+
+#.   <h2>
+#.         Category for blog "${blogtitle (tal replace="doc/Title")}"
+#.       </h2>
+#: from ../skins/cpsblog/blog_edit_category.pt
+msgid "Category for blog \"${blogtitle}\""
+msgstr ""
 
 #.   <span omit-tag="" content="be_datetime/Month">Month</span>
 #: from ../skins/cpsblog/blog_entry_macros.pt
@@ -79,6 +93,35 @@ msgstr ""
 msgid "batch_previous_x_items"
 msgstr ""
 
+#.   <h2>Add category</h2>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_add_category_label"
+msgstr ""
+
+#.   <td>Delete</td>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_delete"
+msgstr ""
+
+#.   <p>
+#.         Use categories to group your entries for easier reference.
+#.       </p>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_description_label"
+msgstr ""
+
+#.   <td width="90%">Categories</td>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_label"
+msgstr ""
+
+#.   <p>
+#.         Use this page to edit the attributes of the category
+#.       </p>
+#: from ../skins/cpsblog/blog_edit_category.pt
+msgid "blog_edit_category_description_label"
+msgstr ""
+
 #.   <span> comments</span>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
@@ -97,6 +140,9 @@ msgid "month"
 msgstr ""
 
 msgid "blog_view_mode_label_edit"
+msgstr ""
+
+msgid "action_manage_blog_categories"
 msgstr ""
 
 msgid "blog_entries_per_page_label_edit"
@@ -190,4 +236,10 @@ msgid "November"
 msgstr ""
 
 msgid "December"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Archives"
 msgstr ""
