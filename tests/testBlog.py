@@ -55,6 +55,6 @@ class TestBlog(CPSBlogTestCase.CPSBlogTestCase):
 
 
 def test_suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestBlog))
-    return suite
+    return unittest.TestSuite((
+        unittest.makeSuite(TestBlog),
+        ))
