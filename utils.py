@@ -48,6 +48,10 @@ def post_trackback(trackback_url, title='', excerpt='', url='', blog_name=''):
         m = re.search(r'<error>(.*)</error>', data)
         if m:
             error_code = int(m.group(1))
+        else:
+            # this may be in case, for example, if you try to ping entry
+            # that is in unpublished state
+            error_code = -1
         m = re.search(r'<message>(.*)</message>', data)
         if m:
             msg = m.group(1)
