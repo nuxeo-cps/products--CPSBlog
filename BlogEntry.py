@@ -97,6 +97,11 @@ class BlogEntry(CPSDocument):
                   'message' : '',
                   }
 
+        if not self.accept_trackback_pings:
+            res_kw['error'] = 1
+            res_kw['message'] = "Posting of trackbacks is not allowed at the moment"
+            return self.tbresult(context, **res_kw)
+
         url = REQUEST.form.get('url')
         if url is None:
             res_kw['error'] = 1
