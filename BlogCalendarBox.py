@@ -64,7 +64,7 @@ class BlogCalendarBox(BaseBox):
     events_in = None
     event_types = []
 
-    def __init__(self, id, flash_filename='', **kw):
+    def __init__(self, id, **kw):
         BaseBox.__init__(self, id, provider='cpsblog',
                          category='blogcalendarbox', **kw)
 
