@@ -1,0 +1,11 @@
+<tal:block define="context_obj nocall:options/context_obj;
+		   categories python:context_obj.getCPSBlogCategories(context_obj)"
+	   condition="categories">
+    <ul class="cpsskinsMenu">
+      <li tal:repeat="category categories">
+	<a tal:attributes="href string:${context_obj/absolute_url}/archive_view?category=${category/title}">
+	  <span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
+	</a>
+      </li>
+    </ul>
+</tal:block>
