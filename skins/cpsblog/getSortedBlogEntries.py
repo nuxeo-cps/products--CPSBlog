@@ -1,4 +1,4 @@
-##parameters=sort_on='created',sort_order='reverse'
+##parameters=sort_on='created',sort_order='reverse',start_date=None,end_date=None
 # $Id$
 """Returns tuple containing list of sorted blog entries and day_separators
 list containing ids of blog entry proxies which marks first objects in group
@@ -16,10 +16,18 @@ used for visually groupping blog entries by day."""
 
 catalog = context.portal_catalog
 
-brains = catalog.searchResults(meta_type='BlogEntry',
-                               sort_on=sort_on,
-                               sort_order=sort_order,
-                               path='/'.join(context.getPhysicalPath()))
+query = {}
+query['meta_type'] = 'BlogEntry'
+query['sort_on'] = sort_on
+query['sort_order'] = sort_order
+query['path'] = '/'.join(context.getPhysicalPath())
+
+if start_date and end_date:
+    from DateTime import DateTime
+    query['created'] = {'query' : [DateTime(start_date)-1, DateTime(end_date)+1],
+                        'range' : 'minmax'}
+
+brains = catalog.searchResults(**query)
 
 day_separators = []
 
@@ -27,7 +35,7 @@ if len(brains) > 0:
     day_separators.append(brains[0].getObject().getId())
 
 def get_date(ob):
-    return ob.getContent().created().strftime('%Y-%m-%d')
+    return ob.created().strftime('%Y-%m-%d')
 
 for i in range(1, len(brains)):
     ob = brains[i].getObject()
