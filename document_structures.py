@@ -469,7 +469,7 @@ blog_entry_layout = {
                      'fields': ('body',),
                      'is_required': False,
                      'label': '',
-                     'label_edit': '',
+                     'label_edit': 'label_body',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
