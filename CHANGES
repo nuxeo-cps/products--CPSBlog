@@ -3,17 +3,10 @@ Requires:
 -
 New features:
 ~~~~~~~~~~~~~
-- Added 'BlogManager' role
-- Added incoming Trackbacks support
-- Added dispatching trackbacks. Now user can enter trackback urls to ping
-on blog entry creation or edit form.
-- Added Firefox Live Bookmarks support for blog and blog aggregator objects
+-
 Bug fixes:
 ~~~~~~~~~~
-- Fixed bug that prevented correct display of number of comments for given
-blog entry.
-- Changed title size limitation from 100 characters to 200.
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
-- Effective date is used instead of creation date, for operations related
-to blog entries handling, like sorting, publishing, etc.
+-
