@@ -78,15 +78,15 @@ class ClientInstaller(CPSInstaller):
         # CPSBlog-specific roles and permissions
         #################################################
         self.log("Verifying CPSBlog permissions")
-        forum_perms = {
+        blog_perms = {
              BlogEntryCreate: ('Manager', 'Owner', 'WorkspaceManager',
-                               'BlogPoster', 'SectionManager',
-                               'SectionReviewer',
+                               'BlogManager', 'BlogPoster',
+                               'SectionManager', 'SectionReviewer',
                                ),
              }
 
-        self.verifyRoles(('BlogPoster',))
-        self.setupPortalPermissions(forum_perms)
+        self.verifyRoles(('BlogManager', 'BlogPoster'))
+        self.setupPortalPermissions(blog_perms)
 
         # The product skins have to be set up AFTER the cpsdefault_installer
         # is run, because the product skins override the cpsdefault skins.
@@ -244,8 +244,9 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'transitions':('create_content', 'cut_copy_paste'),
                 'permissions': {View: ('Manager', 'WorkspaceManager',
                                        'WorkspaceMember', 'WorkspaceReader',
-                                       'BlogPoster'),
+                                       'BlogManager', 'BlogPoster'),
                                 ModifyPortalContent: ('Manager', 'Owner',
+                                                      'BlogManager',
                                                       'WorkspaceManager')},
                 },
             }
@@ -263,8 +264,8 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'actbox_category': '',
                 'actbox_url': '',
                 'props': {'guard_permissions':'',
-                          'guard_roles':'Manager; WorkspaceManager; '
-                                        'WorkspaceMember',
+                          'guard_roles':'Manager; BlogManager; '
+                                        'WorkspaceManager; WorkspaceMember',
                           'guard_expr':''},
                 },
             'create': {
@@ -303,8 +304,9 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'transitions': ('create_content', 'cut_copy_paste'),
                 'permissions': {View: ('Manager', 'SectionManager',
                                        'SectionReviewer', 'SectionReader',
-                                       'BlogPoster'),
+                                       'BlogManager', 'BlogPoster'),
                                 ModifyPortalContent: ('Manager', 'Owner',
+                                                      'BlogManager',
                                                       'SectionManager',
                                                       'SectionReviewer')},
                 },
@@ -323,8 +325,9 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'actbox_category': '',
                 'actbox_url': '',
                 'props': {'guard_permissions': '',
-                          'guard_roles': 'Manager; SectionManager; '
-                                         'SectionReviewer; SectionReader',
+                          'guard_roles': 'Manager; BlogManager; '
+                                         'SectionManager; SectionReviewer; '
+                                         'SectionReader',
                           'guard_expr': ''},
                 },
             'create': {
@@ -364,9 +367,11 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                                             'WorkspaceManager',
                                             'SectionManager',
                                             'SectionReviewer',
+                                            'BlogManager',
                                             'BlogPoster'),
                                      ModifyPortalContent: ('Manager',
                                                            'Owner',
+                                                           'BlogManager',
                                                            'WorkspaceManager',
                                                            'SectionManager',
                                                            'SectionReviewer')}
@@ -378,6 +383,7 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                                                  'SectionReader',
                                                  'WorkspaceManager',
                                                  'WorkspaceMember',
+                                                 'BlogManager',
                                                  'BlogPoster')}
                           },
             }
@@ -404,8 +410,9 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'actbox_url': '%(content_url)s/blog_entry_publish',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; SectionManager; '
-                                        'SectionReviewer; BlogPoster; '
-                                        'WorkspaceManager; WorkspaceMember',
+                                        'SectionReviewer; '
+                                        'BlogManager; BlogPoster; '
+                                        'WorkspaceManager; WorkspaceMember; ',
                           'guard_expr':''},
                 },
             'unpublish': {
@@ -419,7 +426,8 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'actbox_url': '%(content_url)s/blog_entry_unpublish',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; SectionManager; '
-                                        'SectionReviewer; BlogPoster; '
+                                        'SectionReviewer; '
+                                        'BlogManager; BlogPoster; '
                                         'WorkspaceManager; WorkspaceMember',
                           'guard_expr':''},
                 },
