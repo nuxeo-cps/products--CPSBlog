@@ -78,10 +78,21 @@
 	    </tal:block>
 	  </tal:block>
 	  -&nbsp;
-	  <tal:block i18n:translate="">
-	    <span i18n:name="numofcomments"
-		  tal:replace="python:here.getNumberOfComments(item)">5</span>
-	    comments
+	  <tal:block define="numofcomments python:here.getNumberOfComments(item)">
+	    <tal:block condition="not: numofcomments" i18n:translate="">
+	      <span i18n:name="numofcomments"
+		    tal:replace="numofcomments">5</span>
+	      comments
+	    </tal:block>
+	    <tal:block condition="numofcomments">
+	      <a href="" class="blog"
+		 tal:attributes="href string:${bentry_url}#comments"
+		 i18n:translate="">
+		<span i18n:name="numofcomments"
+		      tal:replace="numofcomments">5</span>
+		comments
+	      </a>
+	    </tal:block>
 	  </tal:block>
 	  <tal:block condition="item/hasCommentAction">
 	    (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
