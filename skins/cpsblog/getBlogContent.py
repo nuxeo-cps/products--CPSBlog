@@ -21,4 +21,4 @@ while parent:
     if isBlogType(parent):
         return parent.getContent()
     parent = getParentNode(parent)
-    return None
+return None
