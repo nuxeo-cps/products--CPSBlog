@@ -403,6 +403,12 @@ blogaggregator_sort_by_vocabulary = {
         },
     }
 
+blogaggregator_categories_voc = {
+    'type' : 'CPS Method Vocabulary',
+    'data': {'get_vocabulary_method' : 'getVocBlogAggregatorCategories',
+             },
+    }
+
 blog_categories_vocabulary = {
     'type' : 'CPS Method Vocabulary',
     'data': {'get_vocabulary_method' : 'getVocBlogCategories',
@@ -424,6 +430,7 @@ def getDocumentVocabularies(portal=None):
     vocabularies['blogaggregator_status'] = blogaggregator_status_vocabulary
     vocabularies['blogaggregator_modified'] = blogaggregator_modified_vocabulary
     vocabularies['blogaggregator_sort_by'] = blogaggregator_sort_by_vocabulary
+    vocabularies['blogaggregator_categories'] = blogaggregator_categories_voc
     return vocabularies
 
 
@@ -634,7 +641,7 @@ blog_entry_layout = {
                      'css_class': '',
                      'widget_mode_expr': '',
                      'vocabulary': 'blog_categories',
-                     'translated': True,
+                     'translated': False,
                 },
             },
         'lang': {
@@ -839,8 +846,8 @@ blogaggregator_layout = {
                      'hidden_if_expr': '',
                      'css_class': '',
                      'widget_mode_expr': '',
-                     'vocabulary': 'blog_glob_categories',
-                     'translated': True,
+                     'vocabulary': 'blogaggregator_categories',
+                     'translated': False,
                 },
             },
         'query_modified': {
