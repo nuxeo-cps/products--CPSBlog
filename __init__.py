@@ -21,6 +21,8 @@ from Products.CPSBlog.Blog import Blog, addBlogInstance, \
      factory_type_information as blog_fti
 from Products.CPSBlog.BlogEntry import BlogEntry, addBlogEntryInstance, \
      factory_type_information as blogentry_fti
+from Products.CPSBlog.BlogCalendarBox import BlogCalendarBox, \
+     addBlogCalendarBox, factory_type_information as blogcalendarbox_fti
 from Products.CMFCore.utils import ContentInit
 from Products.CMFCore.DirectoryView import registerDirectory
 from Products.CMFCore.CMFCorePermissions import AddPortalContent
@@ -31,14 +33,16 @@ logKey = 'CPSBlog.__init__'
 contentClasses = (
     Blog,
     BlogEntry,
+    BlogCalendarBox,
     )
 
 contentConstructors = (
     addBlogInstance,
-    addBlogEntryInstance
+    addBlogEntryInstance,
+    addBlogCalendarBox,
     )
 
-fti = (blog_fti, blogentry_fti,)
+fti = (blog_fti, blogentry_fti, blogcalendarbox_fti[0])
 
 registerDirectory('skins', globals())
 
