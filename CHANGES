@@ -1,7 +1,6 @@
 Requires:
 ~~~~~~~~~
 - CMFActionIcons
-
 New features:
 ~~~~~~~~~~~~~
 - Added Calendar box which is created on Blog instantiation
@@ -11,11 +10,9 @@ New features:
 - Added BlogAggregator portal type
 - Categories and Archives will be portlets, not boxes if CPSPortlets is installed
 - Added BlogAggregator Portlet
-
 Bug fixes:
 ~~~~~~~~~~
 -
-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Blog is btreefolderishdocument.
