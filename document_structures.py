@@ -623,9 +623,23 @@ blog_entry_flexible_layout = {
                 'height': 3,
             },
         },
+        'photo': {
+            'type': 'Photo Widget',
+            'data': {
+                'title': 'cpsdoc_flex_photo_title',
+                'fields': ['?'],
+                'is_i18n': 1,
+                'label_edit': 'cpsdoc_flex_photo_label_edit',
+                'configurable': 'position',
+                'display_width': 320,
+                'display_height': 200,
+                'size_max': 2*1024*1024,
+                'allow_resize': 1,
+            },
+        },
         },
     'layout': {
-        'flexible_widgets': ['link', 'attachedFile'],
+        'flexible_widgets': ['link', 'attachedFile', 'photo'],
         'style_prefix': 'layout_default_',
         'ncols': 1,
         'rows': [
