@@ -11,11 +11,11 @@ class TestGlobalInstall(CPSBlogTestCase.CPSBlogTestCase):
 
     def afterSetUp(self):
         self.login('manager')
-        from Products.ExternalMethod.ExternalMethod import ExternalMethod
-        installer = ExternalMethod('cpsblog_installer', 'CPSBlog Install',
-                                   'CPSBlog.install', 'install')
-        self.portal._setObject('cpsblog_installer', installer)
-        self.portal.cpsblog_installer()
+        #from Products.ExternalMethod.ExternalMethod import ExternalMethod
+        #installer = ExternalMethod('cpsblog_installer', 'CPSBlog Install',
+        #                           'CPSBlog.install', 'install')
+        #self.portal._setObject('cpsblog_installer', installer)
+        #self.portal.cpsblog_installer()
 
     def beforeTearDown(self):
         self.logout()
