@@ -304,7 +304,7 @@ class ClientInstaller(CPSInstaller):
                 'actbox_url': '%(content_url)s/blog_entry_unpublish',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; SectionManager; '
-                                        'SectionReviewer; BlogPoster'
+                                        'SectionReviewer; BlogPoster; '
                                         'WorkspaceManager; WorkspaceMember',
                           'guard_expr':''},
                 },
