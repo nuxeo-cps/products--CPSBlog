@@ -109,7 +109,15 @@ blog_entry_type = {
     'cps_workspace_wf': 'blog_entry_wf',
     'cps_section_wf': 'blog_entry_wf',
     'use_content_status_history': 1,
-    'actions': ({'id': 'view',
+    'actions': ({'id': 'create',
+                 'name': 'action_create',
+                 'action': 'string:${object_url}/blog_entry_create_form',
+                 'condition': '',
+                 'permission': (ModifyPortalContent,),
+                 'category': 'object',
+                 'visible': 0
+                 },
+                {'id': 'view',
                  'name': 'action_view',
                  'action': 'blog_entry_view',
                  'permissions': (View,)
