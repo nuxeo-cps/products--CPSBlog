@@ -55,6 +55,10 @@ def post_trackback(trackback_url, title='', excerpt='', url='', blog_name=''):
         m = re.search(r'<message>(.*)</message>', data)
         if m:
             msg = m.group(1)
+        else:
+            # set data returned by the server as message, may be helpful
+            # for diagnostics.
+            msg = data
     except Exception, e:
         error_code = -1
         msg = str(e)
