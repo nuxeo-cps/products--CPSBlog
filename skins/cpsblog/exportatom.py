@@ -1,4 +1,4 @@
-##parameters=
+##parameters=REQUEST=None
 # $Id$
 """Creates an ATOM feed for BlogAggregator and Blog portal types."""
 
@@ -136,5 +136,9 @@ text = atom_feed % {'feed_title' : feed_title,
                     'feed_modified' : feed_modified,
                     'entries' : body_text
                     }
+
+if REQUEST:
+   REQUEST.RESPONSE.setHeader('Content-Type', 'application/xml; charset=ISO-8859-15')
+   REQUEST.RESPONSE.setHeader('Cache-Control', 'no-cache')
 
 return text
