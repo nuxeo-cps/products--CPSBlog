@@ -88,6 +88,12 @@ blogaggregator_portlet_schema = {
                  'is_searchabletext': 0,
                  },
         },
+    'search_limit' : {
+        'type': 'CPS Int Field',
+        'data': {'default_expr': 'python:20',
+                 'is_searchabletext': 0,
+                 },
+        },
     }
 
 schemas = {'blogaggregator_portlet': blogaggregator_portlet_schema}
