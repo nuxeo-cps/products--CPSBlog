@@ -129,7 +129,8 @@ kw = {'type_name' : 'Blog Calendar Box',
       'slot_name' : 'right',
       'title' : blog_proxy.Title(),
       'events_in' : blog_rel_url,
-      'event_types' : ('BlogEntry', )
+      'event_types' : ('BlogEntry', ),
+      'box_skin': 'here/box_lib/macros/wbox2'
       }
 blog_proxy.box_create(**kw)
 
@@ -139,6 +140,7 @@ kw = {'type_name' : 'Base Box',
       'title' : 'Search',
       'provider' : 'cpsblog',
       'btype' : 'blogsearch',
+      'box_skin': 'here/box_lib/macros/sbox'
       }
 blog_proxy.box_create(**kw)
 
@@ -148,6 +150,7 @@ kw = {'type_name' : 'Base Box',
       'title' : 'Archives',
       'provider' : 'cpsblog',
       'btype' : 'blogarchive',
+      'box_skin': 'here/box_lib/macros/sbox'
       }
 blog_proxy.box_create(**kw)
             """
