@@ -8,14 +8,8 @@ iterating over batches chain.
     >>> b.numpages
     7
 
-    >>> b.cur_page
-    1
-    >>> b.page_range
-    5
-    >>> b.page_range_start
-    1
-    >>> b.page_range_end
-    4
+    >>> b.cur_page, b.page_range, b.page_range_start, b.page_range_end
+    (1, 5, 1, 4)
     >>> b.nav_list
     [1, 2, 3]
     >>> b.getNavigationUrls({})
@@ -30,14 +24,8 @@ iterating over batches chain.
     [(2, 'b_start:int=6'), (3, 'b_start:int=12')]
 
     >>> b = b.next
-    >>> b.cur_page
-    2
-    >>> b.page_range
-    5
-    >>> b.page_range_start
-    1
-    >>> b.page_range_end
-    5
+    >>> b.cur_page, b.page_range, b.page_range_start, b.page_range_end
+    (2, 5, 1, 5)
     >>> b.nav_list
     [1, 2, 3, 4]
     >>> pprint(b.getNavigationUrls({}))
@@ -55,14 +43,8 @@ iterating over batches chain.
     [(3, 'b_start:int=12'), (4, 'b_start:int=18')]
 
     >>> b = b.next
-    >>> b.cur_page
-    3
-    >>> b.page_range
-    5
-    >>> b.page_range_start
-    1
-    >>> b.page_range_end
-    6
+    >>> b.cur_page, b.page_range, b.page_range_start, b.page_range_end
+    (3, 5, 1, 6)
     >>> b.nav_list
     [1, 2, 3, 4, 5]
     >>> pprint(b.getNavigationUrls({}))
@@ -81,14 +63,8 @@ iterating over batches chain.
     [(4, 'b_start:int=18'), (5, 'b_start:int=24')]
 
     >>> b = b.next
-    >>> b.cur_page
-    4
-    >>> b.page_range
-    5
-    >>> b.page_range_start
-    2
-    >>> b.page_range_end
-    7
+    >>> b.cur_page, b.page_range, b.page_range_start, b.page_range_end
+    (4, 5, 2, 7)
     >>> b.nav_list
     [2, 3, 4, 5, 6]
     >>> pprint(b.getNavigationUrls({}))
@@ -107,14 +83,8 @@ iterating over batches chain.
     [(5, 'b_start:int=24'), (6, 'b_start:int=30')]
 
     >>> b = b.next
-    >>> b.cur_page
-    5
-    >>> b.page_range
-    5
-    >>> b.page_range_start
-    3
-    >>> b.page_range_end
-    8
+    >>> b.cur_page, b.page_range, b.page_range_start, b.page_range_end
+    (5, 5, 3, 8)
     >>> b.nav_list
     [3, 4, 5, 6, 7]
     >>> pprint(b.getNavigationUrls({}))
