@@ -1,0 +1,33 @@
+Test single Batch whith limit case where batch sequence length is equal
+to batch size.
+
+    >>> from Products.CPSBlog.CPSBatch import Batch
+
+    >>> b = Batch([1, 2, 3, 4 ,5], 5)
+    >>> b.previous is None
+    True
+    >>> b.next is None
+    True
+    >>> b.start == 1
+    True
+    >>> b.end
+    5
+    >>> len(b) == b.end
+    True
+    >>> b.sequence_length
+    5
+
+
+Test negative index access
+
+    >>> b = Batch([1, 2, 3, 4 ,5], 5)
+    >>> b[-2]
+    4
+    >>> b[-7]
+    Traceback (most recent call last):
+    ...
+        if index + self.end < self.first: raise IndexError, index
+    IndexError: -7
+    >>> b[-len(b)]
+    1
+
