@@ -73,7 +73,7 @@ blog_type = {
                  },
                 {'id': 'localroles',
                  'name': 'action_local_roles',
-                 'action': 'string:${object_url}/folder_localrole_form',
+                 'action': 'string:${object_url}/blog_localrole_form',
                  'condition' : "python:object.getTypeInfo().cps_proxy_type != 'document'",
                  'permissions': ('Change permissions',)
                  })
