@@ -123,11 +123,15 @@ class ClientInstaller(CPSInstaller):
             '_owner': None,
             'script': """
 ##parameters=state_change
-blog = state_change.object
+blog_proxy = state_change.object
+blog_rel_url = context.portal_url.getRelativeContentURL(blog_proxy)
 kw = {'type_name' : 'Blog Calendar Box',
       'slot_name' : 'right',
-      'title' : blog.Title()}
-blog.box_create(**kw)
+      'title' : blog_proxy.Title(),
+      'events_in' : blog_rel_url,
+      'event_types' : ('BlogEntry', )
+      }
+blog_proxy.box_create(**kw)
             """
             },
             }
