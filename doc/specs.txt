@@ -46,11 +46,13 @@ Features of blogging tool
 1. Default presentation must be nice looking
 1. Data model for blogs and blog entries must match ATOM specs
     (atom:feed and atom:entry elements)
+1. Blog entries can be flagged as public or private (other statuses may be
+    possible il the future).
 
 2. Blog entries are multilingual (I can post in french or english if I want,
     for instance) - blog owner should be able to select list of languages
     he wants to post in (if there is only one one language then there is no
-    widget to select)
+    widget to select) - but not need to think about translations
 2. Blog entries can contain links, images, files
 2. Comments
 2. Templates - way to select design from a library (or create one's own)
