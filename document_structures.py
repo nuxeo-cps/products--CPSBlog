@@ -97,7 +97,7 @@ blog_entry_type = {
     # according to the need to store objects in your document or not.
     'cps_proxy_type': 'document',
     'schemas': ['metadata', 'blog_entry', 'blog_entry_flexible'],
-    'layouts': ['common', 'blog_entry', 'blog_entry_flexible'],
+    'layouts': ['blog_entry', 'blog_entry_flexible'],
     'flexible_layouts' : ['blog_entry_flexible:blog_entry_flexible'],
     'storage_methods': [],
     'cps_workspace_wf': 'blog_entry_wf',
@@ -463,6 +463,24 @@ blog_layout = {
 
 blog_entry_layout = {
     'widgets': {
+        'LanguageSelector': {
+            'type': 'Document Language Select Widget',
+            'data': {
+                'fields': ['Language'],
+            },
+        },
+        'Title': {
+            'type': 'Heading Widget',
+            'data': {
+                'fields': ['Title'],
+                'level': 1,
+                'is_i18n': 1,
+                'is_required': 1,
+                'label_edit': 'cpsdoc_title_label_edit',
+                'display_width': 72,
+                'size_max': 100,
+            },
+        },
         'body': {
             'type': 'Rich Text Editor Widget',
             'data': {'title': '',
@@ -510,6 +528,8 @@ blog_entry_layout = {
         'style_prefix': 'layout_default_',
         'ncols': 1,
         'rows': [
+            [{'widget_id': 'LanguageSelector'}],
+            [{'widget_id': 'Title'},],
             [{'widget_id': 'body'}, ],
             [{'widget_id': 'Subject'}, ],
             ],
