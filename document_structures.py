@@ -94,9 +94,9 @@ blog_entry_type = {
     # Choose between 'document', 'folder' or 'folderishdocument'
     # according to the need to store objects in your document or not.
     'cps_proxy_type': 'document',
-    'schemas': ['metadata', 'common', 'blog_entry'],
-    'layouts': ['common', 'blog_entry'],
-    'flexible_layouts': [],
+    'schemas': ['metadata', 'common', 'blog_entry', 'blog_entry_flexible'],
+    'layouts': ['common', 'blog_entry', 'blog_entry_flexible'],
+    'flexible_layouts' : ['blog_entry_flexible:blog_entry_flexible'],
     'storage_methods': [],
     'cps_workspace_wf': 'workspace_content_wf',
     'cps_section_wf': 'section_content_wf',
@@ -134,10 +134,14 @@ blog_entry_schema = {
         },
     }
 
+blog_entry_flexible_schema = {
+    }
+
 def getDocumentSchemas(portal=None):
     schemas = {}
     schemas['blog'] = blog_schema
     schemas['blog_entry'] = blog_entry_schema
+    schemas['blog_entry_flexible'] = blog_entry_flexible_schema
     return schemas
 
 
@@ -274,8 +278,78 @@ blog_entry_layout = {
         },
     }
 
+
+blog_entry_flexible_layout = {
+    'widgets': {
+        'attachedFile': {
+            'type': 'AttachedFile Widget',
+            'data': {
+                'title': 'cpsdoc_flex_attachedFile_title',
+                'fields': ['?'],
+                'is_i18n': 1,
+                'label_edit': 'cpsdoc_flex_attachedFile_label_edit',
+                'label': 'cpsdoc_flex_attachedFile_label',
+                'css_class': 'ddefault',
+                'hidden_empty': 1,
+                'deletable': 1,
+                'size_max': 4*1024*1024,
+                },
+            },
+        'link': {
+            'type': 'Link Widget',
+            'data': {
+                'title': 'cpsdoc_flex_link_title',
+                'fields': ['?'],
+                'is_i18n': 1,
+                'css_class': 'ddefault',
+                'label_edit': 'cpsdoc_Link_label_edit',
+                'widget_ids': ['link_href',
+                               'link_title',
+                               'link_description'],
+            },
+        },
+        'link_href': {
+            'type': 'URL Widget',
+            'data': {
+                'fields': ['?'],
+                'is_i18n': 1,
+                'label_edit': 'cpsschemas_label_link_href',
+                'display_width': 60,
+            },
+        },
+        'link_title': {
+            'type': 'String Widget',
+            'data': {
+                'fields': ['?'],
+                'is_i18n': 1,
+                'label_edit': 'cpsschemas_label_link_content',
+                'display_width': 60,
+                'size_max': 100,
+            },
+        },
+        'link_description': {
+            'type': 'TextArea Widget',
+            'data': {
+                'fields': ['?'],
+                'is_i18n': 1,
+                'label_edit': 'cpsschemas_label_link_title',
+                'width': 60,
+                'height': 3,
+            },
+        },
+        },
+    'layout': {
+        'flexible_widgets': ['link', 'attachedFile'],
+        'style_prefix': 'layout_default_',
+        'ncols': 1,
+        'rows': [
+            ],
+        },
+    }
+
 def getDocumentLayouts(portal=None):
     layouts = {}
     layouts['blog'] = blog_layout
     layouts['blog_entry'] = blog_entry_layout
+    layouts['blog_entry_flexible'] = blog_entry_flexible_layout
     return layouts
