@@ -82,6 +82,9 @@ msgstr ""
 msgid "blog_languages_label_edit"
 msgstr ""
 
+msgid "action_publish"
+msgstr ""
+
 msgid "January"
 msgstr ""
 

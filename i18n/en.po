@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2005-01-20 02:24default\n"
-"PO-Revision-Date: 2005-01-20 02:24+0200\n"
+"POT-Creation-Date: 2005-01-27 13:31default\n"
+"PO-Revision-Date: 2005-01-27 13:32+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,12 @@ msgstr ""
 #.   	    ${numofcomments (tal replace="python:here.getNumberOfComments(item)")}
 #.   	    comments
 #.   	  </block>
+#.   <block>
+#.   	      ${numofcomments (tal replace="python:here.getNumberOfComments(here)")}
+#.   	      comments
+#.   	    </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
 msgstr "${numofcomments} comments"
 
@@ -41,40 +46,62 @@ msgstr "Categories for blog \"${blogtitle}\""
 msgid "Category for blog \"${blogtitle}\""
 msgstr "Category for blog \"${blogtitle}\""
 
-#.   <span omit-tag="" content="be_datetime/Month">Month</span>
-#: from ../skins/cpsblog/blog_entry_macros.pt
-msgid "Month"
+#.   <block>Main</block>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "Main"
 msgstr ""
 
-#.   <block condition="not:isAnon">
-#.   	    Posted by
-#.   	    ${item_creator (tal content="cname" omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" condition="not:isAnon")}
-#.
-#.   	    @
-#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
-#.   	  </block>
 #.   <block condition="isAnon">
 #.   	    Posted by
-#.   	    ${item_creator (tal content="cname" condition="isAnon")}
+#.   	    ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
 #.   	    @
-#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
+#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.created(), 'medium')")}
 #.   	  </block>
+#.   <block condition="isAnon">
+#.   	      Posted by
+#.   	      ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
+#.   	      @
+#.   	      ${item_modification (tal content="python:here.getDateStr(doc.created(), 'medium')")}
+#.   	    </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
 msgid "Posted by ${item_creator} @ ${item_modification}"
 msgstr "Posted by ${item_creator} @ ${item_modification}."
 
-#.   <span>
+#.   <block condition="not:isAnon">
 #.   	    Posted by
-#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
+#.   	    ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
+#.
 #.   	    @
-#.   	    ${item_modification (tal content="python:here.getDateStr(doc.modification_date, 'medium')")}.
-#.   	  </span>
-#: from ../skins/cpsblog/blog_entry_view.pt
-msgid "Posted by ${item_creator} @ ${item_modification}."
-msgstr "Posted by ${item_creator} @ ${item_modification}."
+#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.created(), 'medium')")}
+#.   	    <block condition="info">
+#.   	      <span>Label Status</span>
+#.   	      <span content="info/review_state" attributes="class info/review_state">Work</span>
+#.   	    </block>
+#.   	  </block>
+#.   <block condition="not:isAnon">
+#.   	      Posted by
+#.   	      ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
+#.
+#.   	      @
+#.   	      ${item_modification (tal content="python:here.getDateStr(doc.created(), 'medium')")}
+#.   	      <block condition="info">
+#.   		<span>Label Status</span>
+#.   		<span content="info/review_state" attributes="class info/review_state">Work</span>
+#.   	      </block>
+#.   	    </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
+msgid ""
+"Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> "
+"<span>Label Status</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Work</span> </block>"
+msgstr ""
 
 #.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
 #: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"
 msgstr "add"
 
@@ -103,6 +130,7 @@ msgstr "Add category"
 
 #.   <block>Categories:</block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
 msgid "blog_categories_byline_label"
 msgstr "Categories:"
 
@@ -129,17 +157,6 @@ msgstr "Categories"
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "blog_edit_category_description_label"
 msgstr "Use this page to edit the attributes of the category"
-
-#.   <span> comments</span>
-#: from ../skins/cpsblog/blog_entry_view.pt
-msgid "blog_entry_comments_label"
-msgstr "comments"
-
-#.   <span omit-tag="">
-#.               Blog entries published</span>
-#: from ../skins/cpsblog/blogcalendar_cpsday_view.pt
-msgid "label_blog_calendar_entries_list"
-msgstr "Blog entries published on"
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/boxes_cpsblog.pt
@@ -215,6 +232,9 @@ msgstr "Blog categories box."
 
 msgid "blog_languages_label_edit"
 msgstr "Languages"
+
+msgid "action_publish"
+msgstr "Publish"
 
 msgid "January"
 msgstr "January"
