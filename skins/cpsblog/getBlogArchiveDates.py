@@ -6,7 +6,7 @@ in form of '%Y/%m/%d' for constructing blog archive search urls."""
 catalog = context.portal_catalog
 
 brains = catalog.searchResults(meta_type='BlogEntry',
-                               sort_on='created',
+                               sort_on='effective',
                                sort_order='reverse',
                                path='/'.join(context.getPhysicalPath()))
 
@@ -14,7 +14,7 @@ brains = catalog.searchResults(meta_type='BlogEntry',
 dyear = {}
 
 for brain in brains:
-    date = brain.getObject().created()
+    date = brain.getObject().effective()
     year = date.year()
     month = date.month()
     if year in dyear:

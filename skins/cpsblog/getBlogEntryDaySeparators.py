@@ -18,7 +18,7 @@ if len(items) > 0:
     day_separators.append(items[0].getId())
 
 def get_date(proxy):
-    return proxy.created().strftime('%Y-%m-%d')
+    return proxy.effective().strftime('%Y-%m-%d')
 
 for i in range(1, len(items)):
     proxy = items[i]

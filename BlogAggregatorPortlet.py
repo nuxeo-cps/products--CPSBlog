@@ -47,7 +47,7 @@ class BlogAggregatorPortlet(CPSPortlet):
 
         if sort_by == 'date':
             catalog = context.portal_catalog
-            query['sort_on'] = 'created'
+            query['sort_on'] = 'effective'
             if direction.startswith('desc'):
                 query['sort_order'] = 'reverse'
             else:

@@ -222,12 +222,12 @@ class BlogEntry(CPSDocument):
     security.declarePublic('start')
     def start(self):
         """Return start time as a string"""
-        return self.created()
+        return self.effective()
 
     security.declarePublic('end')
     def end(self):
         """Return end time as a string"""
-        return self.created()
+        return self.effective()
 
 
 InitializeClass(BlogEntry)

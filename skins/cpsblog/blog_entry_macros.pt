@@ -7,12 +7,12 @@
 
   <div tal:repeat="item batch">
     <span tal:omit-tag=""
-          tal:define="bentry item/getContent; bentry_url item/absolute_url">
+          tal:define="bentry item/getContent; bentry_url item/absolute_url;
+                      effective_date bentry/effective">
       <tal:block condition="day_separators|nothing">
         <h3 class="blog"
-            tal:define="be_datetime bentry/created"
             tal:condition="python: item.getId() in day_separators">
-          <tal:block content="python:here.getDateStr(bentry.created(), 'short')" />
+          <tal:block content="python:here.getDateStr(effective_date, 'short')" />
         </h3>
       </tal:block>
       <h5 class="blog">
@@ -43,7 +43,7 @@
 
             @
             <tal:block
-                content="python:here.getDateStr(bentry.created(), 'medium')"
+                content="python:here.getDateStr(effective_date, 'medium')"
                 i18n:name="item_modification"/>
             <tal:block condition="info">
               <span i18n:translate="label_status">Label Status</span>
@@ -60,7 +60,7 @@
                tal:content="cname" i18n:name="item_creator">Creator</a>
             @
             <tal:block
-                content="python:here.getDateStr(bentry.created(), 'medium')"
+                content="python:here.getDateStr(effective_date, 'medium')"
                 i18n:name="item_modification"/>
           </tal:block>
 

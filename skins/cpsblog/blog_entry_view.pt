@@ -108,7 +108,7 @@
 
               @
               <tal:block
-                  content="python:here.getDateStr(doc.created(), 'medium')"
+                  content="python:here.getDateStr(doc.effective(), 'medium')"
                   i18n:name="item_modification"/>
               <tal:block condition="info">
                 <span i18n:translate="label_status">Label Status</span>
@@ -125,7 +125,7 @@
                  tal:content="cname" i18n:name="item_creator">Creator</a>
               @
               <tal:block
-                  content="python:here.getDateStr(doc.created(), 'medium')"
+                  content="python:here.getDateStr(doc.effective(), 'medium')"
                   i18n:name="item_modification"/>
             </tal:block>
 

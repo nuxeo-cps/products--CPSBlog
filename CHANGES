@@ -14,4 +14,5 @@ Bug fixes:
 blog entry.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
--
+- Effective date is used instead of creation date, for operations related
+to blog entries handling, like sorting, publishing, etc.

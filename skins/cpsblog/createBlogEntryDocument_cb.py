@@ -32,6 +32,10 @@ id = DateTime().strftime('%Y_%m_%d') + '_' + id
 context.invokeFactory(type_name, id, datamodel=datamodel, language=language)
 ob = getattr(context, id)
 
+# set effective date equal to created after creation
+ob.getEditableContent().setEffectiveDate(ob.created())
+ob.setEffectiveDate(ob.created())
+
 context.notifyCPSDocumentCreation(ob=ob)
 
 return ob

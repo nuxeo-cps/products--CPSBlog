@@ -83,11 +83,11 @@ for item in items:
     entry_title = info.get('title', '')
     entry_link = base_url + info.get('rpath')
     # XXX: issued == doc.created()? or issued it's time when it was published?
-    entry_issued = context.getDateStr(doc.created(), fmt='iso8601_long')
+    entry_issued = context.getDateStr(doc.effective(), fmt='iso8601_long')
     entry_modified = context.getDateStr(info.get('time'), fmt='iso8601_long')
     entry_author = info.get('creator')
     entry_lang = info.get('language')
-    entry_id = construct_id(entry_link, doc.created())
+    entry_id = construct_id(entry_link, doc.effective())
 
     entry_contributors = ''
     for contributor in doc.Contributors():

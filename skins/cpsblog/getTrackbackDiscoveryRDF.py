@@ -31,5 +31,5 @@ return output % {'rdf_about' :  context.absolute_url(),
                  'dc_subject' : ','.join(context.getContent().Subject()),
                  'dc_description' : info['description'],
                  'dc_creator' : info['creator'],
-                 'dc_date' : context.created(),
+                 'dc_date' : context.effective(),
                  }
