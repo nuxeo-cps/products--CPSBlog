@@ -331,6 +331,9 @@ class ClientInstaller(CPSInstaller):
         self.setupNeededProducts()
         self.setupTranslations()
 
+        # set custom actions and action icons
+        self.setupActions()
+
         self.log("Ending %s installation" % self.product_name)
 
     def setupCps(self):
@@ -391,6 +394,64 @@ class ClientInstaller(CPSInstaller):
                 description=boxtype['description'],
                 content_meta_type=boxtype['meta_type'],
                 )
+
+    def setupActions(self):
+        from Products.CPSSubscriptions.CPSSubscriptionsPermissions import \
+             CanNotifyContent
+
+        try:
+            ai = self.portal.portal_actionicons
+        except AttributeError:
+            self.log('CMFActionIcons is not installed!')
+            return
+
+        at = self.portal.portal_actions
+
+        document_actions = (
+            ('document_actions', 'print'),
+            ('document_actions', 'mnotify'),
+            ('document_actions', 'rss'),
+            )
+
+        _ac = at._cloneActions()
+        _acn = []
+
+        for action in _ac:
+            if (action.category, action.id) in document_actions:
+                continue
+            _acn.append(action)
+
+        at._actions = tuple(_acn)
+
+        at.addAction('print',
+                     name='Print this page',
+                     action='string:javascript:this.print();',
+                     condition='',
+                     permission='View',
+                     category='document_actions')
+        at.addAction('mnotify',
+                     name='Send a mail notification',
+                     action='string:$object_url/content_notify_email_form',
+                     condition="python:object.portal_type != 'Portal'",
+                     permission=(CanNotifyContent,),
+                     category='document_actions')
+        at.addAction('rss',
+                     name='RSS feed',
+                     action='string:$object_url/exportrss',
+                     condition='',
+                     permission='View',
+                     category='document_actions')
+
+        ai_actions = (
+            ('cps', 'print', 'print_icon.gif', 'Print'),
+            ('cps', 'mnotify', 'mail_icon.gif', 'Mail Notify'),
+            ('cps', 'rss', 'rss.gif', 'RSS')
+            )
+
+        for action in ai_actions:
+            if ai.queryActionIcon(*action[:2]) is None:
+                ai.addActionIcon(*action)
+
 
 def install(self):
     """Installation function for use by a Zope External Method
