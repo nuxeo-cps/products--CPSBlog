@@ -54,7 +54,7 @@
 
 	  <tal:block condition="isAnon" i18n:translate="">
 	    Posted by
-	    <a href="." title="Here"
+	    <a href="." title="Blog"
 	       class="blog"
 	       tal:attributes="href python:item.getBlogProxy().absolute_url()"
 	       tal:content="cname" i18n:name="item_creator">Creator</a>
