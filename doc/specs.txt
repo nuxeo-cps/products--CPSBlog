@@ -183,6 +183,9 @@ More...
 References
 ----------
 
+Good blog design
+    http://www.texturadesign.com/blog_design_bbs/
+
 weblogs: a history and perspective
     http://www.rebeccablood.net/essays/weblog_history.html
 
