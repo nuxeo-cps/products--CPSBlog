@@ -18,11 +18,34 @@
                                                 direction='descending',
 						folder_prefix=rel_url)">
       <div tal:repeat="item items">
-	<span tal:omit-tag="" tal:define="bentry python:item.getObject().getContent()">
-	  <h3 tal:content="bentry/title" />
+	<span
+	    tal:omit-tag=""
+	    tal:define="bentry python:item.getObject().getContent();
+			bentry_url python:item.getObject().absolute_url()">
+	  <h3>
+	    <a href=""
+	       tal:attributes="href bentry_url"
+	       tal:content="bentry/title" />
+	  </h3>
 	  <div tal:content="bentry/description" />
+	  <br/>
 	  <div tal:content="structure bentry/body">
 	  </div>
+	  <div>
+	    <a href=""
+	       tal:attributes="href bentry_url"
+	       i18n:translate="">comments: </a>
+	    <span
+		tal:omit-tag=""
+		tal:content="python:here.getNumberOfComments(item.getObject())" />
+	  </div>
+	  <form
+	      method="post"
+	      action=""
+	      tal:attributes="action string:${bentry_url}/post_comment">
+	    <input type="submit" value="Add Comment" i18n:attributes="value add_comment" />
+	  </form>
+	  <br/>
 	</span>
       </div>
     </tal:block>
