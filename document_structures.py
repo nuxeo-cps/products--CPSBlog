@@ -94,7 +94,7 @@ blog_entry_type = {
     # Choose between 'document', 'folder' or 'folderishdocument'
     # according to the need to store objects in your document or not.
     'cps_proxy_type': 'document',
-    'schemas': ['metadata', 'common', 'blog_entry', 'blog_entry_flexible'],
+    'schemas': ['metadata', 'blog_entry', 'blog_entry_flexible'],
     'layouts': ['common', 'blog_entry', 'blog_entry_flexible'],
     'flexible_layouts' : ['blog_entry_flexible:blog_entry_flexible'],
     'storage_methods': [],
@@ -126,6 +126,42 @@ blog_schema = {
     }
 
 blog_entry_schema = {
+    'preview': {
+        'type': 'CPS Image Field',
+        'data': {
+            'default_expr': 'nothing',
+            'is_searchabletext': 0,
+            'acl_read_permissions': '',
+            'acl_read_roles': '',
+            'acl_read_expr': '',
+            'acl_write_permissions': '',
+            'acl_write_roles': '',
+            'acl_write_expr': '',
+            'read_ignore_storage': 0,
+            'read_process_expr': '',
+            'read_process_dependent_fields': [],
+            'write_ignore_storage': 0,
+            'write_process_expr': '',
+        },
+    },
+    'allow_discussion': {
+        'type': 'CPS Int Field',
+        'data': {
+            'default_expr': 'python:1',
+            'is_searchabletext': 0,
+            'acl_read_permissions': '',
+            'acl_read_roles': '',
+            'acl_read_expr': '',
+            'acl_write_permissions': '',
+            'acl_write_roles': '',
+            'acl_write_expr': '',
+            'read_ignore_storage': 0,
+            'read_process_expr': '',
+            'read_process_dependent_fields': [],
+            'write_ignore_storage': 0,
+            'write_process_expr': '',
+        },
+    },
     'body' : {
         'type': 'CPS String Field',
         'data': {'default_expr': 'string:',
