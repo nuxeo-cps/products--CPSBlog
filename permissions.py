@@ -16,7 +16,7 @@
 #
 # $Id$
 
-from Products.CMFCore.CMFCorePermissions import setDefaultRoles
+from Products.CMFCore.permissions import setDefaultRoles
 
 BlogEntryCreate = 'Create Blog Entry'
 setDefaultRoles(BlogEntryCreate, ('Manager', 'Owner'))

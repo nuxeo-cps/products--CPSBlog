@@ -39,7 +39,7 @@ from Products.CPSBlog.document_structures import \
      getDocumentTypes, getDocumentSchemas, getDocumentLayouts, \
      getDocumentVocabularies
 from Products.CPSInstaller.CPSInstaller import CPSInstaller
-from Products.CMFCore.CMFCorePermissions import \
+from Products.CMFCore.permissions import \
      View, ModifyPortalContent, ManageProperties
 from Products.CPSWorkflow.transitions import \
      TRANSITION_INITIAL_CREATE, \
