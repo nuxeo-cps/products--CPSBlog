@@ -88,7 +88,10 @@ x Support of the TrackBack protocol (see :
     http://www.movabletype.org/docs/mttrackback.html and
     http://www.movabletype.org/trackback/)
 o Automatic trackbacks to a service like http://pingomatic.com/
-o Support for http://topicexchange.com/
+o Use categories / tags to interact with:
+    http://topicexchange.com/
+    Technorati
+    Many others...
 o One can easily add images in the text flow
 o Stats
 o Box / portlets with
@@ -179,6 +182,13 @@ More...
     http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1
     http://www.python.org/~jeremy/weblog/031104d.html
     http://climbtothestars.org/archives/2004/12/11/hosted-blog-platform-test-write-up/
+
+Agregation
+----------
+
+http://www.technorati.com/
+http://www.bloglines.com/
+
 
 References
 ----------
