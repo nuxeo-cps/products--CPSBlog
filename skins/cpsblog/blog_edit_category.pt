@@ -17,7 +17,7 @@
     <h2 i18n:translate="blog_edit_category_label">
       Category for blog "<span tal:omit-tag="" tal:content="doc/Title" />"
     </h2>
-    <p i18n:translate="blog_category_edit_label">
+    <p i18n:translate="blog_edit_category_description_label">
       Use this page to edit the attributes of the category
     </p>
     <form action="" method="post"
