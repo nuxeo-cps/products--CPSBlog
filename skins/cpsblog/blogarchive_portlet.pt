@@ -1,16 +1,15 @@
 <tal:block define="context_obj nocall:options/context_obj;
-		   items python:context_obj.getBlogProxy().getBlogArchiveDates()"
+		   blog_proxy context_obj/getBlogProxy;
+		   items blog_proxy/getBlogArchiveDates"
 	   condition="items">
-  <tal:block define="blog_proxy context_obj/getBlogProxy">
-    <ul class="cpsskinsMenu">
-      <li tal:repeat="archive items">
-	<a tal:attributes="href string:${blog_proxy/absolute_url}/archive/${archive/year}/${archive/month_mm}">
-	  <span tal:omit-tag=""
-		i18n:translate=""
-		tal:content="archive/month_name">month</span>
-	  <span tal:omit-tag="" tal:content="archive/year" />
-	</a>
-      </li>
-    </ul>
-  </tal:block>
+  <ul class="cpsskinsMenu">
+    <li tal:repeat="archive items">
+      <a tal:attributes="href string:${blog_proxy/absolute_url}/archive/${archive/year}/${archive/month_mm}">
+	<span tal:omit-tag=""
+	      i18n:translate=""
+	      tal:content="archive/month_name">month</span>
+	<span tal:omit-tag="" tal:content="archive/year" />
+      </a>
+    </li>
+  </ul>
 </tal:block>
