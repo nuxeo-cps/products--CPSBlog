@@ -1,4 +1,4 @@
-##parameters=sort_on='created',sort_order='reverse',start_date=None,end_date=None
+##parameters=sort_on='created',sort_order='reverse',start_date=None,end_date=None,category=None
 # $Id$
 """Returns list of sorted blog entries."""
 
@@ -14,6 +14,9 @@ if start_date and end_date:
     from DateTime import DateTime
     query['created'] = {'query' : [DateTime(start_date)-1, DateTime(end_date)+1],
                         'range' : 'minmax'}
+
+if category:
+    query['Subject'] = category
 
 brains = catalog.searchResults(**query)
 
