@@ -571,7 +571,7 @@ blog_entry_layout = {
         'lang': {
             'type': 'Select Widget',
             'data': {'title': '',
-                     'fields': ('lang',),
+                     'fields': ('Language',),
                      'is_required': False,
                      'label': '',
                      'label_edit': 'label_language',
@@ -583,6 +583,7 @@ blog_entry_layout = {
                      'hidden_readonly_layout_modes': (),
                      'hidden_empty': False,
                      'hidden_if_expr': '',
+                     'readonly_layout_modes': ('edit', ),
                      'css_class': '',
                      'widget_mode_expr': '',
                      'vocabulary': 'language_voc',
