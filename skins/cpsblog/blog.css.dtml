@@ -57,6 +57,41 @@ A.blog:hover {
   background-color: #fff;
 }
 
+.hiddenStructure {
+  display: block;
+  background: transparent;
+  background-image: none; /* safari bug */
+  border: none;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  margin: -1px 0 0 -1px;
+  width: 1px;
+}
+
+.documentActions {
+  margin: -1.5em 0 -2em 0;
+}
+
+.documentActions ul {
+  margin: 0 0 0.3em 0;
+  float: right;
+  clear: right;
+}
+
+
+.documentActions ul,
+.documentActions li {
+  display: inline;
+  list-style: none;
+  list-style-image: none;
+}
+.documentActions a {
+  border: 0;
+  text-decoration: none;
+}
+
+
 /*
 </dtml-with>
 */
