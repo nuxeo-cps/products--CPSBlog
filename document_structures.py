@@ -532,6 +532,20 @@ blog_entry_layout = {
                 'size_max': 100,
             },
         },
+        'Description': {
+            'type': 'Text Widget',
+            'data': {
+                'fields': ['Description'],
+                'is_i18n': 1,
+                'label_edit': 'cpsdoc_description_label_edit',
+                'label': '',
+                'hidden_layout_modes': ('view', 'create', 'edit'),
+                'css_class': 'ddescription',
+                'width': 72,
+                'height': 5,
+                'render_format': 'text',
+            },
+        },
         'content': {
             'type': 'Rich Text Editor Widget',
             'data': {'title': '',
