@@ -41,7 +41,7 @@ Features of blogging tool
     Ex: http://xxx/blog/2004/12/15/christmas_today
     Or: http://xxx/blog/2004_12_15_christmas_today
     (2nd is inferior, though).
-1. Blog entries can have one or more topics (or categories)
+1. Blog entries can have one or more (flat) topics (or categories)
 1. Archives (by month, by topic), calendar, search
 1. Default presentation must be nice looking
 1. Data model for blogs and blog entries must match ATOM specs
@@ -49,6 +49,7 @@ Features of blogging tool
 1. Blog entries can be flagged as public or private (other statuses may be
     possible il the future).
 
+2. Add a "Search this blog" box like in MT
 2. Blog entries are multilingual (I can post in french or english if I want,
     for instance) - blog owner should be able to select list of languages
     he wants to post in (if there is only one one language then there is no
@@ -58,18 +59,25 @@ Features of blogging tool
 2. Templates - way to select design from a library (or create one's own)
 2. It's easy to add new categories from the posting form
 2. Notifications
+2. Management 
 
 3. Export blog content using RSS and ATOM XML 
     - Must be able to selectively export content using rules
-3. Support of the TrackBack protocol (see : http://www.movabletype.org/docs/mttrackback.html and http://www.movabletype.org/trackback/)
+3. Nested categories
+3. Category management: make easy to edit categories, to move posts en masse
+    from one category to another
 
 4. Import blog content using ATOM XML
+4. Support of the TrackBack protocol (see :
+    http://www.movabletype.org/docs/mttrackback.html and
+    http://www.movabletype.org/trackback/)
 4. Support for http://topicexchange.com/
 4. One can easily add images in the text flow
 
 5. Post using email (w/ PGP signature ?)
 5. Post using ATOM API
-5. Smart rating (with meta-rating) - think Slashdot or Kuro5hin or advogato
+5. Smart rating (with meta-rating) - think Slashdot, Kuro5hin, advogato,
+    lxer.com, linux-community.com
 5. Automatic categorisation of blogs: "Similar posts" using either linguistic
     analysis or collaborative filtering.
 
