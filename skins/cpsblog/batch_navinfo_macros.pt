@@ -1,0 +1,15 @@
+<!-- $Id$ -->
+<!-- batch_navinfo_macros.pt -->
+<metal:block define-macro="navinfo">
+  <tal:block tal:condition="python: batch and batch.numpages > 1">
+    <div class="batchLayout">
+        <span i18n:translate="">
+          Objects: <tal:block replace="batch/start"
+          i18n:name="batch_start" /> - <tal:block replace="batch/end"
+          i18n:name="batch_limit" /> of <tal:block replace="batch/sequence_length"
+          i18n:name="batch_length" />
+         </span>
+    </div>
+  <br />
+ </tal:block>
+</metal:block>
