@@ -101,6 +101,41 @@ blog_entry_type = {
     'cps_workspace_wf': 'workspace_content_wf',
     'cps_section_wf': 'section_content_wf',
     'use_content_status_history': 1,
+    'actions': ({'id': 'view',
+                 'name': 'action_view',
+                 'action': 'blog_entry_view',
+                 'permissions': (View,)
+                 },
+                {'id': 'new_content',
+                 'name': 'action_new_content',
+                 'action': 'string:${object_url}/folder_factories',
+                 'condition': "python:object.getTypeInfo().cps_proxy_type != 'document'",
+                 'permissions': (ModifyPortalContent,)
+                 },
+                {'id': 'contents',
+                 'name': 'action_folder_contents',
+                 'action': 'string:${object_url}/folder_contents',
+                 'condition' : "python:object.getTypeInfo().cps_proxy_type != 'document'",
+                 'permissions': (ModifyPortalContent,)
+                 },
+                {'id': 'edit',
+                 'name': 'action_edit',
+                 'action': 'string:${object_url}/cpsdocument_edit_form',
+                 'condition' : '',
+                 'permissions': (ModifyPortalContent,)
+                 },
+                {'id': 'metadata',
+                 'name': 'action_metadata',
+                 'action': 'string:${object_url}/cpsdocument_metadata',
+                 'condition' : 'not:portal/portal_membership/isAnonymousUser',
+                 'permissions': (View,)
+                 },
+                {'id': 'localroles',
+                 'name': 'action_local_roles',
+                 'action': 'string:${object_url}/folder_localrole_form',
+                 'condition' : "python:object.getTypeInfo().cps_proxy_type != 'document'",
+                 'permissions': ('Change permissions',)
+                 })
     }
 
 def getDocumentTypes(portal=None):
@@ -272,7 +307,7 @@ blog_entry_layout = {
                      'help': '',
                      'is_i18n': True,
                      'readonly_layout_modes': (),
-                     'hidden_layout_modes': ('view',),
+                     'hidden_layout_modes': (),
                      'hidden_readonly_layout_modes': (),
                      'hidden_empty': False,
                      'hidden_if_expr': '',
@@ -293,7 +328,7 @@ blog_entry_layout = {
                      'help': '',
                      'is_i18n': True,
                      'readonly_layout_modes': (),
-                     'hidden_layout_modes': ('view',),
+                     'hidden_layout_modes': (),
                      'hidden_readonly_layout_modes': (),
                      'hidden_empty': False,
                      'hidden_if_expr': '',
