@@ -141,6 +141,15 @@ kw = {'type_name' : 'Base Box',
       'btype' : 'blogsearch',
       }
 blog_proxy.box_create(**kw)
+
+# Archives box
+kw = {'type_name' : 'Base Box',
+      'slot_name' : 'right',
+      'title' : 'Archives',
+      'provider' : 'cpsblog',
+      'btype' : 'blogarchive',
+      }
+blog_proxy.box_create(**kw)
             """
             },
             }
