@@ -10,8 +10,7 @@
   </metal:block>
 
   <metal:block fill-slot="main"
-	       tal:define="doc here/getBlogContent;
-			   context here/getBlogProxy">
+	       tal:define="doc here/getContent">
 
     <h1 i18n:translate="">Blog entries posted in category <span i18n:name="category" tal:replace="request/category|nothing" />
     </h1>
@@ -19,10 +18,12 @@
 	define="start_date request/start_date|nothing;
 		end_date request/end_date|nothing;
 		category request/category|nothing;
+		relative request/relative|nothing;
+		path python: test(relative, None, here.portal_url.getPortalPath());
 		items python: context.getSortedBlogEntries(start_date=start_date,
 		                                           end_date=end_date,
 							   category=category,
-							   path=context.portal_url.getPortalPath());
+							   path=path);
                 day_separators python: here.getBlogEntryDaySeparators(items);
 		Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
 		b_size doc/entries_per_page;
