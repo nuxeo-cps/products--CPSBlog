@@ -27,6 +27,7 @@ from Products.CMFCore.utils import ContentInit
 from Products.CMFCore.DirectoryView import registerDirectory
 from Products.CMFCore.CMFCorePermissions import AddPortalContent
 from zLOG import LOG, INFO, DEBUG
+from AccessControl import ModuleSecurityInfo
 import Products.CPSBlog.permissions
 import BlogAggregator
 
@@ -50,6 +51,9 @@ fti = (blog_fti, blogentry_fti, blogcalendarbox_fti[0],
        BlogAggregator.factory_type_information)
 
 registerDirectory('skins', globals())
+
+# allow to use Batch from page templates
+ModuleSecurityInfo('Products.CPSBlog.CPSBatch').declarePublic('Batch')
 
 def initialize(registrar):
     ContentInit('CPSBlog Types',
