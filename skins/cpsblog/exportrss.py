@@ -9,7 +9,7 @@ items = []
 if context.portal_type == 'BlogAggregator':
     items = context.getContent().getSearchResults(context)
 elif context.portal_type == 'Blog':
-    items, day_separators = context.getSortedBlogEntries()
+    items = context.getSortedBlogEntries()
 
 # this is the hard coded rss 1.0
 rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
