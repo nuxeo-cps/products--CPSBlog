@@ -6,7 +6,8 @@ New features:
 - Added 'BlogManager' role
 Bug fixes:
 ~~~~~~~~~~
--
+- Fixed bug that prevented correct display of number of comments for given
+blog entry.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
