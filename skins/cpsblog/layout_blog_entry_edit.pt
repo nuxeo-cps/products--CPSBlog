@@ -40,9 +40,7 @@
                          tooltip_id python:wid + '_help';
                          css_class python:test(err, 'row error',
                                                test(is_flexible, 'group', 'row'))">
-        <div tal:attributes="class cell/widget_css_class;
-                             id python:widget.widget_group_id or widget.getHtmlWidgetId()+'_widget';
-                             style python:cell['widget_css_class'] == 'hidden' and 'visibility: hidden;;' or 'visibility: visible;;';">
+        <div tal:attributes="class cell/widget_css_class|nothing">
           <div class="label" tal:condition="widget/label_edit"
             tal:attributes="class python:test(is_required, 'label required',
                                               'label')">
