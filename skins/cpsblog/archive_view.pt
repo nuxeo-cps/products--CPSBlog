@@ -18,10 +18,9 @@
 
     <tal:block define="start_date request/start_date|nothing;
 		       end_date request/end_date|nothing;
-		       result python: here.getSortedBlogEntries(start_date=start_date,
-		                                                end_date=end_date);
-		       items python: result[0];
-		       day_separators python: result[1];
+		       items python: here.getSortedBlogEntries(start_date=start_date,
+		                                               end_date=end_date);
+		       day_separators python: here.getBlogEntryDaySeparators(items);
 		       Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
 		       b_size here/entries_per_page;
                        b_start python:0;
