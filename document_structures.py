@@ -277,7 +277,7 @@ blog_layout = {
                      'fields': ('entries_per_page',),
                      'is_required': False,
                      'label': '',
-                     'label_edit': '',
+                     'label_edit': 'blog_entries_per_page_label_edit',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
