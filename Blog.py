@@ -41,7 +41,16 @@ class Blog(CPSDocumentMixin, CMFCatalogAware, CMFBTreeFolder,
         CMFBTreeFolder.__init__(self, id)
         DefaultDublinCoreImpl.__init__(self)
 
-    #security.declareProtected(View, '')
+    security.declarePublic('start')
+    def start(self):
+        """Return start time as a string"""
+        return self.created()
+
+    security.declarePublic('end')
+    def end(self):
+        """Return end time as a string"""
+        return self.created()
+
 
 InitializeClass(Blog)
 
