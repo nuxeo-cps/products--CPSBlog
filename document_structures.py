@@ -490,7 +490,7 @@ blog_entry_layout = {
                      'fields': ('Subject',),
                      'is_required': False,
                      'label': '',
-                     'label_edit': 'Categories',
+                     'label_edit': 'blog_entry_categories_label_edit',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
