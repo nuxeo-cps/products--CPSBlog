@@ -8,10 +8,14 @@ iterating over batches chain.
     >>> b.numpages
     7
 
-First element of b._sequence is 0
-    >>> b._sequence[:10]
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+    >>> b.cur_page
+    1
+    >>> b.page_range
+    5
+    >>> b.page_range_start
+    1
+    >>> b.page_range_end
+    4
     >>> b.nav_list
     [1, 2, 3]
     >>> b.getNavigationUrls({})
@@ -26,6 +30,39 @@ First element of b._sequence is 0
     [(2, 'b_start:int=6'), (3, 'b_start:int=12')]
 
     >>> b = b.next
+    >>> b.cur_page
+    2
+    >>> b.page_range
+    5
+    >>> b.page_range_start
+    1
+    >>> b.page_range_end
+    5
+    >>> b.nav_list
+    [1, 2, 3, 4]
+    >>> pprint(b.getNavigationUrls({}))
+    [(1, 'b_start:int=0'),
+     (2, 'b_start:int=6'),
+     (3, 'b_start:int=12'),
+     (4, 'b_start:int=18')]
+    >>> b.prev_list
+    [1]
+    >>> b.getPrevUrls({})
+    [(1, 'b_start:int=0')]
+    >>> b.next_list
+    [3, 4]
+    >>> b.getNextUrls({})
+    [(3, 'b_start:int=12'), (4, 'b_start:int=18')]
+
+    >>> b = b.next
+    >>> b.cur_page
+    3
+    >>> b.page_range
+    5
+    >>> b.page_range_start
+    1
+    >>> b.page_range_end
+    6
     >>> b.nav_list
     [1, 2, 3, 4, 5]
     >>> pprint(b.getNavigationUrls({}))
@@ -35,71 +72,61 @@ First element of b._sequence is 0
      (4, 'b_start:int=18'),
      (5, 'b_start:int=24')]
     >>> b.prev_list
-    [1]
-    >>> b.getPrevUrls({})
-    [(1, 'b_start:int=0')]
-    >>> b.next_list
-    [3, 4, 5]
-    >>> b.getNextUrls({})
-    [(3, 'b_start:int=12'), (4, 'b_start:int=18'), (5, 'b_start:int=24')]
-
-    >>> b = b.next
-    >>> b.nav_list
-    [1, 2, 3, 4, 5, 6]
-    >>> pprint(b.getNavigationUrls({}))
-    [(1, 'b_start:int=0'),
-     (2, 'b_start:int=6'),
-     (3, 'b_start:int=12'),
-     (4, 'b_start:int=18'),
-     (5, 'b_start:int=24'),
-     (6, 'b_start:int=30')]
-    >>> b.prev_list
     [1, 2]
     >>> b.getPrevUrls({})
     [(1, 'b_start:int=0'), (2, 'b_start:int=6')]
     >>> b.next_list
-    [4, 5, 6]
+    [4, 5]
     >>> b.getNextUrls({})
-    [(4, 'b_start:int=18'), (5, 'b_start:int=24'), (6, 'b_start:int=30')]
+    [(4, 'b_start:int=18'), (5, 'b_start:int=24')]
 
     >>> b = b.next
-    >>> b.nav_list
-    [1, 2, 3, 4, 5, 6, 7]
-    >>> pprint(b.getNavigationUrls({}))
-    [(1, 'b_start:int=0'),
-     (2, 'b_start:int=6'),
-     (3, 'b_start:int=12'),
-     (4, 'b_start:int=18'),
-     (5, 'b_start:int=24'),
-     (6, 'b_start:int=30'),
-     (7, 'b_start:int=36')]
     >>> b.cur_page
     4
-    >>> b.prev_list
-    [1, 2, 3]
-    >>> b.getPrevUrls({})
-    [(1, 'b_start:int=0'), (2, 'b_start:int=6'), (3, 'b_start:int=12')]
-    >>> b.next_list
-    [5, 6, 7]
-    >>> b.getNextUrls({})
-    [(5, 'b_start:int=24'), (6, 'b_start:int=30'), (7, 'b_start:int=36')]
-
-    >>> b = b.next
-    >>> b.cur_page
+    >>> b.page_range
     5
+    >>> b.page_range_start
+    2
+    >>> b.page_range_end
+    7
     >>> b.nav_list
-    [2, 3, 4, 5, 6, 7]
+    [2, 3, 4, 5, 6]
     >>> pprint(b.getNavigationUrls({}))
     [(2, 'b_start:int=6'),
      (3, 'b_start:int=12'),
      (4, 'b_start:int=18'),
      (5, 'b_start:int=24'),
+     (6, 'b_start:int=30')]
+    >>> b.prev_list
+    [2, 3]
+    >>> b.getPrevUrls({})
+    [(2, 'b_start:int=6'), (3, 'b_start:int=12')]
+    >>> b.next_list
+    [5, 6]
+    >>> b.getNextUrls({})
+    [(5, 'b_start:int=24'), (6, 'b_start:int=30')]
+
+    >>> b = b.next
+    >>> b.cur_page
+    5
+    >>> b.page_range
+    5
+    >>> b.page_range_start
+    3
+    >>> b.page_range_end
+    8
+    >>> b.nav_list
+    [3, 4, 5, 6, 7]
+    >>> pprint(b.getNavigationUrls({}))
+    [(3, 'b_start:int=12'),
+     (4, 'b_start:int=18'),
+     (5, 'b_start:int=24'),
      (6, 'b_start:int=30'),
      (7, 'b_start:int=36')]
     >>> b.prev_list
-    [2, 3, 4]
+    [3, 4]
     >>> b.getPrevUrls({})
-    [(2, 'b_start:int=6'), (3, 'b_start:int=12'), (4, 'b_start:int=18')]
+    [(3, 'b_start:int=12'), (4, 'b_start:int=18')]
     >>> b.next_list
     [6, 7]
     >>> b.getNextUrls({})
