@@ -12,4 +12,4 @@ catdef = {'title' : title,
 
 context.getEditableContent().updateCategory(category_id, catdef)
 
-return context.blog_manage_categories()
+REQUEST.RESPONSE.redirect(REQUEST.URL1+'/blog_manage_categories')
