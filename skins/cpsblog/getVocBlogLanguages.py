@@ -15,4 +15,4 @@ if key is not None and is_i18n is not None:
 elif key is not None:
     return lang_voc.get(key)
 
-return ([(lang, lang) for lang in langs])
+return tuple([(lang, lang) for lang in langs])
