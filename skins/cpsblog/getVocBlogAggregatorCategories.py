@@ -22,7 +22,6 @@ if key is not None:
         return key
     return glob_cats_voc.get(key)
 
-
 glob_categories = [(k, v) for k, v in glob_cats_voc.items()]
 
 categories = blog_categories + glob_categories
