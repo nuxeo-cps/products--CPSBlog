@@ -99,10 +99,6 @@ def addBlog(container, id, REQUEST=None, **kw):
     ob = Blog(id, **kw)
     container._setObject(id, ob)
 
-    # FIXME: if REQUEST != None, this will brake
-    # This is not covered by the tests by the way.
-    # Is it useful to be able to add object from the ZMI, BTW ?
-    if REQUEST:
+    if REQUEST is not None:
         ob = container._getOb(id)
-        LOG(log_key, DEBUG, "object = %s" % ob)
         REQUEST.RESPONSE.redirect(ob.absolute_url() + '/manage_main')
