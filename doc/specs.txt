@@ -65,10 +65,11 @@ Features of blogging tool
 
 4. Import blog content using ATOM XML
 4. Support for http://topicexchange.com/
+4. One can easily add images in the text flow
 
 5. Post using email (w/ PGP signature ?)
 5. Post using ATOM API
-5. Smart rating (with meta-rating)
+5. Smart rating (with meta-rating) - think Slashdot or Kuro5hin or advogato
 5. Automatic categorisation of blogs: "Similar posts" using either linguistic
     analysis or collaborative filtering.
 
