@@ -1,0 +1,40 @@
+<!-- $Id$ -->
+<tal:block metal:define-macro="blog_entry_listing"
+	   tal:condition="items"
+	   tal:define="batch python:Batch(items, b_size, int(b_start), orphan=1)">
+
+  <div metal:use-macro="here/batch_navinfo_macros/macros/navinfo" />
+
+  <div tal:repeat="item batch" class="group">
+    <span tal:omit-tag=""
+	  tal:define="bentry item/getContent; bentry_url item/absolute_url">
+      <h3>
+	<a href=""
+	   tal:attributes="href bentry_url"
+	   tal:content="bentry/title" />
+      </h3>
+      <div tal:condition="python:doc.view_mode == 'title_desc' or
+			  doc.view_mode == 'full'"
+	   tal:content="bentry/description" class="row"/>
+      <div tal:condition="python:doc.view_mode == 'full'"
+	   tal:content="structure bentry/body" class="row" />
+      <div class="row">
+	<a href=""
+	   tal:attributes="href bentry_url"
+	   i18n:translate="blog_entry_comments_label">comments</a>:
+	<span
+	    tal:omit-tag=""
+	    tal:content="python:here.getNumberOfComments(item)" />
+      </div>
+      <form method="post"
+	    action=""
+	    tal:attributes="action string:${bentry_url}/post_comment">
+	<input type="submit" value="button_add_comment"
+	       class="standalone" i18n:attributes="value"/>
+      </form>
+    </span>
+  </div>
+
+  <div metal:use-macro="here/batch_nav_macros/macros/navigation" />
+
+</tal:block>
