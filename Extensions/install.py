@@ -41,7 +41,7 @@ from Products.CPSBlog.document_structures import \
 from Products.CPSInstaller.CPSInstaller import CPSInstaller
 from Products.CMFCore.CMFCorePermissions import \
      View, ModifyPortalContent, ManageProperties
-from Products.CPSWorkflow.CPSWorkflowTransitions import \
+from Products.CPSWorkflow.transitions import \
      TRANSITION_INITIAL_CREATE, \
      TRANSITION_ALLOWSUB_CREATE, \
      TRANSITION_ALLOWSUB_COPY, \
