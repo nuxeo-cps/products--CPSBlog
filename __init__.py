@@ -25,7 +25,7 @@ from Products.CPSBlog.BlogCalendarBox import BlogCalendarBox, \
      addBlogCalendarBox, factory_type_information as blogcalendarbox_fti
 from Products.CMFCore.utils import ContentInit
 from Products.CMFCore.DirectoryView import registerDirectory
-from Products.CMFCore.CMFCorePermissions import AddPortalContent
+from Products.CMFCore.permissions import AddPortalContent
 from zLOG import LOG, INFO, DEBUG
 from AccessControl import ModuleSecurityInfo, allow_class
 import Products.CPSBlog.permissions

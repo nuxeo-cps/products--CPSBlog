@@ -21,8 +21,7 @@ from AccessControl import ClassSecurityInfo
 from Products.CPSDocument.CPSDocument import CPSDocument
 from zLOG import LOG, DEBUG
 from BTrees.IOBTree import IOBTree
-from Products.CMFCore.CMFCorePermissions import \
-     View, ModifyPortalContent
+from Products.CMFCore.permissions import View, ModifyPortalContent
 import random
 
 factory_type_information = {}

@@ -16,7 +16,7 @@
 #
 # $Id$
 
-from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
+from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CPSBlog.permissions import BlogEntryCreate
 
 blog_type = {
