@@ -91,7 +91,8 @@ for item in items:
     else:
         summary = strip_html(doc.content)
         if len(summary) > 200:
-            summary = summary[:200] + '...'
+            summary = summary[:200]
+            summary = summary[:summary.rindex(' ')] + '...'
 
     body_text += rss_item % {'item_id': url,
                              'item_title': escape(info.get('title', '')),
