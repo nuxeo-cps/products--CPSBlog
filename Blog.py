@@ -14,23 +14,32 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 #
-# $id$
+# $Id$
 
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
-from Products.CPSDocument.CPSDocument import CPSDocument
-from Products.BTreeFolder2.BTreeFolder2 import BTreeFolder2Base
 from Products.CMFCore.CMFCorePermissions import View
+from Products.CMFCore.PortalContent import PortalContent
+from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
+from Products.BTreeFolder2.CMFBTreeFolder import CMFBTreeFolder
+from Products.CPSDocument.CPSDocument import CPSDocumentMixin
+from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
 
 
 factory_type_information = {}
 
-class Blog(CPSDocument, BTreeFolder2Base):
+class Blog(CPSDocumentMixin, CMFCatalogAware, CMFBTreeFolder,
+           PortalContent, DefaultDublinCoreImpl):
     """Blog that can contain lots of blog entries."""
 
     portal_type = meta_type = 'Blog'
 
     security = ClassSecurityInfo()
+
+    def __init__(self, id, **kw):
+        self.id = id
+        CMFBTreeFolder.__init__(self, id)
+        DefaultDublinCoreImpl.__init__(self)
 
     #security.declareProtected(View, '')
 
