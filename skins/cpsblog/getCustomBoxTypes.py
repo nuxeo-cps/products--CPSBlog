@@ -19,6 +19,14 @@ items = [{'category': 'blogcalendarbox',
                      'desc': 'description_blog_blogsearchbox_default'},
                     ]
           },
+         {'category': 'basebox',
+          'title': 'portal_type_BlogArchiveBox_title',
+          'desc':'portal_type_BlogArchiveBox_description',
+          'types': [{'provider': 'cpsblog',
+                     'id': 'blogarchive',
+                     'desc': 'description_blog_blogarchivebox_default'},
+                    ]
+          },
          ]
 
 return items
