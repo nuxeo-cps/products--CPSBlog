@@ -87,15 +87,16 @@
       </tal:block>
     </tal:block>
 
-    <tal:block tal:condition="python:hasattr(here,'portal_discussion') and
-      hasattr(here.portal_discussion, 'isCommentingAllowedFor')">
-      <tal:block tal:define="comments_allowed
-        python:here.portal_discussion.isCommentingAllowedFor(here);"
-        tal:condition="comments_allowed">
-        <metal:block
-          use-macro="here/forum_comment_lib_view_comments_inline/macros/view_comments_inline" />
-      </tal:block>
-    </tal:block>
+    <div class="rssExport">
+      <a tal:attributes="href string:exportrss"
+	 title="link_rss_export"
+	 i18n:attributes="title">
+	<img src="rss10.png" width="80" height="15" alt="RSS 1.0"
+	     tal:attributes="src string:${base_url}rss10.png"
+	     title="label_rss_export"
+	     i18n:attributes="title"/>
+      </a>
+    </div>
 
   </metal:block>
 
