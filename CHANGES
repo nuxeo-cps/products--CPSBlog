@@ -4,6 +4,7 @@ Requires:
 New features:
 ~~~~~~~~~~~~~
 - Added 'BlogManager' role
+- Added incoming Trackbacks support
 Bug fixes:
 ~~~~~~~~~~
 - Fixed bug that prevented correct display of number of comments for given
