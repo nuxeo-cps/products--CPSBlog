@@ -97,6 +97,9 @@ for item in items:
         # stripping of html tags based on simple regexp
         return re.sub("<[^>]+>", '', text)
 
+    def nbsp_to_space(text):
+        return re.sub('&nbsp;', ' ', text)
+
     if len(doc.Description()) > 0:
         summary = strip_html(doc.Description())
     else:
@@ -119,8 +122,8 @@ for item in items:
                                'entry_author' : entry_author,
                                'entry_lang' : entry_lang,
                                'entry_contributors' : entry_contributors,
-                               'summary' : summary,
-                               'content' : content
+                               'summary' : nbsp_to_space(summary),
+                               'content' : nbsp_to_space(content)
                                }
 
 info = context.getContentInfo(context, level=1)
