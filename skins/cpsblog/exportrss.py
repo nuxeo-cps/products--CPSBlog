@@ -94,7 +94,10 @@ for item in items:
         summary = strip_html(doc.content)
         if len(summary) > DESCRIPTION_MAX_LENGTH:
             summary = summary[:DESCRIPTION_MAX_LENGTH]
-            summary = summary[:summary.rindex(' ')] + '...'
+            i = summary.rfind(' ')
+            if i > 0:
+                summary = summary[:i]
+            summary += '...'
 
     body_text += rss_item % {'item_id': url,
                              'item_title': escape(info.get('title', '')),
