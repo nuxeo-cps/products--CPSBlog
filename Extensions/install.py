@@ -109,7 +109,7 @@ class ClientInstaller(CPSInstaller):
         vocabularies = getDocumentVocabularies(self.portal)
         self.verifyVocabularies(vocabularies)
 
-        self.allowContentTypes(('Blog', 'BlogEntry'), ('Workspace', 'Section'))
+        self.allowContentTypes(('Blog', ), ('Workspace', 'Section'))
 
         self.setupBoxes()
 
