@@ -27,6 +27,7 @@ alongside other CPS servcices (NB: that may change in the future). So services
 (like CPSSkins for template management) that are available in CPS must not be
 duplicated. But integration between services must be seamless.
 
+
 Features of blogging tool
 -------------------------
 
@@ -55,6 +56,7 @@ Features of blogging tool
 
 3. Export blog content using RSS and ATOM XML 
     - Must be able to selectively export content using rules
+3. Support of the TrackBack protocol (see : http://www.movabletype.org/docs/mttrackback.html and http://www.movabletype.org/trackback/)
 
 4. Import blog content using ATOM XML
 
