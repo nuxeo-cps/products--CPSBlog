@@ -100,7 +100,10 @@ for item in items:
         summary = strip_html(doc.content)
         if len(summary) > SUMMARY_MAX_LENGTH:
             summary = summary[:SUMMARY_MAX_LENGTH]
-            summary = summary[:summary.rindex(' ')] + '...'
+            i = summary.rfind(' ')
+            if i > 0:
+                summary = summary[:i]
+            summary += '...'
 
     content = doc.content
 
