@@ -205,6 +205,8 @@ class Batch(ZTUBatch):
         Test with default parameter and check that it returns the same results
         for every batch in chain.
 
+        >>> b.nav_list
+        [1, 2, 3]
         >>> b.getNavigationUrls({})
         [(1, 'b_start:int=0'), (2, 'b_start:int=10'), (3, 'b_start:int=20')]
         >>> b.next.getNavigationUrls({})
