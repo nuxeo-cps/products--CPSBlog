@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2005-02-10 03:34default\n"
+"POT-Creation-Date: 2005-02-21 16:51default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -30,6 +30,12 @@ msgstr ""
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
+msgstr ""
+
+#.   <h1>Blog entries posted in category ${category (tal replace="request/category|nothing")}
+#.       </h1>
+#: from ../skins/cpsblog/archive_view.pt
+msgid "Blog entries posted in category ${category}"
 msgstr ""
 
 #.   <h2>
