@@ -59,6 +59,13 @@ LAYERS = {
     'cpsblog': 'Products/CPSBlog/skins/cpsblog',
     }
 
+try:
+    import Products.CPSPortlets
+except ImportError, e:
+    CPSPORTLETS = False
+else:
+    CPSPORTLETS = True
+
 class ClientInstaller(CPSInstaller):
 
     product_name = 'CPSBlog'
@@ -163,6 +170,57 @@ blog_proxy.box_create(**kw)
             """
             },
             }
+
+        # If True, redefine workflow script
+        if CPSPORTLETS:
+            wfscripts = {
+                'add_blog_boxes': {
+            '_owner': None,
+            'script': """
+##parameters=state_change
+blog_proxy = state_change.object
+blog_rel_url = context.portal_url.getRelativeContentURL(blog_proxy)
+kw = {'type_name' : 'Blog Calendar Box',
+      'slot_name' : 'right',
+      'title' : blog_proxy.Title(),
+      'events_in' : blog_rel_url,
+      'event_types' : ('BlogEntry', ),
+      'box_skin': 'here/box_lib/macros/wbox2'
+      }
+blog_proxy.box_create(**kw)
+
+# Search box
+kw = {'type_name' : 'Base Box',
+      'slot_name' : 'right',
+      'title' : 'Search',
+      'provider' : 'cpsblog',
+      'btype' : 'blogsearch',
+      'box_skin': 'here/box_lib/macros/sbox'
+      }
+blog_proxy.box_create(**kw)
+
+# Archives portlet
+ptool = context.portal_cpsportlets
+
+kw = {'slot' : 'right',
+      'order': 0,
+      'Title' : 'Archives',
+      'render_method' : 'blogarchive_portlet',
+      }
+ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
+
+# Categories portlet
+ptool = context.portal_cpsportlets
+
+kw = {'slot' : 'right',
+      'order': 0,
+      'Title' : 'Categories',
+      'render_method' : 'blogcategories_portlet',
+      }
+ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
+"""
+            },
+                }
 
         # Workspace workflow for Blog
         wfdef = {'wfid': 'blog_workspace_wf',
