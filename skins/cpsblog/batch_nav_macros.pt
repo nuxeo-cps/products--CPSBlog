@@ -56,15 +56,17 @@
     </span>
 
     <!-- Page list with links to next pages for quick navigation -->
-    <span tal:repeat="linklist python:batch.getNextUrls(request.form)"
-	  tal:condition="batch/next_list"
-	  tal:omit-tag="" >
-      <a href=""
-	 tal:define="page_num python:linklist[0];
-		     query python:linklist[1];"
-	 tal:content="page_num"
-	 tal:attributes="href python: '%s?%s' % (url, query)" >
-      </a>
+    <span tal:condition="batch/next_list"
+	  tal:omit-tag="">
+      <span tal:repeat="linklist python:batch.getNextUrls(request.form)"
+	    tal:omit-tag="" >
+	<a href=""
+	   tal:define="page_num python:linklist[0];
+		       query python:linklist[1];"
+	   tal:content="page_num"
+	   tal:attributes="href python: '%s?%s' % (url, query)" >
+	</a>
+      </span>
     </span>
 
     <!-- Link to last page -->
