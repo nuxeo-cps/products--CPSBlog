@@ -118,7 +118,9 @@
 		    tal:replace="python:here.getNumberOfComments(here)">5</span>
 	      comments
 	    </tal:block>
-	    (<a href="" class="blog" tal:attributes="href string:${here/absolute_url}/post_comment" i18n:translate="">add</a>)
+	    <tal:block condition="here/hasCommentAction">
+	      (<a href="" class="blog" tal:attributes="href string:${here/absolute_url}/post_comment" i18n:translate="">add</a>)
+	    </tal:block>
 	  </div>
 
 	</tal:block>
