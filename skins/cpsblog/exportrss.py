@@ -5,6 +5,8 @@
 from cgi import escape
 import re
 
+DESCRIPTION_MAX_LENGTH = 200
+
 items = []
 if context.portal_type == 'BlogAggregator':
     items = context.getContent().getSearchResults(context)
@@ -90,8 +92,8 @@ for item in items:
         summary = strip_html(doc.summary)
     else:
         summary = strip_html(doc.content)
-        if len(summary) > 200:
-            summary = summary[:200]
+        if len(summary) > DESCRIPTION_MAX_LENGTH:
+            summary = summary[:DESCRIPTION_MAX_LENGTH]
             summary = summary[:summary.rindex(' ')] + '...'
 
     body_text += rss_item % {'item_id': url,
