@@ -15,9 +15,7 @@
 # 02111-1307, USA.
 #
 # $Id$
-"""
-  BlogCalendarBox
-"""
+"""BlogCalendarBox"""
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 
@@ -71,10 +69,12 @@ class BlogCalendarBox(BaseBox):
                          category='blogcalendarbox', **kw)
 
     def edit(self, **kw):
-        self.events_in = self.REQUEST.form.get('events_in')
+        self.events_in = self.REQUEST.form.get('events_in') or \
+                         kw.get('events_in')
         if not self.events_in:
             self.events_in = None
-        self.event_types = self.REQUEST.form.get('event_types')
+        self.event_types = self.REQUEST.form.get('event_types') or \
+                           kw.get('event_types')
         if not self.event_types:
             #necessary as the edit form does an inclusion test and
             #thus needs event_types to be a sequence, even if empty
