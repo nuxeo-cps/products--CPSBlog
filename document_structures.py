@@ -574,7 +574,7 @@ blog_entry_layout = {
                      'fields': ('lang',),
                      'is_required': False,
                      'label': '',
-                     'label_edit': 'blog_entry_lang_label_edit',
+                     'label_edit': 'label_language',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
