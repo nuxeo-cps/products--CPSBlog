@@ -109,7 +109,8 @@ class ClientInstaller(CPSInstaller):
         vocabularies = getDocumentVocabularies(self.portal)
         self.verifyVocabularies(vocabularies)
 
-        self.allowContentTypes(('Blog', ), ('Workspace', 'Section'))
+        self.allowContentTypes(('Blog', 'BlogAggregator'),
+                               ('Workspace', 'Section'))
 
         self.setupBoxes()
 
@@ -316,9 +317,11 @@ class ClientInstaller(CPSInstaller):
         #   WORKFLOW ASSOCIATIONS
         ########################################
         ws_chains = { 'Blog': 'blog_workspace_wf',
-                      'BlogEntry': 'blog_entry_wf'}
+                      'BlogEntry': 'blog_entry_wf',
+                      'BlogAggregator' : 'workspace_folder_wf'}
         se_chains = { 'Blog': 'blog_section_wf',
-                      'BlogEntry': 'blog_entry_wf'}
+                      'BlogEntry': 'blog_entry_wf',
+                      'BlogAggregator' : 'section_folder_wf'}
 
         self.verifyLocalWorkflowChains(self.portal['workspaces'],
                                        ws_chains, destructive=1)

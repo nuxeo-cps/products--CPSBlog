@@ -140,10 +140,50 @@ blog_entry_type = {
                  })
     }
 
+
+blogaggregator_type = {
+    'title': "portal_type_BlogAggregator_title",
+    'description': "portal_type_BlogAggregator_description",
+    'content_icon': 'blogaggregator_icon.png',
+    'content_meta_type': 'BlogAggregator',
+    'product': 'CPSBlog',
+    'factory': 'addBlogAggregator',
+    'immediate_view': 'blogaggregator_view',
+    'global_allow': 1,
+    'filter_content_types': 1,
+    'allowed_content_types': [],
+    'allow_discussion': 0,
+    'cps_is_searchable': 1,
+    # Choose between 'document', 'folder' or 'folderishdocument'
+    # according to the need to store objects in your document or not.
+    'cps_proxy_type': 'folderishdocument',
+    'cps_display_as_document_in_listing': True,
+    'schemas': ['metadata', 'common', 'blogaggregator'],
+    'layouts': ['common', 'blogaggregator'],
+    'flexible_layouts': [],
+    'storage_methods': [],
+    'cps_workspace_wf': 'workspace_folder_wf',
+    'cps_section_wf': 'section_folder_wf',
+    'use_content_status_history': 1,
+    'actions': ({'id': 'view',
+                 'name': 'action_view',
+                 'action': 'blogaggregator_view',
+                 'permissions': (View,)
+                 },
+                {'id': 'edit',
+                 'name': 'action_edit',
+                 'action': 'string:${object_url}/cpsdocument_edit_form',
+                 'condition' : '',
+                 'permissions': (ModifyPortalContent,)
+                 })
+    }
+
+
 def getDocumentTypes(portal=None):
     types = {}
     types['Blog'] = blog_type
     types['BlogEntry'] = blog_entry_type
+    types['BlogAggregator'] = blogaggregator_type
     return types
 
 
@@ -216,11 +256,68 @@ blog_entry_schema = {
 blog_entry_flexible_schema = {
     }
 
+blogaggregator_schema = {
+    'query_title': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'query_description': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'query_fulltext': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'query_categories': {
+        'type': 'CPS String Field',
+        'data': {'is_searchabletext': 0,
+                 },
+        },
+    'query_modified': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'query_status': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'view_mode': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'entries_per_page' : {
+        'type': 'CPS Int Field',
+        'data': {'default_expr': 'python:10',
+                 'is_searchabletext': 0,
+                 },
+        },
+    'sort_by': {
+        'type': 'CPS String Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
+    }
+
 def getDocumentSchemas(portal=None):
     schemas = {}
     schemas['blog'] = blog_schema
     schemas['blog_entry'] = blog_entry_schema
     schemas['blog_entry_flexible'] = blog_entry_flexible_schema
+    schemas['blogaggregator'] = blogaggregator_schema
     return schemas
 
 
@@ -241,10 +338,48 @@ blog_categories_vocabulary = {
         },
     }
 
+blogaggregator_status_vocabulary = {
+    'data': {
+        'tuples':(
+            ('published', 'Published', 'label_published'),
+            ('work', 'Work', 'label_work'),
+            ),
+        },
+    }
+
+blogaggregator_modified_vocabulary = {
+    'data': {
+        'tuples':(
+            ('time_last_login', '', 'time_last_login'),
+            ('time_yesterday', '',  'time_yesterday'),
+            ('time_last_week', '', 'time_last_week'),
+            ('time_last_month', '', 'time_last_month'),
+            ),
+        },
+    }
+
+blogaggregator_sort_by_vocabulary = {
+    'data': {
+        'tuples':(
+            ('', "No sort", "label_sort_by"),
+            ('title_asc', "Title ascending", "label_title_asc"),
+            ('title_desc', "Title descending", "label_title_desc"),
+            ('date_asc', "Date ascending", "label_date_asc"),
+            ('date_desc', "Date descending", "label_date_desc"),
+            ('status_asc', "Status ascending", "label_status_asc"),
+            ('status_desc', "Status descending", "label_status_desc"),
+            ),
+        },
+    }
+
+
 def getDocumentVocabularies(portal=None):
     vocabularies = {}
     vocabularies['blog_view_mode'] = blog_view_mode_vocabulary
     vocabularies['blog_categories'] = blog_categories_vocabulary
+    vocabularies['blogaggregator_status'] = blogaggregator_status_vocabulary
+    vocabularies['blogaggregator_modified'] = blogaggregator_modified_vocabulary
+    vocabularies['blogaggregator_sort_by'] = blogaggregator_sort_by_vocabulary
     return vocabularies
 
 
@@ -449,9 +584,220 @@ blog_entry_flexible_layout = {
         },
     }
 
+
+blogaggregator_layout = {
+    'widgets': {
+        'query_title': {
+            'type': 'String Widget',
+            'data': {'title': '',
+                     'fields': ('query_title',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'label_search_title',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': '',
+                     'translated': True,
+                },
+            },
+        'query_description': {
+            'type': 'String Widget',
+            'data': {'title': '',
+                     'fields': ('query_description',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'label_search_description',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': '',
+                     'translated': True,
+                },
+            },
+        'query_fulltext': {
+            'type': 'String Widget',
+            'data': {'title': '',
+                     'fields': ('query_fulltext',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'label_search_full_text',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': '',
+                     'translated': True,
+                },
+            },
+        'query_categories': {
+            'type': 'MultiSelect Widget',
+            'data': {'title': '',
+                     'fields': ('query_categories',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'search_categories_label_edit',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': 'blog_categories',
+                     'translated': True,
+                },
+            },
+        'query_modified': {
+            'type': 'Select Widget',
+            'data': {'title': '',
+                     'fields': ('query_modified',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'label_search_modified_since',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': 'blogaggregator_modified',
+                     'translated': True,
+                },
+            },
+        'query_status': {
+            'type': 'Select Widget',
+            'data': {'title': '',
+                     'fields': ('query_status',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'label_search_status',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': 'blogaggregator_status',
+                     'translated': True,
+                },
+            },
+        'view_mode': {
+            'type': 'Select Widget',
+            'data': {'title': '',
+                     'fields': ('view_mode',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'blog_view_mode_label_edit',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': 'blog_view_mode',
+                     'translated': True,
+                },
+            },
+        'entries_per_page': {
+            'type': 'Int Widget',
+            'data': {'title': '',
+                     'fields': ('entries_per_page',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'label_nb_items',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'width': 3,
+                     'widget_mode_expr': '',
+                     'translated': True,
+                },
+            },
+        'sort_by': {
+            'type': 'Select Widget',
+            'data': {'title': '',
+                     'fields': ('sort_by',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'label_sort_by',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': 'blogaggregator_sort_by',
+                     'translated': True,
+                },
+            },
+        },
+    'layout': {
+        'style_prefix': 'layout_blogaggregator_',
+        'ncols': 1,
+        'rows': [
+            [{'widget_id': 'query_title'}],
+            [{'widget_id': 'query_description'}],
+            [{'widget_id': 'query_fulltext'}],
+            [{'widget_id': 'query_categories'}],
+            [{'widget_id': 'query_modified'}],
+            [{'widget_id': 'query_status'}],
+            [{'widget_id': 'view_mode'}],
+            [{'widget_id': 'entries_per_page'}],
+            [{'widget_id': 'sort_by'}],
+            ],
+        },
+    }
+
 def getDocumentLayouts(portal=None):
     layouts = {}
     layouts['blog'] = blog_layout
     layouts['blog_entry'] = blog_entry_layout
     layouts['blog_entry_flexible'] = blog_entry_flexible_layout
+    layouts['blogaggregator'] = blogaggregator_layout
     return layouts

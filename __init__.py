@@ -28,6 +28,7 @@ from Products.CMFCore.DirectoryView import registerDirectory
 from Products.CMFCore.CMFCorePermissions import AddPortalContent
 from zLOG import LOG, INFO, DEBUG
 import Products.CPSBlog.permissions
+import BlogAggregator
 
 logKey = 'CPSBlog.__init__'
 
@@ -35,15 +36,18 @@ contentClasses = (
     Blog,
     BlogEntry,
     BlogCalendarBox,
+    BlogAggregator.BlogAggregator,
     )
 
 contentConstructors = (
     addBlogInstance,
     addBlogEntryInstance,
     addBlogCalendarBox,
+    BlogAggregator.addBlogAggregator,
     )
 
-fti = (blog_fti, blogentry_fti, blogcalendarbox_fti[0])
+fti = (blog_fti, blogentry_fti, blogcalendarbox_fti[0],
+       BlogAggregator.factory_type_information)
 
 registerDirectory('skins', globals())
 
