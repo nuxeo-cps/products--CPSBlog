@@ -19,7 +19,15 @@ elif key is not None:
 blog_categories = [(cat['title'], cat['title']) for cat
                    in blog.getSortedCategories()]
 
-glob_categories = [(k, v) for k, v in glob_cats_voc.items()]
+glob_categories = []
+
+for k, v in glob_cats_voc.items():
+    for bk, bv in blog_categories:
+        if bk == k:
+            break
+    else:
+        glob_categories.append((k, v))
+
 
 categories = blog_categories + glob_categories
 categories.sort()
