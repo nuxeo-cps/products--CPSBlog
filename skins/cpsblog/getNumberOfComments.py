@@ -9,6 +9,9 @@ This gives us total number of comments posts to proxy_blogentry.
 path = list(context.portal_url.getRelativeContentPath(proxy_blogentry))
 path.insert(-1, '.cps_discussions')
 path = '/'.join(path)
-obj = context.restrictedTraverse(path)
-
-return len(obj.objectIds())
+try:
+    obj = context.restrictedTraverse(path)
+except:
+    return 0
+else:
+    return len(obj.objectIds())
