@@ -456,6 +456,7 @@ blog_proxy.box_create(**kw)
             ('document_actions', 'print'),
             ('document_actions', 'mnotify'),
             ('document_actions', 'rss'),
+            ('document_actions', 'atom'),
             )
 
         _ac = at._cloneActions()
@@ -486,11 +487,18 @@ blog_proxy.box_create(**kw)
                      condition='',
                      permission='View',
                      category='document_actions')
+        at.addAction('atom',
+                     name='ATOM feed',
+                     action='string:$object_url/exportatom',
+                     condition='',
+                     permission='View',
+                     category='document_actions')
 
         ai_actions = (
             ('cps', 'print', 'print_icon.gif', 'Print'),
             ('cps', 'mnotify', 'mail_icon.gif', 'Mail Notify'),
-            ('cps', 'rss', 'rss.gif', 'RSS')
+            ('cps', 'rss', 'rss.gif', 'RSS'),
+            ('cps', 'atom', 'blogatom.png', 'ATOM'),
             )
 
         for action in ai_actions:
