@@ -1,0 +1,37 @@
+<html metal:use-macro="here/content_lib_master/macros/master">
+  <metal:block fill-slot="header">
+  </metal:block>
+
+  <metal:block fill-slot="css_slot">
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}document.css" />
+    <link rel="Stylesheet" type="text/css" href=""
+      tal:attributes="href string:${base_url}blog.css" />
+  </metal:block>
+
+  <metal:block fill-slot="main">
+    <div metal:use-macro="here/document_actions/macros/document_actions">
+      Document actions (print, rss etc)
+    </div>
+
+    <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
+
+    <tal:block define="start_date request/start_date|nothing;
+		       end_date request/end_date|nothing;
+		       result python: here.getSortedBlogEntries(start_date=start_date,
+		                                                end_date=end_date);
+		       items python: result[0];
+		       day_separators python: result[1];
+		       Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
+		       b_size here/entries_per_page;
+                       b_start python:0;
+                       b_start request/b_start | b_start">
+
+      <span tal:omit-tag=""
+	    metal:use-macro="here/blog_entry_macros/macros/blog_entry_listing" />
+
+    </tal:block>
+
+  </metal:block>
+
+</html>
