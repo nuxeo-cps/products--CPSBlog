@@ -5,6 +5,8 @@ New features:
 ~~~~~~~~~~~~~
 - Added 'BlogManager' role
 - Added incoming Trackbacks support
+- Added dispatching trackbacks. Now user can enter trackback urls to ping
+on blog entry creation or edit form.
 Bug fixes:
 ~~~~~~~~~~
 - Fixed bug that prevented correct display of number of comments for given
