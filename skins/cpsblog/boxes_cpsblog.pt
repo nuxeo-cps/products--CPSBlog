@@ -119,7 +119,7 @@
 
 
 <metal:block define-macro="basebox_blogarchive"
-	     tal:define="items python:here.getBlogProxy().getBlogArchiveDates">
+	     tal:define="items python:here.getBlogProxy().getBlogArchiveDates()">
   <tal:block condition="items">
     <metal:block use-macro="python:path(box['settings']['box_skin'])">
       <metal:block fill-slot="box_title">
