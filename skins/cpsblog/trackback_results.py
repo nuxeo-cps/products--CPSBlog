@@ -22,7 +22,7 @@ if error:
                      'message' : message,
                      }
 
-if kw.get('list_trackbacks') is None:
+if not kw.get('list_trackbacks'):
     # successfull POST ping
     output = """<?xml version="1.0" encoding="ISO-8859-15"?>
     <response>
