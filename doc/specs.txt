@@ -13,11 +13,12 @@ the Nuxeo public websites (linux-center, zopefr, pythonfr, openofficefr...).
 
 2. Must support syndication and aggregation, so that one doesn't need to
 post the same news on 3 or 5 different web sites. Publication on different
-sites will be supported by rules and/or workflow.
+sites will be supported by rules and/or workflow. ATOM will be the prefered
+format for syndication, RSS will also be supported.
 
-4. Start simple, but expect to become powerful. Think "knowledge management":
-Should be thought as a tool for collective knowledge building, not only for
-news publishing.
+4. Start simple, but expect to become powerful over time. Think "knowledge
+management": Should be thought as a tool for collective knowledge building over
+time, not only for publishing news that get forgotten afterwards.
 
 5. Use the CPS Platform framework as much as possible, but don't overdo it.
 
@@ -37,6 +38,8 @@ Features of blogging tool
 1. Blog entries can have one or more topics (or categories)
 1. Archives (by month, by topic), calendar, search
 1. Default presentation must be nice looking
+1. Data model for blog entries must match ATOM specs
+
 2. Blog entries are multilingual (I can post in french or english if I want,
     for instance)
 2. Blog entries can contain links, images, files
@@ -44,14 +47,18 @@ Features of blogging tool
 2. Templates
 2. It's easy to add new categories from the posting form
 2. Notifications
+
 3. Export blog content using RSS and ATOM XML 
     - Must be able to selectively export content using rules
+
 4. Import blog content using ATOM XML
+
 5. Post using email (w/ PGP signature ?)
 5. Post using ATOM API
 5. Smart rating (with meta-rating)
 5. Automatic categorisation of blogs: "Similar posts" using either linguistic
     analysis or collaborative filtering.
+
 6. Anti-spam on comments
 
 Features of blog aggreation tool
