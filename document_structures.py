@@ -93,7 +93,7 @@ blog_entry_type = {
     'content_meta_type': 'BlogEntry',
     'product': 'CPSBlog',
     'factory': 'addBlogEntry',
-    'immediate_view': 'cpsdocument_view',
+    'immediate_view': '',
     'global_allow': 1,
     'filter_content_types': 1,
     'allowed_content_types': [],
