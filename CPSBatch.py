@@ -17,13 +17,107 @@
 # $Id$
 
 from ZTUtils.Batch import Batch as ZTUBatch
-from ZTUtils.Batch import LazyPrevBatch, LazyNextBatch, LazySequenceLength
 from ZTUtils.Batch import opt
 from ZTUtils import make_query
+# XXX calling 'from ExtensionClass import Base' makes doctests fail
+import ExtensionClass
+
+# These classes have to be duplicated from ZTUtils.Batch, so that
+# proper Batch class will be used.
+class LazyPrevBatch(ExtensionClass.Base):
+    def __of__(self, parent):
+        return Batch(parent._sequence, parent._size,
+                     parent.first - parent._size + parent.overlap, 0,
+                     parent.orphan, parent.overlap)
+
+class LazyNextBatch(ExtensionClass.Base):
+    def __of__(self, parent):
+        try: parent._sequence[parent.end]
+        except IndexError: return None
+        return Batch(parent._sequence, parent._size,
+                     parent.end - parent.overlap, 0,
+                     parent.orphan, parent.overlap)
+
+class LazySequenceLength(ExtensionClass.Base):
+    def __of__(self, parent):
+        parent.sequence_length = l = len(parent._sequence)
+        return l
 
 
 class Batch(ZTUBatch):
-    """Handles sequence batches."""
+    """Handles sequence batches.
+
+    Testing empty Batch
+
+    >>> b = Batch([], 5)
+    >>> b.previous is None
+    True
+    >>> b.next is None
+    True
+    >>> len(b) == b.start == b.end == 0
+    True
+
+
+    Test single Batch
+
+    >>> b = Batch([1], 5)
+    >>> b.previous is None
+    True
+    >>> b.next is None
+    True
+    >>> b.start == 1
+    True
+    >>> b.end == 1
+    True
+    >>> len(b)
+    1
+    >>> b.sequence_length
+    1
+
+
+    Test orphans
+
+    >>> b = Batch(range(6), 5, orphan=3)
+    >>> b.next is None
+    True
+    >>> len(b)
+    6
+    >>> b.sequence_length
+    6
+    >>> b = Batch(range(7), 5, orphan=3)
+    >>> b.next is None
+    True
+    >>> len(b)
+    7
+    >>> b.sequence_length
+    7
+    >>> b = Batch(range(8), 5)
+    >>> len(b)
+    5
+    >>> b.sequence_length
+    8
+    >>> len(b.next)
+    3
+
+
+    Test limit case where batch length is equal to size + orphans
+
+    >>> b = Batch(range(12), size=10, start=1, end=0, orphan=3, overlap=0)
+    >>> b.length
+    11
+    >>> b.end
+    12
+    >>> b = Batch(range(14), size=10, start=1, end=0, orphan=3, overlap=0)
+    >>> b.length
+    13
+    >>> b.end
+    14
+    >>> b = Batch(range(15), size=10, start=1, end=0, orphan=3, overlap=0)
+    >>> b.length
+    10
+    >>> b.end
+    11
+    """
     __allow_access_to_unprotected_subobjects__ = 1
 
     previous = LazyPrevBatch()
@@ -72,7 +166,31 @@ class Batch(ZTUBatch):
             self.next_list = range(self.cur_page + 1, self.page_range_end)
 
     def getPageUrl(self, form_dict, page_number=None):
-        """Makes the url for a given page"""
+        """Makes the url for a given page
+
+        >>> b = Batch(range(30), size=10, overlap=0)
+
+        Test method with default value of page_number
+
+        >>> b.getPageUrl({})
+        'b_start:int=0'
+
+        Pass some page_number values
+
+        >>> b.getPageUrl({}, 1)
+        'b_start:int=0'
+        >>> b.getPageUrl({}, 2)
+        'b_start:int=10'
+        >>> b.getPageUrl({}, 3)
+        'b_start:int=20'
+
+        Test method with default value of page_number for next batches
+
+        >>> b.next.getPageUrl({})
+        'b_start:int=10'
+        >>> b.next.next.getPageUrl({})
+        'b_start:int=20'
+        """
         if page_number is None:
             page_number = self.cur_page
         b_start = page_number * (self.size - self.overlap) - self.size
