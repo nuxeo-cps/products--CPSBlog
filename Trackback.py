@@ -21,6 +21,7 @@ from AccessControl import ClassSecurityInfo
 from Globals import Persistent
 from DateTime import DateTime
 import Globals
+from Products.CPSBlog.utils import post_trackback
 
 class Trackback(Persistent, Implicit):
     security = ClassSecurityInfo()
@@ -36,3 +37,25 @@ class Trackback(Persistent, Implicit):
         self.created = DateTime()
 
 Globals.InitializeClass(Trackback)
+
+class DispatchTrackback(Persistent, Implicit):
+    security = ClassSecurityInfo()
+
+    security.setDefaultAccess('allow')
+
+    def __init__(self, id, trackback_url):
+        self.id = id
+        self.trackback_url = trackback_url
+        self.sent = False
+        self.created = DateTime()
+
+    def send(self, title, excerpt, url, blog_name):
+        err, msg = post_trackback(self.trackback_url, title=title,
+                                  excerpt=excerpt, url=url,
+                                  blog_name=blog_name)
+        if not err:
+            self.sent = True
+
+        return err, msg
+
+Globals.InitializeClass(DispatchTrackback)
