@@ -245,7 +245,7 @@ blog_entry_schema = {
             'write_process_expr': '',
         },
     },
-    'body' : {
+    'content' : {
         'type': 'CPS String Field',
         'data': {'default_expr': 'string:',
                  'is_searchabletext': 0,
@@ -481,13 +481,13 @@ blog_entry_layout = {
                 'size_max': 100,
             },
         },
-        'body': {
+        'content': {
             'type': 'Rich Text Editor Widget',
             'data': {'title': '',
-                     'fields': ('body',),
+                     'fields': ('content',),
                      'is_required': False,
                      'label': '',
-                     'label_edit': 'label_body',
+                     'label_edit': 'label_content',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
@@ -530,7 +530,7 @@ blog_entry_layout = {
         'rows': [
             [{'widget_id': 'LanguageSelector'}],
             [{'widget_id': 'Title'},],
-            [{'widget_id': 'body'}, ],
+            [{'widget_id': 'content'}, ],
             [{'widget_id': 'Subject'}, ],
             ],
         },

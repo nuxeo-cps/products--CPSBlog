@@ -18,7 +18,7 @@
 			  doc.view_mode == 'full'"
 	   tal:content="bentry/description" class="row"/>
       <div tal:condition="python:doc.view_mode == 'full'"
-	   tal:content="structure bentry/body" class="row" />
+	   tal:content="structure bentry/content" class="row" />
       <tal:block define="catstr python:here.getCategoriesString(item);
 			 dname python:here.portal_directories.members.getEntry(doc.Creator(), default=None);
 			 cname dname/fullname|doc/Creator;
