@@ -37,7 +37,7 @@ blog_type = {
     'cps_proxy_type': 'folderishdocument',
     'cps_display_as_document_in_listing': True,
     'schemas': ['metadata', 'common', 'blog'],
-    'layouts': ['common', 'blog'],
+    'layouts': ['blog'],
     'flexible_layouts': [],
     'storage_methods': [],
     'cps_workspace_wf': 'blog_workspace_wf',
@@ -396,6 +396,37 @@ def getDocumentVocabularies(portal=None):
 
 blog_layout = {
     'widgets': {
+        'LanguageSelector': {
+            'type': 'Document Language Select Widget',
+            'data': {
+                'fields': ['Language'],
+            },
+        },
+        'Title': {
+            'type': 'Heading Widget',
+            'data': {
+                'fields': ['Title'],
+                'level': 1,
+                'is_i18n': 1,
+                'is_required': 1,
+                'label_edit': 'cpsdoc_title_label_edit',
+                'display_width': 72,
+                'size_max': 100,
+            },
+        },
+        'Description': {
+            'type': 'Text Widget',
+            'data': {
+                'fields': ['Description'],
+                'is_i18n': 1,
+                'label_edit': 'cpsdoc_description_label_edit',
+                'label': '',
+                'css_class': 'ddescription',
+                'width': 72,
+                'height': 5,
+                'render_format': 'text',
+            },
+        },
         'view_mode': {
             'type': 'Select Widget',
             'data': {'title': '',
@@ -455,6 +486,7 @@ blog_layout = {
                      'hidden_if_expr': '',
                      'css_class': '',
                      'width': 3,
+                     'render_position' : 'right',
                      'widget_mode_expr': '',
                      'translated': True,
                 },
@@ -464,6 +496,9 @@ blog_layout = {
         'style_prefix': 'layout_blog_',
         'ncols': 1,
         'rows': [
+            [{'widget_id': 'LanguageSelector'}],
+            [{'widget_id': 'Title'},],
+            [{'widget_id': 'Description'},],
             [{'widget_id': 'view_mode'}],
             [{'widget_id': 'entries_per_page'}],
             [{'widget_id': 'author_photo'}],
