@@ -1,7 +1,113 @@
-Test single Batch whith limit case where batch sequence length is equal
-to batch size.
+Test getNavigationUrls, getPrevUrls and getNextUrls in bunch when manually
+iterating over batches chain.
 
     >>> from Products.CPSBlog.CPSBatch import Batch
+    >>> from pprint import pprint
+
+    >>> b = Batch(sequence=range(42), size=6, overlap=0, page_range=5)
+    >>> b.numpages
+    7
+
+First element of b._sequence is 0
+    >>> b._sequence[:10]
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    >>> b.nav_list
+    [1, 2, 3]
+    >>> b.getNavigationUrls({})
+    [(1, 'b_start:int=0'), (2, 'b_start:int=6'), (3, 'b_start:int=12')]
+    >>> b.prev_list
+    []
+    >>> b.getPrevUrls({})
+    []
+    >>> b.next_list
+    [2, 3]
+    >>> b.getNextUrls({})
+    [(2, 'b_start:int=6'), (3, 'b_start:int=12')]
+
+    >>> b = b.next
+    >>> b.nav_list
+    [1, 2, 3, 4, 5]
+    >>> pprint(b.getNavigationUrls({}))
+    [(1, 'b_start:int=0'),
+     (2, 'b_start:int=6'),
+     (3, 'b_start:int=12'),
+     (4, 'b_start:int=18'),
+     (5, 'b_start:int=24')]
+    >>> b.prev_list
+    [1]
+    >>> b.getPrevUrls({})
+    [(1, 'b_start:int=0')]
+    >>> b.next_list
+    [3, 4, 5]
+    >>> b.getNextUrls({})
+    [(3, 'b_start:int=12'), (4, 'b_start:int=18'), (5, 'b_start:int=24')]
+
+    >>> b = b.next
+    >>> b.nav_list
+    [1, 2, 3, 4, 5, 6]
+    >>> pprint(b.getNavigationUrls({}))
+    [(1, 'b_start:int=0'),
+     (2, 'b_start:int=6'),
+     (3, 'b_start:int=12'),
+     (4, 'b_start:int=18'),
+     (5, 'b_start:int=24'),
+     (6, 'b_start:int=30')]
+    >>> b.prev_list
+    [1, 2]
+    >>> b.getPrevUrls({})
+    [(1, 'b_start:int=0'), (2, 'b_start:int=6')]
+    >>> b.next_list
+    [4, 5, 6]
+    >>> b.getNextUrls({})
+    [(4, 'b_start:int=18'), (5, 'b_start:int=24'), (6, 'b_start:int=30')]
+
+    >>> b = b.next
+    >>> b.nav_list
+    [1, 2, 3, 4, 5, 6, 7]
+    >>> pprint(b.getNavigationUrls({}))
+    [(1, 'b_start:int=0'),
+     (2, 'b_start:int=6'),
+     (3, 'b_start:int=12'),
+     (4, 'b_start:int=18'),
+     (5, 'b_start:int=24'),
+     (6, 'b_start:int=30'),
+     (7, 'b_start:int=36')]
+    >>> b.cur_page
+    4
+    >>> b.prev_list
+    [1, 2, 3]
+    >>> b.getPrevUrls({})
+    [(1, 'b_start:int=0'), (2, 'b_start:int=6'), (3, 'b_start:int=12')]
+    >>> b.next_list
+    [5, 6, 7]
+    >>> b.getNextUrls({})
+    [(5, 'b_start:int=24'), (6, 'b_start:int=30'), (7, 'b_start:int=36')]
+
+    >>> b = b.next
+    >>> b.cur_page
+    5
+    >>> b.nav_list
+    [2, 3, 4, 5, 6, 7]
+    >>> pprint(b.getNavigationUrls({}))
+    [(2, 'b_start:int=6'),
+     (3, 'b_start:int=12'),
+     (4, 'b_start:int=18'),
+     (5, 'b_start:int=24'),
+     (6, 'b_start:int=30'),
+     (7, 'b_start:int=36')]
+    >>> b.prev_list
+    [2, 3, 4]
+    >>> b.getPrevUrls({})
+    [(2, 'b_start:int=6'), (3, 'b_start:int=12'), (4, 'b_start:int=18')]
+    >>> b.next_list
+    [6, 7]
+    >>> b.getNextUrls({})
+    [(6, 'b_start:int=30'), (7, 'b_start:int=36')]
+
+
+Test single Batch whith limit case where batch sequence length is equal
+to batch size.
 
     >>> b = Batch([1, 2, 3, 4 ,5], 5)
     >>> b.previous is None
