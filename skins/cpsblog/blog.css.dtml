@@ -88,5 +88,36 @@ A.blog:hover {
   text-decoration: none;
 }
 
+.navigationBar {
+  background-color: <dtml-var boxEvenBackground>;
+  padding: 0em 1em;
+  text-align: center;
+  vertical-align: top;
+  margin: 1em 0em;
+  font-size: 94%;
+  clear: both;
+}
+
+.navigationBar span.previous,
+.navigationPrevious {
+  text-align: left;
+  float: left;
+  margin-right: 1em;
+}
+
+.navigationBar span.center,
+.navigationCenter {
+  text-align: center;
+  float: center;
+  margin-right: 1em;
+}
+
+.navigationBar span.next,
+.navigationNext {
+  text-align: right;
+  float: right;
+  margin-left: 1em;
+}
+
 </dtml-with>
 
