@@ -224,6 +224,12 @@ blog_schema = {
                  'is_searchabletext': 0,
                  },
         },
+    'langs': {
+        'type': 'CPS String List Field',
+        'data': {'default_expr': 'string:',
+                 'is_searchabletext': 0,
+                 },
+        },
     }
 
 blog_entry_schema = {
@@ -403,11 +409,18 @@ blog_categories_vocabulary = {
              },
     }
 
+blog_languages_vocabulary = {
+    'type' : 'CPS Method Vocabulary',
+    'data': {'get_vocabulary_method' : 'getVocBlogLanguages',
+             },
+    }
+
 def getDocumentVocabularies(portal=None):
     vocabularies = {}
     vocabularies['blog_view_mode'] = blog_view_mode_vocabulary
     vocabularies['blog_glob_categories'] = blog_glob_categories_vocabulary
     vocabularies['blog_categories'] = blog_categories_vocabulary
+    vocabularies['blog_languages'] = blog_languages_vocabulary
     vocabularies['blogaggregator_status'] = blogaggregator_status_vocabulary
     vocabularies['blogaggregator_modified'] = blogaggregator_modified_vocabulary
     vocabularies['blogaggregator_sort_by'] = blogaggregator_sort_by_vocabulary
@@ -511,6 +524,27 @@ blog_layout = {
                      'translated': True,
                 },
             },
+        'langs': {
+            'type': 'MultiSelect Widget',
+            'data': {'title': '',
+                     'fields': ('langs',),
+                     'is_required': False,
+                     'label': '',
+                     'label_edit': 'blog_languages_label_edit',
+                     'description': '',
+                     'help': '',
+                     'is_i18n': True,
+                     'readonly_layout_modes': (),
+                     'hidden_layout_modes': ('view',),
+                     'hidden_readonly_layout_modes': (),
+                     'hidden_empty': False,
+                     'hidden_if_expr': '',
+                     'css_class': '',
+                     'widget_mode_expr': '',
+                     'vocabulary': 'language_voc',
+                     'translated': True,
+                },
+            },
         },
     'layout': {
         'style_prefix': 'layout_blog_',
@@ -522,6 +556,7 @@ blog_layout = {
             [{'widget_id': 'view_mode'}],
             [{'widget_id': 'entries_per_page'}],
             [{'widget_id': 'author_photo'}],
+            [{'widget_id': 'langs'}],
             ],
         },
     }
@@ -620,7 +655,7 @@ blog_entry_layout = {
                      'readonly_layout_modes': ('edit', ),
                      'css_class': '',
                      'widget_mode_expr': '',
-                     'vocabulary': 'language_voc',
+                     'vocabulary': 'blog_languages',
                      'translated': True,
                 },
             },
