@@ -532,7 +532,7 @@ blog_entry_layout = {
                      'fields': ('content',),
                      'is_required': True,
                      'label': '',
-                     'label_edit': 'label_content',
+                     'label_edit': 'blog_entry_content_label_edit',
                      'description': '',
                      'help': '',
                      'is_i18n': True,
