@@ -1,12 +1,12 @@
 # translation of en.po to English
 # Gettext Message File for default.
 # Your Name <your@email>, Year
-# Ruslan Spivak <rspivak@nuxeo.com>, 2004.
+# Ruslan Spivak <rspivak@nuxeo.com>, 2004, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2004-12-23 12:23default\n"
-"PO-Revision-Date: 2004-12-23 12:33+0200\n"
+"POT-Creation-Date: 2005-01-11 22:18default\n"
+"PO-Revision-Date: 2005-01-11 22:34+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,21 @@ msgstr ""
 "Domain: default\n"
 "X-Generator: KBabel 1.9\n"
 
+#.   <span omit-tag="" content="be_datetime/Month">Month</span>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "Month"
+msgstr ""
+
+#.   <block>
+#.   	    Posted by
+#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
+#.   	    @
+#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
+#.   	  </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "Posted by ${item_creator} @ ${item_modification}"
+msgstr "Posted by ${item_creator} @ ${item_modification}."
+
 #.   <span>
 #.   	    Posted by
 #.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
@@ -29,25 +44,57 @@ msgstr ""
 msgid "Posted by ${item_creator} @ ${item_modification}."
 msgstr "Posted by ${item_creator} @ ${item_modification}."
 
+#.   <block>
+#.   	    Posted to
+#.   	    ${category (tal content="structure catstr")}
+#.   	    by
+#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
+#.   	    @
+#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
+#.   	  </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "Posted to ${category} by ${item_creator} @ ${item_modification}"
+msgstr "Posted to ${category} by ${item_creator} @ ${item_modification}."
+
+#.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "add"
+msgstr "add"
+
+#.   <span omit-tag="">
+#.   	  Next
+#.   	  ${number (tal content="next/length")}
+#.   	  items
+#.   	</span>
+#: from ../skins/cpsblog/batch_nav_macros.pt
+msgid "batch_next_x_items"
+msgstr ""
+
+#.   <span omit-tag="">
+#.   	  Previous
+#.   	  ${number (tal content="prev/length")}
+#.   	  items
+#.   	</span>
+#: from ../skins/cpsblog/batch_nav_macros.pt
+msgid "batch_previous_x_items"
+msgstr ""
+
 #.   <span> comments</span>
-#.   <a href="" attributes="href bentry_url">comments</a>
-#: from ../skins/cpsblog/blog_entry_view.pt ../skins/cpsblog/blog_view.pt
-#: ../skins/cpsblog/blogaggregator_view.pt
-#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
 msgid "blog_entry_comments_label"
 msgstr "comments"
-
-#.   <input type="submit" class="standalone" value="button_add_comment" />
-#: from ../skins/cpsblog/blog_view.pt ../skins/cpsblog/blogaggregator_view.pt
-#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
-msgid "button_add_comment"
-msgstr "Add comment"
 
 #.   <span omit-tag="">
 #.               Blog entries published</span>
 #: from ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "label_blog_calendar_entries_list"
 msgstr "Blog entries published on"
+
+#.   <span omit-tag="" content="archive/month_name">month</span>
+#: from ../skins/cpsblog/boxes_cpsblog.pt
+msgid "month"
+msgstr ""
 
 msgid "blog_view_mode_label_edit"
 msgstr "Blog entry view mode"
@@ -97,4 +144,55 @@ msgstr "Title and description"
 
 msgid "view_mode_Full_label"
 msgstr "Full"
+
+msgid "blog_entry_content_label_edit"
+msgstr "Content"
+
+msgid "description_blog_blogcalendarbox_default"
+msgstr "Blog calendar box."
+
+msgid "description_blog_blogsearchbox_default"
+msgstr "'Search this blog' form."
+
+msgid "description_blog_blogarchivebox_default"
+msgstr "Blog archives box."
+
+msgid "blog_languages_label_edit"
+msgstr "Languages"
+
+msgid "January"
+msgstr "January"
+
+msgid "February"
+msgstr "February"
+
+msgid "March"
+msgstr "March"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "May"
+
+msgid "June"
+msgstr "June"
+
+msgid "July"
+msgstr "July"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "October"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
 

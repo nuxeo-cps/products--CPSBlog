@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2004-12-23 12:23default\n"
+"POT-Creation-Date: 2005-01-11 22:18default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -19,6 +19,21 @@ msgstr ""
 "Preferred-encodings: utf-8 latin1\n"
 "Domain: default\n"
 
+#.   <span omit-tag="" content="be_datetime/Month">Month</span>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "Month"
+msgstr ""
+
+#.   <block>
+#.   	    Posted by
+#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
+#.   	    @
+#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
+#.   	  </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "Posted by ${item_creator} @ ${item_modification}"
+msgstr ""
+
 #.   <span>
 #.   	    Posted by
 #.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
@@ -29,24 +44,56 @@ msgstr ""
 msgid "Posted by ${item_creator} @ ${item_modification}."
 msgstr ""
 
-#.   <span> comments</span>
-#.   <a href="" attributes="href bentry_url">comments</a>
-#: from ../skins/cpsblog/blog_entry_view.pt ../skins/cpsblog/blog_view.pt
-#: ../skins/cpsblog/blogaggregator_view.pt
-#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
-msgid "blog_entry_comments_label"
+#.   <block>
+#.   	    Posted to
+#.   	    ${category (tal content="structure catstr")}
+#.   	    by
+#.   	    ${item_creator (tal omit-tag="not:email" attributes="href string:mailto:${email}?subject=[${doc/title}]; title email" content="cname")}
+#.   	    @
+#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.modification_date, 'medium')")}
+#.   	  </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "Posted to ${category} by ${item_creator} @ ${item_modification}"
 msgstr ""
 
-#.   <input type="submit" class="standalone" value="button_add_comment" />
-#: from ../skins/cpsblog/blog_view.pt ../skins/cpsblog/blogaggregator_view.pt
-#: ../skins/cpsblog/blogcalendar_cpsday_view.pt
-msgid "button_add_comment"
+#.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+msgid "add"
+msgstr ""
+
+#.   <span omit-tag="">
+#.   	  Next
+#.   	  ${number (tal content="next/length")}
+#.   	  items
+#.   	</span>
+#: from ../skins/cpsblog/batch_nav_macros.pt
+msgid "batch_next_x_items"
+msgstr ""
+
+#.   <span omit-tag="">
+#.   	  Previous
+#.   	  ${number (tal content="prev/length")}
+#.   	  items
+#.   	</span>
+#: from ../skins/cpsblog/batch_nav_macros.pt
+msgid "batch_previous_x_items"
+msgstr ""
+
+#.   <span> comments</span>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
+msgid "blog_entry_comments_label"
 msgstr ""
 
 #.   <span omit-tag="">
 #.               Blog entries published</span>
 #: from ../skins/cpsblog/blogcalendar_cpsday_view.pt
 msgid "label_blog_calendar_entries_list"
+msgstr ""
+
+#.   <span omit-tag="" content="archive/month_name">month</span>
+#: from ../skins/cpsblog/boxes_cpsblog.pt
+msgid "month"
 msgstr ""
 
 msgid "blog_view_mode_label_edit"
@@ -92,4 +139,55 @@ msgid "view_mode_TitleDescription_label"
 msgstr ""
 
 msgid "view_mode_Full_label"
+msgstr ""
+
+msgid "blog_entry_content_label_edit"
+msgstr ""
+
+msgid "description_blog_blogcalendarbox_default"
+msgstr ""
+
+msgid "description_blog_blogsearchbox_default"
+msgstr ""
+
+msgid "description_blog_blogarchivebox_default"
+msgstr ""
+
+msgid "blog_languages_label_edit"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "December"
 msgstr ""

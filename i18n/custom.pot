@@ -60,3 +60,54 @@ msgstr ""
 
 msgid "view_mode_Full_label"
 msgstr ""
+
+msgid "blog_entry_content_label_edit"
+msgstr ""
+
+msgid "description_blog_blogcalendarbox_default"
+msgstr ""
+
+msgid "description_blog_blogsearchbox_default"
+msgstr ""
+
+msgid "description_blog_blogarchivebox_default"
+msgstr ""
+
+msgid "blog_languages_label_edit"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "December"
+msgstr ""
