@@ -21,6 +21,8 @@
            tal:attributes="href bentry_url"
            tal:content="bentry/title" />
       </h5>
+      <div tal:condition="python:doc.view_mode == 'title_desc'"
+           tal:content="bentry/getEntrySummary" class="row"/>
       <div tal:condition="python:doc.view_mode == 'title_desc' or
                           doc.view_mode == 'full'"
            tal:content="bentry/description" class="row"/>
