@@ -48,6 +48,7 @@ class DispatchTrackback(Persistent, Implicit):
         self.trackback_url = trackback_url
         self.sent = False
         self.created = DateTime()
+        self.send_result = ()
 
     def send(self, title, excerpt, url, blog_name):
         err, msg = post_trackback(self.trackback_url, title=title,
@@ -55,6 +56,8 @@ class DispatchTrackback(Persistent, Implicit):
                                   blog_name=blog_name)
         if not err:
             self.sent = True
+
+        self.send_result = (err, msg)
 
         return err, msg
 
