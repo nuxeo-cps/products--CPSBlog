@@ -12,7 +12,7 @@ validate = REQUEST.has_key('cpsdocument_create_button')
 res = ti.renderCreateObjectDetailed(container=context, request=REQUEST,
                                     validate=validate, layout_mode='create',
                                     create_callback='createBlogEntryDocument_cb',
-                                    created_callback='cpsdocument_created')
+                                    created_callback='blogentrydocument_created')
 
 psm = ''
 if not res[1]:
