@@ -314,7 +314,7 @@ blog_layout = {
             },
         },
     'layout': {
-        'style_prefix': 'layout_default_',
+        'style_prefix': 'layout_blog_',
         'ncols': 1,
         'rows': [
             [{'widget_id': 'view_mode'}],
