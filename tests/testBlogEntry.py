@@ -178,14 +178,15 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         bentry = self.bentry
         request = self.app.REQUEST
         request.set('REQUEST_METHOD', 'GET')
-        result = bentry.tbping(bentry, request)
+        request.set('PARENTS', [bentry])
+        result = bentry.tbping(request)
 
         self.assert_('<error>1</error>' in result, result)
         self.assert_("GET method requires correct '__mode' parameter" in result,
                      result)
 
         request.form['__mode'] = 'rss'
-        result = bentry.tbping(bentry, request)
+        result = bentry.tbping(request)
         self.assert_('<error>0</error>' in result, result)
 
         doc = xml.dom.minidom.parseString(result)
@@ -197,12 +198,12 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
               'blog_name' : 'blog_name'
               }
         bentry.addTrackback(**kw)
-        result = bentry.tbping(bentry, request)
+        result = bentry.tbping(request)
         doc = xml.dom.minidom.parseString(result)
         self.assertEqual(len(doc.getElementsByTagName('item')), 1)
 
         bentry.addTrackback(**kw)
-        result = bentry.tbping(bentry, request)
+        result = bentry.tbping(request)
         doc = xml.dom.minidom.parseString(result)
         self.assertEqual(len(doc.getElementsByTagName('item')), 2)
 
@@ -213,18 +214,19 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(bentry.countTrackbacks(), 0)
 
         request.set('REQUEST_METHOD', 'POST')
+        request.set('PARENTS', [bentry])
         request.form['title'] = 'title'
         request.form['excerpt'] = 'excerpt'
         request.form['url'] = 'http://localhost'
         request.form['blog_name'] = 'test blog'
-        result = bentry.tbping(bentry, request)
+        result = bentry.tbping(request)
         self.assert_('<error>1</error>' in result, result)
         self.assert_(
             '<message>Posting of trackbacks is not allowed at the moment</message>' in result,
             result)
 
         bentry.accept_trackback_pings = 1
-        result = bentry.tbping(bentry, request)
+        result = bentry.tbping(request)
         self.assert_('<error>0</error>' in result, result)
         self.assertEqual(bentry.countTrackbacks(), 1)
         tb = bentry.getSortedTrackbacks()[0]
