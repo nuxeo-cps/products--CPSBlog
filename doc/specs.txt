@@ -79,6 +79,7 @@ o Notifications:
       summaries in their mail, maybe as a daily or weekly digest
     - writer may be notified of comments on his/her postings
 x Firefox Live bookmark support for blogs and blog aggregators
+o ... and for the home page
 
 M4:
 
@@ -86,9 +87,14 @@ o Import blog content using ATOM XML
 x Support of the TrackBack protocol (see :
     http://www.movabletype.org/docs/mttrackback.html and
     http://www.movabletype.org/trackback/)
+o Automatic trackbacks to a service like http://pingomatic.com/
 o Support for http://topicexchange.com/
 o One can easily add images in the text flow
 o Stats
+o Box / portlets with
+  - All categories
+  - Latest comments
+  - Latest trackbacks
 
 M5:
 
