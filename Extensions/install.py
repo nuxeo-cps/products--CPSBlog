@@ -19,7 +19,7 @@
 """
 CPSBlog Installer
 
-Howto use the CPSBlog installer :
+How to use the CPSBlog installer :
  - Log into the ZMI as manager
  - Go to your CPS root directory
  - Create an External Method with the following parameters:
@@ -31,6 +31,8 @@ Howto use the CPSBlog installer :
 
  - save it
  - then click on the test tab of this external method
+
+Or use CMFQuickInstaller...
 """
 
 from Products.CPSBlog.document_structures import \
