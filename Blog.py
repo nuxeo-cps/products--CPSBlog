@@ -18,48 +18,21 @@
 
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore.CMFCorePermissions import View
-from Products.CMFCore.PortalContent import PortalContent
-from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
-from Products.BTreeFolder2.CMFBTreeFolder import CMFBTreeFolder
-from Products.CPSDocument.CPSDocument import CPSDocumentMixin
-from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
-
+from Products.CPSDocument.CPSDocument import CPSDocument
+from zLOG import LOG, DEBUG
 
 factory_type_information = {}
 
-class Blog(CPSDocumentMixin, CMFCatalogAware, CMFBTreeFolder,
-           PortalContent, DefaultDublinCoreImpl):
+class Blog(CPSDocument):
     """Blog that can contain lots of blog entries."""
 
     portal_type = meta_type = 'Blog'
 
     security = ClassSecurityInfo()
 
-    def __init__(self, id, **kw):
-        self.id = id
-        CMFBTreeFolder.__init__(self, id)
-        DefaultDublinCoreImpl.__init__(self)
-
-    security.declarePublic('start')
-    def start(self):
-        """Return start time as a string"""
-        # FIXME: what does "start time" mean in this context ?
-        return self.created()
-
-    security.declarePublic('end')
-    def end(self):
-        """Return end time as a string"""
-        # FIXME: what does "end time" mean in this context ?, what is
-        # it used for ?
-        # Why are start() and end() the same in the end ?
-        return self.created()
-
-
 InitializeClass(Blog)
 
-# XXX: why is it called addBlogInstance and not addBlog ?
-def addBlogInstance(container, id, REQUEST=None, **kw):
+def addBlog(container, id, REQUEST=None, **kw):
     """Factory method"""
     ob = Blog(id, **kw)
     container._setObject(id, ob)

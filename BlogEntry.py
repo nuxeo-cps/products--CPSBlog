@@ -20,7 +20,7 @@ from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Products.CPSDocument.CPSDocument import CPSDocument
 from Products.CMFCore.CMFCorePermissions import View
-
+from zLOG import LOG, DEBUG
 
 factory_type_information = {}
 
@@ -44,7 +44,7 @@ class BlogEntry(CPSDocument):
 
 InitializeClass(BlogEntry)
 
-def addBlogEntryInstance(container, id, REQUEST=None, **kw):
+def addBlogEntry(container, id, REQUEST=None, **kw):
     """Factory method"""
     ob = BlogEntry(id, **kw)
     container._setObject(id, ob)
