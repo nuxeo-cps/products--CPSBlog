@@ -245,6 +245,8 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(bentry.dispatch_trackbacks[tb_id].trackback_url,
                          'http://localhost')
         self.assertEqual(bentry.dispatch_trackbacks[tb_id].sent, False)
+        self.assert_(isinstance(bentry.dispatch_trackbacks[tb_id].send_result, tuple))
+        self.assertEqual(bentry.dispatch_trackbacks[tb_id].send_result, ())
 
         # check that trackback with the same url is not added
         tb_id = bentry.addDispatchTrackback(trackback_url='http://localhost')
