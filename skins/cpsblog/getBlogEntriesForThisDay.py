@@ -1,7 +1,6 @@
 ##parameters=this_day,REQUEST
-"""Returns list of blog entries published on pointed day."""
-
 # $Id$
+"""Returns list of blog entries published on pointed day."""
 
 location = REQUEST.get('location', None)
 event_types = REQUEST.get('event_types', None)
