@@ -527,7 +527,7 @@ blog_entry_layout = {
             },
         },
         'content': {
-            'type': 'Text Widget',
+            'type': 'Rich Text Editor Widget',
             'data': {'title': '',
                      'fields': ('content',),
                      'is_required': True,
@@ -545,8 +545,6 @@ blog_entry_layout = {
                      'widget_mode_expr': '',
                      'vocabulary': '',
                      'translated': True,
-                     'render_format': 'html',
-                     'configurable': 'format'
                 },
             },
         'Subject': {
