@@ -491,7 +491,7 @@ blog_entry_layout = {
             'type': 'Rich Text Editor Widget',
             'data': {'title': '',
                      'fields': ('content',),
-                     'is_required': False,
+                     'is_required': True,
                      'label': '',
                      'label_edit': 'label_content',
                      'description': '',
