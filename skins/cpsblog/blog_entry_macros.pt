@@ -70,7 +70,8 @@
 	    <tal:block repeat="category categories">
 	      <a href=""
 		 class="blog"
-		 tal:attributes="href string:${here/absolute_url}/archive_view?category=${category}"
+		 tal:define="blogproxy item/getBlogProxy"
+		 tal:attributes="href string:${blogproxy/absolute_url}/archive_view?category=${category}"
 		 tal:content="category">
 		category name
 	      </a><span tal:replace="string:," tal:condition="not:repeat/category/end">comma</span>
