@@ -28,7 +28,7 @@ class LazyPrevBatch(ExtensionClass.Base):
     def __of__(self, parent):
         return Batch(parent._sequence, parent._size,
                      parent.first - parent._size + parent.overlap, 0,
-                     parent.orphan, parent.overlap)
+                     parent.orphan, parent.overlap, parent.page_range)
 
 class LazyNextBatch(ExtensionClass.Base):
     def __of__(self, parent):
@@ -36,7 +36,7 @@ class LazyNextBatch(ExtensionClass.Base):
         except IndexError: return None
         return Batch(parent._sequence, parent._size,
                      parent.end - parent.overlap, 0,
-                     parent.orphan, parent.overlap)
+                     parent.orphan, parent.overlap, parent.page_range)
 
 class LazySequenceLength(ExtensionClass.Base):
     def __of__(self, parent):
@@ -203,8 +203,12 @@ class Batch(ZTUBatch):
         >>> b = Batch(sequence=range(30), size=10, overlap=0)
 
         Test with default parameter and check that it returns the same results
-        for every batch in chain.
+        for every batch in chain when page_range greater then numpages.
 
+        >>> b.numpages
+        3
+        >>> b.page_range
+        7
         >>> b.nav_list
         [1, 2, 3]
         >>> b.getNavigationUrls({})
