@@ -12,16 +12,10 @@
   <metal:block fill-slot="main">
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
 
-    <tal:block define="rel_url python:here.portal_url.getRelativeContentURL(here);
-		       items python:here.search(query={'meta_type' : 'BlogEntry'},
-                                                sort_by='date',
-                                                direction='descending',
-						folder_prefix=rel_url)">
-      <div tal:repeat="item items">
-	<span
-	    tal:omit-tag=""
-	    tal:define="bentry python:item.getObject().getContent();
-			bentry_url python:item.getObject().absolute_url()">
+    <tal:block define="items here/getSortedBlogEntries">
+      <div tal:repeat="item items" class="group">
+	<span tal:omit-tag=""
+	      tal:define="bentry item/getContent; bentry_url item/absolute_url">
 	  <h3>
 	    <a href=""
 	       tal:attributes="href bentry_url"
@@ -29,26 +23,23 @@
 	  </h3>
 	  <div tal:condition="python:doc.view_mode == 'title_desc' or
 			      doc.view_mode == 'full'"
-	       tal:content="bentry/description" />
-	  <br/>
+	       tal:content="bentry/description" class="row"/>
 	  <div tal:condition="python:doc.view_mode == 'full'"
-	       tal:content="structure bentry/body">
-	  </div>
-	  <div>
+	       tal:content="structure bentry/body" class="row" />
+	  <div class="row">
 	    <a href=""
 	       tal:attributes="href bentry_url"
 	       i18n:translate="blog_entry_comments_label">comments</a>:
 	    <span
 		tal:omit-tag=""
-		tal:content="python:here.getNumberOfComments(item.getObject())" />
+		tal:content="python:here.getNumberOfComments(item)" />
 	  </div>
-	  <form
-	      method="post"
-	      action=""
-	      tal:attributes="action string:${bentry_url}/post_comment">
-	    <input type="submit" value="button_add_comment" i18n:attributes="value" />
+	  <form method="post"
+		action=""
+		tal:attributes="action string:${bentry_url}/post_comment">
+	    <input type="submit" value="button_add_comment"
+		   class="standalone" i18n:attributes="value"/>
 	  </form>
-	  <br/>
 	</span>
       </div>
     </tal:block>
