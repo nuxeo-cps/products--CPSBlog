@@ -52,10 +52,10 @@
 
     <tal:block tal:condition="python:hasattr(here,'portal_discussion') and
       hasattr(here.portal_discussion, 'isCommentingAllowedFor')">
-      <a name="comments"></a>
       <tal:block tal:define="comments_allowed
         python:here.portal_discussion.isCommentingAllowedFor(here);"
         tal:condition="comments_allowed">
+	<span id="comments" />
         <metal:block
           use-macro="here/forum_comment_lib_view_comments_inline/macros/view_comments_inline" />
       </tal:block>
@@ -65,8 +65,7 @@
     <tal:block define="accept_trackback_pings doc/accept_trackback_pings|nothing"
 	       condition="python: accept_trackback_pings or doc.countTrackbacks()">
       <hr/>
-      <a name="trackbacks"></a>
-      <h4 class="blog">Trackback Pings</h4>
+      <h4 class="blog" id="trackbacks">Trackback Pings</h4>
       <tal:block condition="accept_trackback_pings">
 	<div class="row">
 	  <div i18n:translate="">Trackback URL for this entry:</div>
