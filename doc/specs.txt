@@ -178,6 +178,10 @@ SnipSnap
     Mixes Blog and Wiki - a very interesting approach
     http://snipsnap.org/space/start
 
+Typo
+    Ruby on Rails based blog engine
+    http://typo.leetsoft.com/
+
 More...
     http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1
     http://www.python.org/~jeremy/weblog/031104d.html
