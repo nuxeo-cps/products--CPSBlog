@@ -53,7 +53,7 @@ atom_entry = r"""
   </entry>
 """
 
-entry_contributor =r"""<contributor>
+entry_contributor = r"""<contributor>
       <name>%(contributor)s</name>
     </contributor>
 """
@@ -155,7 +155,7 @@ text = atom_feed % {'css_url': base_url + 'atom.css',
                     }
 
 if REQUEST is not None:
-   REQUEST.RESPONSE.setHeader('Content-Type', 'application/xml; charset=ISO-8859-15')
-   REQUEST.RESPONSE.setHeader('Cache-Control', 'no-cache')
+    REQUEST.RESPONSE.setHeader('Content-Type', 'application/xml; charset=ISO-8859-15')
+    REQUEST.RESPONSE.setHeader('Cache-Control', 'no-cache')
 
 return text

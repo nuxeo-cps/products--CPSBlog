@@ -124,7 +124,7 @@ text = rss_fmt % {'css_url': base_url + 'rss.css',
                   }
 
 if REQUEST:
-   REQUEST.RESPONSE.setHeader('Content-Type', 'text/xml')
-   REQUEST.RESPONSE.setHeader('Cache-Control', 'no-cache')
+    REQUEST.RESPONSE.setHeader('Content-Type', 'text/xml')
+    REQUEST.RESPONSE.setHeader('Cache-Control', 'no-cache')
 
 return text

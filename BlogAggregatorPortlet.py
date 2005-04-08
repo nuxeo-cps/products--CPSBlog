@@ -33,7 +33,7 @@ class BlogAggregatorPortlet(CPSPortlet):
 
     security = ClassSecurityInfo()
 
-    security.declareProtected('View', 'getSearchResults')
+    security.declareProtected(View, 'getSearchResults')
     def getSearchResults(self, context):
         """Get sorted search result of blog entries."""
         query = self._buildQuery()
