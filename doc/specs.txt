@@ -98,6 +98,7 @@ o Box / portlets with
   - All categories
   - Latest comments
   - Latest trackbacks
+  - "Related posts" (posts within same categories)
 o Restrict navigation to only selected languages (using a cookie to keep
   settings)
 
