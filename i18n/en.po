@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2005-02-21 16:51default\n"
+"POT-Creation-Date: 2005-05-30 14:55default\n"
 "PO-Revision-Date: 2005-02-10 03:37+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -19,14 +19,18 @@ msgstr ""
 "Language-Name: English\n"
 "Domain: default\n"
 
+#.   <block condition="not: numofcomments">
+#.                 ${numofcomments (tal replace="numofcomments")}
+#.                 comments
+#.               </block>
+#.   <a href="" class="blog" attributes="href string:${bentry_url}#comments">
+#.                   ${numofcomments (tal replace="numofcomments")}
+#.                   comments
+#.                 </a>
 #.   <block>
-#.   	    ${numofcomments (tal replace="python:here.getNumberOfComments(item)")}
-#.   	    comments
-#.   	  </block>
-#.   <block>
-#.   	      ${numofcomments (tal replace="python:here.getNumberOfComments(here)")}
-#.   	      comments
-#.   	    </block>
+#.                 ${numofcomments (tal replace="python:here.getNumberOfComments(here)")}
+#.                 comments
+#.               </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
@@ -73,44 +77,44 @@ msgid "Manage Trackback Pings"
 msgstr "Manage Trackback Pings"
 
 #.   <block condition="isAnon">
-#.   	    Posted by
-#.   	    ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
-#.   	    @
-#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.created(), 'medium')")}
-#.   	  </block>
+#.               Posted by
+#.               ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
+#.               @
+#.               ${item_modification (tal content="python:here.getDateStr(effective_date, 'medium')")}
+#.             </block>
 #.   <block condition="isAnon">
-#.   	      Posted by
-#.   	      ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
-#.   	      @
-#.   	      ${item_modification (tal content="python:here.getDateStr(doc.created(), 'medium')")}
-#.   	    </block>
+#.                 Posted by
+#.                 ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
+#.                 @
+#.                 ${item_modification (tal content="python:here.getDateStr(doc.effective(), 'medium')")}
+#.               </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "Posted by ${item_creator} @ ${item_modification}"
 msgstr "Posted by ${item_creator} @ ${item_modification}."
 
 #.   <block condition="not:isAnon">
-#.   	    Posted by
-#.   	    ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
+#.               Posted by
+#.               ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
 #.   
-#.   	    @
-#.   	    ${item_modification (tal content="python:here.getDateStr(bentry.created(), 'medium')")}
-#.   	    <block condition="info">
-#.   	      <span>Label Status</span>
-#.   	      <span content="info/review_state" attributes="class info/review_state">Work</span>
-#.   	    </block>
-#.   	  </block>
+#.               @
+#.               ${item_modification (tal content="python:here.getDateStr(effective_date, 'medium')")}
+#.               <block condition="info">
+#.                 <span>Label Status</span>
+#.                 <span content="info/review_state" attributes="class info/review_state">Work</span>
+#.               </block>
+#.             </block>
 #.   <block condition="not:isAnon">
-#.   	      Posted by
-#.   	      ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
+#.                 Posted by
+#.                 ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
 #.   
-#.   	      @
-#.   	      ${item_modification (tal content="python:here.getDateStr(doc.created(), 'medium')")}
-#.   	      <block condition="info">
-#.   		<span>Label Status</span>
-#.   		<span content="info/review_state" attributes="class info/review_state">Work</span>
-#.   	      </block>
-#.   	    </block>
+#.                 @
+#.                 ${item_modification (tal content="python:here.getDateStr(doc.effective(), 'medium')")}
+#.                 <block condition="info">
+#.                   <span>Label Status</span>
+#.                   <span content="info/review_state" attributes="class info/review_state">Work</span>
+#.                 </block>
+#.               </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid ""
@@ -119,15 +123,20 @@ msgid ""
 "\"class info/review_state\">Work</span> </block>"
 msgstr ""
 
+#.   <td>Title</td>
+#: from ../skins/cpsblog/layout_blog_entry_edit.pt
+msgid "Title"
+msgstr ""
+
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
 msgstr "Trackback URL for this entry:"
 
 #.   <p class="tracked">
-#.   	  Tracked on
-#.   	  ${tracked_date (tal replace="python: here.getDateStr(trackback.created, 'medium')")}
-#.   	</p>
+#.             Tracked on
+#.             ${tracked_date (tal replace="python: here.getDateStr(trackback.created, 'medium')")}
+#.           </p>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Tracked on ${tracked_date}"
 msgstr ""
@@ -140,19 +149,19 @@ msgid "add"
 msgstr "add"
 
 #.   <span omit-tag="">
-#.   	  Next
-#.   	  ${number (tal content="next/length")}
-#.   	  items
-#.   	</span>
+#.             Next
+#.             ${number (tal content="next/length")}
+#.             items
+#.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_next_x_items"
 msgstr ""
 
 #.   <span omit-tag="">
-#.   	  Previous
-#.   	  ${number (tal content="prev/length")}
-#.   	  items
-#.   	</span>
+#.             Previous
+#.             ${number (tal content="prev/length")}
+#.             items
+#.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_previous_x_items"
 msgstr ""
@@ -192,9 +201,33 @@ msgstr "Categories"
 msgid "blog_edit_category_description_label"
 msgstr "Use this page to edit the attributes of the category"
 
+#.   <block content="box/box/title" fill-slot="box_title">
+#.         box text title
+#.       </block>
+#.   <block content="box/box/title">box text title</block>
+#: from ../skins/cpsblog/boxes_cpsblog.pt
+msgid "box text title"
+msgstr ""
+
 #.   <block>from</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "from"
+msgstr ""
+
+#.   <label for="event_types">label_event_types</label>
+#: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
+#, fuzzy
+msgid "label_event_types"
+msgstr "Creation date desc."
+
+#.   <em>label_event_types_help</em>
+#: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
+msgid "label_event_types_help"
+msgstr ""
+
+#.   <label for="events_in">label_events_location</label>
+#: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
+msgid "label_events_location"
 msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
