@@ -1,4 +1,28 @@
 *******************************************
+** CPSBlog V0.3.0 [R1 build 2005/06/02-10:28 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 22099
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- Updated translations.
+- Added 'search_limit' field to schema of BlogAggregator Portlet with default
+  value 20. This will limit blog entries search result to return.
+- Added 'getEntrySummary' method to return summary text or from 'Description'
+  field of blog entry or by computing it from 'content' field and limiting
+  length to SUMMARY_MAX_LENGTH.
+- Modified BlogAggregator Portlet schema's 'sort_by' default expression to show
+  entries sorted by effective date in reverse order.
+- Use effective date for output.
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Added specs
+
+*******************************************
 ** CPSBlog V0.2.1 [R1 build 2005/03/07-16:04 by madarche]
 
 Requires:
