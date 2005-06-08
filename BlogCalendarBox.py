@@ -20,7 +20,7 @@ from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 
 from Products.CMFCore.permissions import View, ModifyPortalContent
-from Products.CPSDefault.BaseBox import BaseBox
+from Products.CPSBoxes.BaseBox import BaseBox
 
 from zLOG import LOG, DEBUG
 
