@@ -4,7 +4,7 @@
 
 blog = context.getBlogContent()
 lang_voc = context.portal_vocabularies.language_voc
-mcat = context.Localizer.default
+mcat = context.translation_service
 
 t = [(mcat(lang_voc.getMsgid(lang)).lower(), lang) for lang in blog.langs]
 t.sort()

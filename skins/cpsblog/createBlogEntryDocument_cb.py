@@ -21,7 +21,7 @@ if not id:
 
 language = datamodel.get('Language')
 if not language:
-    language = context.Localizer.get_selected_language()
+    language = context.translation_service.getSelectedLanguage()
 
 id = context.computeId(compute_from=id)
 

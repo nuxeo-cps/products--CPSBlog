@@ -14,9 +14,8 @@
               first_layout options/first_layout|python:0;
               last_layout options/last_layout|python:0;
               is_flexible options/is_flexible;
-              cpsmcat nocall:here/Localizer/default;
-              cpstrans nocall:here/translation_service
-             ">
+              cpsmcat nocall:here/translation_service
+              ">
 <tal:block condition="first_layout">
   <tal:block
   content="structure string:<form action='${formaction}' method='post'
@@ -67,7 +66,7 @@
               tal:content="widget/help">This is the help for this field</tal:block>
           </div>
           <tal:block condition="err">
-              <tal:block define="msg python:cpstrans(err, mapping=err_mapping)">
+              <tal:block define="msg python:cpsmcat(err, mapping=err_mapping)">
                 <br /><em style="color: red"
                   tal:content="msg">err</em>
               </tal:block>
