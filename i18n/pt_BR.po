@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
-"POT-Creation-Date: 2005-05-30 14:55default\n"
+"POT-Creation-Date: 2005-06-23 17:24default\n"
 "PO-Revision-Date: 2005-06-17 17:07-0300\n"
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -125,6 +125,14 @@ msgstr ""
 "\"> <span>Status</span> <span content=\"info/review_state\" attributes="
 "\"class info/review_state\">Trabalho</span> </block>"
 
+#.   <option content="role" attributes="value role" repeat="role roles">
+#.            Role1
+#.         </option>
+#.   <option content="role" attributes="value role" repeat="role roles"> Role1 </option>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "Role1"
+msgstr ""
+
 #.   <td>Title</td>
 #: from ../skins/cpsblog/layout_blog_entry_edit.pt
 msgid "Title"
@@ -216,6 +224,13 @@ msgstr "título da caixa de texto"
 msgid "from"
 msgstr "de"
 
+#.   <h1>
+#.    Assign local roles: Search Members
+#.   </h1>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "heading_local_roles_search_members"
+msgstr ""
+
 #.   <label for="event_types">label_event_types</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_event_types"
@@ -229,6 +244,60 @@ msgstr ""
 #.   <label for="events_in">label_events_location</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_events_location"
+msgstr ""
+
+#.   <span>Role(s)</span>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+#, fuzzy
+msgid "label_roles"
+msgstr "Creation date"
+
+#.   <option value="fullname">Full name</option>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "label_user_fullname"
+msgstr ""
+
+#.   <p>
+#.      These users currently have local roles assigned in this folder:
+#.   </p>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "legend_local_roles_assigned_users"
+msgstr ""
+
+#.   <p>
+#.       Sorry, no groups matched your search.
+#.    </p>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "legend_local_roles_no_results_member"
+msgstr ""
+
+#.   <p>
+#.       Sorry, no members matched your search.
+#.    </p>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "legend_local_roles_no_results_members"
+msgstr ""
+
+#.   <p>
+#.       Select Group(s) and a role to assign:
+#.    </p>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "legend_local_roles_select_groups_and_roles"
+msgstr ""
+
+#.   <p>
+#.       Select Member(s) and a role to assign:
+#.    </p>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "legend_local_roles_select_members_and_roles"
+msgstr ""
+
+#.   <span>
+#.     <em>Roles in underlined</em> are set in parent folders.
+#.     Follow the links to manage the local roles in these folders.
+#.   </span>
+#: from ../skins/cpsblog/blog_localrole_form.pt
+msgid "link_local_roles_underlined"
 msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
