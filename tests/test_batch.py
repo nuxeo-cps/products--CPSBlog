@@ -1,4 +1,5 @@
-# (C) Copyright 2004 Nuxeo SARL <http://nuxeo.com>
+# (C) Copyright 2004-2005 Nuxeo SARL <http://nuxeo.com>
+# Author: Ruslan Spivak <rspivak@nuxeo.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 as published
@@ -17,7 +18,7 @@
 # $Id$
 
 import unittest
-from Testing.ZopeTestCase.doctest import DocTestSuite, DocFileSuite
+from Testing.ZopeTestCase.zopedoctest import DocTestSuite, DocFileSuite
 from Products.CPSBlog.CPSBatch import Batch
 # Freebie Batch tests from ZTUtils
 from ZTUtils.tests.testBatch import BatchTests

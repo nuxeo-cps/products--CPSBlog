@@ -9,6 +9,8 @@ Bug fixes:
 - Taking advantage of the new centralized CPSI18n.tests.translations module.
 - Added pt_BR translations + fixed other translations through
   CPSI18n/bin/fix_pos script.
+- Import doctest module as zopedoctest due to its renaming in
+  ZopeTestCase-0.9.8
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Import BaseBox from CPSBoxes, not CPSDefault.
