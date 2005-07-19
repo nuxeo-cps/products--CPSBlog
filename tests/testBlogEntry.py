@@ -64,7 +64,8 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.ws = self.portal.workspaces
         self.ws.invokeFactory(type_name='Blog', id='blog')
         self.ws.blog.invokeFactory(type_name=self.doc_type, id=self.doc_id)
-        self.bentry = getattr(self.ws.blog, self.doc_id).getContent()
+        self.bentry_proxy = getattr(self.ws.blog, self.doc_id)
+        self.bentry = self.bentry_proxy.getContent()
 
     def beforeTearDown(self):
         self.logout()
@@ -286,18 +287,19 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
 
     def testGetEntrySummary(self):
         bentry = self.bentry
+        bentry_proxy = self.bentry_proxy
         text = "Summary test.  Second line."
         html = "<p>Summary test.</p>&nbsp;&nbsp;Second line.<br/>"
         bentry.content = html
         self.assertEqual(text, bentry.getEntrySummary())
 
         kw = {'Description' : 'Description Test'}
-        bentry.edit(**kw)
+        bentry.edit(proxy=bentry_proxy, **kw)
         self.assertEqual(bentry.Description(), bentry.getEntrySummary())
 
         kw = {'Description' : '',
               'content' : 'T' * (SUMMARY_MAX_LENGTH + 10)}
-        bentry.edit(**kw)
+        bentry.edit(proxy=bentry_proxy, **kw)
         res_str = 'T' * SUMMARY_MAX_LENGTH + ' ...'
         self.assertEqual(res_str, bentry.getEntrySummary())
 
