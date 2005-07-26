@@ -73,7 +73,7 @@ channel_description = "RSS 1.0 export from the folder '%s'." % \
 header_text = body_text = ''
 for item in items:
     info = context.getContentInfo(item, level=2)
-    url = base_url + info.get('rpath')
+    url = info.get('url')
     header_text += rss_item_li % {'item_id': url}
     item_date = context.getDateStr(item.effective(), fmt='iso8601')
     dc_text = ''

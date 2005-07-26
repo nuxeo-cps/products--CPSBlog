@@ -303,11 +303,14 @@
           </tal:block>
           </td>
           <td width="57%">
-          <tal:block repeat="item python:roles[user]">
+          <tal:block define="rpath python:utool.getRpath(here)"
+                     repeat="item python:roles[user]">
             <tal:block repeat="roleElt python:item['roles']">
-              <tal:block define="ishere python:base_url+item['url']==context_url">
+              <tal:block define="ishere python:item['url']== rpath">
                 <tal:block condition="not:ishere">
-                  <a href="" tal:attributes="href string:${base_url}${item/url}/blog_localrole_form">
+                  <a href=""
+                    tal:define="role_url python:utool.getUrlFromRpath(item['url'])"
+                    tal:attributes="href string:${role_url}/blog_localrole_form">
                     <span i18n:translate="" tal:content="python:roleElt" />
                   </a>
                   <span i18n:translate="label_in">in</span>

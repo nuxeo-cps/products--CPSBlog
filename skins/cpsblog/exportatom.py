@@ -82,7 +82,7 @@ for item in items:
     info = context.getContentInfo(item, level=1)
     doc = info['doc']
     entry_title = info.get('title', '')
-    entry_link = base_url + info.get('rpath')
+    entry_link = info.get('url')
     entry_issued = context.getDateStr(doc.effective(), fmt='iso8601_long')
     entry_modified = context.getDateStr(info.get('time'), fmt='iso8601_long')
     entry_created = context.getDateStr(doc.created(), fmt='iso8601_long')
@@ -134,7 +134,7 @@ for item in items:
 
 info = context.getContentInfo(context, level=1)
 feed_title = info.get('title', '')
-feed_link = base_url + info.get('rpath')
+feed_link = info.get('url')
 feed_id = construct_id(feed_link, context.created())
 feed_modified = context.getDateStr(context.created(), fmt='iso8601_long')
 generator_url = 'http://nuxeo.com'

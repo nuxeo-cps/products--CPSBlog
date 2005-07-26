@@ -11,6 +11,7 @@ Bug fixes:
   CPSI18n/bin/fix_pos script.
 - Import doctest module as zopedoctest due to its renaming in
   ZopeTestCase-0.9.8
+- Replaced incorrect code producing broken urls using virtual hosting.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Import BaseBox from CPSBoxes, not CPSDefault.

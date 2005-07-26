@@ -1,8 +1,8 @@
 <div metal:define-macro="blog_entry_actions"
      class="documentActions"
      tal:define="utool nocall:here/portal_url;
-                 base_url python:here.getBaseUrl(utool=utool);
-                 actions python: context.portal_actions.listFilteredActionsFor(here);
+                 base_url python:utool.getBaseUrl();
+                 actions python:context.portal_actions.listFilteredActionsFor(here);
                  document_actions actions/document_actions|nothing;
                  document_actions python:here.getCPSBlogActionById(document_actions, 'print') +
                                          here.getCPSBlogActionById(document_actions, 'mnotify');
