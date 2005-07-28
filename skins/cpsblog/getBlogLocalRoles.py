@@ -5,7 +5,7 @@
 # XXX AT: This method has to be updated like it's been done in CPSDefault, and
 # base_url and context_url are not useful anymore
 
-from Products.CMFcore.utils import getToolByName
+from Products.CMFCore.utils import getToolByName
 
 if mtool is None:
     mtool = getToolByName(context, 'portal_membership')
