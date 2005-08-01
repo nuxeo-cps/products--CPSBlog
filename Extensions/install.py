@@ -522,9 +522,9 @@ blog_entry_proxy.reindexObject(idxs=['effective', 'start', 'end'])
                 ttool.manage_delObjects(boxid)
             self.log('Adding Box ' + boxid)
             ttool.manage_addTypeInformation(
-                id=boxid,
                 add_meta_type='Factory-based Type Information',
-                typeinfo_name='CPSBlog: ' + boxid,
+                id=boxid,
+                typeinfo_name='CPSBlog: %s (%s)' % (boxid, boxid),
                 )
             ttool.manage_changeProperties(
                 title=boxtype['title'],
