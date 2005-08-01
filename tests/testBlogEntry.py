@@ -27,8 +27,7 @@ class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
         return getattr(self.ws, 'blog').getContent()
 
     def testAddBlogEntry(self):
-        """Test creation of BlogEntry instance.
-        """
+        # Test creation of BlogEntry instance.
         blog = self._createBlog()
 
         self.assertEqual(len(blog.objectIds()), 0)
@@ -43,8 +42,7 @@ class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(blogentry.title, '')
 
     def testRemoveBlogEntry(self):
-        """Test removal of BlogEntry instance.
-        """
+        # Test removal of BlogEntry instance.
         blog = self._createBlog()
         blog.invokeFactory(type_name=self.doc_type, id=self.doc_id)
         self.assertEqual(len(blog.objectIds()), 1)

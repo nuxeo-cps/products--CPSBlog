@@ -27,8 +27,7 @@ class TestBlog(CPSBlogTestCase.CPSBlogTestCase):
 
 
     def testAddBlog(self):
-        """Test creation of Blog instance in root of workspaces.
-        """
+        # Test creation of Blog instance in root of workspaces.
         self.assertEqual(len([o for o in self.ws.contentValues()
                               if o.getContent().meta_type == self.doc_type]), 0)
         self.ws.invokeFactory(type_name = self.doc_type,
@@ -42,8 +41,7 @@ class TestBlog(CPSBlogTestCase.CPSBlogTestCase):
 
 
     def testRemoveBlog(self):
-        """Test removal of Blog instance in root of workspaces.
-        """
+        # Test removal of Blog instance in root of workspaces.
         doc = self._createBlog()
         self.assertEqual(len([o for o in self.ws.contentValues()
                               if o.getContent().meta_type == self.doc_type]), 1)
