@@ -14,8 +14,6 @@ from Products.CPSBlog.BlogEntry import SUMMARY_MAX_LENGTH
 class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
 
     def afterSetUp(self):
-        self.doc_type = 'BlogEntry'
-        self.doc_id = self.doc_type.lower()
         self.login('manager')
         self.ws = self.portal.workspaces
 
@@ -31,38 +29,36 @@ class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
         blog = self._createBlog()
 
         self.assertEqual(len(blog.objectIds()), 0)
-        blog.invokeFactory(type_name=self.doc_type, id=self.doc_id)
+        blog.invokeFactory(type_name='BlogEntry', id='blogentry')
         self.assertEqual(len(blog.objectIds()), 1)
 
-        self.assert_(hasattr(blog, self.doc_id))
+        self.assert_(hasattr(blog, 'blogentry'))
 
-        blogentry = getattr(blog, self.doc_id).getContent()
+        blogentry = getattr(blog, 'blogentry').getContent()
 
-        self.assertEqual(blogentry.meta_type, self.doc_type)
+        self.assertEqual(blogentry.meta_type, 'BlogEntry')
         self.assertEqual(blogentry.title, '')
 
     def testRemoveBlogEntry(self):
         # Test removal of BlogEntry instance.
         blog = self._createBlog()
-        blog.invokeFactory(type_name=self.doc_type, id=self.doc_id)
+        blog.invokeFactory(type_name='BlogEntry', id='blogentry')
         self.assertEqual(len(blog.objectIds()), 1)
 
-        blog._delObject(self.doc_id)
+        blog._delObject('blogentry')
 
         self.assertEqual(len(blog.objectIds()), 0)
-        self.failIf(hasattr(blog, self.doc_id))
+        self.failIf(hasattr(blog, 'blogentry'))
 
 
 class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
 
     def afterSetUp(self):
-        self.doc_type = 'BlogEntry'
-        self.doc_id = self.doc_type.lower()
         self.login('manager')
         self.ws = self.portal.workspaces
         self.ws.invokeFactory(type_name='Blog', id='blog')
-        self.ws.blog.invokeFactory(type_name=self.doc_type, id=self.doc_id)
-        self.bentry_proxy = getattr(self.ws.blog, self.doc_id)
+        self.ws.blog.invokeFactory(type_name='BlogEntry', id='blogentry')
+        self.bentry_proxy = getattr(self.ws.blog, 'blogentry')
         self.bentry = self.bentry_proxy.getContent()
 
     def beforeTearDown(self):
