@@ -22,20 +22,18 @@ class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
 
     def _createBlog(self):
         self.ws.invokeFactory(type_name='Blog', id='blog')
-        return getattr(self.ws, 'blog').getContent()
+        return self.ws.blog
 
     def testAddBlogEntry(self):
         # Test creation of BlogEntry instance.
         blog = self._createBlog()
+        self.failIf('blogentry' in blog.objectIds())
 
-        self.assertEqual(len(blog.objectIds()), 0)
         blog.invokeFactory(type_name='BlogEntry', id='blogentry')
-        self.assertEqual(len(blog.objectIds()), 1)
-
+        self.assert_('blogentry' in blog.objectIds())
         self.assert_(hasattr(blog, 'blogentry'))
 
         blogentry = getattr(blog, 'blogentry').getContent()
-
         self.assertEqual(blogentry.meta_type, 'BlogEntry')
         self.assertEqual(blogentry.title, '')
 
@@ -43,11 +41,10 @@ class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
         # Test removal of BlogEntry instance.
         blog = self._createBlog()
         blog.invokeFactory(type_name='BlogEntry', id='blogentry')
-        self.assertEqual(len(blog.objectIds()), 1)
+        self.assert_('blogentry' in blog.objectIds())
 
         blog._delObject('blogentry')
-
-        self.assertEqual(len(blog.objectIds()), 0)
+        self.failIf('blogentry' in blog.objectIds())
         self.failIf(hasattr(blog, 'blogentry'))
 
 
