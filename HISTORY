@@ -1,4 +1,25 @@
 *******************************************
+** CPSBlog V0.4.0 [R1 build 2005/08/05-15:35 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 25534
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Taking advantage of the new centralized CPSI18n.tests.translations module.
+- Added pt_BR translations + fixed other translations through
+  CPSI18n/bin/fix_pos script.
+- Import doctest module as zopedoctest due to its renaming in
+  ZopeTestCase-0.9.8
+- Replaced incorrect code producing broken urls using virtual hosting.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Import BaseBox from CPSBoxes, not CPSDefault.
+
+*******************************************
 ** CPSBlog V0.3.0 [R1 build 2005/06/02-10:28 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 22099
 Requires:
