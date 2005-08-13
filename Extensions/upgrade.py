@@ -29,7 +29,7 @@ def update_blogaggregator(self):
                for b in catalog.searchResults(portal_type='BlogAggregator')]
 
     for proxy in proxies:
-        if getattr(proxy, 'search_limit', None) is None:
-            doc = proxy.getContent()
+        doc = proxy.getContent()
+        if getattr(doc, 'search_limit', None) is None:
             doc.search_limit = 20
     return 'Fin'
