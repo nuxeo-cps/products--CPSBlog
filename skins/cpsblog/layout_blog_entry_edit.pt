@@ -144,7 +144,7 @@
            condition="python: tbcount and last_layout">
   <div class="group">
     <form method="post" action=""
-          tal:attributes="action string:${here/absolute_url}/blog_entry_remove_trackbacks">
+          tal:attributes="action string:${here/aq_inner/aq_parent/absolute_url}/blog_entry_remove_trackbacks">
       <h3 i18n:translate="">Manage Trackback Pings</h3>
       <table class="listing" summary="Listing of all blog entry's trackbacks">
         <thead>
