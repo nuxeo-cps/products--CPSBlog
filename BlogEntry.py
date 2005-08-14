@@ -52,14 +52,23 @@ class BlogEntry(CPSDocument):
         return self._generateId(self.trackbacks)
 
     security.declareProtected(ModifyPortalContent, 'addTrackback')
-    def addTrackback(self, context=None, title='', excerpt='', url='', blog_name=''):
+    def addTrackback(self, context=None, title='', excerpt='', url='',
+                     blog_name=''):
         blog_proxy = self.getBlogProxy()
         trackback_id = self._generateTrackbackId()
         trackback = Trackback(trackback_id, title, excerpt, url, blog_name)
         self.trackbacks[trackback_id] = trackback
-        LOG('TrackBack', DEBUG, "new trackback for %s" % blog_proxy) 
+        LOG('TrackBack', DEBUG, "new trackback for %s" % blog_proxy)
 	evtool = getEventService(self)
-        evtool.notifyEvent('new_trackback', blog_proxy, {'tb_id': trackback_id, 'tb_title': title, 'tb_excerpt': excerpt, 'tb_url': url, 'tb_blog_name': blog_name, 'post_url': context.absolute_url(), 'post_title': context.Title()})
+        ev_infos = {'tb_id': trackback_id,
+                    'tb_title': title,
+                    'tb_excerpt': excerpt,
+                    'tb_url': url,
+                    'tb_blog_name': blog_name,
+                    'post_url': context and context.absolute_url() or '',
+                    'post_title': context and context.Title() or ''
+                    }
+        evtool.notifyEvent('new_trackback', blog_proxy, ev_infos)
         return trackback_id
 
     security.declareProtected(ModifyPortalContent, 'removeTrackback')
