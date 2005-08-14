@@ -1,11 +1,8 @@
 <tal:block define="layout options/layout">
 
   <tal:block define="rows python: layout['rows'];
-                     global wtcells python: [here.getCellByWidgetId(rows, 'LanguageSelector'),
-                                             here.getCellByWidgetId(rows, 'Title'),
-                                             here.getCellByWidgetId(rows, 'author_photo'),
-                                             here.getCellByWidgetId(rows, 'Description')];
-                     global wt_ids python: ['LanguageSelector', 'Title', 'author_photo', 'Description']" />
+                     global wtcells python: [here.getCellByWidgetId(rows, 'LanguageSelector')];
+                     global wt_ids python: ['LanguageSelector']" />
 
   <table width="100%" cellpadding="2" cellspacing="2" border="0" summary="layout">
 

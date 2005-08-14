@@ -6,7 +6,10 @@ if proxy is None:
     proxy = context
 
 def isBlogType(proxy):
-    return proxy.portal_type == 'Blog'
+    try:
+        return proxy.portal_type == 'Blog'
+    except AttributeError:
+        return False
 
 # check if current context is of Blog type
 if isBlogType(proxy):

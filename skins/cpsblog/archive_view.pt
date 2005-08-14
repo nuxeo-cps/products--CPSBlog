@@ -12,8 +12,6 @@
   <metal:block fill-slot="main"
                tal:define="doc here/getContent">
 
-    <h1 i18n:translate="">Blog entries posted in category <span i18n:name="category" tal:replace="request/category|nothing" />
-    </h1>
     <tal:block
         define="start_date request/start_date|nothing;
                 end_date request/end_date|nothing;

@@ -3,24 +3,25 @@
            tal:condition="items"
            tal:define="batch python:Batch(items, b_size, int(b_start), orphan=1)">
 
-  <div metal:use-macro="here/batch_navinfo_macros/macros/navinfo" />
+
+  <div metal:use-macro="here/batch_nav_macros/macros/navigation" />
 
   <div tal:repeat="item batch">
     <span tal:omit-tag=""
           tal:define="bentry item/getContent; bentry_url item/absolute_url;
                       effective_date bentry/effective">
       <tal:block condition="day_separators|nothing">
-        <h3 class="blog"
+        <h1 class="blog_day"
             tal:condition="python: item.getId() in day_separators">
           <tal:block content="python:here.getDateStr(effective_date, 'short')" />
-        </h3>
+        </h1>
       </tal:block>
-      <h5 class="blog">
+      <h2 class="blog_entry_title">
         <a href=""
            class="blog"
            tal:attributes="href bentry_url"
            tal:content="bentry/title" />
-      </h5>
+      </h2>
       <div tal:condition="python:doc.view_mode == 'title_desc'"
            tal:content="bentry/getEntrySummary" class="row"/>
       <div tal:condition="python:doc.view_mode == 'title_desc' or

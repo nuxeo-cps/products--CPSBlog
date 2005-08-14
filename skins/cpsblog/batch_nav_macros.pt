@@ -9,8 +9,7 @@
                  cur_page batch/cur_page;"
      tal:condition="python: batch.next or batch.previous">
 
-    <span class=""
-          tal:define="prev batch/previous | nothing"
+    <span tal:define="prev batch/previous | nothing"
           tal:condition="prev">
       <a href=""
          tal:attributes="href python: '%s?%s' % (url , mq(request.form, b_start=prev.first))">

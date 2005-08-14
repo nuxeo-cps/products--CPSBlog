@@ -12,7 +12,8 @@ query['portal_type'] = 'Blog'
 
 brains = catalog.searchResults(**query)
 for brain in brains:
-    for category in brain.getObject().getContent().getSortedCategories():
+    ob =  brain.getObject()
+    for category in ob.getContent().getSortedCategories():
         unique_keys[category['title']] = 1
 
 blog_categories = [(k, k) for k in unique_keys.keys()]

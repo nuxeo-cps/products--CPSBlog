@@ -11,43 +11,14 @@ $Id$
 
 <dtml-with stylesheet_properties>
 
-h4.blog {
-  color:#93966A;
-  background: #fff;
-  border-bottom: 1px dotted #bbb;
-  margin:15px 15px 15px 0px;
-}
+//.blog_day {
+//  font-size: 140%;
+//  padding: 0em 0em 0em 0em;
+//}
 
-h5.blog {
-  color: #5E5F58;
-  padding: 10px 15px 0px 0px;
-  background-color: #fff;
-}
-
-A.blog:link {
-  color: #366;
-  text-decoration: none;
-  border-bottom: dotted 1px #999;
-  background-color: transparent;
-}
-
-A.blog:visited {
-  color: #6b2e49;
-  border-bottom: dotted 1px #999;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-A.blog:active {
-  color: #f90;
-  background-color: transparent;
-}
-
-A.blog:hover {
-  color: #690;
-  border-bottom: dotted 1px #f90;
-  background-color: transparent;
-}
+//.blog_entry_title {
+//  font-size: 115%;
+//}
 
 .posted {
   color:#888;
@@ -89,7 +60,6 @@ A.blog:hover {
 }
 
 .navigationBar {
-  background-color: <dtml-var boxEvenBackground>;
   padding: 0em 1em;
   text-align: center;
   vertical-align: top;
@@ -129,6 +99,10 @@ p.tracked {
   padding: 3px;
 }
 
+div.pageNavigationLayout {
+    text-align: center;
+    background-color: transparent;
+}
 
 </dtml-with>
 
