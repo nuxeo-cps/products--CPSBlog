@@ -59,7 +59,7 @@ class BlogEntry(CPSDocument):
         trackback = Trackback(trackback_id, title, excerpt, url, blog_name)
         self.trackbacks[trackback_id] = trackback
         LOG('TrackBack', DEBUG, "new trackback for %s" % blog_proxy)
-	evtool = getEventService(self)
+        evtool = getEventService(self)
         ev_infos = {'tb_id': trackback_id,
                     'tb_title': title,
                     'tb_excerpt': excerpt,
