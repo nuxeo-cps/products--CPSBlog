@@ -23,6 +23,7 @@ from Products.CMFCore.permissions import View, ModifyPortalContent
 from zLOG import LOG, DEBUG
 from BTrees.IOBTree import IOBTree
 from Trackback import Trackback, DispatchTrackback
+from Products.CPSCore.EventServiceTool import getEventService
 import random
 import re
 
@@ -51,10 +52,14 @@ class BlogEntry(CPSDocument):
         return self._generateId(self.trackbacks)
 
     security.declareProtected(ModifyPortalContent, 'addTrackback')
-    def addTrackback(self, title='', excerpt='', url='', blog_name=''):
+    def addTrackback(self, context=None, title='', excerpt='', url='', blog_name=''):
+        blog_proxy = self.getBlogProxy()
         trackback_id = self._generateTrackbackId()
         trackback = Trackback(trackback_id, title, excerpt, url, blog_name)
         self.trackbacks[trackback_id] = trackback
+        LOG('TrackBack', DEBUG, "new trackback for %s" % blog_proxy) 
+	evtool = getEventService(self)
+        evtool.notifyEvent('new_trackback', blog_proxy, {'tb_id': trackback_id, 'tb_title': title, 'tb_excerpt': excerpt, 'tb_url': url, 'tb_blog_name': blog_name, 'post_url': context.absolute_url(), 'post_title': context.Title()})
         return trackback_id
 
     security.declareProtected(ModifyPortalContent, 'removeTrackback')
@@ -187,7 +192,7 @@ class BlogEntry(CPSDocument):
             for k in ('title', 'excerpt', 'blog_name'):
                 kw[k] = REQUEST.form.get(k, kw[k])
 
-            self.addTrackback(**kw)
+            self.addTrackback(context=context, **kw)
 
         return self.tbresult(context, **res_kw)
 
