@@ -1,0 +1,27 @@
+<tal:block condition="python: here.getBlogProxy(options['context_obj']) is not None">
+
+<tal:block define="
+pblog options/context_obj/getBlogProxy;
+blog pblog/getContent;
+utool nocall:here/portal_url;
+base_url python:utool.getBaseUrl();
+bphoto python: pblog.absolute_url(relative=1) + '/author_photo';
+">
+
+<div style="text-align: left">
+<div tal:condition="pblog/author_photo|nothing" style="float: left; padding-right: 1px; padding-bottom: 1px;">
+<img  tal:replace="structure python: here.getImgTag(bphoto,
+                   base_url=None,
+                   width=64, height=64, keep_ratio=1)" />
+</div>
+<p>
+<strong tal:content="pblog/Title">Title</strong>
+<br/>
+<tal:block replace="blog/Description"/>
+</p>
+
+</div>
+
+</tal:block>
+
+</tal:block>
