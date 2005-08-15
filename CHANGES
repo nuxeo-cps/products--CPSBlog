@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- The blog aggregator, blog archive and blog category portlets could not
+  be placed outside blogs in the site structure (#881).
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

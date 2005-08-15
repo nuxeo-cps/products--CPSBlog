@@ -1,11 +1,15 @@
-<tal:block define="context_obj nocall:options/context_obj;
-                   categories python:context_obj.getCPSBlogCategories(context_obj)"
-           condition="categories">
-    <ul class="cpsskinsMenu">
-      <li tal:repeat="category categories">
-        <a tal:attributes="href string:${context_obj/absolute_url}/archive_view?category=${category/title}">
-          <span tal:replace="category/title" />&nbsp;(<span tal:replace="category/posts" />)
-        </a>
-      </li>
-    </ul>
+<tal:block define="context nocall:options/context_obj;
+                   proxy python:here.getBlogProxy(proxy=context)"
+           condition="nocall:proxy">
+  <ul class="cpsskinsMenu"
+      tal:define="categories python:context.getCPSBlogCategories(context);
+                  context_url context/absolute_url"
+      tal:condition="categories">
+    <li tal:repeat="category categories">
+      <a tal:define="title category/title"
+         tal:attributes="href string:${context_url}/archive_view?category=${title}">
+        <span tal:replace="title" />&nbsp;(<span tal:replace="category/posts" />)
+      </a>
+    </li>
+  </ul>
 </tal:block>
