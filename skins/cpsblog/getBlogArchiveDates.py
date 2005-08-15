@@ -10,11 +10,14 @@ brains = catalog.searchResults(meta_type='BlogEntry',
                                sort_order='reverse',
                                path='/'.join(context.getPhysicalPath()))
 
+proxies = [brain.getObject()
+           for brain in brains if brain.getObject() is not None]
+
 # { year : [list of months integers] }
 dyear = {}
 
-for brain in brains:
-    date = brain.getObject().effective()
+for proxy in proxies:
+    date = proxy.effective()
     year = date.year()
     month = date.month()
     if year in dyear:
