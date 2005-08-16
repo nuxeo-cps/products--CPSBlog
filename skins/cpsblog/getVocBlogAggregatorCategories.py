@@ -1,6 +1,6 @@
 ##parameters=key=None, is_i18n=None
 # $Id$
-"""Returns blog categories from global categories and all blogs"""
+"""Return blog categories from global categories and all blogs"""
 
 glob_cats_voc = context.portal_vocabularies.blog_glob_categories
 
@@ -11,21 +11,21 @@ query = {}
 query['portal_type'] = 'Blog'
 
 brains = catalog.searchResults(**query)
-for brain in brains:
-    ob =  brain.getObject()
-    for category in ob.getContent().getSortedCategories():
+proxies = [brain.getObject()
+           for brain in brains if brain.getObject() is not None]
+
+for proxy in proxies:
+    for category in proxy.getContent().getSortedCategories():
         unique_keys[category['title']] = 1
 
-blog_categories = [(k, k) for k in unique_keys.keys()]
+blog_categories = [(k, k) for k in unique_keys]
 
 if key is not None:
     if key in blog_categories:
         return key
     return glob_cats_voc.get(key)
 
-glob_categories = [(k, v) for k, v in glob_cats_voc.items()]
-
-categories = blog_categories + glob_categories
+categories = blog_categories + glob_cats_voc.items()
 categories.sort()
 
 return tuple(categories)
