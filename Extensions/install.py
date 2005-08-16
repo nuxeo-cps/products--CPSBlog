@@ -126,6 +126,12 @@ class ClientInstaller(CPSInstaller):
         self.allowContentTypes(('Blog', 'BlogAggregator'),
                                ('Workspace', 'Section'))
 
+        # portlet cache parameters
+        ptltool = self.getTool('portal_cpsportlets')
+        ptltool.updateCacheParameters({
+            'BlogAggregator Portlet': ['no-cache'],
+            })
+
         self.setupBoxes()
 
         ########################################
