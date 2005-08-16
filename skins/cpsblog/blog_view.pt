@@ -1,8 +1,12 @@
 <html metal:use-macro="here/content_lib_master/macros/master">
-  <metal:block fill-slot="header">
+  <!-- FIXME: need some more generic feed export architecture here -->
+  <metal:block fill-slot="head_slot">
     <link rel="alternate" type="application/rss+xml" title="#" href=""
-          tal:attributes="title here/Title;
+          tal:attributes="title string:${here/Title} (RSS feed);
                           href string:${here/absolute_url}/exportrss" />
+    <link rel="alternate" type="application/atom+xml" title="#" href=""
+          tal:attributes="title string:${here/Title} (ATOM feed);
+                          href string:${here/absolute_url}/exportatom" />
   </metal:block>
 
   <metal:block fill-slot="css_slot">
