@@ -55,248 +55,258 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.ws = self.portal.workspaces
         self.ws.invokeFactory(type_name='Blog', id='blog')
         self.ws.blog.invokeFactory(type_name='BlogEntry', id='blogentry')
-        self.bentry_proxy = getattr(self.ws.blog, 'blogentry')
-        self.bentry = self.bentry_proxy.getContent()
+        self.blogentry_proxy = getattr(self.ws.blog, 'blogentry')
+        self.blogentry = self.blogentry_proxy.getContent()
 
     def beforeTearDown(self):
         self.logout()
 
     def testAddTrackback(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
 
-        self.assertEqual(len(bentry.trackbacks), 0)
+        self.assertEqual(len(blogentry.trackbacks), 0)
 
-        tb_id = bentry.addTrackback(title='title', excerpt='excerpt',
-                                    url='localhost', blog_name='test blog')
-        self.assertEqual(len(bentry.trackbacks), 1)
+        tb_id = blogentry.addTrackback(title='title', excerpt='excerpt',
+            url='http://toto.com/titi', blog_name='test blog')
 
-        self.assertEqual(bentry.trackbacks[tb_id].title, 'title')
-        self.assertEqual(bentry.trackbacks[tb_id].excerpt, 'excerpt')
-        self.assertEqual(bentry.trackbacks[tb_id].url, 'localhost')
-        self.assertEqual(bentry.trackbacks[tb_id].blog_name, 'test blog')
+        self.assertEqual(len(blogentry.trackbacks), 1)
+
+        tb = blogentry.getTrackback(tb_id)
+        self.assertEqual(tb.title, 'title')
+        self.assertEqual(tb.excerpt, 'excerpt')
+        self.assertEqual(tb.url, 'http://toto.com/titi')
+        self.assertEqual(tb.blog_name, 'test blog')
+
+    def testAddSpamTrackback(self):
+        blogentry = self.blogentry
+        self.assertEqual(len(blogentry.trackbacks), 0)
+        tb_id = blogentry.addTrackback(title='title', excerpt='excerpt',
+            url='http://toto.com/', blog_name='test blog')
+        self.assertEqual(len(blogentry.trackbacks), 0)
 
     def testRemoveTrackback(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         self.testAddTrackback()
-        self.assertEqual(len(bentry.trackbacks), 1)
+        self.assertEqual(len(blogentry.trackbacks), 1)
 
-        bentry.removeTrackback(bentry.trackbacks.keys()[0])
-        self.assertEqual(len(bentry.trackbacks), 0)
+        blogentry.removeTrackback(blogentry.trackbacks.keys()[0])
+        self.assertEqual(len(blogentry.trackbacks), 0)
 
-        self.assertRaises(KeyError, bentry.removeTrackback, -1)
+        self.assertRaises(KeyError, blogentry.removeTrackback, -1)
 
     def testRemoveTrackbacks(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         tb_ids = []
-        kw = {'title' : 'title',
-              'excerpt' : 'excerpt',
-              'url' : 'url',
-              'blog_name' : 'blog_name'
+        kw = {'title': 'title',
+              'excerpt': 'excerpt',
+              'url': 'http://toto.com/toto',
+              'blog_name': 'blog_name'
               }
         for i in range(10):
-            tb_id = bentry.addTrackback(**kw)
+            tb_id = blogentry.addTrackback(**kw)
             tb_ids.append(tb_id)
 
-        self.assertEqual(len(bentry.trackbacks), 10)
+        self.assertEqual(len(blogentry.trackbacks), 10)
 
-        bentry.removeTrackbacks(tb_ids)
-        self.assertEqual(len(bentry.trackbacks), 0)
+        blogentry.removeTrackbacks(tb_ids)
+        self.assertEqual(len(blogentry.trackbacks), 0)
 
     def testGetTrackback(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         self.testAddTrackback()
-        tb_id = bentry.trackbacks.keys()[0]
+        tb_id = blogentry.trackbacks.keys()[0]
 
-        self.assertEqual(bentry.trackbacks[tb_id].title,
-                         bentry.getTrackback(tb_id).title)
-        self.assertEqual(bentry.trackbacks[tb_id].excerpt,
-                         bentry.getTrackback(tb_id).excerpt)
-        self.assertEqual(bentry.trackbacks[tb_id].url,
-                         bentry.getTrackback(tb_id).url)
-        self.assertEqual(bentry.trackbacks[tb_id].blog_name,
-                         bentry.getTrackback(tb_id).blog_name)
+        self.assertEqual(blogentry.trackbacks[tb_id].title,
+                         blogentry.getTrackback(tb_id).title)
+        self.assertEqual(blogentry.trackbacks[tb_id].excerpt,
+                         blogentry.getTrackback(tb_id).excerpt)
+        self.assertEqual(blogentry.trackbacks[tb_id].url,
+                         blogentry.getTrackback(tb_id).url)
+        self.assertEqual(blogentry.trackbacks[tb_id].blog_name,
+                         blogentry.getTrackback(tb_id).blog_name)
 
-        self.assertEqual(bentry.getTrackback(-1, None), None)
-        self.assertEqual(bentry.getTrackback(-1), None)
+        self.assertEqual(blogentry.getTrackback(-1, None), None)
+        self.assertEqual(blogentry.getTrackback(-1), None)
 
     def testEditTrackback(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         self.testAddTrackback()
-        tb_id = bentry.trackbacks.keys()[0]
-        kw = {'title' : 'edit title',
-              'excerpt' : 'edit excerpt',
-              'url' : 'edit url',
-              'blog_name' : 'edit blog_name'
+        tb_id = blogentry.trackbacks.keys()[0]
+        kw = {'title': 'edit title',
+              'excerpt': 'edit excerpt',
+              'url': 'edit url',
+              'blog_name': 'edit blog_name'
               }
 
-        bentry.editTrackback(tb_id, **kw)
-        self.assertEqual(bentry.getTrackback(tb_id).title, kw['title'])
-        self.assertEqual(bentry.getTrackback(tb_id).excerpt, kw['excerpt'])
-        self.assertEqual(bentry.getTrackback(tb_id).url, kw['url'])
-        self.assertEqual(bentry.getTrackback(tb_id).blog_name, kw['blog_name'])
+        blogentry.editTrackback(tb_id, **kw)
+        tb = blogentry.getTrackback(tb_id)
+        self.assertEqual(tb.title, kw['title'])
+        self.assertEqual(tb.excerpt, kw['excerpt'])
+        self.assertEqual(tb.url, kw['url'])
+        self.assertEqual(tb.blog_name, kw['blog_name'])
 
     def testGetSortedTrackbacks(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         dates = []
-        kw = {'title' : 'title',
-              'excerpt' : 'excerpt',
-              'url' : 'url',
-              'blog_name' : 'blog_name'
+        kw = {'title': 'title',
+              'excerpt': 'excerpt',
+              'url': 'http://toto.com/toto',
+              'blog_name': 'blog_name'
               }
         for i in range(10):
-            tb_id = bentry.addTrackback(**kw)
+            tb_id = blogentry.addTrackback(**kw)
             date = DateTime() + 1
-            bentry.getTrackback(tb_id).created = date
+            blogentry.getTrackback(tb_id).created = date
             dates.append(date)
 
         dates.reverse()
-        self.assertEqual([tb.created for tb in bentry.getSortedTrackbacks()],
+        self.assertEqual([tb.created for tb in blogentry.getSortedTrackbacks()],
                          dates)
 
     def testCountTrackbacks(self):
-        kw = {'title' : 'title',
-              'excerpt' : 'excerpt',
-              'url' : 'url',
-              'blog_name' : 'blog_name'
+        kw = {'title': 'title',
+              'excerpt': 'excerpt',
+              'url': 'http://toto.com/toto',
+              'blog_name': 'blog_name'
               }
-        bentry = self.bentry
+        blogentry = self.blogentry
 
-        self.assertEqual(bentry.countTrackbacks(), 0)
-        bentry.addTrackback(**kw)
-        self.assertEqual(bentry.countTrackbacks(), 1)
-        bentry.addTrackback(**kw)
-        self.assertEqual(bentry.countTrackbacks(), 2)
+        self.assertEqual(blogentry.countTrackbacks(), 0)
+        blogentry.addTrackback(**kw)
+        self.assertEqual(blogentry.countTrackbacks(), 1)
+        blogentry.addTrackback(**kw)
+        self.assertEqual(blogentry.countTrackbacks(), 2)
 
     def testTbpingGET(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         request = self.app.REQUEST
         request.set('REQUEST_METHOD', 'GET')
-        request.set('PARENTS', [bentry])
-        result = bentry.tbping(request)
+        request.set('PARENTS', [blogentry])
+        result = blogentry.tbping(request)
 
         self.assert_('<error>1</error>' in result, result)
         self.assert_("GET method requires correct '__mode' parameter" in result,
                      result)
 
         request.form['__mode'] = 'rss'
-        result = bentry.tbping(request)
+        result = blogentry.tbping(request)
         self.assert_('<error>0</error>' in result, result)
 
         doc = xml.dom.minidom.parseString(result)
         self.assertEqual(len(doc.getElementsByTagName('item')), 0)
 
-        kw = {'title' : 'title',
-              'excerpt' : 'excerpt',
-              'url' : 'url',
-              'blog_name' : 'blog_name'
+        kw = {'title': 'title',
+              'excerpt': 'excerpt',
+              'url': 'http://toto.com/toto',
+              'blog_name': 'blog_name'
               }
-        bentry.addTrackback(**kw)
-        result = bentry.tbping(request)
+        blogentry.addTrackback(**kw)
+        result = blogentry.tbping(request)
         doc = xml.dom.minidom.parseString(result)
         self.assertEqual(len(doc.getElementsByTagName('item')), 1)
 
-        bentry.addTrackback(**kw)
-        result = bentry.tbping(request)
+        blogentry.addTrackback(**kw)
+        result = blogentry.tbping(request)
         doc = xml.dom.minidom.parseString(result)
         self.assertEqual(len(doc.getElementsByTagName('item')), 2)
 
     def testTbpingPOST(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         request = self.app.REQUEST
 
-        self.assertEqual(bentry.countTrackbacks(), 0)
+        self.assertEqual(blogentry.countTrackbacks(), 0)
 
-        bentry.accept_trackback_pings = 0
+        blogentry.accept_trackback_pings = 0
         request.set('REQUEST_METHOD', 'POST')
-        request.set('PARENTS', [bentry])
+        request.set('PARENTS', [blogentry])
         request.form['title'] = 'title'
         request.form['excerpt'] = 'excerpt'
-        request.form['url'] = 'http://localhost'
+        request.form['url'] = 'http://toto.com/toto'
         request.form['blog_name'] = 'test blog'
-        result = bentry.tbping(request)
+        result = blogentry.tbping(request)
         self.assert_('<error>1</error>' in result, result)
         self.assert_(
             '<message>Posting of trackbacks is not allowed at the moment</message>' in result,
             result)
 
-        bentry.accept_trackback_pings = 1
-        result = bentry.tbping(request)
+        blogentry.accept_trackback_pings = 1
+        result = blogentry.tbping(request)
         self.assert_('<error>0</error>' in result, result)
-        self.assertEqual(bentry.countTrackbacks(), 1)
-        tb = bentry.getSortedTrackbacks()[0]
+        self.assertEqual(blogentry.countTrackbacks(), 1)
+        tb = blogentry.getSortedTrackbacks()[0]
         self.assertEqual(tb.title, 'title')
         self.assertEqual(tb.excerpt, 'excerpt')
-        self.assertEqual(tb.url, 'http://localhost')
+        self.assertEqual(tb.url, 'http://toto.com/toto')
         self.assertEqual(tb.blog_name, 'test blog')
 
 
     def testAddDispatchTrackback(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
 
-        self.assertEqual(len(bentry.dispatch_trackbacks), 0)
+        self.assertEqual(len(blogentry.dispatch_trackbacks), 0)
 
-        tb_id = bentry.addDispatchTrackback(trackback_url='http://localhost')
-        self.assertEqual(len(bentry.dispatch_trackbacks), 1)
+        tb_id = blogentry.addDispatchTrackback(trackback_url='http://localhost')
+        self.assertEqual(len(blogentry.dispatch_trackbacks), 1)
 
-        self.assertEqual(bentry.dispatch_trackbacks[tb_id].trackback_url,
+        self.assertEqual(blogentry.dispatch_trackbacks[tb_id].trackback_url,
                          'http://localhost')
-        self.assertEqual(bentry.dispatch_trackbacks[tb_id].sent, False)
-        self.assert_(isinstance(bentry.dispatch_trackbacks[tb_id].send_result, tuple))
-        self.assertEqual(bentry.dispatch_trackbacks[tb_id].send_result, ())
+        self.assertEqual(blogentry.dispatch_trackbacks[tb_id].sent, False)
+        self.assert_(isinstance(blogentry.dispatch_trackbacks[tb_id].send_result, tuple))
+        self.assertEqual(blogentry.dispatch_trackbacks[tb_id].send_result, ())
 
         # check that trackback with the same url is not added
-        tb_id = bentry.addDispatchTrackback(trackback_url='http://localhost')
-        self.assertEqual(len(bentry.dispatch_trackbacks), 1)
+        tb_id = blogentry.addDispatchTrackback(trackback_url='http://localhost')
+        self.assertEqual(len(blogentry.dispatch_trackbacks), 1)
 
     def testGetDispatchTrackback(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         self.testAddDispatchTrackback()
-        tb_id = bentry.dispatch_trackbacks.keys()[0]
+        tb_id = blogentry.dispatch_trackbacks.keys()[0]
 
 
-        self.assertEqual(bentry.dispatch_trackbacks[tb_id].trackback_url,
-                         bentry.getDispatchTrackback(tb_id).trackback_url)
-        self.assertEqual(bentry.dispatch_trackbacks[tb_id].sent,
-                         bentry.getDispatchTrackback(tb_id).sent)
+        self.assertEqual(blogentry.dispatch_trackbacks[tb_id].trackback_url,
+                         blogentry.getDispatchTrackback(tb_id).trackback_url)
+        self.assertEqual(blogentry.dispatch_trackbacks[tb_id].sent,
+                         blogentry.getDispatchTrackback(tb_id).sent)
 
-        self.assertEqual(bentry.getDispatchTrackback(-1, None), None)
-        self.assertEqual(bentry.getDispatchTrackback(-1), None)
+        self.assertEqual(blogentry.getDispatchTrackback(-1, None), None)
+        self.assertEqual(blogentry.getDispatchTrackback(-1), None)
 
     def testGetSortedDispatchTrackbacks(self):
-        bentry = self.bentry
+        blogentry = self.blogentry
         dates = []
         for i in range(10):
-            tb_id = bentry.addDispatchTrackback('http://localhost%d' % i)
+            tb_id = blogentry.addDispatchTrackback('http://localhost%d' % i)
             date = DateTime() + 1
-            bentry.getDispatchTrackback(tb_id).created = date
+            blogentry.getDispatchTrackback(tb_id).created = date
             dates.append(date)
 
         dates.reverse()
         self.assertEqual(
-            [tb.created for tb in bentry.getSortedDispatchTrackbacks()],
+            [tb.created for tb in blogentry.getSortedDispatchTrackbacks()],
             dates)
 
     def testGetEntrySummary(self):
-        bentry = self.bentry
-        bentry_proxy = self.bentry_proxy
+        blogentry = self.blogentry
+        blogentry_proxy = self.blogentry_proxy
         text = "Summary test.  Second line."
         html = "<p>Summary test.</p>&nbsp;&nbsp;Second line.<br/>"
-        bentry.content = html
-        self.assertEqual(text, bentry.getEntrySummary())
+        blogentry.content = html
+        self.assertEqual(text, blogentry.getEntrySummary())
 
-        kw = {'Description' : 'Description Test'}
-        bentry.edit(proxy=bentry_proxy, **kw)
-        self.assertEqual(bentry.Description(), bentry.getEntrySummary())
+        kw = {'Description': 'Description Test'}
+        blogentry.edit(proxy=blogentry_proxy, **kw)
+        self.assertEqual(blogentry.Description(), blogentry.getEntrySummary())
 
-        kw = {'Description' : '',
-              'content' : 'T' * (SUMMARY_MAX_LENGTH + 10)}
-        bentry.edit(proxy=bentry_proxy, **kw)
+        kw = {'Description': '',
+              'content': 'T' * (SUMMARY_MAX_LENGTH + 10)}
+        blogentry.edit(proxy=blogentry_proxy, **kw)
         res_str = 'T' * SUMMARY_MAX_LENGTH + ' ...'
-        self.assertEqual(res_str, bentry.getEntrySummary())
+        self.assertEqual(res_str, blogentry.getEntrySummary())
 
 
 def test_suite():
-    return unittest.TestSuite((
+    suite = unittest.TestSuite((
         unittest.makeSuite(TestBlogEntryCreation),
         unittest.makeSuite(TestBlogEntry),
         ))

@@ -4,6 +4,7 @@ Requires:
 New features:
 ~~~~~~~~~~~~~
 - Cache parameters for the BlogAggregator Portlet are available in the ZMI.
+- Add simple anti-trackback-spam (needs more heuristics)
 Bug fixes:
 ~~~~~~~~~~
 - The blog aggregator, blog archive and blog category portlets could not

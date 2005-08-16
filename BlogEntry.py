@@ -55,9 +55,14 @@ class BlogEntry(CPSDocument):
     security.declareProtected(ModifyPortalContent, 'addTrackback')
     def addTrackback(self, context=None, title='', excerpt='', url='',
                      blog_name=''):
-        blog_proxy = self.getBlogProxy()
         trackback_id = self._generateTrackbackId()
         trackback = Trackback(trackback_id, title, excerpt, url, blog_name)
+        
+        # Silently ignore spam trackbacks
+        if trackback.isSpam():
+            return
+
+        blog_proxy = self.getBlogProxy()
         self.trackbacks[trackback_id] = trackback
         LOG('TrackBack', DEBUG, "new trackback for %s" % blog_proxy)
         evtool = getEventService(self)

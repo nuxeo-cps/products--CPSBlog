@@ -22,6 +22,7 @@ from Globals import Persistent
 from DateTime import DateTime
 import Globals
 from Products.CPSBlog.utils import post_trackback
+import urlparse
 
 class Trackback(Persistent, Implicit):
     security = ClassSecurityInfo()
@@ -35,6 +36,18 @@ class Trackback(Persistent, Implicit):
         self.url = url
         self.blog_name = blog_name
         self.created = DateTime()
+
+    def isSpam(self):
+        """Is this trackback spam (based on heuristics)?
+
+        Heuristics used:
+          - Top levels URL are probably spam
+          - (That's all for now)
+        """
+        path = urlparse.urlparse(self.url)[2]
+        if path in ("/", ""):
+            return True
+        return False
 
 Globals.InitializeClass(Trackback)
 
