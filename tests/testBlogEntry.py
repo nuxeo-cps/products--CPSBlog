@@ -27,7 +27,7 @@ class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
     def testAddBlogEntry(self):
         # Test creation of BlogEntry instance.
         blog = self._createBlog()
-        self.failIf('blogentry' in blog.objectIds())
+        self.assert_('blogentry' not in blog.objectIds())
 
         blog.invokeFactory(type_name='BlogEntry', id='blogentry')
         self.assert_('blogentry' in blog.objectIds())
@@ -54,12 +54,31 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.login('manager')
         self.ws = self.portal.workspaces
         self.ws.invokeFactory(type_name='Blog', id='blog')
-        self.ws.blog.invokeFactory(type_name='BlogEntry', id='blogentry')
+        self.blog = self.ws.blog
+        self.blog.invokeFactory(type_name='BlogEntry', id='blogentry')
         self.blogentry_proxy = getattr(self.ws.blog, 'blogentry')
         self.blogentry = self.blogentry_proxy.getContent()
 
     def beforeTearDown(self):
         self.logout()
+
+    def testExportRss(self):
+        feed = self.blog.exportrss()
+        xml.dom.minidom.parseString(feed)
+
+        kw = {'content': "toto<br>"}
+        self.blogentry.edit(proxy=self.blogentry_proxy, **kw)
+        feed = self.blog.exportrss()
+        xml.dom.minidom.parseString(feed)
+
+    def testExportAtom(self):
+        feed = self.blog.exportatom()
+        xml.dom.minidom.parseString(feed)
+
+        kw = {'content': "toto<br>"}
+        self.blogentry.edit(proxy=self.blogentry_proxy, **kw)
+        feed = self.blog.exportatom()
+        xml.dom.minidom.parseString(feed)
 
     def testAddTrackback(self):
         blogentry = self.blogentry

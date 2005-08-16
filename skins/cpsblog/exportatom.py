@@ -42,13 +42,11 @@ atom_entry = r"""
       <name>%(entry_author)s</name>
     </author>
     %(entry_contributors)s
-    <summary xml:lang="%(entry_lang)s">
+    <summary type="text/html" mode="escaped" xml:lang="%(entry_lang)s">
       %(summary)s
     </summary>
-    <content type="application/xhtml+xml" mode="xml" xml:lang="%(entry_lang)s" xml:space="preserve">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        %(content)s
-      </div>
+    <content type="text/html" mode="escaped" xml:lang="%(entry_lang)s" xml:space="preserve">
+      %(content)s
     </content>
   </entry>
 """
@@ -119,17 +117,17 @@ for item in items:
     summary = nbsp_to_space(summary)
     content = nbsp_to_space(content)
 
-    body_text += atom_entry % {'entry_id' : entry_id,
-                               'entry_title' : escape(entry_title),
-                               'entry_link' : entry_link,
-                               'entry_issued' : entry_issued,
-                               'entry_modified' : entry_modified,
-                               'entry_created' : entry_created,
-                               'entry_author' : entry_author,
-                               'entry_lang' : entry_lang,
-                               'entry_contributors' : entry_contributors,
-                               'summary' : summary,
-                               'content' : content
+    body_text += atom_entry % {'entry_id': entry_id,
+                               'entry_title': escape(entry_title),
+                               'entry_link': entry_link,
+                               'entry_issued': entry_issued,
+                               'entry_modified': entry_modified,
+                               'entry_created': entry_created,
+                               'entry_author': entry_author,
+                               'entry_lang': entry_lang,
+                               'entry_contributors': entry_contributors,
+                               'summary': escape(summary),
+                               'content': escape(content),
                                }
 
 info = context.getContentInfo(context, level=1)
