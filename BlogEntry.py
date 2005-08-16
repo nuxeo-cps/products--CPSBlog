@@ -42,6 +42,7 @@ class BlogEntry(CPSDocument):
         self.trackbacks = IOBTree()
         self.dispatch_trackbacks = IOBTree()
 
+    # FIXME: "data" is not a suitable name for a parameter
     def _generateId(self, data):
         id = int(random.random() * 100000)
         while id in data.keys():
@@ -94,7 +95,7 @@ class BlogEntry(CPSDocument):
 
     security.declareProtected(View, 'getSortedTrackbacks')
     def getSortedTrackbacks(self):
-        """Returns trakbacks sorted on creation date in reverse order."""
+        """Return trakbacks sorted on creation date in reverse order."""
         t = [(v.created, v) for k, v in self.trackbacks.items()]
         t.sort()
         t.reverse()
@@ -117,7 +118,7 @@ class BlogEntry(CPSDocument):
 
     security.declareProtected(ModifyPortalContent, 'addDispatchTrackbacks')
     def addDispatchTrackbacks(self, context):
-        """Adds trackbacks and sends pings."""
+        """Add trackbacks and sends pings."""
         # dispatch_trackback_urls is String List Field from schema definition
         for tb_url in self.dispatch_trackback_urls:
             self.addDispatchTrackback(tb_url)
@@ -129,7 +130,7 @@ class BlogEntry(CPSDocument):
 
     security.declareProtected(View, 'getSortedDispatchTrackbacks')
     def getSortedDispatchTrackbacks(self):
-        """Returns dispatch trakbacks sorted on creation date in
+        """Return dispatch trakbacks sorted on creation date in
         reverse order."""
         items = [(v.created, v) for k, v in self.dispatch_trackbacks.items()]
         items.sort()
@@ -138,23 +139,23 @@ class BlogEntry(CPSDocument):
 
     security.declareProtected(ModifyPortalContent, 'sendTrackbacks')
     def sendTrackbacks(self, context):
-        """Iterates over dispatching trackbacks and sends pings."""
+        """Iterate over dispatching trackbacks and sends pings."""
         DESCRIPTION_MAX_LENGTH = 200
         result = []
 
         blog_proxy = context.getBlogProxy()
         blog_entry = context.getContent()
 
-        def strip_html(text):
+        def stripHtml(text):
             # stripping of html tags based on simple regexp
             return re.sub("<[^>]+>", '', text)
 
-        for k, trackback in self.dispatch_trackbacks.items():
+        for trackback in self.dispatch_trackbacks.values():
             if not trackback.sent:
                 if len(blog_entry.Description()) > 0:
-                    excerpt = strip_html(context.description)
+                    excerpt = stripHtml(context.description)
                 else:
-                    excerpt = strip_html(blog_entry.content)
+                    excerpt = stripHtml(blog_entry.content)
                     if len(excerpt) > DESCRIPTION_MAX_LENGTH:
                         excerpt = excerpt[:DESCRIPTION_MAX_LENGTH]
                         i = excerpt.rfind(' ')
@@ -214,7 +215,8 @@ class BlogEntry(CPSDocument):
 
     security.declarePublic('tbping')
     def tbping(self, REQUEST=None):
-        """Handles trackback ping.
+        """Handle trackback ping.
+
         This method is meant to be called only via web.
         """
 
@@ -246,10 +248,10 @@ class BlogEntry(CPSDocument):
 
     security.declareProtected(View, 'getEntrySummary')
     def getEntrySummary(self):
-        """Returns summary text or from 'Description' field or as computed
+        """Return summary text or from 'Description' field or as computed
         text of length SUMMARY_MAX_LENGTH from 'content' field."""
 
-        def strip_html(text):
+        def stripHtml(text):
             # stripping of html tags based on simple regexp
             return re.sub("<[^>]+>", '', text)
 
@@ -257,9 +259,9 @@ class BlogEntry(CPSDocument):
             return re.sub('&nbsp;', ' ', text)
 
         if len(self.Description()) > 0:
-            summary = strip_html(self.Description())
+            summary = stripHtml(self.Description())
         else:
-            summary = strip_html(self.content)
+            summary = stripHtml(self.content)
             if len(summary) > SUMMARY_MAX_LENGTH:
                 summary = summary[:SUMMARY_MAX_LENGTH]
                 i = summary.rfind(' ')

@@ -45,7 +45,7 @@ class LazySequenceLength(ExtensionClass.Base):
 
 
 class Batch(ZTUBatch):
-    """Handles sequence batches.
+    """Handle sequence batches.
 
     Testing empty Batch
 
@@ -166,7 +166,7 @@ class Batch(ZTUBatch):
             self.next_list = range(self.cur_page + 1, self.page_range_end)
 
     def getPageUrl(self, form_dict, page_number=None):
-        """Makes the url for a given page
+        """Make the url for a given page
 
         >>> b = Batch(range(30), size=10, overlap=0)
 
@@ -197,7 +197,7 @@ class Batch(ZTUBatch):
         return make_query(form_dict, b_start=b_start)
 
     def getNavigationUrls(self, form_dict, nav_list=None):
-        """Returns complete list of pairs (page number, url) for navigation
+        """Return complete list of pairs (page number, url) for navigation
         links. Serves as a helper method for urls methods.
 
         >>> b = Batch(sequence=range(30), size=10, overlap=0)
@@ -232,7 +232,7 @@ class Batch(ZTUBatch):
 
 
 def calculate_page_number(element_number, batch_size, overlap=0):
-    """Calculates page number for the given element number."""
+    """Calculate page number for the given element number."""
     try:
         page_number, remainder = divmod(element_number, batch_size - overlap)
     except ZeroDivisionError:
@@ -245,11 +245,11 @@ def calculate_page_number(element_number, batch_size, overlap=0):
     return page_number
 
 def calculate_numpages(sequence_length, batch_size, overlap=0):
-    """Calculates total number of pages."""
+    """Calculate total number of pages."""
     return calculate_page_number(sequence_length, batch_size, overlap)
 
 def calculate_page_range(page_number, numpages, page_range):
-    """Calculates the page range for the navigation quick links.
+    """Calculate the page range for the navigation quick links.
     page_number is current page for which we want to get page range.
 
     Check that page_range will always be odd number

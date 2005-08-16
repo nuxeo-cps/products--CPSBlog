@@ -22,15 +22,15 @@ import urlparse
 import re
 
 def post_trackback(trackback_url, title='', excerpt='', url='', blog_name=''):
-    """Sends trackback to given url."""
-    params = urllib.urlencode({'title' : title,
-                               'excerpt' : excerpt,
-                               'url' : url,
-                               'blog_name' : blog_name
+    """Send trackback to given url."""
+    params = urllib.urlencode({'title': title,
+                               'excerpt': excerpt,
+                               'url': url,
+                               'blog_name': blog_name
                                })
 
-    headers = {'Content-Type' : 'application/x-www-form-urlencoded',
-               'Accept' : 'text/xml',
+    headers = {'Content-Type': 'application/x-www-form-urlencoded',
+               'Accept': 'text/xml',
                }
 
     location, path = urlparse.urlparse(trackback_url)[1:3]
@@ -64,3 +64,4 @@ def post_trackback(trackback_url, title='', excerpt='', url='', blog_name=''):
         msg = str(e)
 
     return error_code, msg
+

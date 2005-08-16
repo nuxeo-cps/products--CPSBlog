@@ -46,7 +46,7 @@ class Blog(CPSDocument):
     security.declareProtected(ModifyPortalContent, 'addCategory')
     def addCategory(self, title='', description='', urls_to_ping=(),
                     accept_pings=False):
-        """Adds category to blog, auto generates id of category """
+        """Add category to blog, auto generates id of category """
         catid = self._generateId()
 
         category = {'id' : catid,
@@ -60,18 +60,18 @@ class Blog(CPSDocument):
 
     security.declareProtected(ModifyPortalContent, 'removeCategory')
     def removeCategory(self, catid):
-        """Removes category."""
+        """Remove category."""
         if self.categories.has_key(catid):
             del self.categories[catid]
 
     security.declareProtected(View, 'getCategory')
     def getCategory(self, catid):
-        """Returns category by id."""
+        """Return category by id."""
         return self.categories.get(catid, None)
 
     security.declareProtected(View, 'getCategoryByTitle')
     def getCategoryByTitle(self, title):
-        """Returns category by title."""
+        """Return category by title."""
         for catdef in self.getSortedCategories():
             if catdef['title'] == title:
                 return catdef
@@ -79,14 +79,14 @@ class Blog(CPSDocument):
 
     security.declareProtected(View, 'getSortedCategories')
     def getSortedCategories(self):
-        """Returns categories sorted by title."""
+        """Return categories sorted by title."""
         t = [(v['title'].lower(), k) for k, v in self.categories.items()]
         t.sort()
         return [self.categories.get(v[1]) for v in t]
 
     security.declareProtected(ModifyPortalContent, 'updateCategory')
     def updateCategory(self, catid, catdef):
-        """Updates category by id."""
+        """Update category by id."""
         if self.categories.has_key(catid):
             d = self.categories[catid].copy()
             d.update(catdef)
