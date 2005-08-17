@@ -116,6 +116,7 @@ o Automatic categorisation of blogs: "Similar posts" using either linguistic
 
 M6:
 
+o Podcasting (see http://www-128.ibm.com/developerworks/xml/library/x-atom10.html)
 o Anti-spam on comments
 o "Object oriented" blog entries. Examples:
     - MovieBlogEntry (for blogging about movies: will include link to relevant
@@ -133,6 +134,7 @@ o "Object oriented" blog entries. Examples:
     - ProjectManagerBlogEntry (...)
     - SalesBlogEntry (???)
     ...
+
 
 
 Features of blog aggregation tool
