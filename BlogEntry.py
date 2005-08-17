@@ -30,6 +30,14 @@ import re
 SUMMARY_MAX_LENGTH = 400
 factory_type_information = {}
 
+def strip_html(text):
+    # stripping of html tags based on simple regexp
+    return re.sub("<[^>]+>", '', text)
+
+def nbsp_to_space(text):
+    return re.sub('&nbsp;', ' ', text)
+
+
 class BlogEntry(CPSDocument):
     """BlogEntry that contain blog post"""
 
@@ -57,7 +65,7 @@ class BlogEntry(CPSDocument):
                      blog_name=''):
         trackback_id = self._generateTrackbackId()
         trackback = Trackback(trackback_id, title, excerpt, url, blog_name)
-        
+
         # Silently ignore spam trackbacks
         if trackback.isSpam():
             return
@@ -151,16 +159,12 @@ class BlogEntry(CPSDocument):
         blog_proxy = context.getBlogProxy()
         blog_entry = context.getContent()
 
-        def stripHtml(text):
-            # stripping of html tags based on simple regexp
-            return re.sub("<[^>]+>", '', text)
-
         for trackback in self.dispatch_trackbacks.values():
             if not trackback.sent:
                 if len(blog_entry.Description()) > 0:
-                    excerpt = stripHtml(context.description)
+                    excerpt = strip_html(context.description)
                 else:
-                    excerpt = stripHtml(blog_entry.content)
+                    excerpt = strip_html(blog_entry.content)
                     if len(excerpt) > DESCRIPTION_MAX_LENGTH:
                         excerpt = excerpt[:DESCRIPTION_MAX_LENGTH]
                         i = excerpt.rfind(' ')
@@ -256,17 +260,10 @@ class BlogEntry(CPSDocument):
         """Return summary text or from 'Description' field or as computed
         text of length SUMMARY_MAX_LENGTH from 'content' field."""
 
-        def stripHtml(text):
-            # stripping of html tags based on simple regexp
-            return re.sub("<[^>]+>", '', text)
-
-        def nbsp_to_space(text):
-            return re.sub('&nbsp;', ' ', text)
-
         if len(self.Description()) > 0:
-            summary = stripHtml(self.Description())
+            summary = strip_html(self.Description())
         else:
-            summary = stripHtml(self.content)
+            summary = strip_html(self.content)
             if len(summary) > SUMMARY_MAX_LENGTH:
                 summary = summary[:SUMMARY_MAX_LENGTH]
                 i = summary.rfind(' ')
@@ -286,5 +283,4 @@ def addBlogEntry(container, id, REQUEST=None, **kw):
 
     if REQUEST:
         ob = container._getOb(id)
-        LOG(log_key, DEBUG, "object = %s" % ob)
         REQUEST.RESPONSE.redirect(ob.absolute_url() + '/manage_main')
