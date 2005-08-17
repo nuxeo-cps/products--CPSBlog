@@ -1,0 +1,6 @@
+<categories version="1.0"  xmlns="http://purl.org/atom/ns" xmlns:tal="http://xml.zope.org/namespaces/tal">
+<tal:block repeat="cat here/getSortedCategories">
+    <subject tal:attributes="value string:${here/absolute_url}#${cat/title}" tal:content="cat/title"
+    			value="cat">cat</subject>
+</tal:block>
+</categories>

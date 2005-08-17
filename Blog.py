@@ -19,10 +19,13 @@
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Products.CPSDocument.CPSDocument import CPSDocument
-from zLOG import LOG, DEBUG
+from zLOG import LOG, DEBUG, TRACE
 from BTrees.IOBTree import IOBTree
 from Products.CMFCore.permissions import View, ModifyPortalContent
+from DateTime import DateTime
+from Products.CMFCore.utils import getToolByName
 import random
+#import lxml
 
 factory_type_information = {}
 
@@ -91,6 +94,83 @@ class Blog(CPSDocument):
             d = self.categories[catid].copy()
             d.update(catdef)
             self.categories[catid] = d
+
+    security.declareProtected(ModifyPortalContent, 'postAtom')
+    def postAtom(self, REQUEST, **kw):
+        """Handle ATOM POST to add or update an entry"""
+        LOG('CPSBlog', TRACE, 'Got something in postAtom!')
+        context = REQUEST.PARENTS[0]
+        response = REQUEST.RESPONSE
+
+        LOG('CPSBlog', TRACE, 'context : %s' % context)
+
+        infos = self.parseAtomXmlEntry(xmlString = REQUEST.BODY)
+        #language = context.translation_service.getSelectedLanguage()
+        #lang = 'en'
+        entry_id = DateTime().strftime('%Y_%m_%d') + '_' + context.computeId(compute_from=infos['Title'])
+        type_name = 'BlogEntry'
+        
+        # datamodel is passed so that flexti can initialize the object.
+        wftool = getToolByName(context, 'portal_workflow')
+        newid = wftool.invokeFactoryFor(context, type_name, entry_id, **infos)
+        newob = getattr(context, newid)
+        
+        LOG('CPSBlog', DEBUG, 'New Entry "%s" Created !' % newid)
+        
+        result = newob.atomEntry(entry=newob)
+        
+        response.setStatus(201)
+        response.setHeader('Location', context.absolute_url() + "/" + newid)
+        response.setHeader('Content-Type', 'application/atom+xml')
+        response.setBody(result)
+        return response
+    
+    security.declareProtected(ModifyPortalContent, 'postAtom')
+    def atomEditPost(self, REQUEST, **kw):
+        """Handle ATOM POST to add or update an entry"""
+        LOG('CPSBlog', TRACE, 'Got something in postAtom!')
+        context = REQUEST.PARENTS[0]
+        response = REQUEST.RESPONSE
+     
+        postId = REQUEST['post_id']
+        infos = self.parseAtomXmlEntry(xmlString = REQUEST.BODY)
+        docProxy = getattr(self, postId)
+        doc = docProxy.getContent()
+        doc.edit(**infos)
+        
+        result = doc.atomEntry()
+        
+        return result
+        
+
+    def parseAtomXmlEntry(self, xmlString):
+        from lxml import etree
+        from StringIO import StringIO
+        body = StringIO(xmlString)
+        tbody = etree.parse(body)
+        infos = {}
+        ns = {'a': 'http://purl.org/atom/ns#',
+              'ab': 'http://purl.org/atom-blog/ns#',
+              'dc': 'http://purl.org/dc/elements/1.1/'}
+        
+        xtitle = tbody.xpath('/a:entry/a:title', ns)
+        xcontent = tbody.xpath('/a:entry/a:content', ns)
+        xcategories = tbody.xpath('/a:entry/dc:subject', ns)
+        xissued = tbody.xpath('/a:entry/a:issued', ns)
+        
+        if len(xtitle):
+            infos['Title'] = xtitle[0].text
+        if len(xcontent):
+            infos['content'] = xcontent[0].text
+        if len(xissued):
+            infos['CreationDate'] = infos['EffectiveDate'] = xissued[0].text
+        
+        infos['subject'] = []
+        for c in xcategories:
+            infos['subject'] = c.text
+        
+        return infos
+        
 
 InitializeClass(Blog)
 
