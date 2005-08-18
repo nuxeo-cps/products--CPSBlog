@@ -32,16 +32,18 @@ class LazyPrevBatch(ExtensionClass.Base):
 
 class LazyNextBatch(ExtensionClass.Base):
     def __of__(self, parent):
-        try: parent._sequence[parent.end]
-        except IndexError: return None
+        try: 
+            parent._sequence[parent.end]
+        except IndexError: 
+            return None
         return Batch(parent._sequence, parent._size,
                      parent.end - parent.overlap, 0,
                      parent.orphan, parent.overlap, parent.page_range)
 
 class LazySequenceLength(ExtensionClass.Base):
     def __of__(self, parent):
-        parent.sequence_length = l = len(parent._sequence)
-        return l
+        parent.sequence_length = length = len(parent._sequence)
+        return length
 
 
 class Batch(ZTUBatch):
