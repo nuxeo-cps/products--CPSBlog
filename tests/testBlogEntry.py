@@ -75,7 +75,10 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         feed = self.blog.exportatom()
         xml.dom.minidom.parseString(feed)
 
-        kw = {'content': "toto<br>"}
+        kw = {'Title': "titi<em>toto</em>",
+              'Description': "<p>toto</p>",
+              'content': "toto<br>",
+             }
         self.blogentry.edit(proxy=self.blogentry_proxy, **kw)
         feed = self.blog.exportatom()
         xml.dom.minidom.parseString(feed)
@@ -311,17 +314,17 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         text = "Summary test.  Second line."
         html = "<p>Summary test.</p>&nbsp;&nbsp;Second line.<br/>"
         blogentry.content = html
-        self.assertEqual(text, blogentry.getEntrySummary())
+        self.assertEqual(text, blogentry.getSummary())
 
         kw = {'Description': 'Description Test'}
         blogentry.edit(proxy=blogentry_proxy, **kw)
-        self.assertEqual(blogentry.Description(), blogentry.getEntrySummary())
+        self.assertEqual(blogentry.Description(), blogentry.getSummary())
 
         kw = {'Description': '',
               'content': 'T' * (SUMMARY_MAX_LENGTH + 10)}
         blogentry.edit(proxy=blogentry_proxy, **kw)
         res_str = 'T' * SUMMARY_MAX_LENGTH + ' ...'
-        self.assertEqual(res_str, blogentry.getEntrySummary())
+        self.assertEqual(res_str, blogentry.getSummary())
 
 
 def test_suite():

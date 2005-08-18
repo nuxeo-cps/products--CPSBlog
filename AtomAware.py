@@ -16,25 +16,19 @@
 #
 # $Id: Blog.py 25927 2005-08-17 22:57:00Z ebarroca $
 
-from Globals import InitializeClass
-from AccessControl import ClassSecurityInfo
 from zLOG import LOG, DEBUG, TRACE
-from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CPSUtil.html import sanitize
-from DateTime import DateTime
-import lxml
 
 class AtomAware:
     """Class that add some Atom capacity to CPSDocuments"""
-    
-    security = ClassSecurityInfo()
 
-    def _parseAtomXmlEntry(self, xmlString):
+    def parseAtomXmlEntry(self, xml_string):
         from lxml import etree
         from StringIO import StringIO
-        body = StringIO(xmlString)
+
+        body = StringIO(xml_string)
         tbody = etree.parse(body)
-        infos = {}
+        info = {}
         ns = {'a': 'http://purl.org/atom/ns#',
               'ab': 'http://purl.org/atom-blog/ns#',
               'dc': 'http://purl.org/dc/elements/1.1/',
@@ -43,21 +37,20 @@ class AtomAware:
               'wsse': 'http://schemas.xmlsoap.org/ws/2002/07/secext',
               'xmlns': 'http://schemas.xmlsoap.org/wsdl/http/'}
 
-        
         xtitle = tbody.xpath('//a:entry/a:title', ns)
         xcontent = tbody.xpath('//a:entry/a:content', ns)
         xcategories = tbody.xpath('//a:entry/dc:subject', ns)
         xissued = tbody.xpath('//a:entry/a:issued', ns)
         
         if len(xtitle):
-            infos['Title'] = sanitize(xtitle[0].text)
+            info['Title'] = sanitize(xtitle[0].text)
         if len(xcontent):
-            infos['content'] = sanitize(xcontent[0].text)
+            info['content'] = sanitize(xcontent[0].text)
         if len(xissued):
-            infos['CreationDate'] = infos['EffectiveDate'] = xissued[0].text
+            info['CreationDate'] = info['EffectiveDate'] = xissued[0].text
             
-        infos['subject'] = []
-        for c in xcategories:
-            infos['subject'].append(c.text)
+        info['subject'] = []
+        for category in xcategories:
+            info['subject'].append(category.text)
         
-        return infos
+        return info

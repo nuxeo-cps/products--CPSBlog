@@ -68,15 +68,15 @@ class BlogEntry(AtomAware, CPSDocument):
         self.trackbacks[trackback_id] = trackback
         LOG('TrackBack', DEBUG, "new trackback for %s" % blog_proxy)
         evtool = getEventService(self)
-        ev_infos = {'tb_id': trackback_id,
-                    'tb_title': title,
-                    'tb_excerpt': excerpt,
-                    'tb_url': url,
-                    'tb_blog_name': blog_name,
-                    'post_url': context and context.absolute_url() or '',
-                    'post_title': context and context.Title() or ''
-                    }
-        evtool.notifyEvent('new_trackback', blog_proxy, ev_infos)
+        ev_info = {'tb_id': trackback_id,
+                   'tb_title': title,
+                   'tb_excerpt': excerpt,
+                   'tb_url': url,
+                   'tb_blog_name': blog_name,
+                   'post_url': context and context.absolute_url() or '',
+                   'post_title': context and context.Title() or ''
+                   }
+        evtool.notifyEvent('new_trackback', blog_proxy, ev_info)
         return trackback_id
 
     security.declareProtected(ModifyPortalContent, 'removeTrackback')
@@ -160,15 +160,15 @@ class BlogEntry(AtomAware, CPSDocument):
             if not trackback.sent:
                 excerpt = self.getSummary()
                 
-                params = {'title' : context.Title(),
-                          'excerpt' : excerpt,
-                          'url' : context.absolute_url(),
-                          'blog_name' : blog_proxy.Title(),
+                params = {'title': context.Title(),
+                          'excerpt': excerpt,
+                          'url': context.absolute_url(),
+                          'blog_name': blog_proxy.Title(),
                           }
                 error_code, msg = trackback.send(**params)
-                result.append({'trackback_url' : trackback.trackback_url,
-                               'error' : error_code,
-                               'message' : msg})
+                result.append({'trackback_url': trackback.trackback_url,
+                               'error': error_code,
+                               'message': msg})
         return result
 
     security.declarePrivate('tbresult')
@@ -177,8 +177,8 @@ class BlogEntry(AtomAware, CPSDocument):
 
     security.declarePrivate('handlePostTrackbackPing')
     def handlePostTrackbackPing(self, context, REQUEST):
-        res_kw = {'error' : 0,
-                  'message' : '',
+        res_kw = {'error': 0,
+                  'message': '',
                   }
 
         if not self.accept_trackback_pings:
@@ -191,10 +191,10 @@ class BlogEntry(AtomAware, CPSDocument):
             res_kw['error'] = 1
             res_kw['message'] = "'url' parameter is required"
         else:
-            kw = {'title' : url,
-                  'excerpt' : '',
-                  'url' : url,
-                  'blog_name' : ''
+            kw = {'title': url,
+                  'excerpt': '',
+                  'url': url,
+                  'blog_name': ''
                   }
             for k in ('title', 'excerpt', 'blog_name'):
                 kw[k] = REQUEST.form.get(k, kw[k])
@@ -226,8 +226,8 @@ class BlogEntry(AtomAware, CPSDocument):
                 if REQUEST.form.get('__mode') == 'rss':
                     return self.handleGetTrackbackPings(context, REQUEST)
                 else:
-                    kw = {'error' : 1,
-                          'message' : "GET method requires correct '__mode' parameter",
+                    kw = {'error': 1,
+                          'message': "GET method requires correct '__mode' parameter",
                           }
                     return self.tbresult(context, **kw)
             elif reqmethod == 'post':
@@ -243,10 +243,10 @@ class BlogEntry(AtomAware, CPSDocument):
         """Return end time as a string"""
         return self.effective()
 
-    security.declareProtected(View, 'getEntrySummary')
-    def getSummary(self, length=200):
+    security.declareProtected(View, 'getSummary')
+    def getSummary(self, max_length=SUMMARY_MAX_LENGTH):
         """Return summary text or from 'Description' field or as computed
-        text of length SUMMARY_MAX_LENGTH from 'content' field."""
+        text of max length max_length from 'content' field."""
 
         def stripHtml(text):
             # stripping of html tags based on simple regexp
@@ -259,8 +259,8 @@ class BlogEntry(AtomAware, CPSDocument):
             summary = stripHtml(self.Description())
         else:
             summary = stripHtml(self.content)
-            if len(summary) > length:
-                summary = summary[:length]
+            if len(summary) > max_length:
+                summary = summary[:max_length]
                 i = summary.rfind(' ')
                 if i > 0:
                     summary = summary[:i]
@@ -279,10 +279,10 @@ class BlogEntry(AtomAware, CPSDocument):
         
         #return 'la reponse: %s' % str(REQUEST.BODY)
         
-        infos = self._parseAtomXmlEntry(xmlString = REQUEST.BODY)
-        self.edit(**infos)
-        context.setEffectiveDate(DateTime(infos['EffectiveDate']))
-        #newob.setEffectiveDate(DateTime(infos['EffectiveDate']))
+        info = self._parseAtomXmlEntry(REQUEST.BODY)
+        self.edit(**info)
+        context.setEffectiveDate(DateTime(info['EffectiveDate']))
+        #newob.setEffectiveDate(DateTime(info['EffectiveDate']))
         
         result = context.atomEntry()
         response.setStatus(200)

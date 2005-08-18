@@ -53,11 +53,11 @@ class Blog(AtomAware, CPSDocument):
         """Add category to blog, auto generates id of category """
         catid = self._generateId()
 
-        category = {'id' : catid,
-                    'title' : title,
-                    'description' : description,
-                    'urls_to_ping' : urls_to_ping,
-                    'accept_pings' : accept_pings
+        category = {'id': catid,
+                    'title': title,
+                    'description': description,
+                    'urls_to_ping': urls_to_ping,
+                    'accept_pings': accept_pings
                     }
         self.categories.insert(catid, category)
         return catid
@@ -105,21 +105,22 @@ class Blog(AtomAware, CPSDocument):
 
         LOG('CPSBlog', TRACE, 'context : %s' % context)
 
-        infos = self._parseAtomXmlEntry(xmlString = REQUEST.BODY)
+        infos = self.parseAtomXmlEntry(REQUEST.BODY)
         #language = context.translation_service.getSelectedLanguage()
         #lang = 'en'
         #TODO add language support
-        entry_id = DateTime().strftime('%Y_%m_%d') + '_' + context.computeId(compute_from=infos['Title'])
+        # FIXME: the date should be in the computeId parameter
+        entry_id = DateTime().strftime('%Y_%m_%d') + '_' \
+            + context.computeId(infos['Title'])
         type_name = 'BlogEntry'
-        
+
         # datamodel is passed so that flexti can initialize the object.
         wftool = getToolByName(context, 'portal_workflow')
         newid = wftool.invokeFactoryFor(context, type_name, entry_id, **infos)
         newob = getattr(context, newid)
         newob.getEditableContent().setEffectiveDate(DateTime(infos['EffectiveDate']))
         newob.setEffectiveDate(DateTime(infos['EffectiveDate']))
-        
-        
+
         LOG('CPSBlog', DEBUG, 'New Entry "%s" Created !' % newid)
         result = newob.atomEntry(entry=newob)
         
@@ -128,9 +129,6 @@ class Blog(AtomAware, CPSDocument):
         response.setHeader('Content-Type', 'application/atom+xml')
         response.setBody(result)
         return response
-        
-
-
 
 InitializeClass(Blog)
 
