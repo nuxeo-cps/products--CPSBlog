@@ -2,7 +2,7 @@
 				 pblog_url pblog/absolute_url;"
       version="0.3" xmlns="http://purl.org/atom/ns#"
       xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <link 	tal:attributes="href string: ${pblog_url}/exportatom;
+  <link 	tal:attributes="href string: ${pblog_url}/atomFeed;
   					  title pblog/Title"
   		rel="service.feed" href="http://monblog/service" 
         	title="my first blog." type="application/x.atom+xml" />
