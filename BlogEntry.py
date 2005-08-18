@@ -24,21 +24,15 @@ from zLOG import LOG, DEBUG
 from BTrees.IOBTree import IOBTree
 from Trackback import Trackback, DispatchTrackback
 from Products.CPSCore.EventServiceTool import getEventService
+from Products.CPSBlog.AtomAware import AtomAware
+from DateTime import DateTime
 import random
 import re
 
 SUMMARY_MAX_LENGTH = 400
 factory_type_information = {}
 
-def strip_html(text):
-    # stripping of html tags based on simple regexp
-    return re.sub("<[^>]+>", '', text)
-
-def nbsp_to_space(text):
-    return re.sub('&nbsp;', ' ', text)
-
-
-class BlogEntry(CPSDocument):
+class BlogEntry(AtomAware, CPSDocument):
     """BlogEntry that contain blog post"""
 
     portal_type = meta_type = 'BlogEntry'
@@ -65,7 +59,7 @@ class BlogEntry(CPSDocument):
                      blog_name=''):
         trackback_id = self._generateTrackbackId()
         trackback = Trackback(trackback_id, title, excerpt, url, blog_name)
-
+        
         # Silently ignore spam trackbacks
         if trackback.isSpam():
             return
@@ -153,25 +147,19 @@ class BlogEntry(CPSDocument):
     security.declareProtected(ModifyPortalContent, 'sendTrackbacks')
     def sendTrackbacks(self, context):
         """Iterate over dispatching trackbacks and sends pings."""
-        DESCRIPTION_MAX_LENGTH = 200
         result = []
 
         blog_proxy = context.getBlogProxy()
         blog_entry = context.getContent()
 
+        def stripHtml(text):
+            # stripping of html tags based on simple regexp
+            return re.sub("<[^>]+>", '', text)
+
         for trackback in self.dispatch_trackbacks.values():
             if not trackback.sent:
-                if len(blog_entry.Description()) > 0:
-                    excerpt = strip_html(context.description)
-                else:
-                    excerpt = strip_html(blog_entry.content)
-                    if len(excerpt) > DESCRIPTION_MAX_LENGTH:
-                        excerpt = excerpt[:DESCRIPTION_MAX_LENGTH]
-                        i = excerpt.rfind(' ')
-                        if i > 0:
-                            excerpt = excerpt[:i]
-                        excerpt += '...'
-
+                excerpt = self.getSummary()
+                
                 params = {'title' : context.Title(),
                           'excerpt' : excerpt,
                           'url' : context.absolute_url(),
@@ -256,16 +244,23 @@ class BlogEntry(CPSDocument):
         return self.effective()
 
     security.declareProtected(View, 'getEntrySummary')
-    def getEntrySummary(self):
+    def getSummary(self, length=200):
         """Return summary text or from 'Description' field or as computed
         text of length SUMMARY_MAX_LENGTH from 'content' field."""
 
+        def stripHtml(text):
+            # stripping of html tags based on simple regexp
+            return re.sub("<[^>]+>", '', text)
+
+        def nbsp_to_space(text):
+            return re.sub('&nbsp;', ' ', text)
+
         if len(self.Description()) > 0:
-            summary = strip_html(self.Description())
+            summary = stripHtml(self.Description())
         else:
-            summary = strip_html(self.content)
-            if len(summary) > SUMMARY_MAX_LENGTH:
-                summary = summary[:SUMMARY_MAX_LENGTH]
+            summary = stripHtml(self.content)
+            if len(summary) > length:
+                summary = summary[:length]
                 i = summary.rfind(' ')
                 if i > 0:
                     summary = summary[:i]
@@ -273,6 +268,30 @@ class BlogEntry(CPSDocument):
 
         summary = nbsp_to_space(summary)
         return summary
+
+    def atomEdit(self, REQUEST, **kw):
+        """Handle ATOM POST to add or update an entry"""
+        LOG('CPSBlog', DEBUG, 'Got something in atomEdit!')
+        context = REQUEST.PARENTS[0]
+        response = REQUEST.RESPONSE
+        
+        LOG('CPSBlog', DEBUG, 'atomEdit Entry : %s' % context)
+        
+        #return 'la reponse: %s' % str(REQUEST.BODY)
+        
+        infos = self._parseAtomXmlEntry(xmlString = REQUEST.BODY)
+        self.edit(**infos)
+        context.setEffectiveDate(DateTime(infos['EffectiveDate']))
+        #newob.setEffectiveDate(DateTime(infos['EffectiveDate']))
+        
+        result = context.atomEntry()
+        response.setStatus(200)
+        response.setHeader('Location', context.absolute_url())
+        response.setHeader('Content-Type', 'application/atom+xml')
+        response.setBody(result)
+        return result
+        
+
 
 InitializeClass(BlogEntry)
 
@@ -283,4 +302,5 @@ def addBlogEntry(container, id, REQUEST=None, **kw):
 
     if REQUEST:
         ob = container._getOb(id)
+        LOG(log_key, DEBUG, "object = %s" % ob)
         REQUEST.RESPONSE.redirect(ob.absolute_url() + '/manage_main')
