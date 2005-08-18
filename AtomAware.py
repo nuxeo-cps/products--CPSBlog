@@ -41,6 +41,7 @@ class AtomAware:
         xcontent = tbody.xpath('//a:entry/a:content', ns)
         xcategories = tbody.xpath('//a:entry/dc:subject', ns)
         xissued = tbody.xpath('//a:entry/a:issued', ns)
+        xdraft = tbody.xpath('//a:entry/ab:draft', ns)
         
         if len(xtitle):
             info['Title'] = sanitize(xtitle[0].text)
@@ -48,6 +49,11 @@ class AtomAware:
             info['content'] = sanitize(xcontent[0].text)
         if len(xissued):
             info['CreationDate'] = info['EffectiveDate'] = xissued[0].text
+        if len(xdraft):
+            if xdraft[0].text == 'true':
+                info['publish'] = False
+            else:
+                info['publish'] = True
             
         info['subject'] = []
         for category in xcategories:

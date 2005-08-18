@@ -8,6 +8,8 @@
   <issued tal:content="python: here.getDateStr(here.effective(), fmt='iso8601_long')"></issued>
   <modified tal:content="python: here.getDateStr(here.modified(), fmt='iso8601_long')"></modified>
   <created tal:content="python: here.getDateStr(here.created(), fmt='iso8601_long')"></created>
+  <draft xmlns="http://purl.org/atom-blog/ns#"
+  		tal:content="python: context.portal_workflow.getInfoFor(here, 'review_state') == 'published' and 'false' or 'true'"></draft>
   <author>
     <name tal:content="here/Creator"></name>
   </author>

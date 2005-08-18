@@ -20,6 +20,7 @@ from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Products.CPSDocument.CPSDocument import CPSDocument
 from Products.CMFCore.permissions import View, ModifyPortalContent
+from Products.CMFCore.utils import getToolByName
 from zLOG import LOG, DEBUG
 from BTrees.IOBTree import IOBTree
 from Trackback import Trackback, DispatchTrackback
@@ -277,12 +278,16 @@ class BlogEntry(AtomAware, CPSDocument):
         
         LOG('CPSBlog', DEBUG, 'atomEdit Entry : %s' % context)
         
-        #return 'la reponse: %s' % str(REQUEST.BODY)
-        
-        info = self._parseAtomXmlEntry(REQUEST.BODY)
+        info = self.parseAtomXmlEntry(REQUEST.BODY)
         self.edit(**info)
         context.setEffectiveDate(DateTime(info['EffectiveDate']))
-        #newob.setEffectiveDate(DateTime(info['EffectiveDate']))
+        
+        #Manage the workflow
+        wftool = getToolByName(context, 'portal_workflow')
+        if info['publish'] and wftool.getInfoFor(context, 'review_state') == 'work':
+            wftool.doActionFor(context, 'publish', comment='')
+        elif wftool.getInfoFor(context, 'review_state') == 'published' and not info['publish']:
+            wftool.doActionFor(context, 'unpublish', comment='')
         
         result = context.atomEntry()
         response.setStatus(200)

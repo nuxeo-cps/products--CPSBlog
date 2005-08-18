@@ -105,29 +105,32 @@ class Blog(AtomAware, CPSDocument):
 
         LOG('CPSBlog', TRACE, 'context : %s' % context)
 
-        infos = self.parseAtomXmlEntry(REQUEST.BODY)
+        info = self.parseAtomXmlEntry(REQUEST.BODY)
         #language = context.translation_service.getSelectedLanguage()
         #lang = 'en'
         #TODO add language support
         # FIXME: the date should be in the computeId parameter
         entry_id = DateTime().strftime('%Y_%m_%d') + '_' \
-            + context.computeId(infos['Title'])
+            + context.computeId(info['Title'])
         type_name = 'BlogEntry'
 
-        # datamodel is passed so that flexti can initialize the object.
+        # create the new post and set the effective date
         wftool = getToolByName(context, 'portal_workflow')
-        newid = wftool.invokeFactoryFor(context, type_name, entry_id, **infos)
+        newid = wftool.invokeFactoryFor(context, type_name, entry_id, **info)
         newob = getattr(context, newid)
-        newob.getEditableContent().setEffectiveDate(DateTime(infos['EffectiveDate']))
-        newob.setEffectiveDate(DateTime(infos['EffectiveDate']))
+        newob.getEditableContent().setEffectiveDate(DateTime(info['EffectiveDate']))
+        newob.setEffectiveDate(DateTime(info['EffectiveDate']))
 
         LOG('CPSBlog', DEBUG, 'New Entry "%s" Created !' % newid)
-        result = newob.atomEntry(entry=newob)
+        
+        #publish directly if not draft
+        if info['publish']:
+            wftool.doActionFor(newob, 'publish', comment='')
         
         response.setStatus(201)
         response.setHeader('Location', context.absolute_url() + "/" + newid)
         response.setHeader('Content-Type', 'application/atom+xml')
-        response.setBody(result)
+        response.setBody(newob.atomEntry(entry=newob))
         return response
 
 InitializeClass(Blog)
