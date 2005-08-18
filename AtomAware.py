@@ -22,9 +22,15 @@ from Products.CPSUtil.html import sanitize
 class AtomAware:
     """Class that add some Atom capacity to CPSDocuments"""
 
-    def parseAtomXmlEntry(self, xml_string):
+    def parseAtomXmlEntry(self, xml_string, title_tags=None, body_tags=None):
         from lxml import etree
         from StringIO import StringIO
+
+        title_tags = ('b', 'a', 'em', 'strong')
+        body_tags = ('p', 'br', 'span', 'div', 'ul', 'ol', 'li',
+                    'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a',
+                    'em', 'strong', 'i', 'd', 'dl', 'dd', 'dd',
+                    'table', 'tr', 'td', 'b', 'img')
 
         body = StringIO(xml_string)
         tbody = etree.parse(body)
@@ -44,9 +50,9 @@ class AtomAware:
         xdraft = tbody.xpath('//a:entry/ab:draft', ns)
         
         if len(xtitle):
-            info['Title'] = sanitize(xtitle[0].text)
+            info['Title'] = sanitize(xtitle[0].text, attributes_to_keep=title_tags)
         if len(xcontent):
-            info['content'] = sanitize(xcontent[0].text)
+            info['content'] = sanitize(xcontent[0].text, attributes_to_keep=body_tags)
         if len(xissued):
             info['CreationDate'] = info['EffectiveDate'] = xissued[0].text
         if len(xdraft):
