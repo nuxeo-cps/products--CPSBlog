@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="ISO-8859-15"?>
 <feed metal:define-macro="atomFeed"
       tal:define="entries options/entries | here/getSortedBlogEntries"
-	  version="0.3"
-	  xmlns="http://purl.org/atom/ns#"
-	  xmlns:dc="http://purl.org/dc/elements/1.1/"
-	  xmlns:metal="http://xml.zope.org/namespaces/metal"
-	  xmlns:tal="http://xml.zope.org/namespaces/tal">
+      version="0.3"
+      xmlns="http://purl.org/atom/ns#"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal">
   <title tal:content="here/Title" mode="escaped" type="text/html">Title</title>
   <tagline tal:content="string:ATOM Feed - ${here/Title}">tagline</tagline>
   <link tal:attributes="href here/absolute_url" rel="alternate" type="text/html"/>
   <id tal:content="python: here.computeIdFromUrl(url=here.absolute_url())"></id>
   <generator url="http://cps-project.org" version="3">CPS</generator>
   <modified tal:content="here/ModificationDate">Date</modified>
-  
-    <link 	tal:attributes="href string: ${here/absolute_url}/atomFeed;
-  					  title here/Title"
-  		rel="service.feed" href="http://monblog/service" 
-        	title="my first blog." type="application/atom+xml" />
+
+  <link tal:attributes="href string: ${here/absolute_url}/atomFeed;
+                        title here/Title"
+        rel="service.feed" href="http://monblog/service" 
+        title="my first blog." type="application/atom+xml" />
   <link tal:attributes="href string: ${here/absolute_url}/postAtom;
-  					  title here/Title"
-  		rel="service.post" href="http://myblog" 
+                        title here/Title"
+        rel="service.post" href="http://myblog" 
         title="my first blog." type="application/atom+xml" />
   <link tal:attributes="href string: ${here/absolute_url}/atomCategories;
-  					  title here/Title"
-  		rel="service.categories" href="http://myblog" 
+                        title here/Title"
+        rel="service.categories" href="http://myblog" 
         title="my first blog." type="application/atom+xml" />
-        
+
   <metal:block define-slot="atomEntries" tal:repeat="item entries">
-  	<tal:block replace="structure python: item.atomEntry()"/>
+      <tal:block replace="structure python: item.atomEntry()"/>
   </metal:block>
 
-        
 </feed>
