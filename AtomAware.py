@@ -50,9 +50,9 @@ class AtomAware:
         xdraft = tbody.xpath('//a:entry/ab:draft', ns)
         
         if len(xtitle):
-            info['Title'] = sanitize(xtitle[0].text, attributes_to_keep=title_tags)
+            info['Title'] = sanitize(xtitle[0].text, tags_to_keep=title_tags)
         if len(xcontent):
-            info['content'] = sanitize(xcontent[0].text, attributes_to_keep=body_tags)
+            info['content'] = sanitize(xcontent[0].text, tags_to_keep=body_tags)
         if len(xissued):
             info['CreationDate'] = info['EffectiveDate'] = xissued[0].text
         if len(xdraft):
