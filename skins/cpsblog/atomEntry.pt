@@ -1,5 +1,6 @@
 <entry metal:define-macro="atomEntry"
      xmlns="http://purl.org/atom/ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:metal="http://xml.zope.org/namespaces/metal">
      
@@ -15,9 +16,7 @@
   </author>
   
   <tal:block repeat="cat here/Subject">
-    <subject tal:attributes="value string:${here/absolute_url}#${cat/title}" 
-             tal:content="cat/title"
-             value="cat">cat</subject>
+      <dc:subject tal:content="cat/title"></dc:subject>
   </tal:block>
   
   <summary type="text/html" mode="escaped" tal:content="here/getSummary">
