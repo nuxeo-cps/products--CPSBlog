@@ -2,7 +2,7 @@
 <categories version="1.0"	xmlns="http://purl.org/atom/ns#"
 						xmlns:dc="http://purl.org/dc/elements/1.1/"
 						xmlns:tal="http://xml.zope.org/namespaces/tal">
-<tal:block repeat="cat here/getSortedCategories">
-      <dc:subject tal:content="cat/title"></dc:subject>
+<tal:block repeat="cat here/getVocBlogCategories">
+      <dc:subject tal:content="python: cat[0]"></dc:subject>
 </tal:block>
 </categories>
