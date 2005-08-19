@@ -7,7 +7,7 @@ if context.portal_type == 'Blog':
 elif context.portal_type == 'BlogEntry':
     result = context.atomEntry()
 elif context.portal_type == "BlogAggregator":
-    objects = context.getContent().getSearchResults()
+    objects = context.getContent().getSearchResults(context)
     result = context.atomFeed(entries=objects)
 
 if REQUEST is not None:
