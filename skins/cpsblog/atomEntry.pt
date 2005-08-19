@@ -15,7 +15,7 @@
     <name tal:content="here/Creator"></name>
   </author>
   
-  <tal:block repeat="cat python:here.getContent.Subject()">
+  <tal:block repeat="cat python:here.getContent().Subject()">
       <dc:subject tal:content="cat/title"></dc:subject>
   </tal:block>
   
