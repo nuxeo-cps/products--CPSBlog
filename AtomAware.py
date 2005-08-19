@@ -60,6 +60,8 @@ class AtomAware:
                 info['publish'] = False
             else:
                 info['publish'] = True
+        else:
+            info['publish'] = True
             
         info['subject'] = []
         for category in xcategories:

@@ -26,7 +26,6 @@ from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.CPSBlog.AtomAware import AtomAware
 import random
-#import lxml
 
 factory_type_information = {}
 
@@ -97,33 +96,30 @@ class Blog(AtomAware, CPSDocument):
             self.categories[catid] = d
 
     security.declareProtected(ModifyPortalContent, 'postAtom')
-    def postAtom(self, REQUEST, **kw):
+    def postAtom(self, REQUEST):
         """Handle ATOM POST to add or update an entry"""
         LOG('CPSBlog', TRACE, 'Got something in postAtom!')
         context = REQUEST.PARENTS[0]
         response = REQUEST.RESPONSE
-
-        LOG('CPSBlog', TRACE, 'context : %s' % context)
-
         info = self.parseAtomXmlEntry(REQUEST.BODY)
+        effective_date = DateTime(info['EffectiveDate'])
         #language = context.translation_service.getSelectedLanguage()
         #lang = 'en'
         #TODO add language support
         # FIXME: the date should be in the computeId parameter
         entry_id = DateTime().strftime('%Y_%m_%d') + '_' \
-            + context.computeId(info['Title'])
-        type_name = 'BlogEntry'
+            + self.computeId(info['Title'])
 
-        # create the new post and set the effective date
-        wftool = getToolByName(context, 'portal_workflow')
-        newid = wftool.invokeFactoryFor(context, type_name, entry_id, **info)
+        # Create the new post and set the effective date
+        wftool = getToolByName(self, 'portal_workflow')
+        newid = wftool.invokeFactoryFor(context, 'BlogEntry', entry_id, **info)
         newob = getattr(context, newid)
-        newob.getEditableContent().setEffectiveDate(DateTime(info['EffectiveDate']))
-        newob.setEffectiveDate(DateTime(info['EffectiveDate']))
+        newob.setEffectiveDate(effective_date)
+        newob.getEditableContent().setEffectiveDate(effective_date)
 
         LOG('CPSBlog', DEBUG, 'New Entry "%s" Created !' % newid)
         
-        #publish directly if not draft
+        # Publish directly if not draft
         if info['publish']:
             wftool.doActionFor(newob, 'publish', comment='')
         
