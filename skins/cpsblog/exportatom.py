@@ -8,6 +8,9 @@ if context.portal_type == 'Blog':
     result = context.atomFeed()
 elif context.portal_type == 'BlogEntry':
     result = context.atomEntry()
+elif context.portal_type == "BlogAggregator":
+    objects = context.getSearchResults()
+    result = context.atomFeed(entries=objects)
 
 if REQUEST is not None:
     REQUEST.RESPONSE.setHeader('Content-Type', 'application/xml; charset=ISO-8859-15')
