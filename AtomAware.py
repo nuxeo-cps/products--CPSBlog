@@ -17,14 +17,19 @@
 # $Id: Blog.py 25927 2005-08-17 22:57:00Z ebarroca $
 
 from zLOG import LOG, DEBUG, TRACE
+from AccessControl import ClassSecurityInfo
+from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CPSUtil.html import sanitize
-
-class AtomAware:
-    """Class that add some Atom capacity to CPSDocuments"""
-
+from lxml import etree
+from StringIO import StringIO
+from Acquisition import aq_parent, aq_inner
+from DateTime import DateTime
+from Products.CMFCore.utils import getToolByName
+        
+class AtomMixin:
+    """Define common attributes / method of an AtomAware Ressource"""
+    
     def parseAtomXmlEntry(self, xml_string, title_tags=None, body_tags=None):
-        from lxml import etree
-        from StringIO import StringIO
 
         title_tags = ('b', 'a', 'em', 'strong')
         body_tags = ('p', 'br', 'span', 'div', 'ul', 'ol', 'li',
@@ -63,8 +68,101 @@ class AtomAware:
         else:
             info['publish'] = True
             
-        info['subject'] = []
+        info['Subject'] = []
         for category in xcategories:
-            info['subject'].append(category.text)
+            info['Subject'].append(category.text)
         
         return info
+
+class AtomAware(AtomMixin):
+    """AtomAware base class"""
+    
+    def atom(self, REQUEST, **kw):
+        """Handle ATOM commands"""
+        if REQUEST['REQUEST_METHOD'] == 'POST':
+            response = self.atomPost(REQUEST)
+        elif REQUEST['REQUEST_METHOD'] == 'DELETE':
+            response = self.atomDelete(REQUEST)
+        return response
+   
+
+class AtomAwareEntry(AtomAware):
+    """Class that add some Atom capacity to documents (entries)"""
+
+    security = ClassSecurityInfo()
+
+    def atomPost(self, REQUEST, **kw):
+        """Handle ATOM POST to add or update an entry"""
+        LOG('CPSBlog', DEBUG, 'Got something in atomEdit!')
+        context = REQUEST.PARENTS[0]
+        response = REQUEST.RESPONSE
+        
+        LOG('CPSBlog', DEBUG, 'atomEdit Entry : %s' % context)
+        
+        info = self.parseAtomXmlEntry(REQUEST.BODY)
+        self.edit(**info)
+        context.setEffectiveDate(DateTime(info['EffectiveDate']))
+        
+        #Manage the workflow
+        wftool = getToolByName(context, 'portal_workflow')
+        if info['publish'] and wftool.getInfoFor(context, 'review_state') == 'work':
+            wftool.doActionFor(context, 'publish', comment='')
+        elif wftool.getInfoFor(context, 'review_state') == 'published' and not info['publish']:
+            wftool.doActionFor(context, 'unpublish', comment='')
+        
+        result = context.atomEntry()
+        response.setStatus(200)
+        response.setHeader('Location', context.absolute_url())
+        response.setHeader('Content-Type', 'application/atom+xml')
+        response.setBody(result)
+        return response
+
+    
+    security.declareProtected(ModifyPortalContent, 'atomDelete')
+    def atomDelete(self, REQUEST, **kw):
+        """Handle a DELETE"""
+        response = REQUEST.RESPONSE
+        context = REQUEST.PARENTS[0]
+        parent = context.aq_inner.aq_parent
+        parent.manage_delObjects(context.getId())
+        response.setStatus(204)
+        return response
+
+        
+class AtomAwareCollection(AtomAware):
+    """Add some Atom capacity to collections (folders / folderish)"""
+    
+    security = ClassSecurityInfo()
+    
+    security.declareProtected(ModifyPortalContent, 'postAtom')
+    def atomPost(self, REQUEST):
+        LOG('CPSBlog', TRACE, 'Got something in postAtom!')
+        context = REQUEST.PARENTS[0]
+        response = REQUEST.RESPONSE
+        info = self.parseAtomXmlEntry(REQUEST.BODY)
+        effective_date = DateTime(info['EffectiveDate'])
+        #language = context.translation_service.getSelectedLanguage()
+        #lang = 'en'
+        #TODO add language support
+        # FIXME: the date should be in the computeId parameter
+        entry_id = DateTime().strftime('%Y_%m_%d') + '_' \
+            + self.computeId(info['Title'])
+
+        # Create the new post and set the effective date
+        wftool = getToolByName(self, 'portal_workflow')
+        newid = wftool.invokeFactoryFor(context, 'BlogEntry', entry_id, **info)
+        newob = getattr(context, newid)
+        newob.setEffectiveDate(effective_date)
+        newob.getEditableContent().setEffectiveDate(effective_date)
+
+        LOG('CPSBlog', DEBUG, 'New Entry "%s" Created !' % newid)
+        
+        # Publish directly if not draft
+        if info['publish']:
+            wftool.doActionFor(newob, 'publish', comment='')
+        
+        response.setStatus(201)
+        response.setHeader('Location', context.absolute_url() + "/" + newid)
+        response.setHeader('Content-Type', 'application/atom+xml')
+        response.setBody(newob.atomEntry(entry=newob))
+        return response

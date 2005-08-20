@@ -5,13 +5,13 @@
   <link 	tal:attributes="href string: ${pblog_url}/atomFeed;
   					  title pblog/Title"
   		rel="service.feed" href="http://monblog/service" 
-        	title="my first blog." type="application/x.atom+xml" />
-  <link tal:attributes="href string: ${pblog_url}/postAtom;
+        	title="my first blog." type="application/atom+xml" />
+  <link tal:attributes="href string: ${pblog_url}/atom;
   					  title pblog/Title"
   		rel="service.post" href="http://myblog" 
-        title="my first blog." type="application/x.atom+xml" />
+        title="my first blog." type="application/atom+xml" />
   <link tal:attributes="href string: ${pblog_url}/atomCategories;
   					  title pblog/Title"
   		rel="service.categories" href="http://myblog" 
-        title="my first blog." type="application/x.atom+xml" />
+        title="my first blog." type="application/atom+xml" />
 </feed>

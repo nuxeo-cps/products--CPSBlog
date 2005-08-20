@@ -24,12 +24,12 @@ from BTrees.IOBTree import IOBTree
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
-from Products.CPSBlog.AtomAware import AtomAware
+from Products.CPSBlog.AtomAware import AtomAwareCollection
 import random
 
 factory_type_information = {}
 
-class Blog(AtomAware, CPSDocument):
+class Blog(AtomAwareCollection, CPSDocument):
     """Blog that can contain lots of blog entries."""
 
     portal_type = meta_type = 'Blog'
@@ -95,39 +95,6 @@ class Blog(AtomAware, CPSDocument):
             d.update(catdef)
             self.categories[catid] = d
 
-    security.declareProtected(ModifyPortalContent, 'postAtom')
-    def postAtom(self, REQUEST):
-        """Handle ATOM POST to add or update an entry"""
-        LOG('CPSBlog', TRACE, 'Got something in postAtom!')
-        context = REQUEST.PARENTS[0]
-        response = REQUEST.RESPONSE
-        info = self.parseAtomXmlEntry(REQUEST.BODY)
-        effective_date = DateTime(info['EffectiveDate'])
-        #language = context.translation_service.getSelectedLanguage()
-        #lang = 'en'
-        #TODO add language support
-        # FIXME: the date should be in the computeId parameter
-        entry_id = DateTime().strftime('%Y_%m_%d') + '_' \
-            + self.computeId(info['Title'])
-
-        # Create the new post and set the effective date
-        wftool = getToolByName(self, 'portal_workflow')
-        newid = wftool.invokeFactoryFor(context, 'BlogEntry', entry_id, **info)
-        newob = getattr(context, newid)
-        newob.setEffectiveDate(effective_date)
-        newob.getEditableContent().setEffectiveDate(effective_date)
-
-        LOG('CPSBlog', DEBUG, 'New Entry "%s" Created !' % newid)
-        
-        # Publish directly if not draft
-        if info['publish']:
-            wftool.doActionFor(newob, 'publish', comment='')
-        
-        response.setStatus(201)
-        response.setHeader('Location', context.absolute_url() + "/" + newid)
-        response.setHeader('Content-Type', 'application/atom+xml')
-        response.setBody(newob.atomEntry(entry=newob))
-        return response
 
 InitializeClass(Blog)
 

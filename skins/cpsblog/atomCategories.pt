@@ -2,8 +2,8 @@
 <categories version="1.0"	xmlns="http://purl.org/atom/ns#"
 						xmlns:tal="http://xml.zope.org/namespaces/tal">
 <tal:block	repeat="cat here/getVocBlogCategories">
-    <subject	tal:define="cval python: cat[0]"
-    			tal:attributes="value string:${here/absolute_url}#${cval}"
-    			tal:content="cval">cat</subject>
+    <subject	tal:define="cval python: cat[0]; ctitle python: cat[1];"
+    			tal:attributes="value string:${cval}"
+    			tal:content="ctitle">cat</subject>
 </tal:block>
 </categories>

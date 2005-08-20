@@ -4,11 +4,11 @@
      xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:metal="http://xml.zope.org/namespaces/metal">
      
-  <title tal:content="here/Title" mode="escaped" type="text/text">EntryTitle</title>
+  <title tal:content="here/Title" mode="escaped" type="text/html">EntryTitle</title>
   <link tal:attributes="href here/absolute_url" rel="alternate" type="text/html" href="URL" />
-  <issued tal:content="python: here.getDateStr(here.effective(), fmt='iso8601_long')"></issued>
-  <modified tal:content="python: here.getDateStr(here.modified(), fmt='iso8601_long')"></modified>
-  <created tal:content="python: here.getDateStr(here.created(), fmt='iso8601_long')"></created>
+  <issued tal:content="python: here.modified().HTML4()"></issued>
+  <modified tal:content="python: here.modified().HTML4()"></modified>
+  <created tal:content="python: here.created().HTML4()"></created>
   <draft xmlns="http://purl.org/atom-blog/ns#"
   		tal:content="python: context.portal_workflow.getInfoFor(here, 'review_state') == 'published' and 'false' or 'true'"></draft>
   <author>
@@ -16,7 +16,7 @@
   </author>
   
   <tal:block repeat="cat python:here.getContent().Subject()">
-      <dc:subject tal:content="cat/title"></dc:subject>
+      <dc:subject tal:content="cat"></dc:subject>
   </tal:block>
   
   <summary type="text/html" mode="escaped" tal:content="here/getSummary">
@@ -28,5 +28,5 @@
   </content>
 
   <id tal:content="python: here.computeIdFromUrl(url=here.absolute_url())">123</id>
-  <link tal:attributes="href string:${here/absolute_url}/atomEdit?${here/getId}; title string:Edit Here - ${here/Title}" rel="service.edit" type="application/atom+xml" />
+  <link tal:attributes="href string:${here/absolute_url}/atom?${here/getId}; title string:Edit Here - ${here/Title}" rel="service.edit" type="application/atom+xml" />
 </entry>

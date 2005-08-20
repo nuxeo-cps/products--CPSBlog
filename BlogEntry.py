@@ -20,25 +20,24 @@ from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Products.CPSDocument.CPSDocument import CPSDocument
 from Products.CMFCore.permissions import View, ModifyPortalContent
-from Products.CMFCore.utils import getToolByName
 from zLOG import LOG, DEBUG
 from BTrees.IOBTree import IOBTree
 from Trackback import Trackback, DispatchTrackback
 from Products.CPSCore.EventServiceTool import getEventService
-from Products.CPSBlog.AtomAware import AtomAware
-from DateTime import DateTime
+from Products.CPSBlog.AtomAware import AtomAwareEntry, AtomMixin
 import random
 import re
 
 SUMMARY_MAX_LENGTH = 400
 factory_type_information = {}
 
-class BlogEntry(AtomAware, CPSDocument):
+class BlogEntry(AtomMixin, AtomAwareEntry, CPSDocument):
     """BlogEntry that contain blog post"""
 
     portal_type = meta_type = 'BlogEntry'
 
     security = ClassSecurityInfo()
+    
 
     def __init__(self, id, **kw):
         CPSDocument.__init__(self, id, **kw)
@@ -270,31 +269,8 @@ class BlogEntry(AtomAware, CPSDocument):
         summary = nbsp_to_space(summary)
         return summary
 
-    def atomEdit(self, REQUEST, **kw):
-        """Handle ATOM POST to add or update an entry"""
-        LOG('CPSBlog', DEBUG, 'Got something in atomEdit!')
-        context = REQUEST.PARENTS[0]
-        response = REQUEST.RESPONSE
-        
-        LOG('CPSBlog', DEBUG, 'atomEdit Entry : %s' % context)
-        
-        info = self.parseAtomXmlEntry(REQUEST.BODY)
-        self.edit(**info)
-        context.setEffectiveDate(DateTime(info['EffectiveDate']))
-        
-        #Manage the workflow
-        wftool = getToolByName(context, 'portal_workflow')
-        if info['publish'] and wftool.getInfoFor(context, 'review_state') == 'work':
-            wftool.doActionFor(context, 'publish', comment='')
-        elif wftool.getInfoFor(context, 'review_state') == 'published' and not info['publish']:
-            wftool.doActionFor(context, 'unpublish', comment='')
-        
-        result = context.atomEntry()
-        response.setStatus(200)
-        response.setHeader('Location', context.absolute_url())
-        response.setHeader('Content-Type', 'application/atom+xml')
-        response.setBody(result)
-        return result
+
+
         
 
 
