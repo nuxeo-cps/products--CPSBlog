@@ -30,7 +30,6 @@ class AtomMixin:
     """Define common attributes / method of an AtomAware Ressource"""
     
     def parseAtomXmlEntry(self, xml_string, title_tags=None, body_tags=None):
-
         title_tags = ('b', 'a', 'em', 'strong')
         body_tags = ('p', 'br', 'span', 'div', 'ul', 'ol', 'li',
                     'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a',
@@ -77,12 +76,15 @@ class AtomMixin:
 class AtomAware(AtomMixin):
     """AtomAware base class"""
     
+    security = ClassSecurityInfo()
+    
+    security.declareProtected(ModifyPortalContent, 'atom')
     def atom(self, REQUEST, **kw):
         """Handle ATOM commands"""
         if REQUEST['REQUEST_METHOD'] == 'POST':
-            response = self.atomPost(REQUEST)
+            response = self.atomPost(REQUEST, **kw)
         elif REQUEST['REQUEST_METHOD'] == 'DELETE':
-            response = self.atomDelete(REQUEST)
+            response = self.atomDelete(REQUEST, *kw)
         return response
    
 
@@ -91,6 +93,7 @@ class AtomAwareEntry(AtomAware):
 
     security = ClassSecurityInfo()
 
+    security.declarePrivate('atomPost')
     def atomPost(self, REQUEST, **kw):
         """Handle ATOM POST to add or update an entry"""
         LOG('CPSBlog', DEBUG, 'Got something in atomEdit!')
@@ -118,7 +121,7 @@ class AtomAwareEntry(AtomAware):
         return response
 
     
-    security.declareProtected(ModifyPortalContent, 'atomDelete')
+    security.declarePrivate('atomDelete')
     def atomDelete(self, REQUEST, **kw):
         """Handle a DELETE"""
         response = REQUEST.RESPONSE
@@ -134,9 +137,10 @@ class AtomAwareCollection(AtomAware):
     
     security = ClassSecurityInfo()
     
-    security.declareProtected(ModifyPortalContent, 'postAtom')
-    def atomPost(self, REQUEST):
-        LOG('CPSBlog', TRACE, 'Got something in postAtom!')
+    security.declarePrivate('atomPost')
+    def atomPost(self, REQUEST, **kw):
+        """Post something to CPSBlog"""
+        LOG('CPSBlog', TRACE, 'Got something in atomPost : %s !' % REQUEST.PARENTS[0])
         context = REQUEST.PARENTS[0]
         response = REQUEST.RESPONSE
         info = self.parseAtomXmlEntry(REQUEST.BODY)

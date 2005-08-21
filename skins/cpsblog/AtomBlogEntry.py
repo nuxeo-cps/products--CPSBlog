@@ -1,10 +1,26 @@
 ##Return blogs and services available through ATOM for a given user
+print 'coucou'
+for i in context.subject():
+	print i
+return printed
+
+return context.REQUEST
+
+#mtool = context.portal_membership
+#if mtool.isAnonymousUser():
+#	return "coucou"
+#else:
+#	user_id = mtool.getAuthenticatedMember().getMemberId()
 
 catalog = context.portal_catalog
-results = blabla #XXX TODO
-blog_list = ""
+query = {}
+query['portal_type'] = ('Blog',)
+query['allowedRolesAndUsers'] = (user_id, 'BlogManager')
+brains = catalog(**query)
 
-for r in results:
-	results += r.getObject().atomBlogServices()
+results= ''
+for brain in brains:
+	ob = brain.getObject()
+	results += ob.atomBlogServicesDiscovery()
 
 return results
