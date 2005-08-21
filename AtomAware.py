@@ -17,6 +17,7 @@
 # $Id: Blog.py 25927 2005-08-17 22:57:00Z ebarroca $
 
 from zLOG import LOG, DEBUG, TRACE
+from Globals import InitializeClass 
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CPSUtil.html import sanitize
@@ -81,12 +82,22 @@ class AtomAware(AtomMixin):
     security.declareProtected(ModifyPortalContent, 'atom')
     def atom(self, REQUEST, **kw):
         """Handle ATOM commands"""
+
+        #mtool = getToolByName(self, 'portal_membership')
+	#if mtool.isAnonymousUser():
+        #    response = REQUEST.RESPONSE
+	#    response.setStatus(401)
+	#    return response
+	
         if REQUEST['REQUEST_METHOD'] == 'POST':
             response = self.atomPost(REQUEST, **kw)
+        elif REQUEST['REQUEST_METHOD'] == 'GET':
+            response = REQUEST
         elif REQUEST['REQUEST_METHOD'] == 'DELETE':
             response = self.atomDelete(REQUEST, *kw)
         return response
-   
+
+InitializeClass(AtomAware) 
 
 class AtomAwareEntry(AtomAware):
     """Class that add some Atom capacity to documents (entries)"""
@@ -131,6 +142,7 @@ class AtomAwareEntry(AtomAware):
         response.setStatus(204)
         return response
 
+InitializeClass(AtomAwareEntry)
         
 class AtomAwareCollection(AtomAware):
     """Add some Atom capacity to collections (folders / folderish)"""
@@ -170,3 +182,5 @@ class AtomAwareCollection(AtomAware):
         response.setHeader('Content-Type', 'application/atom+xml')
         response.setBody(newob.atomEntry(entry=newob))
         return response
+
+InitializeClass(AtomAwareCollection) 
