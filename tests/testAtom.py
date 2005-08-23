@@ -32,7 +32,7 @@ class TestAtom(TestBlog):
         request = self.portal.REQUEST
         request.PARENTS = [proxy]
         request.BODY = BLOGGER_POST_REQUEST
-        doc.postAtom(request)
+        doc.atomPost(request)
 
 def test_suite():
     return unittest.TestSuite((
