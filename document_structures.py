@@ -57,31 +57,31 @@ blog_type = {
                 {'id': 'contents',
                  'name': 'action_folder_contents',
                  'action': 'string:${object_url}/folder_contents',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': (ModifyPortalContent,)
                  },
                 {'id': 'edit',
                  'name': 'action_edit',
                  'action': 'string:${object_url}/cpsdocument_edit_form',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': (ModifyPortalContent,)
                  },
                 {'id': 'categories',
                  'name': 'action_manage_blog_categories',
                  'action': 'string:${object_url}/blog_manage_categories',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': (ModifyPortalContent,)
                  },
                 {'id': 'metadata',
                  'name': 'action_metadata',
                  'action': 'string:${object_url}/cpsdocument_metadata',
-                 'condition' : 'not:portal/portal_membership/isAnonymousUser',
+                 'condition': 'not:portal/portal_membership/isAnonymousUser',
                  'permissions': (View,)
                  },
                 {'id': 'localroles',
                  'name': 'action_local_roles',
                  'action': 'string:${object_url}/blog_localrole_form',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': ('Change permissions',)
                  })
     }
@@ -104,7 +104,7 @@ blog_entry_type = {
     'cps_proxy_type': 'document',
     'schemas': ['metadata', 'blog_entry', 'blog_entry_flexible'],
     'layouts': ['blog_entry', 'blog_entry_flexible'],
-    'flexible_layouts' : ['blog_entry_flexible:blog_entry_flexible'],
+    'flexible_layouts': ['blog_entry_flexible:blog_entry_flexible'],
     'storage_methods': [],
     'cps_workspace_wf': 'blog_entry_wf',
     'cps_section_wf': 'blog_entry_wf',
@@ -127,34 +127,34 @@ blog_entry_type = {
                  'action': 'string:${object_url}/folder_factories',
                  'condition': '',
                  'permissions': (ModifyPortalContent,),
-                 'visible' : 0
+                 'visible': 0
                  },
                 {'id': 'contents',
                  'name': 'action_folder_contents',
                  'action': 'string:${object_url}/folder_contents',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': (ModifyPortalContent,),
-                 'visible' : 0
+                 'visible': 0
                  },
                 {'id': 'edit',
                  'name': 'action_edit',
                  'action': 'string:${object_url}/blog_entry_edit_form',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': (ModifyPortalContent,)
                  },
                 {'id': 'metadata',
                  'name': 'action_metadata',
                  'action': 'string:${object_url}/cpsdocument_metadata',
-                 'condition' : 'not:portal/portal_membership/isAnonymousUser',
+                 'condition': 'not:portal/portal_membership/isAnonymousUser',
                  'permissions': (View,),
-                 'visible' : 0
+                 'visible': 0
                  },
                 {'id': 'localroles',
                  'name': 'action_local_roles',
                  'action': 'string:${object_url}/folder_localrole_form',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': ('Change permissions',),
-                 'visible' : 0
+                 'visible': 0
                  })
     }
 
@@ -191,7 +191,7 @@ blogaggregator_type = {
                 {'id': 'edit',
                  'name': 'action_edit',
                  'action': 'string:${object_url}/cpsdocument_edit_form',
-                 'condition' : '',
+                 'condition': '',
                  'permissions': (ModifyPortalContent,)
                  })
     }
@@ -212,13 +212,13 @@ blog_schema = {
                  'is_searchabletext': 0,
                  },
         },
-    'entries_per_page' : {
+    'entries_per_page': {
         'type': 'CPS Int Field',
         'data': {'default_expr': 'python:10',
                  'is_searchabletext': 0,
                  },
         },
-    'author_photo' : {
+    'author_photo': {
         'type': 'CPS Image Field',
         'data': {'default_expr': 'nothing',
                  'is_searchabletext': 0,
@@ -269,7 +269,7 @@ blog_entry_schema = {
             'write_process_expr': '',
         },
     },
-    'content' : {
+    'content': {
         'type': 'CPS String Field',
         'data': {'default_expr': 'string:',
                  'is_searchabletext': 1,
@@ -364,7 +364,7 @@ blogaggregator_schema = {
                  'is_searchabletext': 0,
                  },
         },
-    'entries_per_page' : {
+    'entries_per_page': {
         'type': 'CPS Int Field',
         'data': {'default_expr': 'python:10',
                  'is_searchabletext': 0,
@@ -376,7 +376,7 @@ blogaggregator_schema = {
                  'is_searchabletext': 0,
                  },
         },
-    'search_limit' : {
+    'search_limit': {
         'type': 'CPS Int Field',
         'data': {'default_expr': 'python:20',
                  'is_searchabletext': 0,
@@ -446,20 +446,20 @@ blogaggregator_sort_by_vocabulary = {
     }
 
 blogaggregator_categories_voc = {
-    'type' : 'CPS Method Vocabulary',
-    'data': {'get_vocabulary_method' : 'getVocBlogAggregatorCategories',
+    'type': 'CPS Method Vocabulary',
+    'data': {'get_vocabulary_method': 'getVocBlogAggregatorCategories',
              },
     }
 
 blog_categories_vocabulary = {
-    'type' : 'CPS Method Vocabulary',
-    'data': {'get_vocabulary_method' : 'getVocBlogCategories',
+    'type': 'CPS Method Vocabulary',
+    'data': {'get_vocabulary_method': 'getVocBlogCategories',
              },
     }
 
 blog_languages_vocabulary = {
-    'type' : 'CPS Method Vocabulary',
-    'data': {'get_vocabulary_method' : 'getVocBlogLanguages',
+    'type': 'CPS Method Vocabulary',
+    'data': {'get_vocabulary_method': 'getVocBlogLanguages',
              },
     }
 
@@ -568,7 +568,7 @@ blog_layout = {
                      'hidden_if_expr': '',
                      'css_class': '',
                      'width': 3,
-                     'render_position' : 'right',
+                     'render_position': 'right',
                      'widget_mode_expr': '',
                      'translated': True,
                 },
