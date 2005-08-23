@@ -19,7 +19,7 @@
 from zLOG import LOG, DEBUG, TRACE
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore.permissions import View, ModifyPortalContent
+from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CPSUtil.html import sanitize
 from lxml import etree
 from StringIO import StringIO
@@ -91,6 +91,7 @@ class AtomAware(AtomMixin):
 
         if REQUEST['REQUEST_METHOD'] == 'POST':
             response = self.atomPost(REQUEST, **kw)
+        # FIXME what do we do here ???
         elif REQUEST['REQUEST_METHOD'] == 'GET':
             response = REQUEST
         elif REQUEST['REQUEST_METHOD'] == 'DELETE':
@@ -136,7 +137,7 @@ class AtomAwareEntry(AtomAware):
         """Handle a DELETE"""
         response = REQUEST.RESPONSE
         context = REQUEST.PARENTS[0]
-        parent = context.aq_inner.aq_parent
+        parent = aq_parent(aq_inner(context))
         parent.manage_delObjects(context.getId())
         response.setStatus(204)
         return response
