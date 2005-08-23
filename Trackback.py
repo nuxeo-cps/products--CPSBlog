@@ -42,10 +42,13 @@ class Trackback(Persistent, Implicit):
 
         Heuristics used:
           - Top levels URL are probably spam
+          - Lots of links -> spam
           - (That's all for now)
         """
         path = urlparse.urlparse(self.url)[2]
         if path in ("/", ""):
+            return True
+        if self.excerpt.lower().count("<a") * 1.0 / len(self.excerpt) > 0.005:
             return True
         return False
 
