@@ -35,6 +35,12 @@ class TestAtom(TestBlog):
         doc.atomPost(request)
 
 def test_suite():
+    # Don't run tests if lxml is not installed.
+    try:
+        import lxml
+    except:
+        return []
+
     return unittest.TestSuite((
         unittest.makeSuite(TestAtom),
         ))
