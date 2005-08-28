@@ -54,13 +54,13 @@ class AtomMixin:
         xissued = tbody.xpath('//a:entry/a:issued', ns)
         xdraft = tbody.xpath('//a:entry/ab:draft', ns)
 
-        if len(xtitle):
+        if xtitle:
             info['Title'] = sanitize(xtitle[0].text, tags_to_keep=title_tags)
-        if len(xcontent):
+        if xcontent:
             info['content'] = sanitize(xcontent[0].text, tags_to_keep=body_tags)
-        if len(xissued):
+        if xissued:
             info['CreationDate'] = info['EffectiveDate'] = xissued[0].text
-        if len(xdraft):
+        if xdraft:
             if xdraft[0].text == 'true':
                 info['publish'] = False
             else:
