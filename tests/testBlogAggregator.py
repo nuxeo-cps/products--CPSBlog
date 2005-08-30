@@ -43,6 +43,10 @@ class TestBlogAggregator(CPSBlogTestCase.CPSBlogTestCase):
         query = doc._buildQuery()
         self.assertEquals(query, {'portal_type': 'BlogEntry'})
 
+    def testGetSearchResults(self):
+        doc = self._createBlogAggregator()
+        proxy = getattr(self.ws, self.doc_id)
+        self.assertEquals(doc.getSearchResults(proxy), [])
 
 def test_suite():
     return unittest.TestSuite((
