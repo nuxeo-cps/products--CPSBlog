@@ -24,12 +24,13 @@ class TestGlobalInstall(CPSBlogTestCase.CPSBlogTestCase):
         self.assert_('cpsblog_installer' in self.portal.objectIds(),
                      'Installer script was not correctly added to portal')
 
-    def testCPSBlogPortalTypes(self):
+    def testPortalTypes(self):
         ttool = self.portal.portal_types
-        self.assert_('Blog' in ttool.objectIds(),
-                     'Blog type is not in portal_types')
-        self.assert_('BlogEntry' in ttool.objectIds(),
-                     'BlogEntry type is not in portal_types')
+        portal_types = ['Blog', 'BlogEntry', 'BlogAggregator', 
+                        'BlogAggregator Portlet', 'Blog Calendar Box']
+        for portal_type in portal_types:
+            self.assert_(portal_type in ttool.objectIds(),
+                         '%s is not in portal_types' % portal_type)
 
 
 def test_suite():

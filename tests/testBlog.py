@@ -22,6 +22,9 @@ class TestBlog(CPSBlogTestCase.CPSBlogTestCase):
         self.ws.invokeFactory(type_name=self.doc_type, id=self.doc_id)
         return getattr(self.ws, self.doc_id).getContent()
 
+    #
+    # Test blog creation / deletion
+    #
     def testAddBlog(self):
         # Test creation of Blog instance in root of workspaces.
         self.assertEqual(len([o for o in self.ws.contentValues()
@@ -33,7 +36,6 @@ class TestBlog(CPSBlogTestCase.CPSBlogTestCase):
                               if o.getContent().meta_type == self.doc_type]), 1)
         self.assertEqual(doc.title, '')
 
-
     def testRemoveBlog(self):
         # Test removal of Blog instance in root of workspaces.
         doc = self._createBlog()
@@ -44,23 +46,9 @@ class TestBlog(CPSBlogTestCase.CPSBlogTestCase):
                               if o.getContent().meta_type == self.doc_type]), 0)
         self.failIf(hasattr(self.ws, self.doc_id))
 
-
-class TestBlogCategories(CPSBlogTestCase.CPSBlogTestCase):
-
-    def afterSetUp(self):
-        self.doc_type = 'Blog'
-        self.doc_id = self.doc_type.lower()
-        self.login('manager')
-        self.ws = self.portal.workspaces
-
-    def beforeTearDown(self):
-        self.logout()
-
-    def _createBlog(self):
-        self.ws.invokeFactory(type_name = self.doc_type,
-                              id = self.doc_id)
-        return getattr(self.ws, self.doc_id).getContent()
-
+    #
+    # Test categories
+    #
     def testAddCategory(self):
         blog = self._createBlog()
 
@@ -78,7 +66,6 @@ class TestBlogCategories(CPSBlogTestCase.CPSBlogTestCase):
 
         for k in catdef.keys():
             self.assertEqual(blog.categories[catid][k], catdef[k])
-
 
     def testRemoveCategory(self):
         blog = self._createBlog()
@@ -106,7 +93,7 @@ class TestBlogCategories(CPSBlogTestCase.CPSBlogTestCase):
 
         for k in catdef.keys():
             self.assertEqual(blog.categories[catid][k], catdef[k])
-        self.assertEqual(blog.getCategory(catid+1), None)
+        self.assertEqual(blog.getCategory(catid + 1), None)
 
     def testGetSortedCategories(self):
         blog = self._createBlog()
@@ -151,5 +138,4 @@ class TestBlogCategories(CPSBlogTestCase.CPSBlogTestCase):
 def test_suite():
     return unittest.TestSuite((
         unittest.makeSuite(TestBlog),
-        unittest.makeSuite(TestBlogCategories),
         ))

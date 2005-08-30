@@ -16,6 +16,7 @@
 #
 # $Id$
 """BlogCalendarBox"""
+
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 

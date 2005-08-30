@@ -22,20 +22,19 @@ from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import View
 from Products.CPSDocument.CPSDocument import CPSDocument
 from Products.CMFCore.utils import getToolByName
+from Products.CPSPortlets.CPSPortlet import CPSPortlet
 from DateTime import DateTime
 
-factory_type_information = {}
 
-class BlogAggregator(CPSDocument):
-    """BlogAggregator that makes catalog searches about blog entries."""
-
-    portal_type = meta_type = 'BlogAggregator'
-
+class BlogAggregatorBase(CPSDocument):
     security = ClassSecurityInfo()
 
     security.declareProtected(View, 'getSearchResults')
     def getSearchResults(self, context):
-        """Get sorted search result of blog entries."""
+        """Get sorted search result of blog entries.
+        
+        FIXME: what is context ?"""
+
         query = self._buildQuery()
 
         sort_by, direction = None, 'asc'
@@ -100,15 +99,37 @@ class BlogAggregator(CPSDocument):
 
         return query
 
+InitializeClass(BlogAggregatorBase)
+
+
+blog_aggregator_fti = {}
+
+class BlogAggregator(BlogAggregatorBase):
+    """BlogAggregator that makes catalog searches about blog entries."""
+
+    portal_type = meta_type = 'BlogAggregator'
+
 InitializeClass(BlogAggregator)
 
-
-def addBlogAggregator(container, id, REQUEST=None, **kw):
+def addBlogAggregator(container, id, **kw):
     """Factory method"""
     ob = BlogAggregator(id, **kw)
     container._setObject(id, ob)
 
-    if REQUEST:
-        ob = container._getOb(id)
-        LOG(log_key, DEBUG, "object = %s" % ob)
-        REQUEST.RESPONSE.redirect(ob.absolute_url() + '/manage_main')
+
+blog_aggregator_portlet_fti = {}
+
+class BlogAggregatorPortlet(BlogAggregator, CPSPortlet):
+    """BlogAggregator portlet makes catalog searches about blog entries."""
+
+    portal_type = meta_type = 'BlogAggregator Portlet'
+
+    security = ClassSecurityInfo()
+
+InitializeClass(BlogAggregatorPortlet)
+
+def addBlogAggregatorPortlet(container, id, **kw):
+    """Factory method"""
+    ob = BlogAggregatorPortlet(id, **kw)
+    container._setObject(id, ob)
+
