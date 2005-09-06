@@ -34,6 +34,16 @@ class TestAtom(TestBlog):
         request.BODY = BLOGGER_POST_REQUEST
         doc.atomPost(request)
 
+    def testAtomExport(self):
+        doc = self._createBlog()
+        proxy = self.ws.blog
+        doc = proxy.getContent()
+        # There is a problem in the live site with non-ascii characters in
+        # blog titles, but the test doesn't catch it.
+        doc.edit(**{"Title": "Blog d'Arnaud Lefèvre"})
+        self.assert_(proxy.exportatom())
+
+
 def test_suite():
     return unittest.TestSuite((
         unittest.makeSuite(TestAtom),
