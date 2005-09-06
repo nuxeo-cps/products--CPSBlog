@@ -11,6 +11,17 @@ import xml.dom.minidom
 from DateTime import DateTime
 from Products.CPSBlog.BlogEntry import SUMMARY_MAX_LENGTH
 
+EXCERPT = """Collaborative Portal Server (CPS) is the most complete Open Source
+solution available for building ECM applications. CPS comes also as a
+user-friendly application for entreprise-grade content management with many
+collaboration features. CPS is built on top of the powerful Zope application
+server.  This web portal aims at unifying and providing a common platform to
+the CPS community. You will find here news about CPS and its components,
+documentation, links, users and developers mailing-lists and information about
+the future of the platform.  CPS is backed by Nuxeo and a community of
+contributors (Chalmers University, Infrae, etc.) and is released under the
+GPL."""
+
 class TestBlogEntryCreation(CPSBlogTestCase.CPSBlogTestCase):
 
     def afterSetUp(self):
@@ -88,22 +99,26 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
 
         self.assertEqual(len(blogentry.trackbacks), 0)
 
-        tb_id = blogentry.addTrackback(title='title', excerpt='excerpt',
+        tb_id = blogentry.addTrackback(title='title', excerpt=EXCERPT,
             url='http://toto.com/titi', blog_name='test blog')
 
         self.assertEqual(len(blogentry.trackbacks), 1)
 
         tb = blogentry.getTrackback(tb_id)
         self.assertEqual(tb.title, 'title')
-        self.assertEqual(tb.excerpt, 'excerpt')
+        self.assertEqual(tb.excerpt, EXCERPT)
         self.assertEqual(tb.url, 'http://toto.com/titi')
         self.assertEqual(tb.blog_name, 'test blog')
 
     def testAddSpamTrackback(self):
         blogentry = self.blogentry
         self.assertEqual(len(blogentry.trackbacks), 0)
-        tb_id = blogentry.addTrackback(title='title', excerpt='excerpt',
+        tb_id = blogentry.addTrackback(title='title', excerpt=EXCERPT,
             url='http://toto.com/', blog_name='test blog')
+        self.assertEqual(len(blogentry.trackbacks), 0)
+
+        tb_id = blogentry.addTrackback(title='title', excerpt='too short',
+            url='http://toto.com/10/506/123', blog_name='test blog')
         self.assertEqual(len(blogentry.trackbacks), 0)
 
     def testRemoveTrackback(self):
@@ -120,7 +135,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         blogentry = self.blogentry
         tb_ids = []
         kw = {'title': 'title',
-              'excerpt': 'excerpt',
+              'excerpt': EXCERPT,
               'url': 'http://toto.com/toto',
               'blog_name': 'blog_name'
               }
@@ -155,7 +170,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.testAddTrackback()
         tb_id = blogentry.trackbacks.keys()[0]
         kw = {'title': 'edit title',
-              'excerpt': 'edit excerpt',
+              'excerpt': EXCERPT + " edited",
               'url': 'edit url',
               'blog_name': 'edit blog_name'
               }
@@ -171,7 +186,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         blogentry = self.blogentry
         dates = []
         kw = {'title': 'title',
-              'excerpt': 'excerpt',
+              'excerpt': EXCERPT,
               'url': 'http://toto.com/toto',
               'blog_name': 'blog_name'
               }
@@ -187,7 +202,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
 
     def testCountTrackbacks(self):
         kw = {'title': 'title',
-              'excerpt': 'excerpt',
+              'excerpt': EXCERPT,
               'url': 'http://toto.com/toto',
               'blog_name': 'blog_name'
               }
@@ -218,7 +233,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(len(doc.getElementsByTagName('item')), 0)
 
         kw = {'title': 'title',
-              'excerpt': 'excerpt',
+              'excerpt': EXCERPT,
               'url': 'http://toto.com/toto',
               'blog_name': 'blog_name'
               }
@@ -242,7 +257,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         request.set('REQUEST_METHOD', 'POST')
         request.set('PARENTS', [blogentry])
         request.form['title'] = 'title'
-        request.form['excerpt'] = 'excerpt'
+        request.form['excerpt'] = EXCERPT
         request.form['url'] = 'http://toto.com/toto'
         request.form['blog_name'] = 'test blog'
         result = blogentry.tbping(request)
@@ -257,7 +272,7 @@ class TestBlogEntry(CPSBlogTestCase.CPSBlogTestCase):
         self.assertEqual(blogentry.countTrackbacks(), 1)
         tb = blogentry.getSortedTrackbacks()[0]
         self.assertEqual(tb.title, 'title')
-        self.assertEqual(tb.excerpt, 'excerpt')
+        self.assertEqual(tb.excerpt, EXCERPT)
         self.assertEqual(tb.url, 'http://toto.com/toto')
         self.assertEqual(tb.blog_name, 'test blog')
 
