@@ -3,6 +3,7 @@
 import unittest
 from testBlog import TestBlog
 from lxml import etree
+from StringIO import StringIO
 
 BLOGGER_POST_REQUEST = """\
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -43,10 +44,11 @@ class TestAtom(TestBlog):
         TITLE = "Blog d'Arnaud Lefèvre"
         doc.edit(**{"Title": TITLE})
         atom = blog.exportatom()
-        entry_element = etree.fromstring(unicode(atom, 'iso-8859-15'))
+        # XXX: we need StringIO because of a bug in lxml
+        entry_element = etree.parse(StringIO(atom))
         title = entry_element.xpath("/atom:feed/atom:title/text()", 
             {'atom': 'http://purl.org/atom/ns#'})[0]
-        #self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
+        self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
 
     def testBlogEntryAtomExport(self):
         self._createBlog()
@@ -58,10 +60,11 @@ class TestAtom(TestBlog):
         TITLE = "Entrée du blog d'Arnaud Lefèvre"
         entry.getContent().edit(**{"Title": TITLE})
         atom = entry.exportatom()
-        entry_element = etree.fromstring(unicode(atom, 'iso-8859-15'))
+        # XXX: we need StringIO because of a bug in lxml
+        entry_element = etree.parse(StringIO(atom))
         title = entry_element.xpath("/atom:entry/atom:title/text()", 
             {'atom': 'http://purl.org/atom/ns#'})[0]
-        #self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
+        self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
 
 
 def test_suite():
