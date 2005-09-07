@@ -10,6 +10,8 @@ elif context.portal_type == "BlogAggregator":
     objects = context.getContent().getSearchResults(context)
     result = context.atomFeed(entries=objects)
 
+result = """<?xml version="1.0" encoding="ISO-8859-15"?>\n""" + result
+
 if REQUEST is not None:
     REQUEST.RESPONSE.setHeader('Content-Type', 'application/xml; charset=ISO-8859-15')
     REQUEST.RESPONSE.setHeader('Cache-Control', 'no-cache')

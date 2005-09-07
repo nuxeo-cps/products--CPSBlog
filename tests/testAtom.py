@@ -2,6 +2,7 @@
 
 import unittest
 from testBlog import TestBlog
+from lxml import etree
 
 BLOGGER_POST_REQUEST = """\
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -34,14 +35,33 @@ class TestAtom(TestBlog):
         request.BODY = BLOGGER_POST_REQUEST
         doc.atomPost(request)
 
-    def testAtomExport(self):
-        doc = self._createBlog()
-        proxy = self.ws.blog
-        doc = proxy.getContent()
-        # There is a problem in the live site with non-ascii characters in
-        # blog titles, but the test doesn't catch it.
-        doc.edit(**{"Title": "Blog d'Arnaud Lefèvre"})
-        self.assert_(proxy.exportatom())
+    def testBlogAtomExport(self):
+        self._createBlog()
+        blog = self.ws.blog
+        doc = blog.getContent()
+
+        TITLE = "Blog d'Arnaud Lefèvre"
+        doc.edit(**{"Title": TITLE})
+        atom = blog.exportatom()
+        entry_element = etree.fromstring(unicode(atom, 'iso-8859-15'))
+        title = entry_element.xpath("/atom:feed/atom:title/text()", 
+            {'atom': 'http://purl.org/atom/ns#'})[0]
+        #self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
+
+    def testBlogEntryAtomExport(self):
+        self._createBlog()
+        blog = self.ws.blog
+        blog.invokeFactory(type_name='BlogEntry', id='blogentry')
+        entry = blog.blogentry
+        self.assert_(entry.exportatom())
+
+        TITLE = "Entrée du blog d'Arnaud Lefèvre"
+        entry.getContent().edit(**{"Title": TITLE})
+        atom = entry.exportatom()
+        entry_element = etree.fromstring(unicode(atom, 'iso-8859-15'))
+        title = entry_element.xpath("/atom:entry/atom:title/text()", 
+            {'atom': 'http://purl.org/atom/ns#'})[0]
+        #self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
 
 
 def test_suite():
