@@ -23,7 +23,7 @@
            tal:content="bentry/title" />
       </h2>
       <div tal:condition="python:doc.view_mode == 'title_desc'"
-           tal:content="bentry/getSummary" class="row"/>
+           tal:content="structure bentry/getSummary" class="row"/>
       <div tal:condition="python:doc.view_mode == 'title_desc' or
                           doc.view_mode == 'full'"
            tal:content="bentry/description" class="row"/>
