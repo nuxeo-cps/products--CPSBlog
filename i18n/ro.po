@@ -31,7 +31,7 @@ msgstr ""
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
-msgstr ""
+msgstr "${numofcomments} comentarii"
 
 #.   <h1>Blog entries posted in category ${category (tal replace="request/category|nothing")}
 #.       </h1>
@@ -44,34 +44,34 @@ msgstr ""
 #.       </h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "Categories for blog \"${blogtitle}\""
-msgstr ""
+msgstr "Categorii pentru blogul \"${blogtitle}\""
 
 #.   <h2>
 #.         Category for blog "${blogtitle (tal replace="doc/Title")}"
 #.       </h2>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "Category for blog \"${blogtitle}\""
-msgstr ""
+msgstr "Categorii pentru blogul \"${blogtitle}\""
 
 #.   <td>Created</td>
 #: from ../skins/cpsblog/layout_blog_entry_edit.pt
 msgid "Created"
-msgstr ""
+msgstr "Creat"
 
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/layout_blog_entry_edit.pt
 msgid "Delete"
-msgstr ""
+msgstr "Sterge"
 
 #.   <block>Main</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Main"
-msgstr ""
+msgstr "Principal"
 
 #.   <h3>Manage Trackback Pings</h3>
 #: from ../skins/cpsblog/layout_blog_entry_edit.pt
 msgid "Manage Trackback Pings"
-msgstr ""
+msgstr "Manageriaza ping-uri de urmarire"
 
 #.   <block condition="isAnon">
 #.               Posted by
@@ -88,7 +88,7 @@ msgstr ""
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "Posted by ${item_creator} @ ${item_modification}"
-msgstr ""
+msgstr "Postat de ${item_creator} @ ${item_modification}"
 
 #.   <block condition="not:isAnon">
 #.               Posted by
@@ -136,7 +136,7 @@ msgstr ""
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
-msgstr ""
+msgstr "Urmareste URL pentru aceasta intrare"
 
 #.   <p class="tracked">
 #.             Tracked on
@@ -151,7 +151,7 @@ msgstr ""
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"
-msgstr ""
+msgstr "adauga"
 
 #.   <span omit-tag="">
 #.             Next
@@ -174,37 +174,37 @@ msgstr ""
 #.   <h2>Add category</h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_add_category_label"
-msgstr ""
+msgstr "Adauga categorie"
 
 #.   <block>Categories:</block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "blog_categories_byline_label"
-msgstr ""
+msgstr "Categorii:"
 
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_delete"
-msgstr ""
+msgstr "Sterge"
 
 #.   <p>
 #.         Use categories to group your entries for easier reference.
 #.       </p>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_description_label"
-msgstr ""
+msgstr "Foloseste categorii pentru a grupa intrarile si pentru a obtine referinte rapid"
 
 #.   <td width="90%">Categories</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_label"
-msgstr ""
+msgstr "Categorii"
 
 #.   <p>
 #.         Use this page to edit the attributes of the category
 #.       </p>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "blog_edit_category_description_label"
-msgstr ""
+msgstr "Foloseste aceasta pagina pentru a edita atributele categoriei"
 
 #.   <block content="box/box/title" fill-slot="box_title">
 #.         box text title
@@ -229,7 +229,7 @@ msgstr ""
 #.   <label for="event_types">label_event_types</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_event_types"
-msgstr ""
+msgstr "Data crearii descrescator"
 
 #.   <em>label_event_types_help</em>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
@@ -244,7 +244,7 @@ msgstr ""
 #.   <span>Role(s)</span>
 #: from ../skins/cpsblog/blog_localrole_form.pt
 msgid "label_roles"
-msgstr ""
+msgstr "Data crearii"
 
 #.   <option value="fullname">Full name</option>
 #: from ../skins/cpsblog/blog_localrole_form.pt
@@ -301,136 +301,136 @@ msgid "month"
 msgstr ""
 
 msgid "blog_view_mode_label_edit"
-msgstr ""
+msgstr "Vizualizare texte blog"
 
 msgid "action_manage_blog_categories"
-msgstr ""
+msgstr "Administreaza categoriile"
 
 msgid "blog_entries_per_page_label_edit"
-msgstr ""
+msgstr "Afiseaza intrarile pe pagina"
 
 msgid "author_photo_label_edit"
-msgstr ""
+msgstr "Autor foto"
 
 msgid "blog_entry_categories_label_edit"
-msgstr ""
+msgstr "Categorii"
 
 msgid "psm_blog_entry_publish_done"
-msgstr ""
+msgstr "Textul pentru blog a fost publicat"
 
 msgid "psm_blog_entry_publish_not_possible"
-msgstr ""
+msgstr "Textul pentru blog nu a fost publicat"
 
 msgid "psm_blog_entry_unpublish_done"
-msgstr ""
+msgstr "Text pentru blog nepublicat"
 
 msgid "psm_blog_entry_unpublish_not_possible"
-msgstr ""
+msgstr "Textul pentru blog nu a fost publicat"
 
 msgid "portal_type_Blog_title"
-msgstr ""
+msgstr "Blog"
 
 msgid "portal_type_Blog_description"
-msgstr ""
+msgstr "Blogul permite publicarea imediata a gandurilor personale, transmiterea cunostintelor, interactiunea cu alte persoane."
 
 msgid "portal_type_BlogEntry_title"
-msgstr ""
+msgstr "Text blog"
 
 msgid "portal_type_BlogAggregator_title"
-msgstr ""
+msgstr "Blog Colector"
 
 msgid "portal_type_BlogAggregator_description"
-msgstr ""
+msgstr "Blog Colector afiseaza textele din mai multe bloguri in baza unor parametri de cautare definiti"
 
 msgid "portal_type_BlogAggregatorPortlet_title"
-msgstr ""
+msgstr "Blog Colector Portlet"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
-msgstr ""
+msgstr "Blog Colector Portlet afiseaza textele din mai multe bloguri in baza unor parametri de cautare definiti"
 
 msgid "view_mode_Title_label"
-msgstr ""
+msgstr "Doar titlul"
 
 msgid "view_mode_TitleDescription_label"
-msgstr ""
+msgstr "Titlu si descriere"
 
 msgid "view_mode_Full_label"
-msgstr ""
+msgstr "Complet"
 
 msgid "blog_entry_content_label_edit"
-msgstr ""
+msgstr "Continut"
 
 msgid "blog_entry_accept_pings_label_edit"
-msgstr ""
+msgstr "Accepta ping-urile de urmarire"
 
 msgid "blog_entry_dispatch_tb_urls_label_edit"
-msgstr ""
+msgstr "URL pentru ping"
 
 msgid "description_blog_blogcalendarbox_default"
-msgstr ""
+msgstr "Casuta Calendar blog"
 
 msgid "description_blog_blogsearchbox_default"
-msgstr ""
+msgstr "Formularul 'Cauta in acest blog'"
 
 msgid "description_blog_blogarchivebox_default"
-msgstr ""
+msgstr "Casuta Arhiva blog"
 
 msgid "description_blog_blogcategoriesbox_default"
-msgstr ""
+msgstr "Casuta categorii blog"
 
 msgid "blog_languages_label_edit"
-msgstr ""
+msgstr "Limbi"
 
 msgid "action_publish"
-msgstr ""
+msgstr "Publicare"
 
 msgid "January"
-msgstr ""
+msgstr "Ianuarie"
 
 msgid "February"
-msgstr ""
+msgstr "Februarie"
 
 msgid "March"
-msgstr ""
+msgstr "Martie"
 
 msgid "April"
-msgstr ""
+msgstr "Aprilie"
 
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 msgid "June"
-msgstr ""
+msgstr "Iunie"
 
 msgid "July"
-msgstr ""
+msgstr "Iulie"
 
 msgid "August"
-msgstr ""
+msgstr "August"
 
 msgid "September"
-msgstr ""
+msgstr "Septembrie"
 
 msgid "October"
-msgstr ""
+msgstr "Octombrie"
 
 msgid "November"
-msgstr ""
+msgstr "Noiembrie"
 
 msgid "December"
-msgstr ""
+msgstr "Decembrie"
 
 msgid "Search"
-msgstr ""
+msgstr "Cauta"
 
 msgid "Archives"
-msgstr ""
+msgstr "Arhive"
 
 msgid "Categories"
-msgstr ""
+msgstr "Categorii"
 
 msgid "label_date_asc"
-msgstr ""
+msgstr "Data crearii"
 
 msgid "label_date_desc"
-msgstr ""
+msgstr "Data crearii descrescator"
