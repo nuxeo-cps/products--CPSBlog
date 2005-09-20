@@ -18,6 +18,7 @@ Bug fixes:
   parameters.
   To update cache parameters, the portal_cpsportlets updateCacheParameters()
   should be used instead. (see also the 'Cache parameters' tab in the ZMI)
+- Cleanup setting of EffectiveDate for the storage adapter (use DateTime).
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

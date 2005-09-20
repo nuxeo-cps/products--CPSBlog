@@ -59,7 +59,8 @@ class AtomMixin:
         if xcontent:
             info['content'] = sanitize(xcontent[0].text, tags_to_keep=body_tags)
         if xissued:
-            info['CreationDate'] = info['EffectiveDate'] = xissued[0].text
+            info['CreationDate'] = DateTime(xissued[0].text)
+            info['EffectiveDate'] = info['CreationDate']
         if xdraft:
             if xdraft[0].text == 'true':
                 info['publish'] = False
@@ -116,7 +117,7 @@ class AtomAwareEntry(AtomAware):
 
         info = self.parseAtomXmlEntry(REQUEST.BODY)
         self.edit(**info)
-        context.setEffectiveDate(DateTime(info['EffectiveDate']))
+        context.setEffectiveDate(info['EffectiveDate'])
 
         # Manage the workflow
         wftool = getToolByName(context, 'portal_workflow')
@@ -156,7 +157,7 @@ class AtomAwareCollection(AtomAware):
         context = REQUEST.PARENTS[0]
         response = REQUEST.RESPONSE
         info = self.parseAtomXmlEntry(REQUEST.BODY)
-        effective_date = DateTime(info['EffectiveDate'])
+        effective_date = info['EffectiveDate']
         #language = context.translation_service.getSelectedLanguage()
         #lang = 'en'
         # TODO add language support
