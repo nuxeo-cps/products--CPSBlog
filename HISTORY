@@ -1,4 +1,32 @@
 *******************************************
+** CPSBlog V0.5.0 [R1 build 2005/09/21-14:49 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 27306
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- Cache parameters for the BlogAggregator Portlet are available in the ZMI.
+- Add simple anti-trackback-spam (needs more heuristics)
+Bug fixes:
+~~~~~~~~~~
+- The blog aggregator, blog archive and blog category portlets could not
+  be placed outside blogs in the site structure (#881).
+- removed the 'custom_cache_params' schema field set to 'no-cache'.
+  This is meant to be used with Custom Portlets only.
+  Also this is redundant: if no cache parameter is found for a given portlet
+  then 'no-cache' will be used by default.
+  Also setting the parameter here make it impossible to set other cache
+  parameters since 'no-cache' will be appended and override all other
+  parameters.
+  To update cache parameters, the portal_cpsportlets updateCacheParameters()
+  should be used instead. (see also the 'Cache parameters' tab in the ZMI)
+- Cleanup setting of EffectiveDate for the storage adapter (use DateTime).
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSBlog V0.4.0 [R1 build 2005/08/05-15:35 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 25534
 Requires:
