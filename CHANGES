@@ -8,7 +8,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Fixed #963, #979, #991. They are related. (Thanks to all reporters and
+  Steve Meaker for proposed fix).
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
