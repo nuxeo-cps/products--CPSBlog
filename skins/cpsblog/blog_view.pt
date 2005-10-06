@@ -28,7 +28,7 @@
     <tal:block define="items here/getSortedBlogEntries;
                        day_separators python: here.getBlogEntryDaySeparators(items);
                        Batch python:modules['Products.CPSBlog.CPSBatch'].Batch;
-                       b_size here/entries_per_page;
+                       b_size doc/entries_per_page;
                        b_start python:0;
                        b_start request/b_start | b_start">
 
