@@ -10,6 +10,9 @@ Bug fixes:
 ~~~~~~~~~~
 - Fixed #963, #979, #991. They are related. (Thanks to all reporters and
   Steve Meaker for proposed fix).
+- Fixed #984 (Metadata link on blog object led to 'edit' screen of blog
+  instead of presenting 'metadata' page). Metadata action is put into invisible
+  mode. This is fixed also for BlogEntry.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
