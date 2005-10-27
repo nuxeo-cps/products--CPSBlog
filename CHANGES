@@ -13,6 +13,8 @@ Bug fixes:
 - Fixed #984 (Metadata link on blog object led to 'edit' screen of blog
   instead of presenting 'metadata' page). Metadata action is put into invisible
   mode. This is fixed also for BlogEntry.
+- Fixed #522(Incoherent formatting of entries) by using Text Widget with 'html'
+  rendering mode instead of Rich Text Editor Widget.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
