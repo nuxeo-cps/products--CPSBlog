@@ -43,7 +43,7 @@ $Id$
 
 .documentActions ul {
   margin: 0 0 0.3em 0;
-  float: right;
+  float: center;
   clear: right;
 }
 
