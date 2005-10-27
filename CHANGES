@@ -17,6 +17,10 @@ Bug fixes:
   rendering mode instead of Rich Text Editor Widget.
 - Fixed #980 (action icons in IE were displayed as shifted to the right).
   Thanks to Steve Meaker for reporting and suggested solution.
+- Fixed #855 (CPSBlog Local roles management page is obsolete). Now it uses
+  standard folder_localrole_form in it's local role action. To present only
+  BlogManager and BlogPoster roles changes were made in
+  CPSDefault/MemberShip.py in getCPSCandidateLocalRoles method.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
