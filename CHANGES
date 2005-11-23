@@ -8,6 +8,7 @@ Bug fixes:
 ~~~~~~~~~~
 - #1143 removed reference to boxes.
 - #986 workspace reader now can read published blog entries.
+- #1155 calendar and search boxes transformed to portlets.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

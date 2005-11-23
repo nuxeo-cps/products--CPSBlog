@@ -146,29 +146,26 @@ class ClientInstaller(CPSInstaller):
 blog_proxy = state_change.object
 blog_rel_url = context.portal_url.getRelativeContentURL(blog_proxy)
 
-# TODO: use a custom portlet for the calendar
-#kw = {'type_name' : 'Blog Calendar Box',
-#      'slot_name' : 'right',
-#      'title' : blog_proxy.Title(),
-#      'events_in' : blog_rel_url,
-#      'event_types' : ('BlogEntry', ),
-#      'box_skin': 'here/box_lib/macros/wbox2'
-#      }
-#blog_proxy.box_create(**kw)
+ptool = context.portal_cpsportlets
 
-# TODO: use the search portlet instead
-# Search box
-#kw = {'type_name' : 'Base Box',
-#      'slot_name' : 'right',
-#      'title' : 'Search',
-#      'provider' : 'cpsblog',
-#      'btype' : 'blogsearch',
-#      'box_skin': 'here/box_lib/macros/sbox'
-#      }
-#blog_proxy.box_create(**kw)
+# Calendar portlet
+
+kw = {'slot': 'right',
+      'order': 0,
+      'Title': blog_proxy.Title(),
+      'render_method': 'blogcalendar_portlet',
+      }
+ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
+
+# Search portlet
+
+kw = {'slot': 'right',
+      'order': 0,
+      'Title': 'Search',
+      }
+ptool.createPortlet(ptype_id='Search Portlet', context=blog_proxy, **kw)
 
 # Archives portlet
-ptool = context.portal_cpsportlets
 
 kw = {'slot' : 'right',
       'order': 0,
@@ -178,7 +175,6 @@ kw = {'slot' : 'right',
 ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
 
 # Categories portlet
-ptool = context.portal_cpsportlets
 
 kw = {'slot' : 'right',
       'order': 0,
