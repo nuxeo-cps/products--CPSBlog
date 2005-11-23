@@ -356,6 +356,7 @@ blog_entry_proxy.reindexObject(idxs=['effective', 'start', 'end'])
                                                  'SectionReader',
                                                  'WorkspaceManager',
                                                  'WorkspaceMember',
+                                                 'WorkspaceReader',
                                                  'BlogManager',
                                                  'BlogPoster')}
                           },
