@@ -139,81 +139,33 @@ class ClientInstaller(CPSInstaller):
         ########################################
 
         wfscripts = {
-            'add_blog_boxes': {
-            '_owner': None,
-            'script': """
-##parameters=state_change
-blog_proxy = state_change.object
-blog_rel_url = context.portal_url.getRelativeContentURL(blog_proxy)
-kw = {'type_name' : 'Blog Calendar Box',
-      'slot_name' : 'right',
-      'title' : blog_proxy.Title(),
-      'events_in' : blog_rel_url,
-      'event_types' : ('BlogEntry', ),
-      'box_skin': 'here/box_lib/macros/wbox2'
-      }
-blog_proxy.box_create(**kw)
-
-# Search box
-kw = {'type_name' : 'Base Box',
-      'slot_name' : 'right',
-      'title' : 'Search',
-      'provider' : 'cpsblog',
-      'btype' : 'blogsearch',
-      'box_skin': 'here/box_lib/macros/sbox'
-      }
-blog_proxy.box_create(**kw)
-
-# Archives box
-kw = {'type_name' : 'Base Box',
-      'slot_name' : 'right',
-      'title' : 'Archives',
-      'provider' : 'cpsblog',
-      'btype' : 'blogarchive',
-      'box_skin': 'here/box_lib/macros/sbox'
-      }
-blog_proxy.box_create(**kw)
-
-# Categories box
-kw = {'type_name' : 'Base Box',
-      'slot_name' : 'right',
-      'title' : 'Categories',
-      'provider' : 'cpsblog',
-      'btype' : 'blogcategories',
-      'box_skin': 'here/box_lib/macros/sbox'
-      }
-blog_proxy.box_create(**kw)
-            """
-            },
-            }
-
-        # If True, redefine workflow script
-        if CPSPORTLETS:
-            wfscripts = {
                 'add_blog_boxes': {
             '_owner': None,
             'script': """
 ##parameters=state_change
 blog_proxy = state_change.object
 blog_rel_url = context.portal_url.getRelativeContentURL(blog_proxy)
-kw = {'type_name' : 'Blog Calendar Box',
-      'slot_name' : 'right',
-      'title' : blog_proxy.Title(),
-      'events_in' : blog_rel_url,
-      'event_types' : ('BlogEntry', ),
-      'box_skin': 'here/box_lib/macros/wbox2'
-      }
-blog_proxy.box_create(**kw)
 
+# TODO: use a custom portlet for the calendar
+#kw = {'type_name' : 'Blog Calendar Box',
+#      'slot_name' : 'right',
+#      'title' : blog_proxy.Title(),
+#      'events_in' : blog_rel_url,
+#      'event_types' : ('BlogEntry', ),
+#      'box_skin': 'here/box_lib/macros/wbox2'
+#      }
+#blog_proxy.box_create(**kw)
+
+# TODO: use the search portlet instead
 # Search box
-kw = {'type_name' : 'Base Box',
-      'slot_name' : 'right',
-      'title' : 'Search',
-      'provider' : 'cpsblog',
-      'btype' : 'blogsearch',
-      'box_skin': 'here/box_lib/macros/sbox'
-      }
-blog_proxy.box_create(**kw)
+#kw = {'type_name' : 'Base Box',
+#      'slot_name' : 'right',
+#      'title' : 'Search',
+#      'provider' : 'cpsblog',
+#      'btype' : 'blogsearch',
+#      'box_skin': 'here/box_lib/macros/sbox'
+#      }
+#blog_proxy.box_create(**kw)
 
 # Archives portlet
 ptool = context.portal_cpsportlets

@@ -6,7 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- #1143 removed reference to boxes.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
