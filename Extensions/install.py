@@ -336,8 +336,7 @@ blog_entry_proxy.reindexObject(idxs=['effective', 'start', 'end'])
                                             'WorkspaceManager',
                                             'SectionManager',
                                             'SectionReviewer',
-                                            'BlogManager',
-                                            'BlogPoster'),
+                                            'BlogManager'),
                                      ModifyPortalContent: ('Manager',
                                                            'Owner',
                                                            'BlogManager',
@@ -382,8 +381,8 @@ blog_entry_proxy.reindexObject(idxs=['effective', 'start', 'end'])
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; SectionManager; '
                                         'SectionReviewer; '
-                                        'BlogManager; BlogPoster; '
-                                        'WorkspaceManager; WorkspaceMember; ',
+                                        'BlogManager; '
+                                        'WorkspaceManager; Owner; ',
                           'guard_expr':''},
                 },
             'unpublish': {
@@ -398,8 +397,8 @@ blog_entry_proxy.reindexObject(idxs=['effective', 'start', 'end'])
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; SectionManager; '
                                         'SectionReviewer; '
-                                        'BlogManager; BlogPoster; '
-                                        'WorkspaceManager; WorkspaceMember',
+                                        'BlogManager; '
+                                        'WorkspaceManager; Owner',
                           'guard_expr':''},
                 },
             }
