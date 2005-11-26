@@ -1,223 +1,323 @@
+=======================
 Specs notes for CPSBlog
 =======================
 
-Author: S. Fermigier
-First draft: 26/12/2004
-Current version: $Id$
+:Author: Stéfane Fermigier
+:Revision: $Id$
+
+.. sectnum::    :depth: 0
+.. contents::   :depth: 0
 
 Goals
------
+=====
 
-1. Blogging tool to be used for personal weblogs (me: fermigier.com, hopefully
-others), the Nuxeo intranet (for knowledge building and developers logging) and
-the Nuxeo public websites (linux-center, zopefr, pythonfr, openofficefr...).
+1. Blogging tool to be used for personal weblogs (me:
+   fermigier.com, hopefully others), the Nuxeo intranet (for
+   knowledge building and developers logging) and the Nuxeo public
+   websites (linux-center, zopefr, pythonfr, openofficefr...).
 
-2. Must support syndication and aggregation, so that one doesn't need to
-post the same news on 3 or 5 different web sites. Publication on different
-sites will be supported by rules and/or workflow. ATOM will be the prefered
-format for syndication, RSS will also be supported.
+2. Must support syndication and aggregation, so that one doesn't
+   need to post the same news on 3 or 5 different web sites.
+   Publication on different sites will be supported by rules
+   and/or workflow. ATOM will be the preferred format for
+   syndication, RSS will also be supported.
 
-4. Start simple, but expect to become powerful over time. Think "knowledge
-management": Should be thought as a tool for collective knowledge building over
-time, not only for publishing news that get forgotten afterwards.
+3. Start simple, but expect to become powerful over time. Think
+   "knowledge management": Should be thought as a tool for
+   collective knowledge building over time, not only for
+   publishing news that get forgotten afterwards.
 
-5. Use the CPS Platform framework as much as possible, but don't overdo it.
-CPSBlog is not intended to be a standalone blog system (based on CPS platform)
-like Blogger or LiveJournal, but a blogging tool available inside of CPS
-alongside other CPS servcices (NB: that may change in the future). So services
-(like CPSSkins for template management) that are available in CPS must not be
-duplicated. But integration between services must be seamless.
+4. Use the CPS Platform framework as much as possible, but don't
+   overdo it. CPSBlog is not intended to be a stand-alone blog
+   system (based on CPS platform) like Blogger or LiveJournal, but
+   a blogging tool available inside of CPS alongside other CPS
+   services (NB: that may change in the future). So services
+   (like CPSSkins for template management) that are available in
+   CPS must not be duplicated. But integration between services
+   must be seamless.
 
 
 Features of blogging tool
--------------------------
+=========================
 
 (Mn = Milestone targets).
 
 M1:
 
-x Posting a new blog entry is very easy
-    - One button or link "New blog entry" for users with a personal blog
-    - Wysiwyg editor with just the right features
-    - No extra menus or buttons
-x Blog entries can have one or more (flat) topics (or categories)
-x Archives (by month, by topic), calendar, search
-o Default presentation must be nice looking
-x Data model for blogs and blog entries must match ATOM specs
-    (atom:feed and atom:entry elements)
-o Blog entries can be flagged as public or private (other statuses may be
-    possible il the future).
+- x Posting a new blog entry is very easy
+
+  - One button or link "New blog entry" for users with a personal blog
+
+  - WYSIWYG editor with just the right features
+
+  - No extra menus or buttons
+
+- x Blog entries can have one or more (flat) topics (or categories)
+
+- x Archives (by month, by topic), calendar, search
+
+- o Default presentation must be nice looking
+
+- x Data model for blogs and blog entries must match ATOM specs
+  (atom:feed and atom:entry elements)
+
+- o Blog entries can be flagged as public or private (other
+  statuses may be possible in the future).
 
 M2:
 
-x Add a "Search this blog" box like in MT
-x Blog entries are multilingual (I can post in french or english if I want,
-    for instance) - blog owner should be able to select list of languages
-    he wants to post in (if there is only one one language then there is no
-    widget to select) - but not need to think about translations
-x Blog entries can contain links, images, files
-x Comments
-o Templates - way to select design from a library (or create one's own)
-o It's easy to add new categories from the posting form
+- x Add a "Search this blog" box like in MT
+
+- x Blog entries are multilingual (I can post in french or English
+  if I want, for instance) - blog owner should be able to select
+  list of languages he wants to post in (if there is only one one
+  language then there is no widget to select) - but not need to
+  think about translations
+
+- x Blog entries can contain links, images, files
+
+- x Comments
+
+- o Templates - way to select design from a library (or create one's own)
+
+- o It's easy to add new categories from the posting form
+
 
 M3:
 
-x URLs include date and words from the title
-    Ex: http://xxx/blog/2004/12/15/christmas_today
-    Or: http://xxx/blog/2004_12_15_christmas_today
-    (2nd is inferior, though).
-x Archive URLs
-    Ex: http://xxx/blog/archive/2004/12
- Export blog content using RSS and ATOM XML
-    - Must be able to selectively export content using rules
-o Nested categories
-x  "< (previous title) | main | (next title) >" navigation on blog entry
-o Category management: make easy to edit categories, to move posts en masse
-    from one category to another
+- x URLs include date and words from the title
+
+  - Ex: http://xxx/blog/2004/12/15/christmas_today
+
+  - Or: http://xxx/blog/2004_12_15_christmas_today (2nd is
+    inferior, though).
+
+- x Archive URLs.  Ex: http://xxx/blog/archive/2004/12
+  Export blog content using RSS and ATOM XML.
+
+  - Must be able to selectively export content using rules
+
+- o Nested categories
+
+- x  "< (previous title) | main | (next title) >" navigation on blog entry
+
+- o Category management: make easy to edit categories, to move
+  posts en masse from one category to another
+
 o Notifications:
-    - readers can subscribe to a blog ans receive blog entries or just
-      summaries in their mail, maybe as a daily or weekly digest
-    - writer may be notified of comments on his/her postings
-x Firefox Live bookmark support for blogs and blog aggregators
-o ... and for the home page
+
+  - readers can subscribe to a blog and receive blog entries or
+    just summaries in their mail, maybe as a daily or weekly
+    digest.
+
+  - writer may be notified of comments on his/her postings.
+
+- x Firefox Live bookmark support for blogs and blog aggregators
+
+- o ... and for the home page
+
 
 M4:
 
-o Import blog content using ATOM XML
-x Support of the TrackBack protocol (see :
-    http://www.movabletype.org/docs/mttrackback.html and
-    http://www.movabletype.org/trackback/)
-o Automatic trackbacks to a service like http://pingomatic.com/
-o Use categories / tags to interact with:
-    http://topicexchange.com/
-    Technorati
-    Many others...
-o One can easily add images in the text flow
-o Stats
-o Box / portlets with
+- o Import blog content using ATOM XML
+
+- x Support of the TrackBack protocol (see :
+  http://www.movabletype.org/docs/mttrackback.html and
+  http://www.movabletype.org/trackback/)
+
+- o Automatic trackbacks to a service like http://pingomatic.com/
+
+- o Use categories / tags to interact with:
+
+  - http://topicexchange.com/
+
+  - Technorati
+
+  - Many others...
+
+- o One can easily add images in the text flow
+
+- o Statistics
+
+- o Box / portlets with
+
   - All categories (with # of posts)
+
   - Latest comments
+
   - Latest trackbacks
+
   - "Related posts" (posts within same categories)
-o Restrict navigation to only selected languages (using a cookie to keep
-  settings)
+
+- o Restrict navigation to only selected languages (using a cookie
+  to keep settings)
 
 M5:
 
-o Anti-spam on comments
-o Anti-spam on trackbacks
-  (Already partially implemented)
-o "Control panel" or "dashboard" that presents a synthetic view of important
-    information to the blog manager
-o Post using email (w/ PGP signature ?)
-o Support one or more Blog API (via REST or XML-RPC) like MetaWeblogAPI,
-    BloggerAPI and ATOM API
-o Smart rating (with meta-rating) - think Slashdot, Kuro5hin, advogato,
-    lxer.com, linux-community.com
-o Automatic categorisation of blogs: "Similar posts" using either linguistic
-    analysis or collaborative filtering.
+- o Anti-spam on comments
+
+- o Anti-spam on trackbacks (Already partially implemented)
+
+- o "Control panel" or "dashboard" that presents a synthetic view
+  of important information to the blog manager
+
+- o Post using email (w/ PGP signature ?)
+
+- o Support one or more Blog API (via REST or XML-RPC) like MetaWeblogAPI,
+  BloggerAPI, and ATOM API.
+
+- o Smart rating (with meta-rating) - think Slashdot, Kuro5hin,
+  advogato, lxer.com, linux-community.com.
+
+- o Automatic categorization of blogs: "Similar posts" using
+  either linguistic analysis or collaborative filtering.
 
 M6:
 
-o Podcasting 
-  (see http://www-128.ibm.com/developerworks/xml/library/x-atom10.html)
-o "Object oriented" blog entries. Examples:
-    - MovieBlogEntry (for blogging about movies: will include link to relevant
-        information on IMDB and show a picture of the movie)
-    - BookBlogEntry (will include ISBN, show book cover and link Amazon or
-        other online bookshop/library)
-    - SoftwareBlogEntry (for blogging about a piece of software: will include
-        link to sourceforge, freshmeat, zope.org...)
-    - TravelBlogEntry (will include geolocation information for putting entries
-        on a map)
-    - SysAdminBlogEntry (I've just upgraded such server and nothing works
-      anymore)
-    - DeveloperBlogEntry (I'm a software developer, I worked on such and such
-      project for so much time today)
-    - ProjectManagerBlogEntry (...)
-    - SalesBlogEntry (???)
-    ...
+- o Podcasting (see
+  http://www-128.ibm.com/developerworks/xml/library/x-atom10.html)
 
+- o "Object oriented" blog entries. Examples:
+
+  - MovieBlogEntry (for blogging about movies: will include link
+    to relevant information on IMDB and show a picture of the
+    movie)
+
+  - BookBlogEntry (will include ISBN, show book cover and link
+    Amazon or other online bookshop/library)
+
+  - SoftwareBlogEntry (for blogging about a piece of software:
+    will include link to sourceforge, freshmeat, zope.org...)
+
+  - TravelBlogEntry (will include geolocation information for
+    putting entries on a map)
+
+  - SysAdminBlogEntry (I've just upgraded such server and nothing
+    works anymore)
+
+  - DeveloperBlogEntry (I'm a software developer, I worked on such
+    and such project for so much time today)
+
+  - ProjectManagerBlogEntry (...)
+
+  - SalesBlogEntry (???)
+
+  - ...
 
 
 Features of blog aggregation tool
----------------------------------
+=================================
 
 TBDL
 
+
 Other blogging software or services
------------------------------------
+===================================
 
-Blogger
-    http://www.blogger.com/
-    Basic and popular free blogging service
+Blogger:
 
-Livejournal
-    http://www.livejournal.com/
-    Interesting because it's not just a personal blog service, more like a
-    community service (think "Yahoo Groups!").
+- http://www.blogger.com/
 
-MoveableType / Typepad.com
-    The leading commercial solution, it seems
-    See feature matrix:
-        http://www.typepad.com/site/comparison.html
-    (No really free trial on typepad.com)
+- Basic and popular free blogging service
 
-Syncato
-    http://www.syncato.org/
-    Powerful ideas from the XML databases
-        http://www.xmldatabases.org/WK/blog/262?t=item
+Livejournal:
 
-Pyblosxom
-    Python blogging software, filesystem based (no UI for posting)
-    http://roughingit.subtlehints.net/pyblosxom/
+- http://www.livejournal.com/
 
-CoreBlog
-    Zope-based blog tool
-    http://coreblog.org/
+- Interesting because it's not just a personal blog service, more
+  like a community service (think "Yahoo Groups!").
 
-Dotclear
-    PHP-based, popular in France
-    http://www.dotclear.net/en/features.html
+MoveableType / Typepad.com:
 
-SnipSnap
-    Mixes Blog and Wiki - a very interesting approach
-    http://snipsnap.org/space/start
+- The leading commercial solution, it seems.
 
-Typo
-    Ruby on Rails based blog engine
-    http://typo.leetsoft.com/
+- See feature matrix: http://www.typepad.com/site/comparison.html
+  (No really free trial on typepad.com)
 
-More...
-    http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/Publishers/?il=1
-    http://www.python.org/~jeremy/weblog/031104d.html
-    http://climbtothestars.org/archives/2004/12/11/hosted-blog-platform-test-write-up/
+Syncato:
 
-Agregation
-----------
+- http://www.syncato.org/
 
-http://www.technorati.com/
-http://www.bloglines.com/
+- Powerful ideas from the XML databases
+  http://www.xmldatabases.org/WK/blog/262?t=item
+
+Pyblosxom:
+
+- Python blogging software, file system based (no UI for posting)
+
+- http://roughingit.subtlehints.net/pyblosxom/
+
+CoreBlog:
+
+- Zope-based blog tool
+
+- http://coreblog.org/
+
+Dotclear:
+
+- PHP-based, popular in France
+
+- http://www.dotclear.net/en/features.html
+
+SnipSnap:
+
+- Mixes Blog and Wiki - a very interesting approach
+
+- http://snipsnap.org/space/start
+
+Typo:
+
+- Ruby on Rails based blog engine
+
+- http://typo.leetsoft.com/
+
+More:
+
+- Computers > Internet > On the Web > Weblogs > Tools at Google
+  Directory:
+  http://directory.google.com/Top/Computers/Internet/On_the_Web/Weblogs/Tools/
+
+- Jeremy Hylton's weblog entry on Python Software for Weblogs:
+  http://www.python.org/~jeremy/weblog/031104d.html.
+
+- Hosted Blog Platform Test Write-Up:
+  http://climbtothestars.org/archives/2004/12/11/hosted-blog-platform-test-write-up/
+
+
+Aggregation
+===========
+
+Blog portals, directories, etc:
+
+- http://www.technorati.com/
+
+- http://www.bloglines.com/
 
 
 References
-----------
+==========
 
-Good blog design
-    http://www.texturadesign.com/blog_design_bbs/
+- Good blog design: http://www.texturadesign.com/blog_design_bbs/
 
-weblogs: a history and perspective
-    http://www.rebeccablood.net/essays/weblog_history.html
+- weblogs: a history and perspective:
+  http://www.rebeccablood.net/essays/weblog_history.html
 
-Atom:
-    http://www.ietf.org/html.charters/atompub-charter.html
-    http://atomenabled.org/
-    http://www-128.ibm.com/developerworks/xml/library/x-atom10.html
+- Atom:
 
-RSS:
-    http://www.xml.com/pub/a/2002/12/18/dive-into-xml.html
-    http://www.xml.com/pub/a/2004/04/07/dive.html
+  - http://www.ietf.org/html.charters/atompub-charter.html
 
-Trackback:
-    http://pingomatic.com/
-    http://overstated.net/05/02/22-weblog-ping-services
+  - http://atomenabled.org/
+
+  - http://www-128.ibm.com/developerworks/xml/library/x-atom10.html
+
+- RSS:
+
+  - http://www.xml.com/pub/a/2002/12/18/dive-into-xml.html
+
+  - http://www.xml.com/pub/a/2004/04/07/dive.html
+
+- Trackback:
+
+  - http://pingomatic.com/
+
+  - http://overstated.net/05/02/22-weblog-ping-services
