@@ -12,6 +12,7 @@ Bug fixes:
 - #1071 Blog posters have too many rights. If you have old blog instances
   catalog update and portal workflow security settings update is required, after
   installing new CPSBlog to affect old instances with this fix.
+- Fixed 'content' attribute access in atomEntry.pt template.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

@@ -3,7 +3,7 @@
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:metal="http://xml.zope.org/namespaces/metal">
-     
+
   <title tal:content="here/Title" mode="escaped" type="text/html">EntryTitle</title>
   <link tal:attributes="href here/absolute_url" rel="alternate" type="text/html" href="URL" />
   <issued tal:content="python: here.modified().HTML4()"></issued>
@@ -14,21 +14,21 @@
   <author>
     <name tal:content="here/Creator"></name>
   </author>
-  
+
   <tal:block repeat="cat python:here.getContent().Subject()">
     <dc:subject tal:content="cat"></dc:subject>
   </tal:block>
-  
+
   <summary type="text/html" mode="escaped" tal:content="here/getSummary">
     summary
   </summary>
 
   <content type="text/html" mode="escaped" xml:space="preserve"
-    tal:content="here/content">
+    tal:content="python: here.getContent().content">
   </content>
 
   <id tal:content="python: here.computeIdFromUrl(url=here.absolute_url())">123</id>
   <link tal:attributes="href string:${here/absolute_url}/atom?${here/getId};
-                        title string:Edit Here - ${here/Title}" 
+                        title string:Edit Here - ${here/Title}"
         rel="service.edit" type="application/atom+xml" />
 </entry>
