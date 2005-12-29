@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
-"POT-Creation-Date: 2005-06-23 17:24default\n"
+"POT-Creation-Date: 2005-12-29 15:57default\n"
 "PO-Revision-Date: 2005-09-29 10:16-0300\n"
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -34,12 +34,6 @@ msgstr ""
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
 msgstr "${numofcomments} comentários"
-
-#.   <h1>Blog entries posted in category ${category (tal replace="request/category|nothing")}
-#.       </h1>
-#: from ../skins/cpsblog/archive_view.pt
-msgid "Blog entries posted in category ${category}"
-msgstr "Entradas do Blog postadas na categoria ${category}"
 
 #.   <h2>
 #.         Categories for blog "${blogtitle (tal replace="doc/Title")}"
@@ -124,19 +118,6 @@ msgstr ""
 "Postado por ${item_creator} em ${item_modification} <block condition=\"info"
 "\"> <span>Status</span> <span content=\"info/review_state\" attributes="
 "\"class info/review_state\">Trabalho</span> </block>"
-
-#.   <option content="role" attributes="value role" repeat="role roles">
-#.            Role1
-#.         </option>
-#.   <option content="role" attributes="value role" repeat="role roles"> Role1 </option>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "Role1"
-msgstr "Role1"
-
-#.   <td>Title</td>
-#: from ../skins/cpsblog/layout_blog_entry_edit.pt
-msgid "Title"
-msgstr "Título"
 
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -224,13 +205,6 @@ msgstr "título da caixa de texto"
 msgid "from"
 msgstr "de"
 
-#.   <h1>
-#.    Assign local roles: Search Members
-#.   </h1>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "heading_local_roles_search_members"
-msgstr "Atribuir papéis locais: Buscar Membros"
-
 #.   <label for="event_types">label_event_types</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_event_types"
@@ -245,63 +219,6 @@ msgstr "Desc. data de criação"
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_events_location"
 msgstr "Desc. data de criação"
-
-#.   <span>Role(s)</span>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "label_roles"
-msgstr "<span>Papel(is)</span>"
-
-#.   <option value="fullname">Full name</option>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "label_user_fullname"
-msgstr "Nome Completo."
-
-#.   <p>
-#.      These users currently have local roles assigned in this folder:
-#.   </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_assigned_users"
-msgstr "Estes usuários têm atualmente papéis locais atribuídos nesta pasta:"
-
-#.   <p>
-#.       Sorry, no groups matched your search.
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_no_results_member"
-msgstr "Desculpe, nenhum grupo encontrado na sua busca."
-
-#.   <p>
-#.       Sorry, no members matched your search.
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_no_results_members"
-msgstr "Desculpe, nenhum membro encontrado na sua busca."
-
-#.   <p>
-#.       Select Group(s) and a role to assign:
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_select_groups_and_roles"
-msgstr "Selecione o(s) Grupo(s) e um papel para atribuir:"
-
-#.   <p>
-#.       Select Member(s) and a role to assign:
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_select_members_and_roles"
-msgstr "Selecione o(s) Membro(s) e um papel para atribuir:"
-
-#.   <span>
-#.     <em>Roles in underlined</em> are set in parent folders.
-#.     Follow the links to manage the local roles in these folders.
-#.   </span>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "link_local_roles_underlined"
-msgstr ""
-"<span>\n"
-"<em>Papéis sublinhados</em> são definidos nas pastas acima (pais).\n"
-"Siga os links para administrar os papéis locais nestas pastas.\n"
-"</span>"
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
@@ -449,3 +366,43 @@ msgstr "Creation date"
 
 msgid "label_date_desc"
 msgstr "Creation date desc."
+
+#~ msgid "Blog entries posted in category ${category}"
+#~ msgstr "Entradas do Blog postadas na categoria ${category}"
+
+#~ msgid "Role1"
+#~ msgstr "Role1"
+
+#~ msgid "Title"
+#~ msgstr "Título"
+
+#~ msgid "heading_local_roles_search_members"
+#~ msgstr "Atribuir papéis locais: Buscar Membros"
+
+#~ msgid "label_roles"
+#~ msgstr "<span>Papel(is)</span>"
+
+#~ msgid "label_user_fullname"
+#~ msgstr "Nome Completo."
+
+#~ msgid "legend_local_roles_assigned_users"
+#~ msgstr "Estes usuários têm atualmente papéis locais atribuídos nesta pasta:"
+
+#~ msgid "legend_local_roles_no_results_member"
+#~ msgstr "Desculpe, nenhum grupo encontrado na sua busca."
+
+#~ msgid "legend_local_roles_no_results_members"
+#~ msgstr "Desculpe, nenhum membro encontrado na sua busca."
+
+#~ msgid "legend_local_roles_select_groups_and_roles"
+#~ msgstr "Selecione o(s) Grupo(s) e um papel para atribuir:"
+
+#~ msgid "legend_local_roles_select_members_and_roles"
+#~ msgstr "Selecione o(s) Membro(s) e um papel para atribuir:"
+
+#~ msgid "link_local_roles_underlined"
+#~ msgstr ""
+#~ "<span>\n"
+#~ "<em>Papéis sublinhados</em> são definidos nas pastas acima (pais).\n"
+#~ "Siga os links para administrar os papéis locais nestas pastas.\n"
+#~ "</span>"

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2005-06-23 17:24default\n"
+"POT-Creation-Date: 2005-12-29 15:57default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -32,12 +32,6 @@ msgstr ""
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
 msgstr "${numofcomments} comentarii"
-
-#.   <h1>Blog entries posted in category ${category (tal replace="request/category|nothing")}
-#.       </h1>
-#: from ../skins/cpsblog/archive_view.pt
-msgid "Blog entries posted in category ${category}"
-msgstr ""
 
 #.   <h2>
 #.         Categories for blog "${blogtitle (tal replace="doc/Title")}"
@@ -120,19 +114,6 @@ msgid ""
 "\"class info/review_state\">Work</span> </block>"
 msgstr ""
 
-#.   <option content="role" attributes="value role" repeat="role roles">
-#.            Role1
-#.         </option>
-#.   <option content="role" attributes="value role" repeat="role roles"> Role1 </option>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "Role1"
-msgstr ""
-
-#.   <td>Title</td>
-#: from ../skins/cpsblog/layout_blog_entry_edit.pt
-msgid "Title"
-msgstr ""
-
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
@@ -192,7 +173,9 @@ msgstr "Sterge"
 #.       </p>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_description_label"
-msgstr "Foloseste categorii pentru a grupa intrarile si pentru a obtine referinte rapid"
+msgstr ""
+"Foloseste categorii pentru a grupa intrarile si pentru a obtine referinte "
+"rapid"
 
 #.   <td width="90%">Categories</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
@@ -219,13 +202,6 @@ msgstr ""
 msgid "from"
 msgstr ""
 
-#.   <h1>
-#.    Assign local roles: Search Members
-#.   </h1>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "heading_local_roles_search_members"
-msgstr ""
-
 #.   <label for="event_types">label_event_types</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_event_types"
@@ -239,59 +215,6 @@ msgstr ""
 #.   <label for="events_in">label_events_location</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_events_location"
-msgstr ""
-
-#.   <span>Role(s)</span>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "label_roles"
-msgstr "Data crearii"
-
-#.   <option value="fullname">Full name</option>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "label_user_fullname"
-msgstr ""
-
-#.   <p>
-#.      These users currently have local roles assigned in this folder:
-#.   </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_assigned_users"
-msgstr ""
-
-#.   <p>
-#.       Sorry, no groups matched your search.
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_no_results_member"
-msgstr ""
-
-#.   <p>
-#.       Sorry, no members matched your search.
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_no_results_members"
-msgstr ""
-
-#.   <p>
-#.       Select Group(s) and a role to assign:
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_select_groups_and_roles"
-msgstr ""
-
-#.   <p>
-#.       Select Member(s) and a role to assign:
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_select_members_and_roles"
-msgstr ""
-
-#.   <span>
-#.     <em>Roles in underlined</em> are set in parent folders.
-#.     Follow the links to manage the local roles in these folders.
-#.   </span>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "link_local_roles_underlined"
 msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
@@ -331,7 +254,9 @@ msgid "portal_type_Blog_title"
 msgstr "Blog"
 
 msgid "portal_type_Blog_description"
-msgstr "Blogul permite publicarea imediata a gandurilor personale, transmiterea cunostintelor, interactiunea cu alte persoane."
+msgstr ""
+"Blogul permite publicarea imediata a gandurilor personale, transmiterea "
+"cunostintelor, interactiunea cu alte persoane."
 
 msgid "portal_type_BlogEntry_title"
 msgstr "Text blog"
@@ -340,13 +265,17 @@ msgid "portal_type_BlogAggregator_title"
 msgstr "Blog Colector"
 
 msgid "portal_type_BlogAggregator_description"
-msgstr "Blog Colector afiseaza textele din mai multe bloguri in baza unor parametri de cautare definiti"
+msgstr ""
+"Blog Colector afiseaza textele din mai multe bloguri in baza unor parametri "
+"de cautare definiti"
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog Colector Portlet"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
-msgstr "Blog Colector Portlet afiseaza textele din mai multe bloguri in baza unor parametri de cautare definiti"
+msgstr ""
+"Blog Colector Portlet afiseaza textele din mai multe bloguri in baza unor "
+"parametri de cautare definiti"
 
 msgid "view_mode_Title_label"
 msgstr "Doar titlul"
@@ -434,3 +363,6 @@ msgstr "Data crearii"
 
 msgid "label_date_desc"
 msgstr "Data crearii descrescator"
+
+#~ msgid "label_roles"
+#~ msgstr "Data crearii"

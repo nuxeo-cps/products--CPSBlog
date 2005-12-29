@@ -3,17 +3,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2005-06-23 17:24default\n"
+"POT-Creation-Date: 2005-12-29 15:57default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language-Code: LL\n"
-"Language-Name: Language\n"
-"Preferred-encodings: utf-8 latin1\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-encodings: latin9 utf-8\n"
 "Domain: default\n"
 
 #.   <block condition="not: numofcomments">
@@ -31,12 +31,6 @@ msgstr ""
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
-msgstr ""
-
-#.   <h1>Blog entries posted in category ${category (tal replace="request/category|nothing")}
-#.       </h1>
-#: from ../skins/cpsblog/archive_view.pt
-msgid "Blog entries posted in category ${category}"
 msgstr ""
 
 #.   <h2>
@@ -118,19 +112,6 @@ msgid ""
 "Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> "
 "<span>Label Status</span> <span content=\"info/review_state\" attributes="
 "\"class info/review_state\">Work</span> </block>"
-msgstr ""
-
-#.   <option content="role" attributes="value role" repeat="role roles">
-#.            Role1
-#.         </option>
-#.   <option content="role" attributes="value role" repeat="role roles"> Role1 </option>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "Role1"
-msgstr ""
-
-#.   <td>Title</td>
-#: from ../skins/cpsblog/layout_blog_entry_edit.pt
-msgid "Title"
 msgstr ""
 
 #.   <div>Trackback URL for this entry:</div>
@@ -219,13 +200,6 @@ msgstr ""
 msgid "from"
 msgstr ""
 
-#.   <h1>
-#.    Assign local roles: Search Members
-#.   </h1>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "heading_local_roles_search_members"
-msgstr ""
-
 #.   <label for="event_types">label_event_types</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_event_types"
@@ -239,59 +213,6 @@ msgstr ""
 #.   <label for="events_in">label_events_location</label>
 #: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
 msgid "label_events_location"
-msgstr ""
-
-#.   <span>Role(s)</span>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "label_roles"
-msgstr ""
-
-#.   <option value="fullname">Full name</option>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "label_user_fullname"
-msgstr ""
-
-#.   <p>
-#.      These users currently have local roles assigned in this folder:
-#.   </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_assigned_users"
-msgstr ""
-
-#.   <p>
-#.       Sorry, no groups matched your search.
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_no_results_member"
-msgstr ""
-
-#.   <p>
-#.       Sorry, no members matched your search.
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_no_results_members"
-msgstr ""
-
-#.   <p>
-#.       Select Group(s) and a role to assign:
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_select_groups_and_roles"
-msgstr ""
-
-#.   <p>
-#.       Select Member(s) and a role to assign:
-#.    </p>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "legend_local_roles_select_members_and_roles"
-msgstr ""
-
-#.   <span>
-#.     <em>Roles in underlined</em> are set in parent folders.
-#.     Follow the links to manage the local roles in these folders.
-#.   </span>
-#: from ../skins/cpsblog/blog_localrole_form.pt
-msgid "link_local_roles_underlined"
 msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
