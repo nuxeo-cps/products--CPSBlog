@@ -13,11 +13,11 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Preferred-encodings: utf-8 latin1\n"
-"X-Generator: KBabel 1.9\n"
+"Preferred-encodings: latin9 utf-8\n"
 "Language-Code: fr\n"
 "Language-Name: French\n"
 "Domain: default\n"
+"X-Generator: KBabel 1.9\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
