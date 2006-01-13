@@ -30,6 +30,10 @@ from zLOG import LOG, INFO, DEBUG
 from AccessControl import ModuleSecurityInfo, allow_class
 import Products.CPSBlog.permissions
 import BlogAggregator
+from Products.GenericSetup import profile_registry
+from Products.GenericSetup import EXTENSION
+
+from Products.CPSDefault.interfaces import ICPSSite
 
 logKey = 'CPSBlog.__init__'
 
@@ -68,3 +72,11 @@ def initialize(registrar):
                 extra_constructors = contentConstructors,
                 fti = fti,
                 ).initialize(registrar)
+    profile_registry.registerProfile(
+        'default',
+        'CPS Blog',
+        "Blog product for CPS.",
+        'profiles/default',
+        'CPSBlog',
+        EXTENSION,
+        for_=ICPSSite)

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="blog_view_mode" meta_type="CPS Vocabulary">
+ <property name="title"></property>
+ <property name="title_msgid"></property>
+ <property name="description"></property>
+ <property name="acl_write_roles">Manager</property>
+ <item key="title" msgid="view_mode_Title_label">Title</item>
+ <item key="title_desc" msgid="view_mode_TitleDescription_label">Title and Description</item>
+ <item key="full" msgid="view_mode_Full_label">Full</item>
+</object>

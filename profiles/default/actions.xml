@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="CMF Actions Tool">
+ <action-provider name="portal_actions">
+  <action title="Send a mail notification" action_id="mnotify"
+     category="document_actions" 
+     condition_expr="python:object.portal_type != 'Portal'"
+     url_expr="string:$object_url/content_notify_email_form" visible="True">
+   <permission>View</permission>
+  </action>
+  <action title="RSS feed" action_id="rss"
+     category="document_actions" condition_expr=""
+     url_expr="string:$object_url/exportrss" visible="True">
+   <permission>View</permission>
+  </action>
+  <action title="ATOM feed" action_id="atom"
+     category="document_actions" condition_expr=""
+     url_expr="string:$object_url/exportatom" visible="True">
+   <permission>View</permission>
+  </action>
+ </action-provider>
+</object>

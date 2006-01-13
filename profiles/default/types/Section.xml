@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="Section">
+ <property name="allowed_content_types">
+  <element value="Blog"/>
+  <element value="BlogAggregator"/>
+ </property>
+</object>

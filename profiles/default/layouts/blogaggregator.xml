@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<object name="blogaggregator" meta_type="CPS Layout">
+ <property name="layout_create_method"></property>
+ <property name="layout_edit_method"></property>
+ <property name="layout_view_method"></property>
+ <property name="style_prefix">layout_blogaggregator_</property>
+ <property name="flexible_widgets"/>
+ <property name="validate_values_expr"></property>
+ <widget name="query_title" meta_type="String Widget">
+  <property name="fields">
+   <element value="query_title"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="is_required">False</property>
+  <property name="label_edit">label_search_title</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <widget name="query_description" meta_type="String Widget">
+  <property name="fields">
+   <element value="query_description"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="is_required">False</property>
+  <property name="label_edit">label_search_description</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <widget name="query_fulltext" meta_type="String Widget">
+  <property name="fields">
+   <element value="query_fulltext"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="is_required">False</property>
+  <property name="label_edit">label_search_full_text</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <widget name="query_categories" meta_type="MultiSelect Widget">
+  <property name="fields">
+   <element value="query_categories"/>
+  </property>
+  <property name="is_required">True</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">blog_entry_categories_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">blogaggregator_categories</property>
+  <property name="translated">True</property>
+ </widget>
+ <widget name="query_modified" meta_type="Select Widget">
+  <property name="fields">
+   <element value="query_modified"/>
+  </property>
+  <property name="is_required">True</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">label_search_modified_since</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">blogaggregator_modified</property>
+  <property name="translated">True</property>
+ </widget>
+ <widget name="query_status" meta_type="Select Widget">
+  <property name="fields">
+   <element value="query_status"/>
+  </property>
+  <property name="is_required">True</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">label_search_status</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">blogaggregator_status</property>
+  <property name="translated">True</property>
+ </widget>
+ <widget name="view_mode" meta_type="Select Widget">
+  <property name="fields">
+   <element value="view_mode"/>
+  </property>
+  <property name="is_required">True</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">blog_view_mode_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">blog_view_mode</property>
+  <property name="translated">True</property>
+ </widget>
+ <widget name="entries_per_page" meta_type="Int Widget">
+  <property name="fields">
+   <element value="entries_per_page"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="is_required">False</property>
+  <property name="label_edit">blog_entries_per_page_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <widget name="sort_by" meta_type="Select Widget">
+  <property name="fields">
+   <element value="sort_by"/>
+  </property>
+  <property name="is_required">True</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">label_sort_by</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">blogaggregator_sort_by</property>
+  <property name="translated">True</property>
+ </widget>
+ <widget name="search_limit" meta_type="Int Widget">
+  <property name="fields">
+   <element value="search_limit"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="is_required">False</property>
+  <property name="label_edit">blog_entries_search_limit_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <table>
+  <row>
+   <cell name="query_title"/>
+  </row>
+  <row>
+   <cell name="query_description"/>
+  </row>
+  <row>
+   <cell name="query_fulltext"/>
+  </row>
+  <row>
+   <cell name="query_categories"/>
+  </row>
+  <row>
+   <cell name="query_modified"/>
+  </row>
+  <row>
+   <cell name="query_status"/>
+  </row>
+  <row>
+   <cell name="view_mode"/>
+  </row>
+  <row>
+   <cell name="entries_per_page"/>
+  </row>
+  <row>
+   <cell name="search_limit"/>
+  </row>
+  <row>
+   <cell name="sort_by"/>
+  </row>
+ </table>
+</object>

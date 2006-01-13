@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_vocabularies" meta_type="CPS Vocabularies Tool">
+ <object name="blog_view_mode" meta_type="CPS Vocabulary"/>
+ <object name="blog_glob_categories" meta_type="CPS Vocabulary"/>
+ <object name="blog_categories" meta_type="CPS Method Vocabulary"/>
+ <object name="blog_languages" meta_type="CPS Method Vocabulary"/>
+ <object name="blogaggregator_status" meta_type="CPS Vocabulary"/>
+ <object name="blogaggregator_modified" meta_type="CPS Vocabulary"/>
+ <object name="blogaggregator_sort_by" meta_type="CPS Vocabulary"/>
+ <object name="blogaggregator_categories" meta_type="CPS Method Vocabulary"/>
+</object>

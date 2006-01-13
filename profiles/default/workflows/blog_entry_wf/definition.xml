@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<cps-workflow workflow_id="blog_entry_wf"
+              title="CPS Workflow Definition"
+              state_variable="review_state"
+              meta_type="CPS Workflow">
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <permission>WebDAV Lock Items</permission>
+ <permission>WebDAV Unlock Items</permission>
+ <state state_id="work" title="Work">
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>SectionManager</permission-role>
+   <permission-role>SectionReviewer</permission-role>
+   <permission-role>BlogManager</permission-role>
+   <permission-role>WorkspaceManager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>SectionManager</permission-role>
+   <permission-role>SectionReviewer</permission-role>
+   <permission-role>WorkspaceManager</permission-role>
+   <permission-role>BlogManager</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="published" title="Published">
+  <exit-transition transition_id="unpublish"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>SectionReader</permission-role>
+   <permission-role>SectionManager</permission-role>
+   <permission-role>SectionReviewer</permission-role>
+   <permission-role>WorkspaceManager</permission-role>
+   <permission-role>WorkspaceMember</permission-role>
+   <permission-role>WorkspaceReader</permission-role>
+   <permission-role>BlogPoster</permission-role>
+   <permission-role>BlogManager</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="create" title="Initial creation"
+             new_state="work" trigger="USER"
+             before_script="" after_script="add_blog_boxes">
+  
+  <guard>
+   <guard-permission>Create Blog Entry</guard-permission>
+  </guard>
+  <transition-behavior behavior_id="initial-create"/>
+ </transition>
+ <transition transition_id="publish"
+             title="Publish BlogEntry" new_state="published"
+             trigger="USER" before_script=""
+             after_script="set_entry_effective_date">
+  <action url="%(content_url)s/blog_entry_publish"
+          category="workflow">action_publish</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>BlogManager</guard-role>
+   <guard-role>SectionManager</guard-role>
+   <guard-role>SectionReviewer</guard-role>
+   <guard-role>WorkspaceManager</guard-role>
+   <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="unpublish"
+             title="Unpublish BlogEntry" new_state="work"
+             trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/blog_entry_unpublish"
+          category="workflow">action_un_publish</action>
+  <guard>
+   <guard-role>Manager</guard-role>
+   <guard-role>BlogManager</guard-role>
+   <guard-role>SectionManager</guard-role>
+   <guard-role>SectionReviewer</guard-role>
+   <guard-role>WorkspaceManager</guard-role>
+   <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
+ <script script_id="set_entry_effective_date" type="Script (Python)"
+    filename="workflows/blog_entry_wf/scripts/set_entry_effective_date.py"/>
+</cps-workflow>

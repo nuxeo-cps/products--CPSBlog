@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="blog" meta_type="CPS Schema">
+ <field name="view_mode" meta_type="CPS String Field"/>
+ <field name="entries_per_page" meta_type="CPS Int Field">
+  <property name="default_expr">python:10</property>
+ </field>
+ <field name="author_photo" meta_type="CPS Image Field"/>
+ <field name="langs" meta_type="CPS String List Field"/>
+</object>

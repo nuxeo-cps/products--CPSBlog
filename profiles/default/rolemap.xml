@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rolemap>
+ <roles>
+  <role name="BlogManager"/>
+  <role name="BlogPoster"/>
+ </roles>
+ <permissions>
+  <permission name="Create Blog Entry"
+              acquire="True">
+   <role name="Owner"/>
+   <role name="Manager"/>
+   <role name="WorkspaceManager"/>
+   <role name="BlogManager"/>
+   <role name="BlogPoster"/>
+   <role name="SectionManager"/>
+   <role name="SectionReviewer"/>
+  </permission>
+ </permissions>
+</rolemap>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="blogaggregator_modified" meta_type="CPS Vocabulary">
+ <property name="title"></property>
+ <property name="title_msgid"></property>
+ <property name="description"></property>
+ <property name="acl_write_roles">Manager</property>
+ <item key="" msgid="label_choose">Choose</item>
+ <item key="time_last_login" msgid="time_last_login">Last login</item>
+ <item key="time_yesterday" msgid="time_yesterday">Yesterday</item>
+ <item key="time_last_week" msgid="time_last_week">Last week</item>
+ <item key="time_last_month" msgid="time_last_month">Last month</item>
+</object>

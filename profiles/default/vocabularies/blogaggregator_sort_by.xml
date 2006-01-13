@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="blogaggregator_sort_by" meta_type="CPS Vocabulary">
+ <property name="title"></property>
+ <property name="title_msgid"></property>
+ <property name="description"></property>
+ <property name="acl_write_roles">Manager</property>
+ <item key="" msgid="label_sort_by">No sort</item>
+ <item key="title_asc" msgid="label_title_asc">Title ascending</item>
+ <item key="title_desc" msgid="label_title_desc">Title descending</item>
+ <item key="date_asc" msgid="label_date_effective_asc">Date ascending</item>
+ <item key="date_desc" msgid="label_date_effective_desc">Date descending</item>
+ <item key="status_asc" msgid="label_status_asc">Status ascending</item>
+ <item key="status_desc" msgid="label_status_desc">Status descending</item>
+</object>

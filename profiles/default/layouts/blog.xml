@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<object name="blog" meta_type="CPS Layout">
+ <property name="layout_create_method"></property>
+ <property name="layout_edit_method"></property>
+ <property name="layout_view_method"></property>
+ <property name="style_prefix">layout_blog_</property>
+ <property name="flexible_widgets"/>
+ <property name="validate_values_expr"></property>
+ <widget name="LanguageSelector" meta_type="Document Language Select Widget">
+  <property name="fields">
+   <element value="Language"/>
+  </property>
+ </widget>
+ <widget name="Title" meta_type="Heading Widget">
+  <property name="fields">
+   <element value="Title"/>
+  </property>
+  <property name="label_edit">cpsdoc_title_label_edit</property>
+  <property name="is_i18n">True</property>
+  <property name="display_width">72</property>
+  <property name="size_max">200</property>
+  <property name="level">1</property>
+  <property name="is_required">True</property>
+ </widget>
+ <widget name="Description" meta_type="Text Widget">
+  <property name="fields">
+   <element value="Description"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">cpsdoc_description_label_edit</property>
+  <property name="css_class">ddescription</property>
+  <property name="width">72</property>
+  <property name="height">5</property>
+  <property name="render_format">text</property>
+ </widget>
+ <widget name="view_mode" meta_type="Select Widget">
+  <property name="fields">
+   <element value="view_mode"/>
+  </property>
+  <property name="is_required">True</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">blog_view_mode_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">blog_view_mode</property>
+  <property name="translated">True</property>
+ </widget>
+ <widget name="entries_per_page" meta_type="Int Widget">
+  <property name="fields">
+   <element value="entries_per_page"/>
+  </property>
+  <property name="is_required">False</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">blog_entries_per_page_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <widget name="author_photo" meta_type="Photo Widget">
+  <property name="fields">
+   <element value="author_photo"/>
+  </property>
+  <property name="is_required">False</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">author_photo_label_edit</property>
+  <property name="hidden_empty">False</property>
+  <property name="render_position">right</property>
+ </widget>
+ <widget name="langs" meta_type="MultiSelect Widget">
+  <property name="fields">
+   <element value="langs"/>
+  </property>
+  <property name="is_required">False</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">blog_languages_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">language_voc</property>
+  <property name="translated">True</property>
+ </widget>
+ <table>
+  <row>
+   <cell name="LanguageSelector"/>
+  </row>
+  <row>
+   <cell name="Title"/>
+  </row>
+  <row>
+   <cell name="Description"/>
+  </row>
+  <row>
+   <cell name="view_mode"/>
+  </row>
+  <row>
+   <cell name="entries_per_page"/>
+  </row>
+  <row>
+   <cell name="author_photo"/>
+  </row>
+  <row>
+   <cell name="langs"/>
+  </row>
+ </table>
+</object>

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<object name="blog_entry" meta_type="CPS Layout">
+ <property name="layout_create_method"></property>
+ <property name="layout_edit_method"></property>
+ <property name="layout_view_method"></property>
+ <property name="style_prefix">layout_blog_entry_</property>
+ <property name="flexible_widgets"/>
+ <property name="validate_values_expr"></property>
+ <widget name="LanguageSelector" meta_type="Document Language Select Widget">
+  <property name="fields">
+   <element value="Language"/>
+  </property>
+ </widget>
+ <widget name="Title" meta_type="Heading Widget">
+  <property name="fields">
+   <element value="Title"/>
+  </property>
+  <property name="label_edit">cpsdoc_title_label_edit</property>
+  <property name="is_i18n">True</property>
+  <property name="display_width">72</property>
+  <property name="size_max">250</property>
+  <property name="level">1</property>
+  <property name="is_required">True</property>
+ </widget>
+ <widget name="Description" meta_type="Text Widget">
+  <property name="fields">
+   <element value="Description"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">cpsdoc_description_label_edit</property>
+  <property name="css_class">ddescription</property>
+  <property name="width">72</property>
+  <property name="height">5</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+   <element value="edit"/>
+   <element value="create"/>
+  </property>
+  <property name="render_format">text</property>
+ </widget>
+ <widget name="content" meta_type="Text Widget">
+  <property name="fields">
+   <element value="content"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">blog_entry_content_label_edit</property>
+  <property name="hidden_empty">False</property>
+  <property name="width">72</property>
+  <property name="height">15</property>
+  <property name="render_format">text</property>
+ </widget>
+ <widget name="Subject" meta_type="MultiSelect Widget">
+  <property name="fields">
+   <element value="Subject"/>
+  </property>
+  <property name="is_required">False</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">blog_entry_categories_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="vocabulary">blog_categories</property>
+  <property name="translated">False</property>
+ </widget>
+ <widget name="lang" meta_type="Select Widget">
+  <property name="fields">
+   <element value="Language"/>
+  </property>
+  <property name="is_required">False</property>
+  <property name="is_i18n">True</property>
+  <property name="label_edit">label_language</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+  <property name="readonly_layout_modes">
+   <element value="edit"/>
+  </property>
+  <property name="vocabulary">blog_languages</property>
+  <property name="translated">True</property>
+ </widget>
+ <widget name="accept_trackback_pings" meta_type="Boolean Widget">
+  <property name="fields">
+   <element value="accept_trackback_pings"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="is_required">False</property>
+  <property name="label_edit">blog_entry_accept_pings_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <widget name="dispatch_trackback_urls" meta_type="Lines Widget">
+  <property name="fields">
+   <element value="dispatch_trackback_urls"/>
+  </property>
+  <property name="is_i18n">True</property>
+  <property name="is_required">False</property>
+  <property name="label_edit">blog_entry_dispatch_tb_urls_label_edit</property>
+  <property name="hidden_layout_modes">
+   <element value="view"/>
+  </property>
+  <property name="hidden_empty">False</property>
+ </widget>
+ <table>
+  <row>
+   <cell name="LanguageSelector" ncols="2"/>
+  </row>
+  <row>
+   <cell name="Title" ncols="2"/>
+  </row>
+  <row>
+   <cell name="content" ncols="2"/>
+  </row>
+  <row>
+   <cell name="lang"/>
+   <cell name="accept_trackback_pings"/>
+  </row>
+  <row>
+   <cell name="Subject"/>
+   <cell name="dispatch_trackback_urls"/>
+  </row>
+ </table>
+</object>
