@@ -15,6 +15,7 @@ Bug fixes:
 - Fixed 'content' attribute access in atomEntry.pt template.
 - Fixed bug in extension profile leading to adding after_script to 'create'
   transition for BlogEntry.
+- Modified profile so that default view for Blog is blog_view.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - CPS css_slot was renamed style_slot to comply with later CMF/Zope 3 standard.
