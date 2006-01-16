@@ -33,7 +33,7 @@ import BlogAggregator
 from Products.GenericSetup import profile_registry
 from Products.GenericSetup import EXTENSION
 
-from Products.CPSDefault.interfaces import ICPSSite
+from Products.CPSCore.interfaces import ICPSSite
 
 logKey = 'CPSBlog.__init__'
 
