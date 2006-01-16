@@ -43,8 +43,8 @@
  </state>
  <transition transition_id="create" title="Initial creation"
              new_state="work" trigger="USER"
-             before_script="" after_script="add_blog_boxes">
-  
+             before_script="" after_script="">
+
   <guard>
    <guard-permission>Create Blog Entry</guard-permission>
   </guard>

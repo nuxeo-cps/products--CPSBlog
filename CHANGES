@@ -13,6 +13,8 @@ Bug fixes:
   catalog update and portal workflow security settings update is required, after
   installing new CPSBlog to affect old instances with this fix.
 - Fixed 'content' attribute access in atomEntry.pt template.
+- Fixed bug in extension profile leading to adding after_script to 'create'
+  transition for BlogEntry.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - CPS css_slot was renamed style_slot to comply with later CMF/Zope 3 standard.
