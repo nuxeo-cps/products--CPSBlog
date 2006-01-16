@@ -1,7 +1,10 @@
-<tal:block define="res python:here.createBlogEntryDocument(REQUEST=request);
-                   rendered_main python: res[0];
-                   portal_status_message python: res[1];
-                   creation python:1;
-  ">
+<tal:block define="
+    type_name request/type_name;
+    rendered_main python:here.cpsdocument_create_render(request=request,
+                                                        type_name=type_name);
+    form_action string:blogentry_create;
+    creation python:True;
+    edition python:False;
+    ">
   <metal:block use-macro="here/cpsdocument_edit_form/macros/edit_form" />
 </tal:block>

@@ -16,6 +16,7 @@ Bug fixes:
 - Fixed bug in extension profile leading to adding after_script to 'create'
   transition for BlogEntry.
 - Modified profile so that default view for Blog is blog_view.
+- #1260 Fixed error on creating a BlogEntry in Blog documents.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - CPS css_slot was renamed style_slot to comply with later CMF/Zope 3 standard.
