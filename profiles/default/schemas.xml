@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<object name="portal_schemas" meta_type="CPS Schemas Tool">
+<object name="portal_schemas">
  <object name="blog" meta_type="CPS Schema"/>
  <object name="blog_entry" meta_type="CPS Schema"/>
  <object name="blog_entry_flexible" meta_type="CPS Schema"/>

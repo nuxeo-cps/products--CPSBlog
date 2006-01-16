@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<object name=".cps_workflow_configuration"
-        meta_type="CPS Workflow Configuration">
+<object name=".cps_workflow_configuration">
   <local-workflows>
     <type name="Blog" wf="blog_section_wf"/>
     <type name="BlogAggregator" wf="section_folder_wf"/>

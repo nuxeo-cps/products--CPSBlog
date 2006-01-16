@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<object name="portal_actions" meta_type="CMF Actions Tool">
+<object name="portal_actions">
  <action-provider name="portal_actions">
   <action title="Send a mail notification" action_id="mnotify"
      category="document_actions" 
