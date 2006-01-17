@@ -20,10 +20,6 @@ class TestGlobalInstall(CPSBlogTestCase.CPSBlogTestCase):
     def beforeTearDown(self):
         self.logout()
 
-    def testInstallerScript(self):
-        self.assert_('cpsblog_installer' in self.portal.objectIds(),
-                     'Installer script was not correctly added to portal')
-
     def testPortalTypes(self):
         ttool = self.portal.portal_types
         portal_types = ['Blog', 'BlogEntry', 'BlogAggregator', 

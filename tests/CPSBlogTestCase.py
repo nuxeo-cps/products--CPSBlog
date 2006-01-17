@@ -1,30 +1,31 @@
+# (C) Copyright 2006 Nuxeo SAS <http://nuxeo.com>
+# Author: Florent Guillaume <fg@nuxeo.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as published
+# by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+# 02111-1307, USA.
+#
 # $Id$
 
-from Testing import ZopeTestCase
-from Products.ExternalMethod.ExternalMethod import ExternalMethod
-from Products.CPSDefault.tests import CPSTestCase
-
-ZopeTestCase.installProduct('CPSBlog')
-
-CPSBlogTestCase = CPSTestCase.CPSTestCase
-
-class CPSBlogInstaller(CPSTestCase.CPSInstaller):
-    def addPortal(self, id):
-        """Override the Default addPortal method installing
-        a Default CPS Site.
-
-        """
-
-        CPSTestCase.CPSInstaller.addPortal(self, id)
-        portal = getattr(self.app, id)
-
-        # Install the CPSBlog product
-        cpsblog_installer = ExternalMethod('cpsblog_installer',
-                                                    '',
-                                                    'CPSBlog.install',
-                                                    'install')
-        portal._setObject('cpsblog_installer', cpsblog_installer)
-        portal.cpsblog_installer()
+from Products.CPSDefault.tests.CPSTestCase import CPSTestCase
+from Products.CPSDefault.tests.CPSTestCase import ExtensionProfileLayerClass
 
 
-CPSTestCase.setupPortal(PortalInstaller=CPSBlogInstaller)
+class LayerClass(ExtensionProfileLayerClass):
+    extension_ids = ('CPSBlog:default',)
+
+CPSBlogLayer = LayerClass(__name__, 'CPSBlogLayer')
+
+
+class CPSBlogTestCase(CPSTestCase):
+    layer = CPSBlogLayer
