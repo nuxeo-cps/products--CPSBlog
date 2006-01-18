@@ -4,11 +4,15 @@
 for the given proxy. This gives us total number of comments posts to proxy.
 """
 
-dtool = context.portal_discussion
+from Products.CMFCore.utils import getToolByName
 
-forum_url = dtool.getCommentForumURL(proxy.absolute_url(relative=1))
-if forum_url:
-    forum = context.restrictedTraverse(forum_url)
-    return len(forum.objectIds())
+portal = getToolByName(context, 'portal_url').getPortalObject()
+if hasattr(portal, 'portal_discussion'):
+    dtool = context.portal_discussion
+
+    forum_url = dtool.getCommentForumURL(proxy.absolute_url(relative=1))
+    if forum_url:
+        forum = context.restrictedTraverse(forum_url)
+        return len(forum.objectIds())
 
 return 0

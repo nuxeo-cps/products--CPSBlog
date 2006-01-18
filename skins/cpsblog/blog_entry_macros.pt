@@ -97,8 +97,11 @@
               </a>
             </tal:block>
           </tal:block>
-          <tal:block condition="item/hasCommentAction">
-            (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
+          <tal:block condition="python:hasattr(here,'portal_discussion') and
+                hasattr(item, 'hasCommentAction')">
+            <tal:block condition="item/hasCommentAction">
+              (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
+            </tal:block>
           </tal:block>
           <tal:block define="accept_trackback_pings item/accept_trackback_pings|nothing"
                      condition="accept_trackback_pings">
