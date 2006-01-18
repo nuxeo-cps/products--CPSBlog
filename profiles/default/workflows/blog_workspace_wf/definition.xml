@@ -34,7 +34,6 @@
    <guard-role>Manager</guard-role>
    <guard-role>WorkspaceManager</guard-role>
    <guard-role>WorkspaceMember</guard-role>
-   <guard-role></guard-role>
   </guard>
   <transition-behavior behavior_id="initial-create"/>
  </transition>
