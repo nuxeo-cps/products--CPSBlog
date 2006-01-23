@@ -41,8 +41,7 @@
       define="dtool nocall:here/portal_discussion|nothing"
       condition="python:dtool and dtool.meta_type == 'CPS Discussion Tool'">
       <tal:block
-        define="comments_allowed
-                  python:here.portal_discussion.isCommentingAllowedFor(here);"
+        define="comments_allowed python:dtool.isCommentingAllowedFor(here);"
         condition="comments_allowed">
         <span id="comments" />
         <metal:block
