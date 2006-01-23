@@ -60,9 +60,10 @@
 
     <tal:block tal:content="structure rendered_main|python:doc.render(proxy=here)" />
 
+
     <tal:block
-      define="integration python:modules['Products.CPSUtil.integration']"
-      condition="python:integration.isProductPresent('Products.CPSForum')">
+      define="dtool nocall:here/portal_discussion|nothing"
+      condition="python:dtool and dtool.meta_type == 'CPS Discussion Tool'">
       <tal:block
         define="comments_allowed
                   python:here.portal_discussion.isCommentingAllowedFor(here);"

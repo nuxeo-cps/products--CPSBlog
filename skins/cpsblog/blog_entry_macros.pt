@@ -97,7 +97,10 @@
               </a>
             </tal:block>
           </tal:block>
-          <tal:block condition="python:modules['Products.CPSUtil.integration'].isProductPresent('Products.CPSForum')">
+
+          <tal:block
+            define="dtool nocall:here/portal_discussion|nothing"
+            condition="python:dtool and dtool.meta_type == 'CPS Discussion Tool'">
             <tal:block condition="item/hasCommentAction">
               (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
             </tal:block>

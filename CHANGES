@@ -17,7 +17,7 @@ Bug fixes:
   transition for BlogEntry.
 - Modified profile so that default view for Blog is blog_view.
 - #1260 Fixed error on creating a BlogEntry in Blog documents.
-- Make explicit checks on CPSForum product presence for comments viewing in
+- Make explicit checks on CPSForum product installation for comments viewing in
   blogs.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~

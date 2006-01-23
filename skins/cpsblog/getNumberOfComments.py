@@ -5,12 +5,12 @@ for the given proxy. This gives us total number of comments posts to proxy.
 """
 
 from Products.CMFCore.utils import getToolByName
-from Products.CPSUtil.integration import isProductPresent
 
 number = 0
 
-if isProductPresent('Products.CPSForum'):
-    dtool = getToolByName(context, 'portal_discussion')
+# Check if CPSForum is installed
+dtool = getToolByName(context, 'portal_discussion', None)
+if dtool is not None and dtool.meta_type == 'CPS Discussion Tool':
     # XXX AT: absolute_url(relative=1) should not be used
     forum_url = dtool.getCommentForumURL(proxy.absolute_url(relative=1))
     if forum_url:
