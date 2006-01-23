@@ -1,4 +1,33 @@
 *******************************************
+** CPSBlog V0.7.0 [R1 build 2006/01/23-17:26 by fermigier]
+** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 31976
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- #1143 removed reference to boxes.
+- #986 workspace reader now can read published blog entries.
+- #1155 calendar and search boxes transformed to portlets.
+- #1071 Blog posters have too many rights. If you have old blog instances
+  catalog update and portal workflow security settings update is required, after
+  installing new CPSBlog to affect old instances with this fix.
+- Fixed 'content' attribute access in atomEntry.pt template.
+- Fixed bug in extension profile leading to adding after_script to 'create'
+  transition for BlogEntry.
+- Modified profile so that default view for Blog is blog_view.
+- #1260 Fixed error on creating a BlogEntry in Blog documents.
+- Make explicit checks on CPSForum product installation for comments viewing in
+  blogs.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- CPS css_slot was renamed style_slot to comply with later CMF/Zope 3 standard.
+- extension profile created
+
+*******************************************
 ** CPSBlog V0.6.0 [R1 build 2005/11/07-15:08 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 29055
 Requires:
