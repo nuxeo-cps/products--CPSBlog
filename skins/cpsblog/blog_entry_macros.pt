@@ -97,8 +97,7 @@
               </a>
             </tal:block>
           </tal:block>
-          <tal:block condition="python:hasattr(here,'portal_discussion') and
-                hasattr(item, 'hasCommentAction')">
+          <tal:block condition="python:modules['Products.CPSUtil.integration'].isProductPresent('Products.CPSForum')">
             <tal:block condition="item/hasCommentAction">
               (<a href="" class="blog" tal:attributes="href string:${bentry_url}/post_comment" i18n:translate="">add</a>)
             </tal:block>
