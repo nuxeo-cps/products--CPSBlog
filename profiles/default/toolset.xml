@@ -4,4 +4,6 @@
            class="Products.CMFCalendar.CalendarTool.CalendarTool"/>
  <required tool_id="portal_subscriptions"
            class="Products.CPSSubscriptions.SubscriptionsTool.SubscriptionsTool"/>
+ <required tool_id="portal_actionicons"
+           class="Products.CMFActionIcons.ActionIconsTool.ActionIconsTool"/>
 </tool-setup>

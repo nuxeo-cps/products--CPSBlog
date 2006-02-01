@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<action-icons>
+  <action-icon category="cps" action_id="print"
+               title="Print" priority="0"
+               icon_expr="print_icon.png"/>
+  <action-icon category="cps" action_id="mnotify"
+               title="Mail Notify" priority="0"
+               icon_expr="mail_icon.png"/>
+  <action-icon category="cps" action_id="rss"
+               title="RSS" priority="0"
+               icon_expr="blogrss.png"/>
+  <action-icon category="cps" action_id="atom"
+               title="ATOM" priority="0"
+               icon_expr="blogatom.png"/>
+  <action-icon category="cpsblog" action_id="new_content"
+               title="New content" priority="0"
+               icon_expr="blog_entry_icon.png"/>
+  <action-icon category="cpsblogentry" action_id="publish"
+               title="Publish" priority="0"
+               icon_expr="blog_entry_publish_icon.png"/>
+  <action-icon category="cpsblogentry" action_id="unpublish"
+               title="Unpublish" priority="0"
+               icon_expr="blog_entry_unpublish_icon.png"/>
+</action-icons>
