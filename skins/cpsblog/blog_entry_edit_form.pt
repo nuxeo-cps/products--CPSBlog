@@ -1,6 +1,6 @@
 <tal:block define="
     rendered_main python:here.cpsdocument_edit_render(request=request);
-    form_action string:blogentry_edit;
+    form_action string:cpsdocument_edit;
     creation python:False;
     edition python:True;
     metadata metadata|nothing;
@@ -96,7 +96,7 @@
           </div>
         </div>
 
-        <metal:block use-macro="here/blogentry_edit_buttons/macros/buttons"/>
+        <metal:block use-macro="here/cpsdocument_edit_buttons/macros/buttons"/>
       </div>
     </form>
     <div id="ajax_psm" style="display:none">

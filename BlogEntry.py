@@ -215,7 +215,6 @@ class BlogEntry(AtomMixin, AtomAwareEntry, CPSDocument):
 
         This method is meant to be called only via web.
         """
-
         if REQUEST is not None:
             # REQUEST.PARENTS[0] is our blog entry proxy
             context = REQUEST.PARENTS[0]
@@ -267,6 +266,15 @@ class BlogEntry(AtomMixin, AtomAwareEntry, CPSDocument):
 
         summary = nbsp_to_space(summary)
         return summary
+
+    security.declarePrivate('postCommitHook')
+    def postCommitHook(self, datamodel=None):
+        CPSDocument.inheritedAttribute('postCommitHook')(
+            self, datamodel=datamodel)
+        proxy = datamodel.getProxy()
+        # When creating blog entry, proxy may be None here
+        if proxy is not None:
+            self.addDispatchTrackbacks(proxy)
 
 InitializeClass(BlogEntry)
 
