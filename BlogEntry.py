@@ -37,7 +37,6 @@ class BlogEntry(AtomMixin, AtomAwareEntry, CPSDocument):
     portal_type = meta_type = 'BlogEntry'
 
     security = ClassSecurityInfo()
-    
 
     def __init__(self, id, **kw):
         CPSDocument.__init__(self, id, **kw)
@@ -59,7 +58,7 @@ class BlogEntry(AtomMixin, AtomAwareEntry, CPSDocument):
                      blog_name=''):
         trackback_id = self._generateTrackbackId()
         trackback = Trackback(trackback_id, title, excerpt, url, blog_name)
-        
+
         # Silently ignore spam trackbacks
         if trackback.isSpam():
             return
@@ -159,7 +158,7 @@ class BlogEntry(AtomMixin, AtomAwareEntry, CPSDocument):
         for trackback in self.dispatch_trackbacks.values():
             if not trackback.sent:
                 excerpt = self.getSummary()
-                
+
                 params = {'title': context.Title(),
                           'excerpt': excerpt,
                           'url': context.absolute_url(),
@@ -268,11 +267,6 @@ class BlogEntry(AtomMixin, AtomAwareEntry, CPSDocument):
 
         summary = nbsp_to_space(summary)
         return summary
-
-
-
-        
-
 
 InitializeClass(BlogEntry)
 
