@@ -42,12 +42,13 @@
   <property name="fields">
    <element value="content"/>
   </property>
+  <property name="is_required">True</property>
   <property name="is_i18n">True</property>
   <property name="label_edit">blog_entry_content_label_edit</property>
   <property name="hidden_empty">False</property>
   <property name="width">72</property>
   <property name="height">15</property>
-  <property name="render_format">text</property>
+  <property name="render_format">html</property>
  </widget>
  <widget name="Subject" meta_type="MultiSelect Widget">
   <property name="fields">
