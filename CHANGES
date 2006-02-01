@@ -12,4 +12,6 @@ Bug fixes:
 - Fixed blog entry edit form.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
--
+- Renamed workflow script from add_blog_boxes.py to add_blog_portlets.py
+- To conform to default theme add_blog_portlets.py script adds portlets
+  to 'latest_doc' slot.

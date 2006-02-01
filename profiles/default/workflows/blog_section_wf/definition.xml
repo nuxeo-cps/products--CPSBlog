@@ -27,8 +27,8 @@
  </state>
  <transition transition_id="create" title="Initial creation"
              new_state="work" trigger="USER"
-             before_script="" after_script="add_blog_boxes">
-  
+             before_script="" after_script="add_blog_portlets">
+
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>SectionManager</guard-role>
@@ -38,7 +38,7 @@
  <transition transition_id="create_content"
              title="Create content" new_state="work"
              trigger="USER" before_script="" after_script="">
-  
+
   <guard>
    <guard-permission>Create Blog Entry</guard-permission>
   </guard>
@@ -47,7 +47,7 @@
  <transition transition_id="cut_copy_paste"
              title="Cut/Copy/Paste" new_state=""
              trigger="USER" before_script="" after_script="">
-  
+
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>BlogManager</guard-role>
@@ -59,6 +59,6 @@
   <transition-behavior behavior_id="allow-sub-delete"/>
   <transition-behavior behavior_id="allow-sub-copy"/>
  </transition>
- <script script_id="add_blog_boxes" type="Script (Python)"
-    filename="workflows/blog_section_wf/scripts/add_blog_boxes.py"/>
+ <script script_id="add_blog_portlets" type="Script (Python)"
+    filename="workflows/blog_section_wf/scripts/add_blog_portlets.py"/>
 </cps-workflow>
