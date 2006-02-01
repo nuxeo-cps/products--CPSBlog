@@ -33,8 +33,8 @@
  </property>
  <property name="storage_methods"/>
  <property name="cps_is_portlet">False</property>
- <alias from="(Default)" to="cpsdocument_view"/>
- <alias from="view" to="cpsdocument_view"/>
+ <alias from="(Default)" to="blog_entry_view"/>
+ <alias from="view" to="blog_entry_view"/>
  <action title="action_create" action_id="create" category="object"
     condition_expr="" url_expr="string:${object_url}/blog_entry_create_form"
     visible="False">

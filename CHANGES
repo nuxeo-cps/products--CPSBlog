@@ -7,6 +7,7 @@ New features:
 Bug fixes:
 ~~~~~~~~~~
 - Added missed xml file for importing action icons needed for CPSBlog.
+- Fixed default view in profile for blog entry.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
