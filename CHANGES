@@ -10,6 +10,7 @@ Bug fixes:
 - Fixed default view in profile for blog entry.
 - Fixed Text Widget definition in profile to fix #1261
 - Fixed blog entry edit form.
+- Fixed search portlet definition to have portlet placement as search context.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Renamed workflow script from add_blog_boxes.py to add_blog_portlets.py

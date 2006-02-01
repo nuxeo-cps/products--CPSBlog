@@ -17,7 +17,8 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
 
 kw = {'slot': 'latest_doc',
       'order': 0,
-      'Title': 'Search',
+      'contextual_search_choice': 'checked',
+      'context_is_portlet': 'checked',
       }
 ptool.createPortlet(ptype_id='Search Portlet', context=blog_proxy, **kw)
 
