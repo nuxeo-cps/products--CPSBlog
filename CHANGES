@@ -8,6 +8,8 @@ Bug fixes:
 ~~~~~~~~~~
 - Added missed xml file for importing action icons needed for CPSBlog.
 - Fixed default view in profile for blog entry.
+- Fixed Text Widget definition in profile to fix #1261
+- Fixed blog entry edit form.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
