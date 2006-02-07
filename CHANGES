@@ -11,6 +11,7 @@ Bug fixes:
 - Fixed Text Widget definition in profile to fix #1261
 - Fixed blog entry edit form.
 - Fixed search portlet definition to have portlet placement as search context.
+- Fix #1371: Link, Attached File, Photo addition doesn't work in blog entry.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Renamed workflow script from add_blog_boxes.py to add_blog_portlets.py

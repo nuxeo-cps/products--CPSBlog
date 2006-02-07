@@ -3,7 +3,7 @@
  <property name="layout_create_method"></property>
  <property name="layout_edit_method"></property>
  <property name="layout_view_method"></property>
- <property name="style_prefix">layout_blog_entry_</property>
+ <property name="style_prefix">layout_default_</property>
  <property name="flexible_widgets">
   <element value="link"/>
   <element value="attachedFile"/>
