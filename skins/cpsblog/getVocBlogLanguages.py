@@ -2,8 +2,6 @@
 # $Id$
 """Returns blog languages for method vocabulary."""
 
-from zLOG import LOG, DEBUG
-
 blog = context.getBlogContent()
 lang_voc = context.portal_vocabularies.language_voc
 mcat = context.translation_service
