@@ -6,7 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Removed dependency to CPSBoxes
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
--
+- Cleant old boxes related code.

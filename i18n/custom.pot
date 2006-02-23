@@ -82,18 +82,6 @@ msgstr ""
 msgid "blog_entry_dispatch_tb_urls_label_edit"
 msgstr ""
 
-msgid "description_blog_blogcalendarbox_default"
-msgstr ""
-
-msgid "description_blog_blogsearchbox_default"
-msgstr ""
-
-msgid "description_blog_blogarchivebox_default"
-msgstr ""
-
-msgid "description_blog_blogcategoriesbox_default"
-msgstr ""
-
 msgid "blog_languages_label_edit"
 msgstr ""
 

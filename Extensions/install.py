@@ -132,14 +132,13 @@ class ClientInstaller(CPSInstaller):
             'BlogAggregator Portlet': ['no-cache'],
             })
 
-        self.setupBoxes()
 
         ########################################
         # WORKFLOW DEFINITION
         ########################################
 
         wfscripts = {
-                'add_blog_boxes': {
+                'add_blog_portlets': {
             '_owner': None,
             'script': """
 ##parameters=state_change
@@ -228,7 +227,7 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'transition_behavior': (TRANSITION_INITIAL_CREATE,),
                 'clone_allowed_transitions': None,
                 'actbox_category': 'workflow',
-                'after_script_name' : 'add_blog_boxes',
+                'after_script_name' : 'add_blog_portlets',
                 'props': {'guard_permissions':'',
                           'guard_roles':'Manager; WorkspaceManager; '
                                         'WorkspaceMember',
@@ -290,7 +289,7 @@ ptool.createPortlet(ptype_id='Custom Portlet', context=blog_proxy, **kw)
                 'transition_behavior': (TRANSITION_INITIAL_CREATE,),
                 'clone_allowed_transitions': None,
                 'actbox_category': 'workflow',
-                'after_script_name' : 'add_blog_boxes',
+                'after_script_name' : 'add_blog_portlets',
                 'props': {'guard_permissions': '',
                           'guard_roles': 'Manager; SectionManager',
                           'guard_expr': ''},
@@ -454,37 +453,6 @@ blog_entry_proxy.reindexObject(idxs=['effective', 'start', 'end'])
             pass
         self.log("### End of CPSSubscriptions setup ###")
 
-    def setupBoxes(self):
-        from Products.CPSBlog.BlogCalendarBox import factory_type_information
-        blogcalendarbox_fti = factory_type_information[0]
-
-        types = (
-            {'id' : blogcalendarbox_fti['id'],
-             'meta_type' : blogcalendarbox_fti['meta_type'],
-             'title' : blogcalendarbox_fti['title'],
-             'description' : blogcalendarbox_fti['description']
-             },
-            )
-
-        ttool = self.portal.portal_types
-        ptypes = ttool.objectIds()
-
-        for boxtype in types:
-            boxid = boxtype['id']
-            if boxid in ptypes:
-                self.log('Deleted Box ' + boxid)
-                ttool.manage_delObjects(boxid)
-            self.log('Adding Box ' + boxid)
-            ttool.manage_addTypeInformation(
-                add_meta_type='Factory-based Type Information',
-                id=boxid,
-                typeinfo_name='CPSBlog: %s (%s)' % (boxid, boxid),
-                )
-            ttool.manage_changeProperties(
-                title=boxtype['title'],
-                description=boxtype['description'],
-                content_meta_type=boxtype['meta_type'],
-                )
 
     def setupActions(self):
         from Products.CPSSubscriptions.CPSSubscriptionsPermissions import \

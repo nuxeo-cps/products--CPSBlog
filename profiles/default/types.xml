@@ -5,5 +5,4 @@
  <object name="BlogAggregator" meta_type="CPS Flexible Type Information"/>
  <object name="BlogAggregator Portlet" 
     meta_type="CPS Flexible Type Information"/>
- <object name="Blog Calendar Box" meta_type="Factory-based Type Information"/>
 </object>

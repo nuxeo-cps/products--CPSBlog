@@ -22,8 +22,8 @@ class TestGlobalInstall(CPSBlogTestCase.CPSBlogTestCase):
 
     def testPortalTypes(self):
         ttool = self.portal.portal_types
-        portal_types = ['Blog', 'BlogEntry', 'BlogAggregator', 
-                        'BlogAggregator Portlet', 'Blog Calendar Box']
+        portal_types = ['Blog', 'BlogEntry', 'BlogAggregator',
+                        'BlogAggregator Portlet']
         for portal_type in portal_types:
             self.assert_(portal_type in ttool.objectIds(),
                          '%s is not in portal_types' % portal_type)
