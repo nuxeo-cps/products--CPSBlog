@@ -91,6 +91,7 @@
           <input type="hidden" name="type_name" value="VALUE"
                  tal:condition="creation"
                  tal:attributes="value request/type_name" />
+          <input type="hidden" id="button_placeholder" name="button_placeholder" value="" />
           <div id="rendered_main" tal:content="structure rendered_main">
             CONTENT
           </div>
