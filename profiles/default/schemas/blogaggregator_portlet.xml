@@ -3,7 +3,7 @@
  <field name="query_title" meta_type="CPS String Field"/>
  <field name="query_description" meta_type="CPS String Field"/>
  <field name="query_fulltext" meta_type="CPS String Field"/>
- <field name="query_categories" meta_type="CPS String Field"/>
+ <field name="query_categories" meta_type="CPS String List Field"/>
  <field name="query_modified" meta_type="CPS String Field"/>
  <field name="query_status" meta_type="CPS String Field"/>
  <field name="view_mode" meta_type="CPS String Field"/>

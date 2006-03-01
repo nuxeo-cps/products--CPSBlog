@@ -61,7 +61,7 @@
   <property name="fields">
    <element value="query_categories"/>
   </property>
-  <property name="is_required">True</property>
+  <property name="is_required">False</property>
   <property name="is_i18n">True</property>
   <property name="label_edit">blog_entry_categories_label_edit</property>
   <property name="hidden_layout_modes">
@@ -75,7 +75,7 @@
   <property name="fields">
    <element value="query_modified"/>
   </property>
-  <property name="is_required">True</property>
+  <property name="is_required">False</property>
   <property name="is_i18n">True</property>
   <property name="label_edit">label_search_modified_since</property>
   <property name="hidden_layout_modes">
@@ -89,7 +89,7 @@
   <property name="fields">
    <element value="query_status"/>
   </property>
-  <property name="is_required">True</property>
+  <property name="is_required">False</property>
   <property name="is_i18n">True</property>
   <property name="label_edit">label_search_status</property>
   <property name="hidden_layout_modes">
@@ -103,7 +103,7 @@
   <property name="fields">
    <element value="view_mode"/>
   </property>
-  <property name="is_required">True</property>
+  <property name="is_required">False</property>
   <property name="is_i18n">True</property>
   <property name="label_edit">blog_view_mode_label_edit</property>
   <property name="hidden_layout_modes">
@@ -129,7 +129,7 @@
   <property name="fields">
    <element value="sort_by"/>
   </property>
-  <property name="is_required">True</property>
+  <property name="is_required">False</property>
   <property name="is_i18n">True</property>
   <property name="label_edit">label_sort_by</property>
   <property name="hidden_layout_modes">

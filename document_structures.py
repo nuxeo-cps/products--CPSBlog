@@ -345,7 +345,7 @@ blogaggregator_schema = {
                  },
         },
     'query_categories': {
-        'type': 'CPS String Field',
+        'type': 'CPS String List Field',
         'data': {'is_searchabletext': 0,
                  },
         },
