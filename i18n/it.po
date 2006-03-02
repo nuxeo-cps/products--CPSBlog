@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSBlog Italian translation\n"
-"POT-Creation-Date: 2006-02-23 21:35default\n"
+"POT-Creation-Date: 2006-03-02 17:45default\n"
 "PO-Revision-Date: 2005-11-10 09:05+0100\n"
 "Last-Translator: Stefano Schintu <schintu@gmail.com>\n"
 "Language-Team: CPS Italian <schintu@gmail.com>\n"
@@ -19,7 +19,7 @@ msgstr ""
 #.                 ${numofcomments (tal replace="numofcomments")}
 #.                 comments
 #.               </block>
-#.   <a attributes="href string:${bentry_url}#comments" href="" class="blog">
+#.   <a href="" class="blog" attributes="href string:${bentry_url}#comments">
 #.                   ${numofcomments (tal replace="numofcomments")}
 #.                   comments
 #.                 </a>
@@ -136,8 +136,8 @@ msgstr "URL di tracciamento per questa voce:"
 msgid "Tracked on ${tracked_date}"
 msgstr "Tracciato il"
 
-#.   <a attributes="href string:${bentry_url}/post_comment" href="" class="blog">add</a>
-#.   <a attributes="href string:${here/absolute_url}/post_comment" href="" class="blog">add</a>
+#.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"

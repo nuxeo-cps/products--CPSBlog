@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSBlog\n"
-"POT-Creation-Date: 2006-01-03 14:52default\n"
+"POT-Creation-Date: 2006-03-02 17:45default\n"
 "PO-Revision-Date: 2006-02-21 18:09+0100\n"
 "Last-Translator: Jesús Martín <jesusmartin@lasalle.es>\n"
 "Language-Team: español <jesusmartin@lasalle.es>\n"
@@ -50,12 +50,12 @@ msgid "Category for blog \"${blogtitle}\""
 msgstr "Categoría del blog \"${blogtitle}\""
 
 #.   <td>Created</td>
-#: from ../skins/cpsblog/layout_blog_entry_edit.pt
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Created"
 msgstr "Creado"
 
 #.   <td>Delete</td>
-#: from ../skins/cpsblog/layout_blog_entry_edit.pt
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Delete"
 msgstr "Borrar"
 
@@ -65,9 +65,16 @@ msgid "Main"
 msgstr "Principal"
 
 #.   <h3>Manage Trackback Pings</h3>
-#: from ../skins/cpsblog/layout_blog_entry_edit.pt
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Manage Trackback Pings"
 msgstr "Administrar pings"
+
+#.   <span>
+#.             Objects: ${batch_start (tal replace="batch/start")} - ${batch_limit (tal replace="batch/end")} of ${batch_length (tal replace="batch/sequence_length")}
+#.            </span>
+#: from ../skins/cpsblog/batch_navinfo_macros.pt
+msgid "Objects: ${batch_start} - ${batch_limit} of ${batch_length}"
+msgstr ""
 
 #.   <block condition="isAnon">
 #.               Posted by
@@ -89,7 +96,7 @@ msgstr "Enviado por  ${item_creator} @ ${item_modification}."
 #.   <block condition="not:isAnon">
 #.               Posted by
 #.               ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
-#.
+#.   
 #.               @
 #.               ${item_modification (tal content="python:here.getDateStr(effective_date, 'medium')")}
 #.               <block condition="info">
@@ -100,7 +107,7 @@ msgstr "Enviado por  ${item_creator} @ ${item_modification}."
 #.   <block condition="not:isAnon">
 #.                 Posted by
 #.                 ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
-#.
+#.   
 #.                 @
 #.                 ${item_modification (tal content="python:here.getDateStr(doc.effective(), 'medium')")}
 #.                 <block condition="info">
@@ -110,8 +117,14 @@ msgstr "Enviado por  ${item_creator} @ ${item_modification}."
 #.               </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
-msgid "Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> <span>Label Status</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Work</span> </block>"
-msgstr "Enviado por ${item_creator} @ ${item_modification} <block condition=\"info\"> <span>Estado</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Trabajo</span> </block>"
+msgid ""
+"Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> "
+"<span>Label Status</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Work</span> </block>"
+msgstr ""
+"Enviado por ${item_creator} @ ${item_modification} <block condition=\"info"
+"\"> <span>Estado</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Trabajo</span> </block>"
 
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -186,37 +199,13 @@ msgstr "Categorías"
 msgid "blog_edit_category_description_label"
 msgstr "Utilice esta página para editar los atributos de la categoría"
 
-#.   <block content="box/box/title" fill-slot="box_title">
-#.         box text title
-#.       </block>
-#.   <block content="box/box/title">box text title</block>
-#: from ../skins/cpsblog/boxes_cpsblog.pt
-msgid "box text title"
-msgstr "Título de la caja de texto"
-
 #.   <block>from</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "from"
 msgstr "de"
 
-#.   <label for="event_types">label_event_types</label>
-#: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
-msgid "label_event_types"
-msgstr "Fecha descendente de creación"
-
-#.   <em>label_event_types_help</em>
-#: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
-msgid "label_event_types_help"
-msgstr ""
-
-#.   <label for="events_in">label_events_location</label>
-#: from ../skins/cpsblog/blogcalendarbox_edit_form.pt
-msgid "label_events_location"
-msgstr ""
-
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
-#: ../skins/cpsblog/boxes_cpsblog.pt
 msgid "month"
 msgstr "mes"
 
@@ -251,7 +240,9 @@ msgid "portal_type_Blog_title"
 msgstr "Blog"
 
 msgid "portal_type_Blog_description"
-msgstr "El Blog te permite compartir tus pensamientos y conocimientos, interactuar con otras personas..."
+msgstr ""
+"El Blog te permite compartir tus pensamientos y conocimientos, interactuar "
+"con otras personas..."
 
 msgid "portal_type_BlogEntry_title"
 msgstr "Blog - Entrada"
@@ -260,13 +251,17 @@ msgid "portal_type_BlogAggregator_title"
 msgstr "Blog - Agregador"
 
 msgid "portal_type_BlogAggregator_description"
-msgstr "El agregador de Blog muestra las entradas de varios blogs utilizando parámetros definidos de búsqueda."
+msgstr ""
+"El agregador de Blog muestra las entradas de varios blogs utilizando "
+"parámetros definidos de búsqueda."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog - Agregador Portlet"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
-msgstr "Blog - Agregador Portlet muestra las entradas de varios blogs usando parámetros definidos de búsqueda."
+msgstr ""
+"Blog - Agregador Portlet muestra las entradas de varios blogs usando "
+"parámetros definidos de búsqueda."
 
 msgid "view_mode_Title_label"
 msgstr "Título"
@@ -285,18 +280,6 @@ msgstr "Aceptar los pings"
 
 msgid "blog_entry_dispatch_tb_urls_label_edit"
 msgstr "URLs para hacer ping"
-
-msgid "description_blog_blogcalendarbox_default"
-msgstr "Blog - Calendario"
-
-msgid "description_blog_blogsearchbox_default"
-msgstr "Formulario \"Buscar este blog\""
-
-msgid "description_blog_blogarchivebox_default"
-msgstr "Blog - Archivos."
-
-msgid "description_blog_blogcategoriesbox_default"
-msgstr "Blog - Categorías."
 
 msgid "blog_languages_label_edit"
 msgstr "Idiomas"
@@ -355,7 +338,24 @@ msgstr "Fecha de creación 01-->31"
 msgid "label_date_desc"
 msgstr "Fecha de creación 31-->01"
 
-#, fuzzy
-#~ msgid "label_roles"
-#~ msgstr "Creation date"
+msgid "label_event_types"
+msgstr "Fecha descendente de creación"
 
+#, fuzzy
+msgid "label_roles"
+msgstr "Creation date"
+
+#~ msgid "box text title"
+#~ msgstr "Título de la caja de texto"
+
+#~ msgid "description_blog_blogcalendarbox_default"
+#~ msgstr "Blog - Calendario"
+
+#~ msgid "description_blog_blogsearchbox_default"
+#~ msgstr "Formulario \"Buscar este blog\""
+
+#~ msgid "description_blog_blogarchivebox_default"
+#~ msgstr "Blog - Archivos."
+
+#~ msgid "description_blog_blogcategoriesbox_default"
+#~ msgstr "Blog - Categorías."

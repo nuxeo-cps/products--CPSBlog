@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
-"POT-Creation-Date: 2006-02-23 21:35default\n"
+"POT-Creation-Date: 2006-03-02 17:45default\n"
 "PO-Revision-Date: 2005-09-29 10:16-0300\n"
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #.                 ${numofcomments (tal replace="numofcomments")}
 #.                 comments
 #.               </block>
-#.   <a attributes="href string:${bentry_url}#comments" href="" class="blog">
+#.   <a href="" class="blog" attributes="href string:${bentry_url}#comments">
 #.                   ${numofcomments (tal replace="numofcomments")}
 #.                   comments
 #.                 </a>
@@ -139,8 +139,8 @@ msgstr "URL de Trackback URL para esta entrada:"
 msgid "Tracked on ${tracked_date}"
 msgstr "Acompanhado em ${tracked_date}"
 
-#.   <a attributes="href string:${bentry_url}/post_comment" href="" class="blog">add</a>
-#.   <a attributes="href string:${here/absolute_url}/post_comment" href="" class="blog">add</a>
+#.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"

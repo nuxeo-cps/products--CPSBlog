@@ -1,26 +1,29 @@
+# translation of ro.po to
+# Dragos Ivan <div@nuxeo.com>, 2006.
 # Gettext Message File for default.
 # Your Name <your@email>, Year
 msgid ""
 msgstr ""
-"Project-Id-Version: default\n"
-"POT-Creation-Date: 2006-02-23 21:35default\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Your Name <your@email>\n"
-"Language-Team: Name <email>\n"
+"Project-Id-Version: ro\n"
+"POT-Creation-Date: 2006-03-02 17:45default\n"
+"PO-Revision-Date: 2006-03-02 17:44+0200\n"
+"Last-Translator: Dragos Ivan <div@nuxeo.com>\n"
+"Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Preferred-encodings: utf-8 latin1\n"
 "Language-Code: ro\n"
 "Language-Name: Romanian\n"
 "Domain: default\n"
+"X-Generator: KBabel 1.11.1\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
 #.                 comments
 #.               </block>
-#.   <a attributes="href string:${bentry_url}#comments" href="" class="blog">
+#.   <a href="" class="blog" attributes="href string:${bentry_url}#comments">
 #.                   ${numofcomments (tal replace="numofcomments")}
 #.                   comments
 #.                 </a>
@@ -72,7 +75,7 @@ msgstr "Manageriaza ping-uri de urmarire"
 #.            </span>
 #: from ../skins/cpsblog/batch_navinfo_macros.pt
 msgid "Objects: ${batch_start} - ${batch_limit} of ${batch_length}"
-msgstr ""
+msgstr "Obiecte: ${batch_start} - ${batch_limit} din ${batch_length}"
 
 #.   <block condition="isAnon">
 #.               Posted by
@@ -120,6 +123,9 @@ msgid ""
 "<span>Label Status</span> <span content=\"info/review_state\" attributes="
 "\"class info/review_state\">Work</span> </block>"
 msgstr ""
+"Postat de ${item_creator} @ ${item_modification} <block condition=\"info\"> "
+"<span>Label Status</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Work</span> </block>"
 
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -132,10 +138,10 @@ msgstr "Urmareste URL pentru aceasta intrare"
 #.           </p>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Tracked on ${tracked_date}"
-msgstr ""
+msgstr "Urmarit la ${tracked_date}"
 
-#.   <a attributes="href string:${bentry_url}/post_comment" href="" class="blog">add</a>
-#.   <a attributes="href string:${here/absolute_url}/post_comment" href="" class="blog">add</a>
+#.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"
@@ -199,12 +205,12 @@ msgstr "Foloseste aceasta pagina pentru a edita atributele categoriei"
 #.   <block>from</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "from"
-msgstr ""
+msgstr "de la"
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
 msgid "month"
-msgstr ""
+msgstr "luna"
 
 msgid "blog_view_mode_label_edit"
 msgstr "Vizualizare texte blog"
@@ -334,9 +340,3 @@ msgstr "Data crearii"
 
 msgid "label_date_desc"
 msgstr "Data crearii descrescator"
-
-#~ msgid "label_event_types"
-#~ msgstr "Data crearii descrescator"
-
-#~ msgid "label_roles"
-#~ msgstr "Data crearii"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2006-02-23 21:35default\n"
+"POT-Creation-Date: 2006-03-02 17:45default\n"
 "PO-Revision-Date: 2005-02-10 03:37+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #.                 ${numofcomments (tal replace="numofcomments")}
 #.                 comments
 #.               </block>
-#.   <a attributes="href string:${bentry_url}#comments" href="" class="blog">
+#.   <a href="" class="blog" attributes="href string:${bentry_url}#comments">
 #.                   ${numofcomments (tal replace="numofcomments")}
 #.                   comments
 #.                 </a>
@@ -137,8 +137,8 @@ msgstr "Trackback URL for this entry:"
 msgid "Tracked on ${tracked_date}"
 msgstr ""
 
-#.   <a attributes="href string:${bentry_url}/post_comment" href="" class="blog">add</a>
-#.   <a attributes="href string:${here/absolute_url}/post_comment" href="" class="blog">add</a>
+#.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"
