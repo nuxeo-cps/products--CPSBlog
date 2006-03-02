@@ -1,4 +1,23 @@
 *******************************************
+** CPSBlog V0.9.0 [R1 build 2006/03/02-14:49 by fermigier]
+** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 33725
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Removed dependency to CPSBoxes
+- Without hidden 'button_placeholder' added in r33366 to
+  cpsdocument_edit_form.pt template, addition of flexible widgets did not work.
+- Fixed bug that was preventing creation of BlogAggregator.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Cleant old boxes-related code.
+
+*******************************************
 ** CPSBlog V0.8.0 [R1 build 2006/02/17-20:11 by fermigier]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 32986
 Requires:

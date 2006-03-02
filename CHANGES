@@ -6,10 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- Removed dependency to CPSBoxes
-- Without hidden 'button_placeholder' added in r33366 to
-  cpsdocument_edit_form.pt template, addition of flexible widgets did not work.
-- Fixed bug that was preventing creation of BlogAggregator.
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
-- Cleant old boxes-related code.
+-
