@@ -47,7 +47,7 @@
         <input class="standalone" type="submit" value="button_apply"
                i18n:attributes="value" />
         <input class="standalone" type="button" value="button_back"
-               i18n:attributes="value" onClick="history.back()"/>
+               i18n:attributes="value" onclick="history.back()"/>
       </div>
     </form>
   </metal:block>
