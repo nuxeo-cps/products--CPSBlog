@@ -5,7 +5,7 @@
      category="document_actions" 
      condition_expr="python:object.portal_type != 'Portal'"
      url_expr="string:$object_url/content_notify_email_form" visible="True">
-     <permission>Can Notify COntent</permission>
+     <permission>Can Notify Content</permission>
   </action>
   <action title="RSS feed" action_id="rss"
      category="document_actions" condition_expr=""
