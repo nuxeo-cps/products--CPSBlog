@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "POT-Creation-Date: 2006-03-02 17:45default\n"
-"PO-Revision-Date: 2005-09-29 10:16-0300\n"
+"PO-Revision-Date: 2006-04-07 13:32-0300\n"
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,14 +67,14 @@ msgstr "Principal"
 #.   <h3>Manage Trackback Pings</h3>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Manage Trackback Pings"
-msgstr "Administrar Pings Trackback"
+msgstr "Administrar Notificações de Comentários."
 
 #.   <span>
 #.             Objects: ${batch_start (tal replace="batch/start")} - ${batch_limit (tal replace="batch/end")} of ${batch_length (tal replace="batch/sequence_length")}
 #.            </span>
 #: from ../skins/cpsblog/batch_navinfo_macros.pt
 msgid "Objects: ${batch_start} - ${batch_limit} of ${batch_length}"
-msgstr ""
+msgstr "Objetos: ${batch_start} - ${batch_limit} de ${batch_length}"
 
 #.   <block condition="isAnon">
 #.               Posted by
@@ -129,7 +129,7 @@ msgstr ""
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
-msgstr "URL de Trackback URL para esta entrada:"
+msgstr "URL de Notificação(<it>Trackback</it>) para esta entrada:"
 
 #.   <p class="tracked">
 #.             Tracked on
@@ -225,118 +225,118 @@ msgid "blog_entry_categories_label_edit"
 msgstr "Categorias"
 
 msgid "psm_blog_entry_publish_done"
-msgstr "Blog entry published"
+msgstr "Entrada do Blog publicada"
 
 msgid "psm_blog_entry_publish_not_possible"
-msgstr "Blog entry was not published"
+msgstr "Entrada do Blog não foi publicada"
 
 msgid "psm_blog_entry_unpublish_done"
-msgstr "Blog entry unpublished"
+msgstr "Entrada do Blog despublicada."
 
 msgid "psm_blog_entry_unpublish_not_possible"
-msgstr "Blog entry was not unpublished"
+msgstr "Entrada do Blog não foi despublicada."
 
 msgid "portal_type_Blog_title"
 msgstr "Blog"
 
 msgid "portal_type_Blog_description"
 msgstr ""
-"Blog  allows quickly post your thoughts, share your knowledge, interact with "
-"people, and much more."
+"Blog permite que você rapidamente publique seus pensamentos, compartilhe seu "
+"conhecimento, interaja com pessoas e muito mais."
 
 msgid "portal_type_BlogEntry_title"
-msgstr "Blog Entry"
+msgstr "Entrada de Blog"
 
 msgid "portal_type_BlogAggregator_title"
-msgstr "Blog Aggregator"
+msgstr "Agregador de Blog"
 
 msgid "portal_type_BlogAggregator_description"
 msgstr ""
-"Blog Aggregator shows entries from several blogs by using defined search "
-"parameters."
+"Um Agregador de Blog mostra entradas de vários blogs utilizando busca com "
+"parâmetros definidos."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
-msgstr "Blog Aggregator Portlet"
+msgstr "Portlet de Agregador de Blog"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
-"Blog Aggregator Portlet shows entries from several blogs by using defined "
-"search parameters."
+"Um Portlet Agregador de Blog mostra entradas de vários blogs utilizando "
+"busca com parâmetros definidos."
 
 msgid "view_mode_Title_label"
-msgstr "Title only"
+msgstr "Somente o título"
 
 msgid "view_mode_TitleDescription_label"
-msgstr "Title and description"
+msgstr "Título e descrição"
 
 msgid "view_mode_Full_label"
-msgstr "Full"
+msgstr "Completo"
 
 msgid "blog_entry_content_label_edit"
-msgstr "Content"
+msgstr "Conteúdo"
 
 msgid "blog_entry_accept_pings_label_edit"
-msgstr "Accept trackback pings"
+msgstr "Aceitar notificações de comentários/respostas."
 
 msgid "blog_entry_dispatch_tb_urls_label_edit"
-msgstr "URLs to ping"
+msgstr "URLs para notificar"
 
 msgid "blog_languages_label_edit"
-msgstr "Languages"
+msgstr "Idiomas"
 
 msgid "action_publish"
-msgstr "Publish"
+msgstr "Publicar"
 
 msgid "January"
-msgstr "January"
+msgstr "Janeiro"
 
 msgid "February"
-msgstr "February"
+msgstr "Fevereiro"
 
 msgid "March"
-msgstr "March"
+msgstr "Março"
 
 msgid "April"
-msgstr "April"
+msgstr "Abril"
 
 msgid "May"
-msgstr "May"
+msgstr "Maio"
 
 msgid "June"
-msgstr "June"
+msgstr "Junho"
 
 msgid "July"
-msgstr "July"
+msgstr "Julho"
 
 msgid "August"
-msgstr "August"
+msgstr "Agosto"
 
 msgid "September"
-msgstr "September"
+msgstr "Setembro"
 
 msgid "October"
-msgstr "October"
+msgstr "Outubro"
 
 msgid "November"
-msgstr "November"
+msgstr "Novembro"
 
 msgid "December"
-msgstr "December"
+msgstr "Dezembro"
 
 msgid "Search"
-msgstr "Search"
+msgstr "Buscar"
 
 msgid "Archives"
-msgstr "Archives"
+msgstr "Arquivos"
 
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categorias"
 
 msgid "label_date_asc"
-msgstr "Creation date"
+msgstr "Data de criação"
 
 msgid "label_date_desc"
-msgstr "Creation date desc."
+msgstr "Desc. data de criação"
 
 #~ msgid "label_event_types"
 #~ msgstr "Desc. data de criação"
