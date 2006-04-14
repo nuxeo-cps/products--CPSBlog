@@ -337,25 +337,3 @@ msgstr "Fecha de creación 01-->31"
 
 msgid "label_date_desc"
 msgstr "Fecha de creación 31-->01"
-
-msgid "label_event_types"
-msgstr "Fecha descendente de creación"
-
-#, fuzzy
-msgid "label_roles"
-msgstr "Creation date"
-
-#~ msgid "box text title"
-#~ msgstr "Título de la caja de texto"
-
-#~ msgid "description_blog_blogcalendarbox_default"
-#~ msgstr "Blog - Calendario"
-
-#~ msgid "description_blog_blogsearchbox_default"
-#~ msgstr "Formulario \"Buscar este blog\""
-
-#~ msgid "description_blog_blogarchivebox_default"
-#~ msgstr "Blog - Archivos."
-
-#~ msgid "description_blog_blogcategoriesbox_default"
-#~ msgstr "Blog - Categorías."
