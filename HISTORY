@@ -1,4 +1,24 @@
 *******************************************
+** CPSBlog V0.10.1 [R1 build 2006/05/19-13:00 by fermigier]
+** SVN URL: https://svn.nuxeo.org/pub/CPS3/products/CPSBlog/trunk Revision: 45740
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- #1594: New action visible in blog entry.
+- The document action for sending mail notifications was visible with
+  only 'View' permission, but trying to do something on the page
+  failed. Now "Can Notify Content" is used instead.
+- Updated brazilian portugese translations (thanks to mo.menezes@gmail.com).
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSBlog V0.10.0 [R1 build 2006/03/03-17:43 by ben]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSBlog/trunk Revision: 33914
 Requires:

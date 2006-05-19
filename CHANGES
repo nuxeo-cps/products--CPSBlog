@@ -6,11 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- #1594: New action visible in blog entry.
-- The document action for sending mail notifications was visible with
-  only 'View' permission, but trying to do something on the page
-  failed. Now "Can Notify Content" is used instead.
-- Updated brazilian portugese translations (thanks to mo.menezes@gmail.com).
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
