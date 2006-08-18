@@ -42,13 +42,12 @@
  <action title="action_new_content" action_id="new_content" category="object"
     condition_expr=""
     url_expr="string:${object_url}/blog_entry_create_form?type_name=BlogEntry" visible="True">
-  <permission value="Modify portal content"/>
-  <permission value="Blog Entry Create"/>
+  <permission value="Create Blog Entry"/>
  </action>
  <action title="action_folder_contents" action_id="contents" category="object"
     condition_expr=""
     url_expr="string:${object_url}/folder_contents" visible="True">
-  <permission value="Modify portal content"/>
+  <permission value="Create Blog Entry"/>
  </action>
  <action title="action_edit" action_id="edit" category="object"
     condition_expr="" url_expr="string:${object_url}/cpsdocument_edit_form"
