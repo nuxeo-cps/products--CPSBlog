@@ -6,8 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-#1729: Blog Posters didn't have actions to create new entries
--
+- fix #1729: Blog Posters didn't have actions to create new entries
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
