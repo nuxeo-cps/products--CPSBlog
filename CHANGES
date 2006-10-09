@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- fix #1729: Blog Posters didn't have actions to create new entries
+- Fix #1729: Blog Posters didn't have actions to create new entries.
+- Updated Spanish translation thanks to Jesús Martín.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
