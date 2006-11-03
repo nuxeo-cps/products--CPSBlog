@@ -32,6 +32,8 @@
       tal:attributes="src string:${base_url}cpsdocument.js"></script>
     <script type="text/javascript" src="cpsdocument.js"
       tal:attributes="src string:${base_url}cpsdocument.js"></script>
+    <script type="text/javascript" src="cpsschemas.js"
+      tal:attributes="src string:${base_url}cpsschemas.js"></script>
     <tal:block condition="python:modules['Products.CPSUtil.integration'].isProductPresent('Products.FCKeditor')">
       <script type="text/javascript">
         var popup_editor_form = 'popup_fckeditor_form';

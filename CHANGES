@@ -6,8 +6,9 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- Fix #1729: Blog Posters didn't have actions to create new entries.
+- Fixed #1729: Blog Posters didn't have actions to create new entries.
 - Updated Spanish translation thanks to Jesús Martín.
+- Fixed #1757 : FCKEditor when embedded causes JavaScript error.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
