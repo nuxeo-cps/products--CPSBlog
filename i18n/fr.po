@@ -235,19 +235,19 @@ msgid "psm_blog_entry_unpublish_not_possible"
 msgstr "Entrée n'est pas depubliée"
 
 msgid "portal_type_Blog_title"
-msgstr "Blog"
+msgstr "Blog (carnet)"
 
 msgid "portal_type_Blog_description"
-msgstr "Blog"
+msgstr "Blog (carnet) permet de rapidement mettre en ligne des idées, des opinions, de partager de la connaissance, d'interargir avec d'autres personnes, et plus encore"
 
 msgid "portal_type_BlogEntry_title"
 msgstr "Billet"
 
 msgid "portal_type_BlogAggregator_title"
-msgstr "Blog Aggregator"
+msgstr "Blog - Agrégateur de blogs (carnets)"
 
 msgid "portal_type_BlogAggregator_description"
-msgstr "Blog Aggregator"
+msgstr "Un agrégateur de blogs (carnets) présente des billets de plusiers blogs sur la base d'une recherche paramétrée"
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog Aggregator Portlet"

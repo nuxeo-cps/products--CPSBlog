@@ -7,8 +7,9 @@ New features:
 Bug fixes:
 ~~~~~~~~~~
 - Fixed #1729: Blog Posters didn't have actions to create new entries.
-- Updated Spanish translation thanks to Jesús Martín.
 - Fixed #1757 : FCKEditor when embedded causes JavaScript error.
+- Fixed #1505 : Make the portal types description consistent.
+- Updated Spanish translation thanks to Jesús Martín.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
