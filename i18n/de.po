@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CPSBlog-de CPS-3.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-02 17:45default\n"
+"POT-Creation-Date: 2006-11-17 11:18default\n"
 "PO-Revision-Date: 2005-10-23 20:14+0200\n"
 "Last-Translator: Georg Hennemann <georg.hennemann@dhl.com>\n"
 "Language-Team: German <rheinland@dzug.org>\n"
@@ -199,6 +199,11 @@ msgstr "Verwende diese Seite um die Eigenschaften der Kategorien zu bearbeiten"
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "from"
 msgstr "von"
+
+#.   <block condition="metadata">heading_metadata_edit</block>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "heading_metadata_edit"
+msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt

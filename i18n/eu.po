@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSBlog\n"
-"POT-Creation-Date: 2006-03-02 17:45default\n"
+"POT-Creation-Date: 2006-11-17 11:18default\n"
 "PO-Revision-Date: 2006-11-16 12:35+0100\n"
 "Last-Translator: Jesus Martin <jesusmartin@lasalle.es>\n"
 "Language-Team: euskera <perikoalkain@lasalle.es>\n"
@@ -96,7 +96,7 @@ msgstr "Honek bidalia ${item_creator} @ ${item_modification}."
 #.   <block condition="not:isAnon">
 #.               Posted by
 #.               ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
-#.
+#.   
 #.               @
 #.               ${item_modification (tal content="python:here.getDateStr(effective_date, 'medium')")}
 #.               <block condition="info">
@@ -107,7 +107,7 @@ msgstr "Honek bidalia ${item_creator} @ ${item_modification}."
 #.   <block condition="not:isAnon">
 #.                 Posted by
 #.                 ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
-#.
+#.   
 #.                 @
 #.                 ${item_modification (tal content="python:here.getDateStr(doc.effective(), 'medium')")}
 #.                 <block condition="info">
@@ -117,8 +117,14 @@ msgstr "Honek bidalia ${item_creator} @ ${item_modification}."
 #.               </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
-msgid "Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> <span>Label Status</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Work</span> </block>"
-msgstr "Honek bidalia ${item_creator} @ ${item_modification} <block condition=\"info\"> <span>Egoera</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Trabajo</span> </block>"
+msgid ""
+"Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> "
+"<span>Label Status</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Work</span> </block>"
+msgstr ""
+"Honek bidalia ${item_creator} @ ${item_modification} <block condition=\"info"
+"\"> <span>Egoera</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Trabajo</span> </block>"
 
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -198,6 +204,11 @@ msgstr "Erabil ezazu orrialde hau kategoriaren atributuak editatzeko "
 msgid "from"
 msgstr "Nork"
 
+#.   <block condition="metadata">heading_metadata_edit</block>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "heading_metadata_edit"
+msgstr ""
+
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
 msgid "month"
@@ -234,7 +245,9 @@ msgid "portal_type_Blog_title"
 msgstr "Bloga"
 
 msgid "portal_type_Blog_description"
-msgstr "Blogak zure pentsaera eta ezagutzak, besteekin lanean aritzea... ahalbidetzen dizu "
+msgstr ""
+"Blogak zure pentsaera eta ezagutzak, besteekin lanean aritzea... "
+"ahalbidetzen dizu "
 
 msgid "portal_type_BlogEntry_title"
 msgstr "Bloga - Sarrera"
@@ -243,13 +256,17 @@ msgid "portal_type_BlogAggregator_title"
 msgstr "Bloga - Gehitzailea"
 
 msgid "portal_type_BlogAggregator_description"
-msgstr "Blog-gehitzaileak blog batzuen sarrerak erakusten ditu bilaketa-parametro definituak erabiliz."
+msgstr ""
+"Blog-gehitzaileak blog batzuen sarrerak erakusten ditu bilaketa-parametro "
+"definituak erabiliz."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog / Portlet-Gehitzailea"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
-msgstr "Bloga / Portlet-Gehitzaileak blog batzuen sarrerak erakusten ditu bilaketa-parametro definituak erabiliaz. "
+msgstr ""
+"Bloga / Portlet-Gehitzaileak blog batzuen sarrerak erakusten ditu bilaketa-"
+"parametro definituak erabiliaz. "
 
 msgid "view_mode_Title_label"
 msgstr "Izenburua"
@@ -325,4 +342,3 @@ msgstr "Sortze-data 01-->31"
 
 msgid "label_date_desc"
 msgstr "Sortze-data 31-->01"
-

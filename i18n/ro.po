@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
-"POT-Creation-Date: 2006-03-02 17:45default\n"
+"POT-Creation-Date: 2006-11-17 11:18default\n"
 "PO-Revision-Date: 2006-03-02 17:44+0200\n"
 "Last-Translator: Dragos Ivan <div@nuxeo.com>\n"
 "Language-Team:  <en@li.org>\n"
@@ -206,6 +206,11 @@ msgstr "Foloseste aceasta pagina pentru a edita atributele categoriei"
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "from"
 msgstr "de la"
+
+#.   <block condition="metadata">heading_metadata_edit</block>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "heading_metadata_edit"
+msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt

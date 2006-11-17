@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSBlog Italian translation\n"
-"POT-Creation-Date: 2006-03-02 17:45default\n"
+"POT-Creation-Date: 2006-11-17 11:18default\n"
 "PO-Revision-Date: 2005-11-10 09:05+0100\n"
 "Last-Translator: Stefano Schintu <schintu@gmail.com>\n"
 "Language-Team: CPS Italian <schintu@gmail.com>\n"
@@ -202,6 +202,11 @@ msgstr "Utilizza questa pafina per modificare gli attributi della categoria"
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "from"
 msgstr "da"
+
+#.   <block condition="metadata">heading_metadata_edit</block>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "heading_metadata_edit"
+msgstr ""
 
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt

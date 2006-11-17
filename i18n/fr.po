@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
-"POT-Creation-Date: 2006-03-02 17:45default\n"
+"POT-Creation-Date: 2006-11-17 11:18default\n"
 "PO-Revision-Date: 2005-03-07 12:08+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -202,6 +202,11 @@ msgstr "Utilisez cette page pour editer les attributs de la catégorie"
 msgid "from"
 msgstr "de"
 
+#.   <block condition="metadata">heading_metadata_edit</block>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "heading_metadata_edit"
+msgstr ""
+
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
 msgid "month"
@@ -238,7 +243,10 @@ msgid "portal_type_Blog_title"
 msgstr "Blog (carnet)"
 
 msgid "portal_type_Blog_description"
-msgstr "Blog (carnet) permet de rapidement mettre en ligne des idées, des opinions, de partager de la connaissance, d'interargir avec d'autres personnes, et plus encore"
+msgstr ""
+"Blog (carnet) permet de rapidement mettre en ligne des idées, des opinions, "
+"de partager de la connaissance, d'interargir avec d'autres personnes, et "
+"plus encore"
 
 msgid "portal_type_BlogEntry_title"
 msgstr "Billet"
@@ -247,7 +255,9 @@ msgid "portal_type_BlogAggregator_title"
 msgstr "Blog - Agrégateur de blogs (carnets)"
 
 msgid "portal_type_BlogAggregator_description"
-msgstr "Un agrégateur de blogs (carnets) présente des billets de plusiers blogs sur la base d'une recherche paramétrée"
+msgstr ""
+"Un agrégateur de blogs (carnets) présente des billets de plusiers blogs sur "
+"la base d'une recherche paramétrée"
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog Aggregator Portlet"

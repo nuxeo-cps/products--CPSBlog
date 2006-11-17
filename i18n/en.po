@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2006-03-02 17:45default\n"
+"POT-Creation-Date: 2006-11-17 11:18default\n"
 "PO-Revision-Date: 2005-02-10 03:37+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -202,6 +202,11 @@ msgstr "Use this page to edit the attributes of the category"
 msgid "from"
 msgstr ""
 
+#.   <block condition="metadata">heading_metadata_edit</block>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "heading_metadata_edit"
+msgstr ""
+
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
 msgid "month"
@@ -239,8 +244,8 @@ msgstr "Blog"
 
 msgid "portal_type_Blog_description"
 msgstr ""
-"A Blog allows to quickly post your thoughts, share your knowledge, interact with "
-"people, and much more"
+"A Blog allows to quickly post your thoughts, share your knowledge, interact "
+"with people, and much more"
 
 msgid "portal_type_BlogEntry_title"
 msgstr "Blog Entry"
