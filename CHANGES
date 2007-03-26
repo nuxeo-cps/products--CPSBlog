@@ -6,7 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
--
+- Fixed #1794 : Missing translations in blog aggregator.
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 

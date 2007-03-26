@@ -416,8 +416,8 @@ blog_glob_categories_vocabulary = {
 blogaggregator_status_vocabulary = {
     'data': {
         'tuples':(
-            ('published', 'Published', 'label_published'),
-            ('work', 'Work', 'label_work'),
+            ('published', 'Published', 'published'),
+            ('work', 'Work', 'work'),
             ),
         },
     }
