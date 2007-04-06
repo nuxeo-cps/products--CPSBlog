@@ -1,4 +1,24 @@
 ===========================================================
+Package: CPSBlog 0.10.4
+===========================================================
+First release built by: madarche at: 2007-04-06T17:23:19
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/products/CPSBlog/tags/0.10.4
+Build from: https://svn.nuxeo.org/pub/CPS3/products/CPSBlog/trunk@51468
+
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- Fixed #1794 : Missing translations in blog aggregator.
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSBlog 0.10.3
 ===========================================================
 First release built by: madarche at: 2006-12-04T15:33:12
