@@ -1,0 +1,333 @@
+# Ruslan Spivak <rspivak@nuxeo.com>, 2004, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: CPSBlog\n"
+"POT-Creation-Date: 2006-11-17 11:18default\n"
+"PO-Revision-Date: 2007-05-01 22:56+0100\n"
+"Last-Translator: xosé francisco martínez reboiras <xosereboiras@lasalle.es>\n"
+"Language-Team: español <jesusmartin@lasalle.es>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Preferred-encodings: latin9 utf-8\n"
+"X-Generator: KBabel 1.9\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Domain: default\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+
+#.   <block condition="not: numofcomments">
+#.                 ${numofcomments (tal replace="numofcomments")}
+#.                 comments
+#.               </block>
+#.   <a href="" class="blog" attributes="href string:${bentry_url}#comments">
+#.                   ${numofcomments (tal replace="numofcomments")}
+#.                   comments
+#.                 </a>
+#.   <block>
+#.                 ${numofcomments (tal replace="python:here.getNumberOfComments(here)")}
+#.                 comments
+#.               </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
+msgid "${numofcomments} comments"
+msgstr "${numofcomments} comentarios"
+
+#.   <h2>
+#.         Categories for blog "${blogtitle (tal replace="doc/Title")}"
+#.       </h2>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "Categories for blog \"${blogtitle}\""
+msgstr "Categorías do blog  \"${blogtitle}\""
+
+#.   <h2>
+#.         Category for blog "${blogtitle (tal replace="doc/Title")}"
+#.       </h2>
+#: from ../skins/cpsblog/blog_edit_category.pt
+msgid "Category for blog \"${blogtitle}\""
+msgstr "Categoría do blog \"${blogtitle}\""
+
+#.   <td>Created</td>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "Created"
+msgstr "Creado"
+
+#.   <td>Delete</td>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "Delete"
+msgstr "Borrar"
+
+#.   <block>Main</block>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "Main"
+msgstr "Principal"
+
+#.   <h3>Manage Trackback Pings</h3>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "Manage Trackback Pings"
+msgstr "Administrar pings"
+
+#.   <span>
+#.             Objects: ${batch_start (tal replace="batch/start")} - ${batch_limit (tal replace="batch/end")} of ${batch_length (tal replace="batch/sequence_length")}
+#.            </span>
+#: from ../skins/cpsblog/batch_navinfo_macros.pt
+msgid "Objects: ${batch_start} - ${batch_limit} of ${batch_length}"
+msgstr "Obxectos: ${batch_start} - ${batch_limit} de ${batch_length}"
+
+#.   <block condition="isAnon">
+#.               Posted by
+#.               ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
+#.               @
+#.               ${item_modification (tal content="python:here.getDateStr(effective_date, 'medium')")}
+#.             </block>
+#.   <block condition="isAnon">
+#.                 Posted by
+#.                 ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
+#.                 @
+#.                 ${item_modification (tal content="python:here.getDateStr(doc.effective(), 'medium')")}
+#.               </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
+msgid "Posted by ${item_creator} @ ${item_modification}"
+msgstr "Enviado por  ${item_creator} @ ${item_modification}."
+
+#.   <block condition="not:isAnon">
+#.               Posted by
+#.               ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
+#.
+#.               @
+#.               ${item_modification (tal content="python:here.getDateStr(effective_date, 'medium')")}
+#.               <block condition="info">
+#.                 <span>Label Status</span>
+#.                 <span content="info/review_state" attributes="class info/review_state">Work</span>
+#.               </block>
+#.             </block>
+#.   <block condition="not:isAnon">
+#.                 Posted by
+#.                 ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
+#.
+#.                 @
+#.                 ${item_modification (tal content="python:here.getDateStr(doc.effective(), 'medium')")}
+#.                 <block condition="info">
+#.                   <span>Label Status</span>
+#.                   <span content="info/review_state" attributes="class info/review_state">Work</span>
+#.                 </block>
+#.               </block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
+msgid "Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> <span>Label Status</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Work</span> </block>"
+msgstr "Enviado por ${item_creator} @ ${item_modification} <block condition=\"info\"> <span>Estado</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Trabajo</span> </block>"
+
+#.   <div>Trackback URL for this entry:</div>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "Trackback URL for this entry:"
+msgstr "URL de Trackback para esta entrada"
+
+#.   <p class="tracked">
+#.             Tracked on
+#.             ${tracked_date (tal replace="python: here.getDateStr(trackback.created, 'medium')")}
+#.           </p>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "Tracked on ${tracked_date}"
+msgstr "Rexistrado o ${tracked_date}"
+
+#.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
+#.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
+msgid "add"
+msgstr "engadir"
+
+#.   <span omit-tag="">
+#.             Next
+#.             ${number (tal content="next/length")}
+#.             items
+#.           </span>
+#: from ../skins/cpsblog/batch_nav_macros.pt
+msgid "batch_next_x_items"
+msgstr "Próximos"
+
+#.   <span omit-tag="">
+#.             Previous
+#.             ${number (tal content="prev/length")}
+#.             items
+#.           </span>
+#: from ../skins/cpsblog/batch_nav_macros.pt
+msgid "batch_previous_x_items"
+msgstr "Previos"
+
+#.   <h2>Add category</h2>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_add_category_label"
+msgstr "Engadir unha categoría"
+
+#.   <block>Categories:</block>
+#: from ../skins/cpsblog/blog_entry_macros.pt
+#: ../skins/cpsblog/blog_entry_view.pt
+msgid "blog_categories_byline_label"
+msgstr "Categorías:"
+
+#.   <td>Delete</td>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_delete"
+msgstr "Suprimir"
+
+#.   <p>
+#.         Use categories to group your entries for easier reference.
+#.       </p>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_description_label"
+msgstr "Utilice as categorías para agrupar as súas entradas"
+
+#.   <td width="90%">Categories</td>
+#: from ../skins/cpsblog/blog_manage_categories.pt
+msgid "blog_categories_label"
+msgstr "Categorías"
+
+#.   <p>
+#.         Use this page to edit the attributes of the category
+#.       </p>
+#: from ../skins/cpsblog/blog_edit_category.pt
+msgid "blog_edit_category_description_label"
+msgstr "Utilice esta páxina para editar os atributos da categoría"
+
+#.   <block>from</block>
+#: from ../skins/cpsblog/blog_entry_view.pt
+msgid "from"
+msgstr "de"
+
+#.   <block condition="metadata">heading_metadata_edit</block>
+#: from ../skins/cpsblog/blog_entry_edit_form.pt
+msgid "heading_metadata_edit"
+msgstr ""
+
+#.   <span omit-tag="" content="archive/month_name">month</span>
+#: from ../skins/cpsblog/blogarchive_portlet.pt
+msgid "month"
+msgstr "mes"
+
+msgid "blog_view_mode_label_edit"
+msgstr "Blog -  Modo visualización"
+
+msgid "action_manage_blog_categories"
+msgstr "Administrar categorías"
+
+msgid "blog_entries_per_page_label_edit"
+msgstr "Amosa as entradas por páxina"
+
+msgid "author_photo_label_edit"
+msgstr "Autor da foto"
+
+msgid "blog_entry_categories_label_edit"
+msgstr "Categorías"
+
+msgid "psm_blog_entry_publish_done"
+msgstr "a entrada foi publicada"
+
+msgid "psm_blog_entry_publish_not_possible"
+msgstr "a entrada non foi publicada"
+
+msgid "psm_blog_entry_unpublish_done"
+msgstr "a entrada foi eliminada"
+
+msgid "psm_blog_entry_unpublish_not_possible"
+msgstr "a entrada non foi eliminada"
+
+msgid "portal_type_Blog_title"
+msgstr "Blog"
+
+msgid "portal_type_Blog_description"
+msgstr "O Blog permíteche compartir os teus pensamentos e coñecementos, interactuar con outras persoas..."
+
+msgid "portal_type_BlogEntry_title"
+msgstr "Blog - Entrada"
+
+msgid "portal_type_BlogAggregator_title"
+msgstr "Blog - Agregador"
+
+msgid "portal_type_BlogAggregator_description"
+msgstr "O agregador de Blog amosa as entradas de varios blogs utilizando parámetros definidos de búsqueda."
+
+msgid "portal_type_BlogAggregatorPortlet_title"
+msgstr "Blog - Agregador Portlet"
+
+msgid "portal_type_BlogAggregatorPortlet_description"
+msgstr "Blog - Agregador Portlet amosa as entradas de varios blogs usando parámetros definidos de busca."
+
+msgid "view_mode_Title_label"
+msgstr "Título"
+
+msgid "view_mode_TitleDescription_label"
+msgstr "Título e descrición"
+
+msgid "view_mode_Full_label"
+msgstr "Completo"
+
+msgid "blog_entry_content_label_edit"
+msgstr "Contido"
+
+msgid "blog_entry_accept_pings_label_edit"
+msgstr "Aceptar os pings"
+
+msgid "blog_entry_dispatch_tb_urls_label_edit"
+msgstr "URLs para facer ping"
+
+msgid "blog_languages_label_edit"
+msgstr "Idiomas"
+
+msgid "action_publish"
+msgstr "Publicar"
+
+msgid "January"
+msgstr "Xaneiro"
+
+msgid "February"
+msgstr "Febreiro"
+
+msgid "March"
+msgstr "Marzo"
+
+msgid "April"
+msgstr "Abril"
+
+msgid "May"
+msgstr "Maio"
+
+msgid "June"
+msgstr "Xuño"
+
+msgid "July"
+msgstr "Xullo"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "September"
+msgstr "Setembro"
+
+msgid "October"
+msgstr "Outubro"
+
+msgid "November"
+msgstr "Novembro"
+
+msgid "December"
+msgstr "Decembro"
+
+msgid "Search"
+msgstr "Busca"
+
+msgid "Archives"
+msgstr "Arquivos"
+
+msgid "Categories"
+msgstr "Categorías"
+
+msgid "label_date_asc"
+msgstr "Data de creación 01-->31"
+
+msgid "label_date_desc"
+msgstr "Data de creación 31-->01"
+
