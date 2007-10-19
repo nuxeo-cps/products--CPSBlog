@@ -1,4 +1,24 @@
 ===========================================================
+Package: CPSBlog 0.11.0
+===========================================================
+First release built by: madarche at: 2007-10-19T12:18:25
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/products/CPSBlog/tags/0.11.0
+Build from: https://svn.nuxeo.org/pub/CPS3/products/CPSBlog/trunk@52013
+
+Requires
+~~~~~~~~
+- CPSI18n >= 1.0.0
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+-
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSBlog 0.10.4
 ===========================================================
 First release built by: madarche at: 2007-04-06T17:23:19
