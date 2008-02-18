@@ -6,6 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
+- #1892: "Make it possible to directly give read access to a blog".
 - Removed now useless (pre-GenericSetupt) files.
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~

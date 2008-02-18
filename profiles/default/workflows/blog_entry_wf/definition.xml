@@ -7,6 +7,7 @@
  <permission>View</permission>
  <permission>WebDAV Lock Items</permission>
  <permission>WebDAV Unlock Items</permission>
+
  <state state_id="work" title="Work">
   <exit-transition transition_id="publish"/>
   <permission-map name="Modify portal content"
@@ -39,8 +40,10 @@
    <permission-role>WorkspaceReader</permission-role>
    <permission-role>BlogPoster</permission-role>
    <permission-role>BlogManager</permission-role>
+   <permission-role>Reader</permission-role>
   </permission-map>
  </state>
+
  <transition transition_id="create" title="Initial creation"
              new_state="work" trigger="USER"
              before_script="" after_script="">
