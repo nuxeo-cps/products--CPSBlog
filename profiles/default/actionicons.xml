@@ -15,10 +15,10 @@
   <action-icon category="cpsblog" action_id="new_content"
                title="New content" priority="0"
                icon_expr="blog_entry_icon.png"/>
-  <action-icon category="cpsblogentry" action_id="publish"
+  <action-icon category="workflow" action_id="publish"
                title="Publish" priority="0"
                icon_expr="blog_entry_publish_icon.png"/>
-  <action-icon category="cpsblogentry" action_id="unpublish"
+  <action-icon category="workflow" action_id="unpublish"
                title="Unpublish" priority="0"
                icon_expr="blog_entry_unpublish_icon.png"/>
 </action-icons>
