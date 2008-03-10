@@ -21,8 +21,9 @@ $Id$
 //}
 
 .posted {
-  color:#888;
+  color: #888;
   background-color: #fff;
+  font-size: x-small;
 }
 
 .hiddenStructure {

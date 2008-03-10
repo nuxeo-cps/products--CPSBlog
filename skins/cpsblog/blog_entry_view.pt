@@ -100,7 +100,6 @@
 
   <metal:block fill-slot="sub">
     <div tal:condition="not:creation|nothing" id="byline">
-      <small>
         <tal:block
             tal:define="categories python:doc.Subject();
                         dname python:here.portal_directories.members.getEntry(doc.Creator(), default=None);
@@ -168,7 +167,6 @@
           </div>
 
         </tal:block>
-      </small>
     </div>
   </metal:block>
 

@@ -9,6 +9,7 @@ Bug fixes
 - #1892: "Make it possible to directly give read access to a blog".
 - Display the actionicons for publishing and unpublishing a blog entry.
 - Removed now useless (pre-GenericSetupt) files.
+- Made blog_entry_view.pt be valid XHTML.
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
