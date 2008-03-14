@@ -30,11 +30,10 @@
       <div tal:condition="python:doc.view_mode == 'full'"
            tal:content="structure bentry/content" class="row" />
       <tal:block define="categories python:item.getContent().Subject();
-                         dname python:here.portal_directories.members.getEntry(bentry.Creator(), default=None);
-                         cname dname/fullname|bentry/Creator;
+                         cname python:here.portal_membership.getFullnameFromId(bentry.Creator());
                          info python:(here_url != utool.getPortalObject().absolute_url())
                          and here.getContentInfo(proxy=item, level=2) or None;
-                         email dname/email|nothing;">
+                         ">
         <div class="posted">
 
           <tal:block condition="not:isAnon" i18n:translate="">

@@ -10,6 +10,8 @@ Bug fixes
 - Display the actionicons for publishing and unpublishing a blog entry.
 - Removed now useless (pre-GenericSetupt) files.
 - Made blog_entry_view.pt be valid XHTML.
+- Made the full name of blog posters be displayed for anonym users instead of
+  the member ID.
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
