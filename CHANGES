@@ -7,7 +7,8 @@ New features
 Bug fixes
 ~~~~~~~~~
 - #1892: "Make it possible to directly give read access to a blog".
-- Display the actionicons for publishing and unpublishing a blog entry.
+- Rationalized the icons used for CPS blogs and blog entries to make them come
+  from CPSDefault as much as possible.
 - Removed now useless (pre-GenericSetupt) files.
 - Made blog_entry_view.pt be valid XHTML.
 - Made the full name of blog posters be displayed for anonym users instead of
