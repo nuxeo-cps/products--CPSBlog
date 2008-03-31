@@ -8,8 +8,8 @@
   <property name="is_searchabletext">True</property>
  </field>
  <field name="lang" meta_type="CPS String Field"/>
- <field name="accept_trackback_pings" meta_type="CPS Int Field">
-  <property name="default_expr">python:1</property>
+ <field name="accept_trackback_pings" meta_type="CPS Boolean Field">
+  <property name="default_expr">python:False</property>
  </field>
  <field name="dispatch_trackback_urls" meta_type="CPS String List Field"/>
 </object>
