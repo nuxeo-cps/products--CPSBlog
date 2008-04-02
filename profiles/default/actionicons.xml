@@ -12,4 +12,7 @@
   <action-icon category="cps" action_id="atom"
                title="ATOM" priority="0"
                icon_expr="blogatom.png"/>
+  <action-icon category="object" action_id="categories"
+               title="Manage blog categories" priority="120"
+               icon_expr="actionicon_blog_categories.png"/>
 </action-icons>

@@ -16,6 +16,7 @@ Bug fixes
 - Field "accept_trackback_pings" is now a Boolean field instead of an Int field
   (which is cleaner) and is False by default because trackback pings have now
   been made useless by spammers.
+- Added an actionicon for the "Manage blog categories" action.
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
