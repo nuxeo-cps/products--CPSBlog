@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSBlog\n"
-"POT-Creation-Date: 2008-06-02 10:24default\n"
+"POT-Creation-Date: 2008-06-02 11:50default\n"
 "PO-Revision-Date: 2007-05-01 22:56+0100\n"
 "Last-Translator: xosé francisco martínez reboiras <xosereboiras@lasalle.es>\n"
 "Language-Team: español <jesusmartin@lasalle.es>\n"

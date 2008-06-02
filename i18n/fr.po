@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
-"POT-Creation-Date: 2008-06-02 10:24default\n"
+"POT-Creation-Date: 2008-06-02 11:50default\n"
 "PO-Revision-Date: 2005-03-07 12:08+0200\n"
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -68,7 +68,7 @@ msgstr "Principal"
 #.   <h3>Manage Trackback Pings</h3>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Manage Trackback Pings"
-msgstr "Gérer les trackback pings"
+msgstr "Gérer les rétroliens"
 
 #.   <span>
 #.             Objects: ${batch_start (tal replace="batch/start")} - ${batch_limit (tal replace="batch/end")} of ${batch_length (tal replace="batch/sequence_length")}
@@ -127,7 +127,7 @@ msgstr ""
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
-msgstr "Trackback URL pour cette entrée:"
+msgstr "URL du rétrolien pour cette entrée :"
 
 #.   <p class="tracked">
 #.             Tracked on
@@ -278,7 +278,7 @@ msgid "blog_entry_content_label_edit"
 msgstr "Contenu"
 
 msgid "blog_entry_accept_pings_label_edit"
-msgstr "Accepter les trackback pings"
+msgstr "Accepter les rétroliens"
 
 msgid "blog_entry_dispatch_tb_urls_label_edit"
 msgstr "URL à « pinger »"
