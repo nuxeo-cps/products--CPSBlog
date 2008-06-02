@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSBlog\n"
-"POT-Creation-Date: 2006-11-17 11:18default\n"
+"POT-Creation-Date: 2008-06-02 10:24default\n"
 "PO-Revision-Date: 2007-05-01 16:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: Português <luis727@gmail.com>\n"
@@ -96,7 +96,7 @@ msgstr "Postado por ${item_creator} em ${item_modification}."
 #.   <block condition="not:isAnon">
 #.               Posted by
 #.               ${item_creator (tal content="cname" attributes="href python:item.getBlogProxy().absolute_url()")}
-#.
+#.   
 #.               @
 #.               ${item_modification (tal content="python:here.getDateStr(effective_date, 'medium')")}
 #.               <block condition="info">
@@ -107,7 +107,7 @@ msgstr "Postado por ${item_creator} em ${item_modification}."
 #.   <block condition="not:isAnon">
 #.                 Posted by
 #.                 ${item_creator (tal content="cname" attributes="href python:here.getBlogProxy().absolute_url()")}
-#.
+#.   
 #.                 @
 #.                 ${item_modification (tal content="python:here.getDateStr(doc.effective(), 'medium')")}
 #.                 <block condition="info">
@@ -117,8 +117,14 @@ msgstr "Postado por ${item_creator} em ${item_modification}."
 #.               </block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
-msgid "Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> <span>Label Status</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Work</span> </block>"
-msgstr "Postado por ${item_creator} em ${item_modification} <block condition=\"info\"> <span>Status</span> <span content=\"info/review_state\" attributes=\"class info/review_state\">Trabalho</span> </block>"
+msgid ""
+"Posted by ${item_creator} @ ${item_modification} <block condition=\"info\"> "
+"<span>Label Status</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Work</span> </block>"
+msgstr ""
+"Postado por ${item_creator} em ${item_modification} <block condition=\"info"
+"\"> <span>Status</span> <span content=\"info/review_state\" attributes="
+"\"class info/review_state\">Trabalho</span> </block>"
 
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -239,7 +245,9 @@ msgid "portal_type_Blog_title"
 msgstr "Blog"
 
 msgid "portal_type_Blog_description"
-msgstr "Blog permite que rapidamente publique os seus pensamentos, partilhe o seu conhecimento, interaja com pessoas e muito mais."
+msgstr ""
+"Blog permite que rapidamente publique os seus pensamentos, partilhe o seu "
+"conhecimento, interaja com pessoas e muito mais."
 
 msgid "portal_type_BlogEntry_title"
 msgstr "Entrada de Blog"
@@ -248,13 +256,17 @@ msgid "portal_type_BlogAggregator_title"
 msgstr "Agregador de Blog"
 
 msgid "portal_type_BlogAggregator_description"
-msgstr "Um Agregador de Blog mostra entradas de vários blogs utilizando busca com parâmetros definidos."
+msgstr ""
+"Um Agregador de Blog mostra entradas de vários blogs utilizando busca com "
+"parâmetros definidos."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Portlet de Agregador de Blog"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
-msgstr "Um Portlet Agregador de Blog mostra entradas de vários blogs utilizando busca com parâmetros definidos."
+msgstr ""
+"Um Portlet Agregador de Blog mostra entradas de vários blogs utilizando "
+"busca com parâmetros definidos."
 
 msgid "view_mode_Title_label"
 msgstr "Somente o título"
@@ -330,4 +342,3 @@ msgstr "Data de criação"
 
 msgid "label_date_desc"
 msgstr "Desc. data de criação"
-
