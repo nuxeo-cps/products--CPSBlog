@@ -24,12 +24,12 @@
       tal:attributes="src string:${base_url}calendar-setup.js"></script>
     <script type="text/javascript" src="prototype.js"
       tal:attributes="src string:${base_url}prototype.js"></script>
+    <script type="text/javascript" src="cookie.js"
+      tal:attributes="src string:${base_url}cookie.js"></script>
     <script type="text/javascript" src="effects.js"
       tal:attributes="src string:${base_url}effects.js"></script>
     <script type="text/javascript" src="controls.js"
       tal:attributes="src string:${base_url}controls.js"></script>
-    <script type="text/javascript" src="cpsdocument.js"
-      tal:attributes="src string:${base_url}cpsdocument.js"></script>
     <script type="text/javascript" src="cpsdocument.js"
       tal:attributes="src string:${base_url}cpsdocument.js"></script>
     <script type="text/javascript" src="cpsschemas.js"
