@@ -7,12 +7,13 @@ msgstr ""
 "Last-Translator: Georg Hennemann <georg.hennemann@dhl.com>\n"
 "Language-Team: German <rheinland@dzug.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language-Name: German\n"
 "Language-Code: de\n"
+"Language-Name: German\n"
 "Domain: default\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
@@ -36,14 +37,14 @@ msgstr "${numofcomments} Kommentare"
 #.       </h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "Categories for blog \"${blogtitle}\""
-msgstr "Kategorien für Blog \"${blogtitle}\""
+msgstr "Kategorien fÃ¼r Blog \"${blogtitle}\""
 
 #.   <h2>
 #.         Category for blog "${blogtitle (tal replace="doc/Title")}"
 #.       </h2>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "Category for blog \"${blogtitle}\""
-msgstr "Kategorie für Blog \"${blogtitle}\""
+msgstr "Kategorie fÃ¼r Blog \"${blogtitle}\""
 
 #.   <td>Created</td>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
@@ -53,7 +54,7 @@ msgstr "Erstellt"
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Delete"
-msgstr "Löschen"
+msgstr "LÃ¶schen"
 
 #.   <block>Main</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -125,7 +126,7 @@ msgstr ""
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
-msgstr "Trackback URL für diesen Eintrag:"
+msgstr "Trackback URL fÃ¼r diesen Eintrag:"
 
 #.   <p class="tracked">
 #.             Tracked on
@@ -133,14 +134,14 @@ msgstr "Trackback URL für diesen Eintrag:"
 #.           </p>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Tracked on ${tracked_date}"
-msgstr "verfolgt am·${tracked_date}"
+msgstr "verfolgt amÂ·${tracked_date}"
 
 #.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
 #.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"
-msgstr "hinzufügen"
+msgstr "hinzufÃ¼gen"
 
 #.   <span omit-tag="">
 #.             Next
@@ -149,7 +150,7 @@ msgstr "hinzufügen"
 #.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_next_x_items"
-msgstr "nächste Einträge"
+msgstr "nÃ¤chste EintrÃ¤ge"
 
 #.   <span omit-tag="">
 #.             Previous
@@ -158,12 +159,12 @@ msgstr "nächste Einträge"
 #.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_previous_x_items"
-msgstr "vorherige Einträge"
+msgstr "vorherige EintrÃ¤ge"
 
 #.   <h2>Add category</h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_add_category_label"
-msgstr "Kategorie hinzufügen"
+msgstr "Kategorie hinzufÃ¼gen"
 
 #.   <block>Categories:</block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
@@ -174,14 +175,14 @@ msgstr "Kategorien:"
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_delete"
-msgstr "Löschen"
+msgstr "LÃ¶schen"
 
 #.   <p>
 #.         Use categories to group your entries for easier reference.
 #.       </p>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_description_label"
-msgstr "Benutze Kategorien um die Einträge einzugruppieren "
+msgstr "Benutze Kategorien um die EintrÃ¤ge einzugruppieren "
 
 #.   <td width="90%">Categories</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
@@ -217,7 +218,7 @@ msgid "action_manage_blog_categories"
 msgstr "Verwalte Kategorien"
 
 msgid "blog_entries_per_page_label_edit"
-msgstr "Zeige Einträge pro Seite"
+msgstr "Zeige EintrÃ¤ge pro Seite"
 
 msgid "author_photo_label_edit"
 msgstr "Autor Foto"
@@ -253,15 +254,15 @@ msgstr "Blog Zusammenfassung"
 
 msgid "portal_type_BlogAggregator_description"
 msgstr ""
-"Blog Zusammenfassung zeigt Einträge von verschiedenen Blogs auf Basis "
+"Blog Zusammenfassung zeigt EintrÃ¤ge von verschiedenen Blogs auf Basis "
 "verschiedene Such Parameter."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
-msgstr "Blog Übersicht Portlet"
+msgstr "Blog Ãœbersicht Portlet"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
-"Blog Übersicht Portlet zeigt Einträge von verschiedenen Blogs durch "
+"Blog Ãœbersicht Portlet zeigt EintrÃ¤ge von verschiedenen Blogs durch "
 "Verwendung verschiedener Such Parameters."
 
 msgid "view_mode_Title_label"
@@ -271,7 +272,7 @@ msgid "view_mode_TitleDescription_label"
 msgstr "Titel und Beschreibung"
 
 msgid "view_mode_Full_label"
-msgstr "Ausführlich"
+msgstr "AusfÃ¼hrlich"
 
 msgid "blog_entry_content_label_edit"
 msgstr "Inhalt"
@@ -295,7 +296,7 @@ msgid "February"
 msgstr "Februar"
 
 msgid "March"
-msgstr "März"
+msgstr "MÃ¤rz"
 
 msgid "April"
 msgstr "April"
@@ -349,7 +350,7 @@ msgstr "Erstell Datum chronol. absteigend."
 #~ msgstr "Event Ort"
 
 #~ msgid "Blog entries posted in category ${category}"
-#~ msgstr "Blog Einträge geposted in Kategorie ${category}"
+#~ msgstr "Blog EintrÃ¤ge geposted in Kategorie ${category}"
 
 #~ msgid "Role1"
 #~ msgstr "Rolle 1"
@@ -367,19 +368,19 @@ msgstr "Erstell Datum chronol. absteigend."
 #~ msgstr "Vor- und Zuname"
 
 #~ msgid "legend_local_roles_assigned_users"
-#~ msgstr "lokal zugewiesene Rollen für Teilnehmer"
+#~ msgstr "lokal zugewiesene Rollen fÃ¼r Teilnehmer"
 
 #~ msgid "legend_local_roles_no_results_member"
-#~ msgstr "keine Ergebnisse für Teilnehmer"
+#~ msgstr "keine Ergebnisse fÃ¼r Teilnehmer"
 
 #~ msgid "legend_local_roles_no_results_members"
-#~ msgstr "keine Ergebnisse für Teilnehmer"
+#~ msgstr "keine Ergebnisse fÃ¼r Teilnehmer"
 
 #~ msgid "legend_local_roles_select_groups_and_roles"
-#~ msgstr "Wähle Gruppen und Rollen"
+#~ msgstr "WÃ¤hle Gruppen und Rollen"
 
 #~ msgid "legend_local_roles_select_members_and_roles"
-#~ msgstr "Wähle Teilnehmer und Rollen"
+#~ msgstr "WÃ¤hle Teilnehmer und Rollen"
 
 #~ msgid "link_local_roles_underlined"
 #~ msgstr "unterstrichen"

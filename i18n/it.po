@@ -6,14 +6,14 @@ msgstr ""
 "Last-Translator: Stefano Schintu <schintu@gmail.com>\n"
 "Language-Team: CPS Italian <schintu@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Preferred-encodings: latin9 utf-8\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
 "Language-Code: it\n"
 "Language-Name: Italian\n"
 "Domain: default\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-Country: ITALY\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
@@ -183,7 +183,7 @@ msgstr "Elimina"
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_description_label"
 msgstr ""
-"Utilizza le categorie per raggruppare i tuo inserimenti per una più semplice "
+"Utilizza le categorie per raggruppare i tuo inserimenti per una piÃ¹ semplice "
 "referenza."
 
 #.   <td width="90%">Categories</td>
@@ -254,7 +254,7 @@ msgstr "Aggregatore blog"
 
 msgid "portal_type_BlogAggregator_description"
 msgstr ""
-"L'aggregatore di blog mostra gli inserimenti di più blog utilizzando dei "
+"L'aggregatore di blog mostra gli inserimenti di piÃ¹ blog utilizzando dei "
 "parametri di ricerca."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
@@ -262,7 +262,7 @@ msgstr "Portlet aggregatore blog"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
-"L'aggregatore di blog mostra gli inserimenti di più blog utilizzando dei "
+"L'aggregatore di blog mostra gli inserimenti di piÃ¹ blog utilizzando dei "
 "parametri di ricerca."
 
 msgid "view_mode_Title_label"

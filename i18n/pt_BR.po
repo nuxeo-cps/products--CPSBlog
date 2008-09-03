@@ -10,13 +10,13 @@ msgstr ""
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Language-Code: pt_BR\n"
 "Language-Name: Portuguese Brazilian\n"
-"Preferred-encodings: utf-8 latin1\n"
 "Domain: default\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
@@ -33,7 +33,7 @@ msgstr ""
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "${numofcomments} comments"
-msgstr "${numofcomments} comentários"
+msgstr "${numofcomments} comentÃ¡rios"
 
 #.   <h2>
 #.         Categories for blog "${blogtitle (tal replace="doc/Title")}"
@@ -67,7 +67,7 @@ msgstr "Principal"
 #.   <h3>Manage Trackback Pings</h3>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Manage Trackback Pings"
-msgstr "Administrar Notificações de Comentários."
+msgstr "Administrar NotificaÃ§Ãµes de ComentÃ¡rios."
 
 #.   <span>
 #.             Objects: ${batch_start (tal replace="batch/start")} - ${batch_limit (tal replace="batch/end")} of ${batch_length (tal replace="batch/sequence_length")}
@@ -129,7 +129,7 @@ msgstr ""
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
-msgstr "URL de Notificação(<it>Trackback</it>) para esta entrada:"
+msgstr "URL de NotificaÃ§Ã£o(<it>Trackback</it>) para esta entrada:"
 
 #.   <p class="tracked">
 #.             Tracked on
@@ -153,7 +153,7 @@ msgstr "adicionar"
 #.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_next_x_items"
-msgstr "Próximos"
+msgstr "PrÃ³ximos"
 
 #.   <span omit-tag="">
 #.             Previous
@@ -162,7 +162,7 @@ msgstr "Próximos"
 #.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_previous_x_items"
-msgstr "Prévios"
+msgstr "PrÃ©vios"
 
 #.   <h2>Add category</h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
@@ -185,7 +185,7 @@ msgstr "Remover"
 #.       </p>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_description_label"
-msgstr "Use categorias para agrupar as entradas para facilitar a referência."
+msgstr "Use categorias para agrupar as entradas para facilitar a referÃªncia."
 
 #.   <td width="90%">Categories</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
@@ -197,7 +197,7 @@ msgstr "Categorias"
 #.       </p>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "blog_edit_category_description_label"
-msgstr "Use esta página para editar os atributos da categoria."
+msgstr "Use esta pÃ¡gina para editar os atributos da categoria."
 
 #.   <block>from</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -212,16 +212,16 @@ msgstr ""
 #.   <span omit-tag="" content="archive/month_name">month</span>
 #: from ../skins/cpsblog/blogarchive_portlet.pt
 msgid "month"
-msgstr "mês"
+msgstr "mÃªs"
 
 msgid "blog_view_mode_label_edit"
-msgstr "Modo de visão das entradas do Blog"
+msgstr "Modo de visÃ£o das entradas do Blog"
 
 msgid "action_manage_blog_categories"
 msgstr "Administrar as categorias"
 
 msgid "blog_entries_per_page_label_edit"
-msgstr "Mostra entradas por página"
+msgstr "Mostra entradas por pÃ¡gina"
 
 msgid "author_photo_label_edit"
 msgstr "Foto do autor"
@@ -233,20 +233,20 @@ msgid "psm_blog_entry_publish_done"
 msgstr "Entrada do Blog publicada"
 
 msgid "psm_blog_entry_publish_not_possible"
-msgstr "Entrada do Blog não foi publicada"
+msgstr "Entrada do Blog nÃ£o foi publicada"
 
 msgid "psm_blog_entry_unpublish_done"
 msgstr "Entrada do Blog despublicada."
 
 msgid "psm_blog_entry_unpublish_not_possible"
-msgstr "Entrada do Blog não foi despublicada."
+msgstr "Entrada do Blog nÃ£o foi despublicada."
 
 msgid "portal_type_Blog_title"
 msgstr "Blog"
 
 msgid "portal_type_Blog_description"
 msgstr ""
-"Blog permite que você rapidamente publique seus pensamentos, compartilhe seu "
+"Blog permite que vocÃª rapidamente publique seus pensamentos, compartilhe seu "
 "conhecimento, interaja com pessoas e muito mais."
 
 msgid "portal_type_BlogEntry_title"
@@ -257,31 +257,31 @@ msgstr "Agregador de Blog"
 
 msgid "portal_type_BlogAggregator_description"
 msgstr ""
-"Um Agregador de Blog mostra entradas de vários blogs utilizando busca com "
-"parâmetros definidos."
+"Um Agregador de Blog mostra entradas de vÃ¡rios blogs utilizando busca com "
+"parÃ¢metros definidos."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Portlet de Agregador de Blog"
 
 msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
-"Um Portlet Agregador de Blog mostra entradas de vários blogs utilizando "
-"busca com parâmetros definidos."
+"Um Portlet Agregador de Blog mostra entradas de vÃ¡rios blogs utilizando "
+"busca com parÃ¢metros definidos."
 
 msgid "view_mode_Title_label"
-msgstr "Somente o título"
+msgstr "Somente o tÃ­tulo"
 
 msgid "view_mode_TitleDescription_label"
-msgstr "Título e descrição"
+msgstr "TÃ­tulo e descriÃ§Ã£o"
 
 msgid "view_mode_Full_label"
 msgstr "Completo"
 
 msgid "blog_entry_content_label_edit"
-msgstr "Conteúdo"
+msgstr "ConteÃºdo"
 
 msgid "blog_entry_accept_pings_label_edit"
-msgstr "Aceitar notificações de comentários/respostas."
+msgstr "Aceitar notificaÃ§Ãµes de comentÃ¡rios/respostas."
 
 msgid "blog_entry_dispatch_tb_urls_label_edit"
 msgstr "URLs para notificar"
@@ -299,7 +299,7 @@ msgid "February"
 msgstr "Fevereiro"
 
 msgid "March"
-msgstr "Março"
+msgstr "MarÃ§o"
 
 msgid "April"
 msgstr "Abril"
@@ -338,19 +338,19 @@ msgid "Categories"
 msgstr "Categorias"
 
 msgid "label_date_asc"
-msgstr "Data de criação"
+msgstr "Data de criaÃ§Ã£o"
 
 msgid "label_date_desc"
-msgstr "Desc. data de criação"
+msgstr "Desc. data de criaÃ§Ã£o"
 
 #~ msgid "label_event_types"
-#~ msgstr "Desc. data de criação"
+#~ msgstr "Desc. data de criaÃ§Ã£o"
 
 #~ msgid "label_event_types_help"
-#~ msgstr "Desc. data de criação"
+#~ msgstr "Desc. data de criaÃ§Ã£o"
 
 #~ msgid "label_events_location"
-#~ msgstr "Desc. data de criação"
+#~ msgstr "Desc. data de criaÃ§Ã£o"
 
 #~ msgid "Blog entries posted in category ${category}"
 #~ msgstr "Entradas do Blog postadas na categoria ${category}"
@@ -359,10 +359,10 @@ msgstr "Desc. data de criação"
 #~ msgstr "Role1"
 
 #~ msgid "Title"
-#~ msgstr "Título"
+#~ msgstr "TÃ­tulo"
 
 #~ msgid "heading_local_roles_search_members"
-#~ msgstr "Atribuir papéis locais: Buscar Membros"
+#~ msgstr "Atribuir papÃ©is locais: Buscar Membros"
 
 #~ msgid "label_roles"
 #~ msgstr "<span>Papel(is)</span>"
@@ -371,7 +371,7 @@ msgstr "Desc. data de criação"
 #~ msgstr "Nome Completo."
 
 #~ msgid "legend_local_roles_assigned_users"
-#~ msgstr "Estes usuários têm atualmente papéis locais atribuídos nesta pasta:"
+#~ msgstr "Estes usuÃ¡rios tÃªm atualmente papÃ©is locais atribuÃ­dos nesta pasta:"
 
 #~ msgid "legend_local_roles_no_results_member"
 #~ msgstr "Desculpe, nenhum grupo encontrado na sua busca."
@@ -388,6 +388,6 @@ msgstr "Desc. data de criação"
 #~ msgid "link_local_roles_underlined"
 #~ msgstr ""
 #~ "<span>\n"
-#~ "<em>Papéis sublinhados</em> são definidos nas pastas acima (pais).\n"
-#~ "Siga os links para administrar os papéis locais nestas pastas.\n"
+#~ "<em>PapÃ©is sublinhados</em> sÃ£o definidos nas pastas acima (pais).\n"
+#~ "Siga os links para administrar os papÃ©is locais nestas pastas.\n"
 #~ "</span>"

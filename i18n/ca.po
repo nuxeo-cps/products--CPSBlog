@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: CPSBlog\n"
 "POT-Creation-Date: 2008-06-02 11:50default\n"
 "PO-Revision-Date: 2007-06-01 12:54+0100\n"
-"Language-Team: valenci‡/catal‡. <juangus@lasalle.es>\n"
+"Language-Team: valenci√†/catal√†. <juangus@lasalle.es>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Preferred-encodings: latin9 utf-8\n"
-"Domain: default\n"
-"Language-Code: ca\n"
-"Language-Name: valenci‡/catal‡\n"
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-Country: SPAIN\n"
+"Language-Code: ca\n"
+"Language-Name: ca\n"
+"Domain: default\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
@@ -150,7 +150,7 @@ msgstr "afegir"
 #.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_next_x_items"
-msgstr "PrÚxims"
+msgstr "Pr√≤xims"
 
 #.   <span omit-tag="">
 #.             Previous
@@ -194,7 +194,7 @@ msgstr "Categories"
 #.       </p>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "blog_edit_category_description_label"
-msgstr "Utilitze esta p‡gina per a editar els atributs de la categoria"
+msgstr "Utilitze esta p√†gina per a editar els atributs de la categoria"
 
 #.   <block>from</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -212,13 +212,13 @@ msgid "month"
 msgstr "mes"
 
 msgid "blog_view_mode_label_edit"
-msgstr "Blog -  Mode visualitzaciÛ"
+msgstr "Blog -  Mode visualitzaci√≥"
 
 msgid "action_manage_blog_categories"
 msgstr "Administrar categories"
 
 msgid "blog_entries_per_page_label_edit"
-msgstr "Mostra les entrades per p‡gina"
+msgstr "Mostra les entrades per p√†gina"
 
 msgid "author_photo_label_edit"
 msgstr "Autor de la foto"
@@ -255,7 +255,7 @@ msgstr "Blog - Agregador"
 msgid "portal_type_BlogAggregator_description"
 msgstr ""
 "L'agregador de blogs mostra les entrades de diversos blogs utilitzant "
-"par‡metres definits de recerca."
+"par√†metres definits de recerca."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Agregador de blogs"
@@ -263,13 +263,13 @@ msgstr "Agregador de blogs"
 msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
 "L'agregador de blogs mostra les entrades de diversos blogs utilitzant "
-"par‡metres definits de recerca."
+"par√†metres definits de recerca."
 
 msgid "view_mode_Title_label"
-msgstr "TÌtol"
+msgstr "T√≠tol"
 
 msgid "view_mode_TitleDescription_label"
-msgstr "TÌtol i descripciÛ"
+msgstr "T√≠tol i descripci√≥"
 
 msgid "view_mode_Full_label"
 msgstr "Complet"
@@ -296,7 +296,7 @@ msgid "February"
 msgstr "Febrer"
 
 msgid "March"
-msgstr "MarÁ"
+msgstr "Mar√ß"
 
 msgid "April"
 msgstr "Abril"
@@ -335,7 +335,7 @@ msgid "Categories"
 msgstr "Categories"
 
 msgid "label_date_asc"
-msgstr "Data de creaciÛ 01-->31"
+msgstr "Data de creaci√≥ 01-->31"
 
 msgid "label_date_desc"
-msgstr "Data de creaciÛ 31-->01"
+msgstr "Data de creaci√≥ 31-->01"

@@ -4,19 +4,19 @@ msgstr ""
 "Project-Id-Version: CPSBlog\n"
 "POT-Creation-Date: 2008-06-02 11:50default\n"
 "PO-Revision-Date: 2006-08-08 10:43+0100\n"
-"Last-Translator: Jesús Martín <jesusmartin@lasalle.es>\n"
-"Language-Team: español <jesusmartin@lasalle.es>\n"
+"Last-Translator: JesÃºs MartÃ­n <jesusmartin@lasalle.es>\n"
+"Language-Team: espaÃ±ol <jesusmartin@lasalle.es>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Preferred-encodings: latin9 utf-8\n"
 "X-Generator: KBabel 1.9\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
 "Language-Code: es\n"
 "Language-Name: Spanish\n"
 "Domain: default\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: SPAIN\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
@@ -40,14 +40,14 @@ msgstr "${numofcomments} comentarios"
 #.       </h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "Categories for blog \"${blogtitle}\""
-msgstr "Categorías del blog  \"${blogtitle}\""
+msgstr "CategorÃ­as del blog  \"${blogtitle}\""
 
 #.   <h2>
 #.         Category for blog "${blogtitle (tal replace="doc/Title")}"
 #.       </h2>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "Category for blog \"${blogtitle}\""
-msgstr "Categoría del blog \"${blogtitle}\""
+msgstr "CategorÃ­a del blog \"${blogtitle}\""
 
 #.   <td>Created</td>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
@@ -144,7 +144,7 @@ msgstr "Registrado el ${tracked_date}"
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "add"
-msgstr "añadir"
+msgstr "aÃ±adir"
 
 #.   <span omit-tag="">
 #.             Next
@@ -153,7 +153,7 @@ msgstr "añadir"
 #.           </span>
 #: from ../skins/cpsblog/batch_nav_macros.pt
 msgid "batch_next_x_items"
-msgstr "Próximos"
+msgstr "PrÃ³ximos"
 
 #.   <span omit-tag="">
 #.             Previous
@@ -167,13 +167,13 @@ msgstr "Previos"
 #.   <h2>Add category</h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_add_category_label"
-msgstr "Añadir una categoría"
+msgstr "AÃ±adir una categorÃ­a"
 
 #.   <block>Categories:</block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "blog_categories_byline_label"
-msgstr "Categorías:"
+msgstr "CategorÃ­as:"
 
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
@@ -185,19 +185,19 @@ msgstr "Suprimir"
 #.       </p>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_description_label"
-msgstr "Utilice las categorías para agrupar sus entradas"
+msgstr "Utilice las categorÃ­as para agrupar sus entradas"
 
 #.   <td width="90%">Categories</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_label"
-msgstr "Categorías"
+msgstr "CategorÃ­as"
 
 #.   <p>
 #.         Use this page to edit the attributes of the category
 #.       </p>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "blog_edit_category_description_label"
-msgstr "Utilice esta página para editar los atributos de la categoría"
+msgstr "Utilice esta pÃ¡gina para editar los atributos de la categorÃ­a"
 
 #.   <block>from</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -215,19 +215,19 @@ msgid "month"
 msgstr "mes"
 
 msgid "blog_view_mode_label_edit"
-msgstr "Blog -  Modo visualización"
+msgstr "Blog -  Modo visualizaciÃ³n"
 
 msgid "action_manage_blog_categories"
-msgstr "Administrar categorías"
+msgstr "Administrar categorÃ­as"
 
 msgid "blog_entries_per_page_label_edit"
-msgstr "Muestra las entradas por página"
+msgstr "Muestra las entradas por pÃ¡gina"
 
 msgid "author_photo_label_edit"
 msgstr "Autor de la foto"
 
 msgid "blog_entry_categories_label_edit"
-msgstr "Categorías"
+msgstr "CategorÃ­as"
 
 msgid "psm_blog_entry_publish_done"
 msgstr "la entrada ha sido publicada"
@@ -258,7 +258,7 @@ msgstr "Blog - Agregador"
 msgid "portal_type_BlogAggregator_description"
 msgstr ""
 "El agregador de Blog muestra las entradas de varios blogs utilizando "
-"parámetros definidos de búsqueda."
+"parÃ¡metros definidos de bÃºsqueda."
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog - Agregador Portlet"
@@ -266,13 +266,13 @@ msgstr "Blog - Agregador Portlet"
 msgid "portal_type_BlogAggregatorPortlet_description"
 msgstr ""
 "Blog - Agregador Portlet muestra las entradas de varios blogs usando "
-"parámetros definidos de búsqueda."
+"parÃ¡metros definidos de bÃºsqueda."
 
 msgid "view_mode_Title_label"
-msgstr "Título"
+msgstr "TÃ­tulo"
 
 msgid "view_mode_TitleDescription_label"
-msgstr "Título y descripción"
+msgstr "TÃ­tulo y descripciÃ³n"
 
 msgid "view_mode_Full_label"
 msgstr "Completo"
@@ -329,16 +329,16 @@ msgid "December"
 msgstr "Diciembre"
 
 msgid "Search"
-msgstr "Búsqueda"
+msgstr "BÃºsqueda"
 
 msgid "Archives"
 msgstr "Archivos"
 
 msgid "Categories"
-msgstr "Categorías"
+msgstr "CategorÃ­as"
 
 msgid "label_date_asc"
-msgstr "Fecha de creación 01-->31"
+msgstr "Fecha de creaciÃ³n 01-->31"
 
 msgid "label_date_desc"
-msgstr "Fecha de creación 31-->01"
+msgstr "Fecha de creaciÃ³n 31-->01"

@@ -10,14 +10,14 @@ msgstr ""
 "Last-Translator: Ruslan Spivak <rspivak@nuxeo.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Preferred-encodings: latin9 utf-8\n"
+"X-Generator: KBabel 1.9\n"
 "Language-Code: fr\n"
 "Language-Name: French\n"
 "Domain: default\n"
-"X-Generator: KBabel 1.9\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <block condition="not: numofcomments">
 #.                 ${numofcomments (tal replace="numofcomments")}
@@ -41,19 +41,19 @@ msgstr "${numofcomments} commentaires"
 #.       </h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "Categories for blog \"${blogtitle}\""
-msgstr "Catégories pour le blog \"${blogtitle}\""
+msgstr "CatÃ©gories pour le blog \"${blogtitle}\""
 
 #.   <h2>
 #.         Category for blog "${blogtitle (tal replace="doc/Title")}"
 #.       </h2>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "Category for blog \"${blogtitle}\""
-msgstr "Catégorie pour le blog \"${blogtitle}\""
+msgstr "CatÃ©gorie pour le blog \"${blogtitle}\""
 
 #.   <td>Created</td>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Created"
-msgstr "Creé"
+msgstr "CreÃ©"
 
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
@@ -68,7 +68,7 @@ msgstr "Principal"
 #.   <h3>Manage Trackback Pings</h3>
 #: from ../skins/cpsblog/blog_entry_edit_form.pt
 msgid "Manage Trackback Pings"
-msgstr "Gérer les rétroliens"
+msgstr "GÃ©rer les rÃ©troliens"
 
 #.   <span>
 #.             Objects: ${batch_start (tal replace="batch/start")} - ${batch_limit (tal replace="batch/end")} of ${batch_length (tal replace="batch/sequence_length")}
@@ -92,7 +92,7 @@ msgstr ""
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "Posted by ${item_creator} @ ${item_modification}"
-msgstr "Posté par  ${item_creator} @ ${item_modification}"
+msgstr "PostÃ© par  ${item_creator} @ ${item_modification}"
 
 #.   <block condition="not:isAnon">
 #.               Posted by
@@ -127,7 +127,7 @@ msgstr ""
 #.   <div>Trackback URL for this entry:</div>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Trackback URL for this entry:"
-msgstr "URL du rétrolien pour cette entrée :"
+msgstr "URL du rÃ©trolien pour cette entrÃ©e :"
 
 #.   <p class="tracked">
 #.             Tracked on
@@ -135,7 +135,7 @@ msgstr "URL du rétrolien pour cette entrée :"
 #.           </p>
 #: from ../skins/cpsblog/blog_entry_view.pt
 msgid "Tracked on ${tracked_date}"
-msgstr "Traqué sur ${tracked_date}"
+msgstr "TraquÃ© sur ${tracked_date}"
 
 #.   <a href="" class="blog" attributes="href string:${bentry_url}/post_comment">add</a>
 #.   <a href="" class="blog" attributes="href string:${here/absolute_url}/post_comment">add</a>
@@ -165,13 +165,13 @@ msgstr ""
 #.   <h2>Add category</h2>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_add_category_label"
-msgstr "Ajouter une catégorie"
+msgstr "Ajouter une catÃ©gorie"
 
 #.   <block>Categories:</block>
 #: from ../skins/cpsblog/blog_entry_macros.pt
 #: ../skins/cpsblog/blog_entry_view.pt
 msgid "blog_categories_byline_label"
-msgstr "Catégories :"
+msgstr "CatÃ©gories :"
 
 #.   <td>Delete</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
@@ -183,19 +183,19 @@ msgstr "Supprimer"
 #.       </p>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_description_label"
-msgstr "Utilisez les catégories pour grouper vos entrées "
+msgstr "Utilisez les catÃ©gories pour grouper vos entrÃ©es "
 
 #.   <td width="90%">Categories</td>
 #: from ../skins/cpsblog/blog_manage_categories.pt
 msgid "blog_categories_label"
-msgstr "Catégories"
+msgstr "CatÃ©gories"
 
 #.   <p>
 #.         Use this page to edit the attributes of the category
 #.       </p>
 #: from ../skins/cpsblog/blog_edit_category.pt
 msgid "blog_edit_category_description_label"
-msgstr "Utilisez cette page pour editer les attributs de la catégorie"
+msgstr "Utilisez cette page pour editer les attributs de la catÃ©gorie"
 
 #.   <block>from</block>
 #: from ../skins/cpsblog/blog_entry_view.pt
@@ -216,35 +216,35 @@ msgid "blog_view_mode_label_edit"
 msgstr "Mode de visualisation du blog"
 
 msgid "action_manage_blog_categories"
-msgstr "Gérer les catégories"
+msgstr "GÃ©rer les catÃ©gories"
 
 msgid "blog_entries_per_page_label_edit"
-msgstr "Nombre de entrées par page"
+msgstr "Nombre de entrÃ©es par page"
 
 msgid "author_photo_label_edit"
 msgstr "Photo d'auteur"
 
 msgid "blog_entry_categories_label_edit"
-msgstr "Catégories"
+msgstr "CatÃ©gories"
 
 msgid "psm_blog_entry_publish_done"
-msgstr "Entrée est publiée"
+msgstr "EntrÃ©e est publiÃ©e"
 
 msgid "psm_blog_entry_publish_not_possible"
-msgstr "Entrée n'est pas publiée"
+msgstr "EntrÃ©e n'est pas publiÃ©e"
 
 msgid "psm_blog_entry_unpublish_done"
-msgstr "Entrée est depubliée"
+msgstr "EntrÃ©e est depubliÃ©e"
 
 msgid "psm_blog_entry_unpublish_not_possible"
-msgstr "Entrée n'est pas depubliée"
+msgstr "EntrÃ©e n'est pas depubliÃ©e"
 
 msgid "portal_type_Blog_title"
 msgstr "Blog (carnet)"
 
 msgid "portal_type_Blog_description"
 msgstr ""
-"Blog (carnet) permet de rapidement mettre en ligne des idées, des opinions, "
+"Blog (carnet) permet de rapidement mettre en ligne des idÃ©es, des opinions, "
 "de partager de la connaissance, d'interargir avec d'autres personnes, et "
 "plus encore"
 
@@ -252,12 +252,12 @@ msgid "portal_type_BlogEntry_title"
 msgstr "Billet"
 
 msgid "portal_type_BlogAggregator_title"
-msgstr "Blog - Agrégateur de blogs (carnets)"
+msgstr "Blog - AgrÃ©gateur de blogs (carnets)"
 
 msgid "portal_type_BlogAggregator_description"
 msgstr ""
-"Un agrégateur de blogs (carnets) présente des billets de plusiers blogs sur "
-"la base d'une recherche paramétrée"
+"Un agrÃ©gateur de blogs (carnets) prÃ©sente des billets de plusiers blogs sur "
+"la base d'une recherche paramÃ©trÃ©e"
 
 msgid "portal_type_BlogAggregatorPortlet_title"
 msgstr "Blog Aggregator Portlet"
@@ -278,10 +278,10 @@ msgid "blog_entry_content_label_edit"
 msgstr "Contenu"
 
 msgid "blog_entry_accept_pings_label_edit"
-msgstr "Accepter les rétroliens"
+msgstr "Accepter les rÃ©troliens"
 
 msgid "blog_entry_dispatch_tb_urls_label_edit"
-msgstr "URL à « pinger »"
+msgstr "URL Ã  Â« pinger Â»"
 
 msgid "blog_languages_label_edit"
 msgstr "Langues"
@@ -293,7 +293,7 @@ msgid "January"
 msgstr "Janvier"
 
 msgid "February"
-msgstr "Février"
+msgstr "FÃ©vrier"
 
 msgid "March"
 msgstr "Mars"
@@ -323,7 +323,7 @@ msgid "November"
 msgstr "Novembre"
 
 msgid "December"
-msgstr "Décembre"
+msgstr "DÃ©cembre"
 
 msgid "Search"
 msgstr "Recherche"
@@ -332,21 +332,21 @@ msgid "Archives"
 msgstr "Archives"
 
 msgid "Categories"
-msgstr "Catégories"
+msgstr "CatÃ©gories"
 
 msgid "label_date_asc"
-msgstr "Date création"
+msgstr "Date crÃ©ation"
 
 msgid "label_date_desc"
-msgstr "Date création inv."
+msgstr "Date crÃ©ation inv."
 
 #, fuzzy
 #~ msgid "label_event_types"
-#~ msgstr "Date création inv."
+#~ msgstr "Date crÃ©ation inv."
 
 #~ msgid "Blog entries posted in category ${category}"
-#~ msgstr "Entrées postées dans la catégorie ${category}"
+#~ msgstr "EntrÃ©es postÃ©es dans la catÃ©gorie ${category}"
 
 #, fuzzy
 #~ msgid "label_roles"
-#~ msgstr "Date création"
+#~ msgstr "Date crÃ©ation"
