@@ -1,4 +1,25 @@
 ===========================================================
+Package: CPSBlog 0.11.2
+===========================================================
+First release built by: madarche at: 2008-09-03T15:22:20
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/products/CPSBlog/tags/0.11.2
+Build from: https://svn.nuxeo.org/pub/CPS3/products/CPSBlog/trunk@52941
+
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- Made the content text widget (textarea) still be resizable whence the blog
+  entry has been created. There was a problem in the JavaScript declarations.
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSBlog 0.11.1
 ===========================================================
 First release built by: madarche at: 2008-04-18T12:56:33

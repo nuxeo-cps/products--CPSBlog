@@ -6,8 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
-- Made the content text widget (textarea) still be resizable whence the blog
-  entry has been created. There was a problem in the JavaScript declarations.
+-
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
