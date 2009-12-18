@@ -1,6 +1,6 @@
 Requires
 ~~~~~~~~
-- lxml (>= 2.1)
+- lxml (>= 1.1.1)
 New features
 ~~~~~~~~~~~~
 -
