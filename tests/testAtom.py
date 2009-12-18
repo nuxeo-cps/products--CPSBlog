@@ -63,8 +63,8 @@ class TestAtom(TestBlog):
         atom = blog.exportatom()
         # XXX: we need StringIO because of a bug in lxml
         entry_element = etree.parse(StringIO(atom))
-        title = entry_element.xpath("/atom:feed/atom:title/text()", 
-            {'atom': 'http://purl.org/atom/ns#'})[0]
+        title = entry_element.xpath("/atom:feed/atom:title/text()",
+            namespaces={'atom': 'http://purl.org/atom/ns#'})[0]
         self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
 
     def testBlogEntryAtomExport(self):
@@ -79,8 +79,8 @@ class TestAtom(TestBlog):
         atom = entry.exportatom()
         # XXX: we need StringIO because of a bug in lxml
         entry_element = etree.parse(StringIO(atom))
-        title = entry_element.xpath("/atom:entry/atom:title/text()", 
-            {'atom': 'http://purl.org/atom/ns#'})[0]
+        title = entry_element.xpath("/atom:entry/atom:title/text()",
+            namespaces={'atom': 'http://purl.org/atom/ns#'})[0]
         self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
 
 

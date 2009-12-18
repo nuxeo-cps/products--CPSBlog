@@ -48,11 +48,11 @@ class AtomMixin:
               'wsse': 'http://schemas.xmlsoap.org/ws/2002/07/secext',
               'xmlns': 'http://schemas.xmlsoap.org/wsdl/http/'}
 
-        xtitle = tbody.xpath('//a:entry/a:title', ns)
-        xcontent = tbody.xpath('//a:entry/a:content', ns)
-        xcategories = tbody.xpath('//a:entry/dc:subject', ns)
-        xissued = tbody.xpath('//a:entry/a:issued', ns)
-        xdraft = tbody.xpath('//a:entry/ab:draft', ns)
+        xtitle = tbody.xpath('//a:entry/a:title', namespaces=ns)
+        xcontent = tbody.xpath('//a:entry/a:content', namespaces=ns)
+        xcategories = tbody.xpath('//a:entry/dc:subject', namespaces=ns)
+        xissued = tbody.xpath('//a:entry/a:issued', namespaces=ns)
+        xdraft = tbody.xpath('//a:entry/ab:draft', namespaces=ns)
 
         if xtitle:
             info['Title'] = sanitize(xtitle[0].text, tags_to_keep=title_tags)
