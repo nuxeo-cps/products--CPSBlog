@@ -1,4 +1,21 @@
 ===========================================================
+Package: CPSBlog 0.13.1
+===========================================================
+First release built by: gracinet at: 2010-03-13T17:37:51
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- First hgbundler managed release
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSBlog 0.13.0
 ===========================================================
 First release built by: gracinet at: 2009-12-21T11:52:53
