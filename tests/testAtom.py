@@ -1,4 +1,3 @@
-# -*- coding: iso-8859-15 -*-
 # (C) Copyright 2003-2005 Nuxeo SARL <http://nuxeo.com>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -14,8 +13,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
-#
-# $Id: testBlog.py 25357 2005-08-01 20:10:23Z fguillaume $
 
 import unittest
 from testBlog import TestBlog
@@ -58,14 +55,14 @@ class TestAtom(TestBlog):
         blog = self.ws.blog
         doc = blog.getContent()
 
-        TITLE = "Blog d'Arnaud Lefèvre"
+        TITLE = "Blog d'Arnaud Lef\xe8vre"
         doc.edit(**{"Title": TITLE})
         atom = blog.exportatom()
         # XXX: we need StringIO because of a bug in lxml
         entry_element = etree.parse(StringIO(atom))
         title = entry_element.xpath("/atom:feed/atom:title/text()",
             namespaces={'atom': 'http://purl.org/atom/ns#'})[0]
-        self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
+        self.assertEquals(unicode(TITLE, 'utf-8'), title)
 
     def testBlogEntryAtomExport(self):
         self._createBlog()
@@ -74,14 +71,14 @@ class TestAtom(TestBlog):
         entry = blog.blogentry
         self.assert_(entry.exportatom())
 
-        TITLE = "Entrée du blog d'Arnaud Lefèvre"
+        TITLE = "Entr\xe9e du blog d'Arnaud Lef\xe8vre"
         entry.getContent().edit(**{"Title": TITLE})
         atom = entry.exportatom()
         # XXX: we need StringIO because of a bug in lxml
         entry_element = etree.parse(StringIO(atom))
         title = entry_element.xpath("/atom:entry/atom:title/text()",
             namespaces={'atom': 'http://purl.org/atom/ns#'})[0]
-        self.assertEquals(unicode(TITLE, 'iso-8859-15'), title)
+        self.assertEquals(unicode(TITLE, 'utf-8'), title)
 
 
 def test_suite():

@@ -19,7 +19,7 @@ items = items[:DISPLAY_LIMIT]
 # this is the hard coded rss 1.0
 rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 
-rss_fmt = r"""<?xml version="1.0" encoding="ISO-8859-1"?>
+rss_fmt = r"""<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="%(css_url)s" type="text/css"?>
 <rdf:RDF
   xmlns:rdf="%(rdf_ns)s"

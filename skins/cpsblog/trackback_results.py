@@ -6,11 +6,11 @@ error = kw.get('error')
 
 def setHeaderParameters():
     if REQUEST is not None:
-        REQUEST.RESPONSE.setHeader('Content-Type', 'text/xml; charset=ISO-8859-15')
+        REQUEST.RESPONSE.setHeader('Content-Type', 'text/xml; charset=UTF-8')
         REQUEST.RESPONSE.setHeader('Cache-Control', 'no-cache')
 
 if error:
-    output = """<?xml version="1.0" encoding="ISO-8859-15"?>
+    output = """<?xml version="1.0" encoding="UTF-8"?>
     <response>
     <error>%(error)s</error>
     <message>%(message)s</message>
@@ -24,7 +24,7 @@ if error:
 
 if not kw.get('list_trackbacks'):
     # successfull POST ping
-    output = """<?xml version="1.0" encoding="ISO-8859-15"?>
+    output = """<?xml version="1.0" encoding="UTF-8"?>
     <response>
     <error>%(error)s</error>
     </response>
@@ -33,7 +33,7 @@ if not kw.get('list_trackbacks'):
     return output % {'error' : error}
 
 # GET request to list all trackbacks
-output = """<?xml version="1.0" encoding="ISO-8859-15"?>
+output = """<?xml version="1.0" encoding="UTF-8"?>
 <response>
 <error>%(error)s</error>
 <rss version="0.91">
