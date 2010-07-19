@@ -219,7 +219,7 @@ msgid "action_manage_blog_categories"
 msgstr "Gérer les catégories"
 
 msgid "blog_entries_per_page_label_edit"
-msgstr "Nombre de entrées par page"
+msgstr "Nombre d'entrées par page"
 
 msgid "author_photo_label_edit"
 msgstr "Photo d'auteur"
