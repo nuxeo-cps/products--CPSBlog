@@ -55,14 +55,14 @@ class TestAtom(TestBlog):
         blog = self.ws.blog
         doc = blog.getContent()
 
-        TITLE = "Blog d'Arnaud Lef\xe8vre"
+        TITLE = u"Blog d'Arnaud Lef\xe8vre"
         doc.edit(**{"Title": TITLE})
         atom = blog.exportatom()
         # XXX: we need StringIO because of a bug in lxml
         entry_element = etree.parse(StringIO(atom))
         title = entry_element.xpath("/atom:feed/atom:title/text()",
             namespaces={'atom': 'http://purl.org/atom/ns#'})[0]
-        self.assertEquals(unicode(TITLE, 'utf-8'), title)
+        self.assertEquals(TITLE.encode('utf-8'), title)
 
     def testBlogEntryAtomExport(self):
         self._createBlog()
@@ -71,14 +71,14 @@ class TestAtom(TestBlog):
         entry = blog.blogentry
         self.assert_(entry.exportatom())
 
-        TITLE = "Entr\xe9e du blog d'Arnaud Lef\xe8vre"
+        TITLE = u"Entr\xe9e du blog d'Arnaud Lef\xe8vre"
         entry.getContent().edit(**{"Title": TITLE})
         atom = entry.exportatom()
         # XXX: we need StringIO because of a bug in lxml
         entry_element = etree.parse(StringIO(atom))
         title = entry_element.xpath("/atom:entry/atom:title/text()",
             namespaces={'atom': 'http://purl.org/atom/ns#'})[0]
-        self.assertEquals(unicode(TITLE, 'utf-8'), title)
+        self.assertEquals(TITLE.encode('utf-8'), title)
 
 
 def test_suite():
