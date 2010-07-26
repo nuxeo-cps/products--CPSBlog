@@ -1,4 +1,21 @@
 ===========================================================
+Package: CPSBlog 0.14.1
+===========================================================
+First release built by: gracinet at: 2010-07-26T22:31:16
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- #2178: updated for stronger fields validation
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSBlog 0.14.0
 ===========================================================
 First release built by: gracinet at: 2010-07-23T02:13:34
