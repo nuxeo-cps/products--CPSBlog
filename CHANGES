@@ -6,7 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
--
+- #2189: category links not unicode-ready
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 

@@ -6,8 +6,10 @@
                   context_url context/absolute_url"
       tal:condition="categories">
     <li tal:repeat="category categories">
-      <a tal:define="title category/title"
-         tal:attributes="href string:${context_url}/archive_view?category=${title}">
+      <a tal:define="title category/title;
+		     mq nocall:modules/ZTUtils/make_query;
+		     category_q python: mq({'category:utf8:ustring': title});"
+	 tal:attributes="href string:${context_url}/archive_view?${category_q}">
         <span tal:replace="title" />&nbsp;(<span tal:replace="category/posts" />)
       </a>
     </li>

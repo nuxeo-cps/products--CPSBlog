@@ -72,8 +72,10 @@
             <tal:block repeat="category categories">
               <a href=""
                  class="blog"
-                 tal:define="blogproxy item/getBlogProxy"
-                 tal:attributes="href string:${blogproxy/absolute_url}/archive_view?category=${category}"
+                 tal:define="blogproxy item/getBlogProxy;
+			     mq nocall:modules/ZTUtils/make_query;
+                             category_q python: mq({'category:utf8:ustring': category});"
+                 tal:attributes="href string:${blogproxy/absolute_url}/archive_view?${category_q}"
                  tal:content="category">
                 category name
               </a><span tal:replace="string:," tal:condition="not:repeat/category/end">comma</span>
