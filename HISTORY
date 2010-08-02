@@ -1,4 +1,22 @@
 ===========================================================
+Package: CPSBlog 0.14.2
+===========================================================
+First release built by: gracinet at: 2010-08-02T19:58:12
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- #2191: unicode upgrade step
+- #2189: category links not unicode-ready
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSBlog 0.14.1
 ===========================================================
 First release built by: gracinet at: 2010-07-26T22:31:16
