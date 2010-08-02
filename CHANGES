@@ -6,8 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
-- #2191: unicode upgrade step
-- #2189: category links not unicode-ready
+-
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
