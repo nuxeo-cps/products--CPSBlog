@@ -1,5 +1,4 @@
 ##parameters=sort_on='effective',sort_order='reverse',start_date=None,end_date=None,category=None,path=None
-# $Id$
 """Returns list of sorted blog entries.
 If path parameter is None then path will be computed as path to context.
 """
@@ -23,7 +22,8 @@ if start_date and end_date:
                                      DateTime(end_date)+1],
                           'range' : 'minmax'}
 
-if category:
+# Protection against wrong encoding
+if category and isinstance(category, unicode):
     query['Subject'] = category
 
 brains = catalog.searchResults(**query)
