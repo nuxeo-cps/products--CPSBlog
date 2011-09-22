@@ -1,4 +1,21 @@
 ===========================================================
+Package: CPSBlog 0.14.4
+===========================================================
+First release built by: gracinet at: 2011-09-23T00:28:36
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- #2452: Wrong string encoding in blog/archive_view
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSBlog 0.14.3
 ===========================================================
 First release built by: gracinet at: 2010-12-30T13:04:59
