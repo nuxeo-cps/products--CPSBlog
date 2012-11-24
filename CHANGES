@@ -6,7 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
--
+- #2577: TraversalError Expression: <PathExpr standard:u'daction/name'>
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 

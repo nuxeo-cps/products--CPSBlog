@@ -12,7 +12,7 @@
         <li>
           <a href=""
              tal:attributes="href daction/url"
-             tal:define="title daction/name;
+             tal:define="title daction/title;
                          icon python:here.getIconFor('cps', daction['id'])"
              tal:condition="icon">
 

@@ -16,7 +16,7 @@
         <li>
           <a href=""
              tal:attributes="href daction/url"
-             tal:define="title daction/name;
+             tal:define="title daction/title;
                          icon python:here.getIconFor('cps', daction['id'])"
              tal:condition="icon">
 
@@ -34,7 +34,7 @@
         <li>
           <a href=""
              tal:attributes="href baction/url"
-             tal:define="title baction/name;
+             tal:define="title baction/title;
                          icon python:here.getIconFor('workflow', baction['id'])"
              tal:condition="icon">
 
