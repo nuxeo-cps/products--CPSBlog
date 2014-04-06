@@ -36,6 +36,7 @@
  <alias from="(Default)" to="blog_entry_view"/>
  <alias from="view" to="blog_entry_view"/>
  <alias from="edit" to="blog_entry_edit_form"/>
+ <alias from="edit_form" to="blog_entry_edit_form"/>
  <action title="action_create" action_id="create" category="object"
     condition_expr="" url_expr="string:${object_url}/blog_entry_create_form"
     visible="False">
